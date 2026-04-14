@@ -1,0 +1,62 @@
+# Y2K Futurism
+
+**Category:** internet
+**Motion tier:** Kinetic
+
+## Typography
+- **Display font:** Syncopate 700 — wide-tracked, futuristic, very 2000s
+- **Body font:** Rajdhani or Exo 2 for body, monospace for data
+- **Tracking:** 0.2em on headers, 0.05em body | **Leading:** 1.3
+
+## Colors
+- **Background:** #050A14 — near-black with blue tint
+- **Primary action:** #C0C0C0 — chrome silver as the primary surface/button material
+- **Accent:** #00F5FF — electric cyan for interactive highlights
+- **Elevation model:** reflections — chrome elements have specular gradient highlights, not shadows
+
+## Motion
+- **Tier:** Kinetic
+- **Spring tokens:** snappy (UI transitions), layout (data updates), bounce (element arrival)
+- **Enter animation:** scan-in — elements appear with a horizontal scan line passing top-to-bottom
+- **Forbidden:** organic curves in animation, warm color temperature, serif fonts
+
+## Spacing
+- **Base grid:** 4px
+- **Border-radius vocabulary:** 0px for hard metal elements, 2px for "precision machined" edges, 999px for circular elements only
+
+## Code Pattern
+```css
+.y2k-chrome {
+  background: linear-gradient(
+    180deg,
+    #e8e8e8 0%,
+    #ffffff 25%,
+    #c0c0c0 50%,
+    #a0a0a0 75%,
+    #d0d0d0 100%
+  );
+  border: 1px solid #888;
+  color: #000;
+}
+
+.y2k-panel {
+  background: linear-gradient(135deg, #1a1a2e, #0f0f23);
+  border: 1px solid rgba(0,245,255,0.3);
+  box-shadow:
+    0 0 15px rgba(0,245,255,0.1),
+    inset 0 1px 0 rgba(0,245,255,0.1);
+}
+
+.y2k-text {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #00F5FF;
+  text-shadow: 0 0 8px rgba(0,245,255,0.5);
+}
+```
+
+## Slop Watch
+- **Generic "futuristic" font:** Using Orbitron for Y2K reads as Cyberpunk — Syncopate and Exo have the specific 2000s corporate-futurism energy
+- **No chrome:** Y2K without metallic gradient elements is just generic dark UI — the chrome/silver material is definitional

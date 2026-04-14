@@ -1,0 +1,13 @@
+# Ensure shell scripts keep LF line endings on all platforms
+*.sh text eol=lf
+
+# Standard text files
+*.md text
+*.json text
+*.ts text
+*.yml text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary

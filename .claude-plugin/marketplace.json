@@ -1,0 +1,24 @@
+{
+  "name": "visionary-marketplace",
+  "owner": {
+    "name": "GIT Webb & App Studio AB",
+    "email": "hello@gitwebb.se"
+  },
+  "metadata": {
+    "description": "Visual design plugin marketplace for Claude Code",
+    "version": "1.2.0"
+  },
+  "plugins": [
+    {
+      "name": "visionary-claude",
+      "source": "./",
+      "description": "186 design styles, 8-step selection algorithm with weighted random, motion-first generation, Playwright critique loop, cross-session taste calibration. WCAG 2.2 AA. 20+ languages.",
+      "version": "1.2.0",
+      "author": { "name": "GIT Webb & App Studio AB" },
+      "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+      "repository": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+      "license": "Apache-2.0",
+      "keywords": ["design", "ui", "ux", "motion", "components", "styles", "wcag"]
+    }
+  ]
+}

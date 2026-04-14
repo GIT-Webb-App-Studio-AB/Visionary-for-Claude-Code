@@ -1,0 +1,10 @@
+{
+  "name": "visionary-claude",
+  "version": "1.2.0",
+  "description": "Visual design plugin for Claude Code. 186 styles, 8-step selection algorithm with weighted random, motion-first generation, Playwright critique loop, cross-session taste calibration. WCAG 2.2 AA compliant. 20+ languages.",
+  "author": { "name": "GIT Webb & App Studio AB" },
+  "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+  "repository": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+  "license": "Apache-2.0",
+  "keywords": ["design", "ui", "ux", "motion", "components", "styles", "wcag", "accessibility"]
+}
