@@ -1,9 +1,3 @@
-<div align="center">
-<img src="docs/banner.svg" alt="Visionary for Claude Code — 186 design styles, 8-step algorithm, motion-first" width="100%"/>
-</div>
-
-<br/>
-
 # visionary-claude
 
 [![Release](https://img.shields.io/badge/RELEASE-stable-blue?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases)
@@ -51,8 +45,8 @@ Built for Next.js 15 | React 19 | Vue 3 | Svelte 5 | Vanilla JS
 <div align="center">
 
 [![PayPal](https://img.shields.io/badge/PAYPAL-Donate-blue?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?business=BMNFKYM6BU3KG&no_recurring=0&item_name=Utveckling+av+mjukvara+och+Claude+Code+ekosystem&currency_code=USD)
-[![GitHub Sponsors](https://img.shields.io/badge/GITHUB-Sponsor-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/gitwebb)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-Support-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/gitwebb)
+[![GitHub Sponsors](https://img.shields.io/badge/GITHUB-Sponsor-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/gitstudio)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-Support-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/gitstudio)
 
 </div>
 
@@ -238,7 +232,7 @@ Contributions welcome. Open an issue before submitting a pull request for non-tr
 
 <div align="center">
 
-Built by **GIT Webb & App Studio AB**, Stockholm, Sweden.
+Built by **GIT Webb & App Studio AB**, Malmö, Sweden.
 
 Free and open source.
 
