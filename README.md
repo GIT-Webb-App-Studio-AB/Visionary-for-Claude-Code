@@ -1,3 +1,9 @@
+<div align="center">
+<img src="docs/banner.svg" alt="Visionary for Claude Code — 186 design styles, 8-step algorithm, motion-first" width="100%"/>
+</div>
+
+<br/>
+
 # visionary-claude
 
 [![Release](https://img.shields.io/badge/RELEASE-stable-blue?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases)
