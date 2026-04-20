@@ -1,5 +1,5 @@
 <div align="center">
-<img src="docs/banner.svg" alt="Visionary for Claude Code — 202 design styles, 8-step algorithm, motion-first, axe-core critique" width="100%"/>
+<img src="docs/banner-v1.3.svg" alt="Visionary for Claude Code — 202 design styles, 8-step algorithm, motion-first, axe-core critique, 18.35/20 benchmark" width="100%"/>
 </div>
 
 <br/>
