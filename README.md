@@ -192,6 +192,7 @@ All styles support **transplantation** — applying a style outside its native d
 - **Cross-platform hooks** — migrated from Bash to Node.js 18+ (`.mjs`); works on Windows / macOS / Linux without `xxd`, `md5sum`, or `sed` divergence. All three hooks read stdin JSON per the official Claude Code hooks spec.
 - **Slop pattern #26** — neon-on-dark without thematic justification — catches the AI-default "dark dashboard + cyan accents" leaking past the anti-default filter.
 - **Jurisdictional compliance** — ADA Title II (24 April 2026), EAA active enforcement (France DGCCRF, Germany €500k, Netherlands €900k / 10 %), Section 508, UK PSBAR, AODA, JIS X 8341 — full matrix in `SKILL.md`.
+- **Background auto-update** — a `SessionStart` hook runs `claude plugin marketplace update` + `claude plugin update visionary-claude` at most once per 24h, so future releases reach you automatically. New versions activate on the next Claude Code restart. Opt out with `VISIONARY_NO_AUTOUPDATE=1`. Release flow documented in `docs/RELEASE.md`.
 
 ---
 

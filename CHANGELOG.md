@@ -7,11 +7,25 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.3.0] — 2026-04-20
+## [1.3.0] — 2026-04-21
 
 Major release. Takes the plugin from "design intelligence" to "verifiable,
 publishable design platform". Full map against the 2026-04-18 deep-analysis
 report: 36 / 36 recommendation items implemented.
+
+### Added — Distribution
+
+- **Background auto-update** (`hooks/scripts/check-for-updates.mjs`) — `SessionStart`
+  hook spawns a detached child that runs `claude plugin marketplace update` +
+  `claude plugin update visionary-claude` at most once per 24h. Downloaded
+  updates activate on the next Claude Code restart. Per-user opt-out:
+  `VISIONARY_NO_AUTOUPDATE=1`. Rate-limit stamp + log in
+  `$CLAUDE_PLUGIN_DATA/autoupdate.log`.
+- **Release documentation** (`docs/RELEASE.md`) — bump/tag/push procedure,
+  user-side update flow, verification commands.
+- **Marketplace version synced** — `.claude-plugin/marketplace.json` now
+  reflects 1.3.0 (was lagging at 1.2.0 in the initial tag). End users will
+  see the bump on their next `claude plugin update` cycle.
 
 ### Critical fixes (from deep-analysis Block 1)
 
