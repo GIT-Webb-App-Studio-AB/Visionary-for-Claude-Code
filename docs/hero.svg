@@ -32,7 +32,7 @@
 
   <!-- Title block -->
   <text x="60" y="90" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#FFFFFF" letter-spacing="-2.5">visionary</text>
-  <text x="60" y="118" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280" letter-spacing="0.5">Design intelligence for Claude Code &middot; v1.3.0</text>
+  <text x="60" y="118" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280" letter-spacing="0.5">Design intelligence for Claude Code · v1.3.0</text>
 
   <!-- Gradient divider -->
   <rect x="60" y="134" width="120" height="2" fill="url(#g2)"/>
@@ -92,7 +92,7 @@
 
   <!-- Bottom -->
   <text x="60" y="268" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#374151">by GIT Webb &amp; App Studio AB</text>
-  <text x="60" y="286" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#1F2937">Apache 2.0 &middot; Free &amp; open source &middot; 15 frameworks &middot; WCAG 2.2 AA + APCA</text>
+  <text x="60" y="286" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#1F2937">Apache 2.0 · Free &amp; open source · 15 frameworks · WCAG 2.2 AA + APCA</text>
 
   <!-- Bottom gradient line -->
   <rect x="0" y="297" width="400" height="3" fill="url(#g2)"/>
