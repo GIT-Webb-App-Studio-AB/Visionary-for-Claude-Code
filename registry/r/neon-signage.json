@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neon-signage",
+  "type": "registry:style",
+  "title": "Neon Signage",
+  "description": "neon-signage — graphic / Kinetic Motion tier: Kinetic. Display font: Bungee.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bungee",
+      "--font-body": "Bungee Inline (for secondary) or system sans for readable body copy",
+      "--radius": "999px"
+    },
+    "light": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.657 0.241 6.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.844 0.146 209.3)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.844 0.146 209.3)",
+      "ring": "oklch(0.657 0.241 6.9)"
+    },
+    "dark": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.657 0.241 6.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.844 0.146 209.3)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.844 0.146 209.3)",
+      "ring": "oklch(0.657 0.241 6.9)"
+    }
+  }
+}

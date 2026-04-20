@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "playful-joyful — emotional / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFFBF0",
+      "$type": "color",
+      "$description": "warm cream — not clinical white"
+    },
+    "primary": {
+      "$value": "#FF6B35",
+      "$type": "color",
+      "$description": "playful orange"
+    },
+    "accent": {
+      "$value": "#4ECDC4",
+      "$type": "color",
+      "$description": "friendly teal"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito 800 (rounded letterforms reinforce play)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito 500",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.15,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":260,\"damping\":20,\"mass\":1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

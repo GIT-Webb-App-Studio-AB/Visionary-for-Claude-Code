@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spatial-ar",
+  "type": "registry:style",
+  "title": "Spatial Ar",
+  "description": "spatial-ar — modern / Expressive Motion tier: Expressive. Display font: SF Pro Display (system.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "SF Pro Display (system",
+      "--font-body": "SF Pro Text (system",
+      "--radius": "16px"
+    },
+    "light": {
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

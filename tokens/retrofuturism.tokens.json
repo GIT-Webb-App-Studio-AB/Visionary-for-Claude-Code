@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "retrofuturism — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F5F0E0",
+      "$type": "color",
+      "$description": "atomic cream) — or #0D3B47 (Googie teal) as dark variant"
+    },
+    "primary": {
+      "$value": "#FF6B00",
+      "$type": "color",
+      "$description": "atomic orange"
+    },
+    "accent": {
+      "$value": "#00B3A4",
+      "$type": "color",
+      "$description": "turquoise"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Orbitron",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Audiowide",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.1em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":12}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

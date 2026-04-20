@@ -1,0 +1,47 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "hero-character-sculpture — graphic / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#111111",
+      "$type": "color",
+      "$description": "gallery black"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syne 800",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Syne",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":14}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

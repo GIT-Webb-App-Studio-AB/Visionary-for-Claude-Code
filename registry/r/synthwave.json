@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "synthwave",
+  "type": "registry:style",
+  "title": "Synthwave",
+  "description": "synthwave — internet / Kinetic Motion tier: Kinetic. Display font: Azonix (first priority).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Azonix (first priority)",
+      "--font-body": "Share Tech Mono",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.142 0.066 295.8)",
+      "primary": "oklch(0.656 0.271 352.6)",
+      "primary-foreground": "oklch(0.142 0.066 295.8)",
+      "accent": "oklch(0.870 0.148 202.9)",
+      "accent-foreground": "oklch(0.142 0.066 295.8)",
+      "secondary-foreground": "oklch(0.142 0.066 295.8)",
+      "border": "oklch(0.870 0.148 202.9)",
+      "ring": "oklch(0.656 0.271 352.6)"
+    },
+    "dark": {
+      "background": "oklch(0.142 0.066 295.8)",
+      "primary": "oklch(0.656 0.271 352.6)",
+      "primary-foreground": "oklch(0.142 0.066 295.8)",
+      "accent": "oklch(0.870 0.148 202.9)",
+      "accent-foreground": "oklch(0.142 0.066 295.8)",
+      "secondary-foreground": "oklch(0.142 0.066 295.8)",
+      "border": "oklch(0.870 0.148 202.9)",
+      "ring": "oklch(0.656 0.271 352.6)"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "post-apocalyptic",
+  "type": "registry:style",
+  "title": "Post Apocalyptic",
+  "description": "post-apocalyptic — graphic / Subtle Motion tier: Subtle. Display font: Oswald.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Oswald",
+      "--font-body": "Roboto Condensed",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.203 0.015 57.3)",
+      "primary": "oklch(0.643 0.127 65.2)",
+      "primary-foreground": "oklch(0.203 0.015 57.3)",
+      "accent": "oklch(0.421 0.033 66.7)",
+      "accent-foreground": "oklch(0.203 0.015 57.3)",
+      "secondary-foreground": "oklch(0.203 0.015 57.3)",
+      "border": "oklch(0.421 0.033 66.7)",
+      "ring": "oklch(0.643 0.127 65.2)"
+    },
+    "dark": {
+      "background": "oklch(0.203 0.015 57.3)",
+      "primary": "oklch(0.643 0.127 65.2)",
+      "primary-foreground": "oklch(0.203 0.015 57.3)",
+      "accent": "oklch(0.421 0.033 66.7)",
+      "accent-foreground": "oklch(0.203 0.015 57.3)",
+      "secondary-foreground": "oklch(0.203 0.015 57.3)",
+      "border": "oklch(0.421 0.033 66.7)",
+      "ring": "oklch(0.643 0.127 65.2)"
+    }
+  }
+}

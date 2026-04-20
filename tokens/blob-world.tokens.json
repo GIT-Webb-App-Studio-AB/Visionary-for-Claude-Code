@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "blob-world — extended / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#F0E6FF",
+      "$type": "color",
+      "$description": "soft pastel lavender"
+    },
+    "primary": {
+      "$value": "#8B5CF6",
+      "$type": "color",
+      "$description": "purple"
+    },
+    "accent": {
+      "$value": "#F472B6",
+      "$type": "color",
+      "$description": "pink"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito 700 (or Fredoka 700)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":120,\"damping\":10}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "60%",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "condensed-editorial",
+  "type": "registry:style",
+  "title": "Condensed Editorial",
+  "description": "condensed-editorial — typography / Subtle Motion tier: Subtle. Display font: Barlow Condensed 700–900.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Barlow Condensed 700–900",
+      "--font-body": "Barlow 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.955 0.007 88.6)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.955 0.007 88.6)",
+      "accent": "oklch(0.557 0.182 29.6)",
+      "accent-foreground": "oklch(0.955 0.007 88.6)",
+      "secondary-foreground": "oklch(0.955 0.007 88.6)",
+      "border": "oklch(0.557 0.182 29.6)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.955 0.007 88.6)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.955 0.007 88.6)",
+      "accent": "oklch(0.557 0.182 29.6)",
+      "accent-foreground": "oklch(0.955 0.007 88.6)",
+      "secondary-foreground": "oklch(0.955 0.007 88.6)",
+      "border": "oklch(0.557 0.182 29.6)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

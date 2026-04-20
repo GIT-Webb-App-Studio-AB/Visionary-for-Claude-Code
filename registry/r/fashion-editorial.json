@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fashion-editorial",
+  "type": "registry:style",
+  "title": "Fashion Editorial",
+  "description": "fashion-editorial — graphic / Expressive Motion tier: Expressive. Display font: Cormorant Garamond.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cormorant Garamond",
+      "--font-body": "Cormorant Garamond",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.000 0.000 0.0)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.000 0.000 0.0)"
+    }
+  }
+}

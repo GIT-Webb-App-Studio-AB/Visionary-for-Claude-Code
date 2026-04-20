@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "solarpunk-dark",
+  "type": "registry:style",
+  "title": "Solarpunk Dark",
+  "description": "solarpunk-dark — graphic / Expressive Motion tier: Expressive. Display font: Nunito (or Quicksand).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito (or Quicksand)",
+      "--font-body": "Nunito",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.422 0.094 141.4)",
+      "primary": "oklch(0.840 0.160 89.2)",
+      "primary-foreground": "oklch(0.422 0.094 141.4)",
+      "accent": "oklch(0.754 0.173 135.9)",
+      "accent-foreground": "oklch(0.422 0.094 141.4)",
+      "secondary-foreground": "oklch(0.422 0.094 141.4)",
+      "border": "oklch(0.754 0.173 135.9)",
+      "ring": "oklch(0.840 0.160 89.2)"
+    },
+    "dark": {
+      "background": "oklch(0.422 0.094 141.4)",
+      "primary": "oklch(0.840 0.160 89.2)",
+      "primary-foreground": "oklch(0.422 0.094 141.4)",
+      "accent": "oklch(0.754 0.173 135.9)",
+      "accent-foreground": "oklch(0.422 0.094 141.4)",
+      "secondary-foreground": "oklch(0.422 0.094 141.4)",
+      "border": "oklch(0.754 0.173 135.9)",
+      "ring": "oklch(0.840 0.160 89.2)"
+    }
+  }
+}

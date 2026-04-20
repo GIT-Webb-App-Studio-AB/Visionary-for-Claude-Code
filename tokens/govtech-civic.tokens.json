@@ -1,0 +1,65 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "govtech-civic — industry / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#005EA2",
+      "$type": "color",
+      "$description": "US federal blue / gov.uk blue — trusted, not branded"
+    },
+    "accent": {
+      "$value": "#D83933",
+      "$type": "color",
+      "$description": "accessible civic red for alerts"
+    },
+    "elevation-model": {
+      "$value": "#DFE1E2",
+      "$type": "color",
+      "$description": "subtle borders (1px solid ) over shadows — cleaner for print-to-screen parity"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Source Serif 4 600",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Source Sans 3 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.6,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400,\"damping\":40,\"mass\":0.9}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

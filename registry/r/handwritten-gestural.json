@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "handwritten-gestural",
+  "type": "registry:style",
+  "title": "Handwritten Gestural",
+  "description": "handwritten-gestural — typography / Expressive Motion tier: Expressive. Display font: Caveat 700 (casual) or Reenie Beanie (loose gestural).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Caveat 700 (casual) or Reenie Beanie (loose gestural)",
+      "--font-body": "Plus Jakarta Sans 400 (contrast: structured body anchors the gestural display)",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.996 0.009 100.0)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.996 0.009 100.0)",
+      "accent": "oklch(0.476 0.078 162.2)",
+      "accent-foreground": "oklch(0.996 0.009 100.0)",
+      "secondary-foreground": "oklch(0.996 0.009 100.0)",
+      "border": "oklch(0.476 0.078 162.2)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.996 0.009 100.0)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.996 0.009 100.0)",
+      "accent": "oklch(0.476 0.078 162.2)",
+      "accent-foreground": "oklch(0.996 0.009 100.0)",
+      "secondary-foreground": "oklch(0.996 0.009 100.0)",
+      "border": "oklch(0.476 0.078 162.2)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

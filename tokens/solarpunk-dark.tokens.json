@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "solarpunk-dark — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#2D5A27",
+      "$type": "color",
+      "$description": "living leaf green — immersive"
+    },
+    "primary": {
+      "$value": "#F4C430",
+      "$type": "color",
+      "$description": "solar gold — energy"
+    },
+    "accent": {
+      "$value": "#7AC74F",
+      "$type": "color",
+      "$description": "bright growth green"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito (or Quicksand)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.005em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":16}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "32px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-visualization",
+  "type": "registry:style",
+  "title": "Data Visualization",
+  "description": "data-visualization — modern / Subtle Motion tier: Subtle. Display font: DM Sans.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "DM Sans",
+      "--font-body": "DM Sans",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.176 0.014 258.4)",
+      "primary": "oklch(0.715 0.152 253.3)",
+      "primary-foreground": "oklch(0.176 0.014 258.4)",
+      "accent": "oklch(0.695 0.181 145.6)",
+      "accent-foreground": "oklch(0.176 0.014 258.4)",
+      "secondary-foreground": "oklch(0.176 0.014 258.4)",
+      "border": "oklch(0.695 0.181 145.6)",
+      "ring": "oklch(0.715 0.152 253.3)"
+    },
+    "dark": {
+      "background": "oklch(0.176 0.014 258.4)",
+      "primary": "oklch(0.715 0.152 253.3)",
+      "primary-foreground": "oklch(0.176 0.014 258.4)",
+      "accent": "oklch(0.695 0.181 145.6)",
+      "accent-foreground": "oklch(0.176 0.014 258.4)",
+      "secondary-foreground": "oklch(0.176 0.014 258.4)",
+      "border": "oklch(0.695 0.181 145.6)",
+      "ring": "oklch(0.715 0.152 253.3)"
+    }
+  }
+}

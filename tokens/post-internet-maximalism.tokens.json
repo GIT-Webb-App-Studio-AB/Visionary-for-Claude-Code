@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "post-internet-maximalism — internet / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#FFFF00",
+      "$type": "color",
+      "$description": "No unified background — multiple color zones coexist:  zone beside #0000FF zone beside #FFFFFF zone; the viewport has no singular ground"
+    },
+    "primary": {
+      "$value": "#FF0000",
+      "$type": "color",
+      "$description": "— the loudest possible CTA; red as internet-detritus alert, not brand primary"
+    },
+    "accent": {
+      "$value": "#00FF00",
+      "$type": "color",
+      "$description": "No single accent — , #FF00FF, and #FFFF00 all function as accent simultaneously in different zones"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Deliberately mixed",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "No single body font",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.2em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

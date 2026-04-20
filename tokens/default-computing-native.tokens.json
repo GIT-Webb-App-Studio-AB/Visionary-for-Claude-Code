@@ -1,0 +1,41 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "default-computing-native — extended / Subtle",
+  "color": {},
+  "typography": {
+    "display": {
+      "$value": "platform system stack",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "same",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.5,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.2}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

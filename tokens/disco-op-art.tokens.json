@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "disco-op-art — extended / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "High-contrast black  + white #FFFFFF alternating"
+    },
+    "primary": {
+      "$value": "#FF006E",
+      "$type": "color",
+      "$description": "disco pink"
+    },
+    "accent": {
+      "$value": "#00E5FF",
+      "$type": "color",
+      "$description": "electric cyan) + #FFE000 (gold"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syne or Bebas Neue",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

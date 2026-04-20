@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "naive-outsider-art",
+  "type": "registry:style",
+  "title": "Naive Outsider Art",
+  "description": "naive-outsider-art — extended / Expressive Motion tier: Expressive. Display font: Caveat (or Patrick Hand).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Caveat (or Patrick Hand)",
+      "--font-body": "Caveat",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.971 0.011 84.6)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.971 0.011 84.6)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent-foreground": "oklch(0.971 0.011 84.6)",
+      "secondary-foreground": "oklch(0.971 0.011 84.6)",
+      "border": "oklch(0.628 0.258 29.2)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.971 0.011 84.6)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.971 0.011 84.6)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent-foreground": "oklch(0.971 0.011 84.6)",
+      "secondary-foreground": "oklch(0.971 0.011 84.6)",
+      "border": "oklch(0.628 0.258 29.2)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

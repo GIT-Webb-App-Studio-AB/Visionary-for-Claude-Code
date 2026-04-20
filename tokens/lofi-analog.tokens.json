@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "lofi-analog — internet / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5EFE0",
+      "$type": "color",
+      "$description": "— warm cream aged paper; not white (#FFFFFF, too digital clean), not tan (#D2B48C, too saturated); this specific hex sits at the intersection of aged newsprint and ambient room light on cream stationery, carrying analog warmth without simulating sepia directly"
+    },
+    "primary": {
+      "$value": "#8B6914",
+      "$type": "color",
+      "$description": "aged amber  — the color of ink that has oxidized over years on stored paper; functions as text and interactive color; not gold (too precious), not brown (too neutral); this amber reads as intentionally aged without being distressed"
+    },
+    "accent": {
+      "$value": "#C5473C",
+      "$type": "color",
+      "$description": "— faded red film; the specific desaturation of red that has been exposed to UV over decades, like old film posters or 1970s paperback cover art; not tomato red (too fresh), not brick (too architectural"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Special Elite",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Courier Prime",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

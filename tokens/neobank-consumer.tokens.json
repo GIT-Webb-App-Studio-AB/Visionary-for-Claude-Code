@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "neobank-consumer — industry / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "or #0A0A14 (choose one, commit"
+    },
+    "primary": {
+      "$value": "#5B2EFF",
+      "$type": "color",
+      "$description": "electric violet) or #00D4AA (mint"
+    },
+    "accent": {
+      "$value": "#F0F0F0",
+      "$type": "color",
+      "$description": "light mode) / #1A1A2E (dark mode"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cabinet Grotesk 700–800",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Cabinet Grotesk 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.1,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":280,\"damping\":22,\"mass\":0.9}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "20px",
+      "$type": "dimension"
+    }
+  }
+}

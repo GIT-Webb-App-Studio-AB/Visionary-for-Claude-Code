@@ -1,0 +1,59 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "data-visualization — modern / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#0D1117",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#58A6FF",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#3FB950",
+      "$type": "color"
+    },
+    "elevation-model": {
+      "$value": "#161B22",
+      "$type": "color",
+      "$description": "none — chart surfaces at ; axis lines at rgba(255,255,255,0.1"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "DM Sans",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":300,\"damping\":30}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

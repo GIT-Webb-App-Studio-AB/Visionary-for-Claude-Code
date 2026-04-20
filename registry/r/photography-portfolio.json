@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "photography-portfolio",
+  "type": "registry:style",
+  "title": "Photography Portfolio",
+  "description": "photography-portfolio — hybrid / Expressive Motion tier: Expressive. Display font: Playfair Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display",
+      "--font-body": "Source Sans 3",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.178 0.000 89.9)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.178 0.000 89.9)",
+      "accent": "oklch(0.627 0.000 89.9)",
+      "accent-foreground": "oklch(0.178 0.000 89.9)",
+      "secondary-foreground": "oklch(0.178 0.000 89.9)",
+      "border": "oklch(0.627 0.000 89.9)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.178 0.000 89.9)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.178 0.000 89.9)",
+      "accent": "oklch(0.627 0.000 89.9)",
+      "accent-foreground": "oklch(0.178 0.000 89.9)",
+      "secondary-foreground": "oklch(0.178 0.000 89.9)",
+      "border": "oklch(0.627 0.000 89.9)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

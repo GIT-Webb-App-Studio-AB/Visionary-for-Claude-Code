@@ -1,0 +1,56 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "grainy-blur — extended / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FF3B6B",
+      "$type": "color",
+      "$description": "Gradient + SVG grain noise filter (e.g.,  → #6B3BFF"
+    },
+    "primary": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "white on gradient"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Bricolage Grotesque",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Bricolage Grotesque",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":220,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "24px",
+      "$type": "dimension"
+    }
+  }
+}

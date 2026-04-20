@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "edtech — industry / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "or #F8F7FF (very light lavender"
+    },
+    "primary": {
+      "$value": "#6C47FF",
+      "$type": "color",
+      "$description": "educational purple"
+    },
+    "accent": {
+      "$value": "#FF6B35",
+      "$type": "color",
+      "$description": "energetic orange for achievements/streaks"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito 700–800",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Plus Jakarta Sans 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.15,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":250,\"damping\":20,\"mass\":1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

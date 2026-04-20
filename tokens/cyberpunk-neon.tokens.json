@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "cyberpunk-neon — internet / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0F",
+      "$type": "color",
+      "$description": "— near-black with barely-perceptible blue"
+    },
+    "primary": {
+      "$value": "#FF00FF",
+      "$type": "color",
+      "$description": "— magenta neon for primary CTAs"
+    },
+    "accent": {
+      "$value": "#00FFAA",
+      "$type": "color",
+      "$description": "— green-cyan neon (Blade Runner palette variant"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Orbitron 700",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Share Tech Mono or Courier New",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

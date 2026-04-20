@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cosmic-astronomical",
+  "type": "registry:style",
+  "title": "Cosmic Astronomical",
+  "description": "cosmic-astronomical — graphic / Kinetic Motion tier: Kinetic. Display font: Space Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Grotesk",
+      "--font-body": "Space Grotesk",
+      "--radius": "999px"
+    },
+    "light": {
+      "background": "oklch(0.083 0.043 263.2)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.083 0.043 263.2)",
+      "accent": "oklch(0.624 0.234 297.4)",
+      "accent-foreground": "oklch(0.083 0.043 263.2)",
+      "secondary-foreground": "oklch(0.083 0.043 263.2)",
+      "border": "oklch(0.624 0.234 297.4)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.083 0.043 263.2)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.083 0.043 263.2)",
+      "accent": "oklch(0.624 0.234 297.4)",
+      "accent-foreground": "oklch(0.083 0.043 263.2)",
+      "secondary-foreground": "oklch(0.083 0.043 263.2)",
+      "border": "oklch(0.624 0.234 297.4)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

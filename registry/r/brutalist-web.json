@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brutalist-web",
+  "type": "registry:style",
+  "title": "Brutalist Web",
+  "description": "brutalist-web — modern / Subtle Motion tier: Subtle. Display font: Times New Roman (intentional.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Times New Roman (intentional",
+      "--font-body": "Times New Roman",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.429 0.297 264.1)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.378 0.172 302.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.378 0.172 302.2)",
+      "ring": "oklch(0.429 0.297 264.1)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.429 0.297 264.1)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.378 0.172 302.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.378 0.172 302.2)",
+      "ring": "oklch(0.429 0.297 264.1)"
+    }
+  }
+}

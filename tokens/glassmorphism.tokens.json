@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "glassmorphism — morphisms / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#0F0F1A",
+      "$type": "color",
+      "$description": "— deep near-black that saturates the blur effect"
+    },
+    "primary": {
+      "$value": "#6366F1",
+      "$type": "color",
+      "$description": "rgba(255,255,255,0.9) text on  pill button"
+    },
+    "accent": {
+      "$value": "#A78BFA",
+      "$type": "color",
+      "$description": "— violet that vibrates against dark glass"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Inter",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "20px",
+      "$type": "dimension"
+    }
+  }
+}

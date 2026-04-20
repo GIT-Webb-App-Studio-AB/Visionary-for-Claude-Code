@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flow-field-vector",
+  "type": "registry:style",
+  "title": "Flow Field Vector",
+  "description": "flow-field-vector — extended / Kinetic Motion tier: Kinetic. Display font: Syne Mono.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne Mono",
+      "--font-body": "DM Sans",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)"
+    }
+  }
+}

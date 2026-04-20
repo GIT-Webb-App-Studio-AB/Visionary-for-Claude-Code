@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dopamine-design",
+  "type": "registry:style",
+  "title": "Dopamine Design",
+  "description": "dopamine-design — emotional / Kinetic Motion tier: Kinetic. Display font: Cabinet Grotesk 800–900.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cabinet Grotesk 800–900",
+      "--font-body": "Cabinet Grotesk 500",
+      "--radius": "20px"
+    },
+    "light": {
+      "background": "oklch(0.712 0.181 22.8)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.712 0.181 22.8)",
+      "accent-foreground": "oklch(0.712 0.181 22.8)",
+      "secondary-foreground": "oklch(0.712 0.181 22.8)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.712 0.181 22.8)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.712 0.181 22.8)",
+      "accent-foreground": "oklch(0.712 0.181 22.8)",
+      "secondary-foreground": "oklch(0.712 0.181 22.8)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

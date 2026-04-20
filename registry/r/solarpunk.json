@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "solarpunk",
+  "type": "registry:style",
+  "title": "Solarpunk",
+  "description": "solarpunk — internet / Expressive Motion tier: Expressive. Display font: Nunito 600.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito 600",
+      "--font-body": "Source Serif 4",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.970 0.012 133.4)",
+      "primary": "oklch(0.525 0.098 149.0)",
+      "primary-foreground": "oklch(0.970 0.012 133.4)",
+      "accent": "oklch(0.758 0.146 73.1)",
+      "accent-foreground": "oklch(0.970 0.012 133.4)",
+      "secondary-foreground": "oklch(0.970 0.012 133.4)",
+      "border": "oklch(0.758 0.146 73.1)",
+      "ring": "oklch(0.525 0.098 149.0)"
+    },
+    "dark": {
+      "background": "oklch(0.970 0.012 133.4)",
+      "primary": "oklch(0.525 0.098 149.0)",
+      "primary-foreground": "oklch(0.970 0.012 133.4)",
+      "accent": "oklch(0.758 0.146 73.1)",
+      "accent-foreground": "oklch(0.970 0.012 133.4)",
+      "secondary-foreground": "oklch(0.970 0.012 133.4)",
+      "border": "oklch(0.758 0.146 73.1)",
+      "ring": "oklch(0.525 0.098 149.0)"
+    }
+  }
+}

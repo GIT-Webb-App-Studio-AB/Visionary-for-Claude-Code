@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "gaming — industry / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0A0014",
+      "$type": "color",
+      "$description": "deep space dark"
+    },
+    "primary": {
+      "$value": "#00F0FF",
+      "$type": "color",
+      "$description": "electric cyan"
+    },
+    "accent": {
+      "$value": "#B4FF00",
+      "$type": "color",
+      "$description": "neon green) or #FF3DFF (neon magenta) — pick one"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Orbitron 700–900 (sci",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Exo 2 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":500,\"damping\":18,\"mass\":0.7}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

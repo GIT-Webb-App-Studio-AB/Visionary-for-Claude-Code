@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liminal-space",
+  "type": "registry:style",
+  "title": "Liminal Space",
+  "description": "liminal-space — internet / Subtle Motion tier: Subtle. Display font: Arial or Helvetica.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Arial or Helvetica",
+      "--font-body": "Arial or Helvetica (same face throughout",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.954 0.011 95.2)",
+      "primary": "oklch(0.625 0.085 245.7)",
+      "primary-foreground": "oklch(0.954 0.011 95.2)",
+      "accent": "oklch(0.753 0.127 84.9)",
+      "accent-foreground": "oklch(0.954 0.011 95.2)",
+      "secondary-foreground": "oklch(0.954 0.011 95.2)",
+      "border": "oklch(0.753 0.127 84.9)",
+      "ring": "oklch(0.625 0.085 245.7)"
+    },
+    "dark": {
+      "background": "oklch(0.954 0.011 95.2)",
+      "primary": "oklch(0.625 0.085 245.7)",
+      "primary-foreground": "oklch(0.954 0.011 95.2)",
+      "accent": "oklch(0.753 0.127 84.9)",
+      "accent-foreground": "oklch(0.954 0.011 95.2)",
+      "secondary-foreground": "oklch(0.954 0.011 95.2)",
+      "border": "oklch(0.753 0.127 84.9)",
+      "ring": "oklch(0.625 0.085 245.7)"
+    }
+  }
+}

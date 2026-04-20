@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "developer-tools",
+  "type": "registry:style",
+  "title": "Developer Tools",
+  "description": "developer-tools — industry / Subtle Motion tier: Subtle. Display font: Space Grotesk 600 or Geist 600.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Grotesk 600 or Geist 600",
+      "--font-body": "IBM Plex Sans 400",
+      "--radius": "6px"
+    },
+    "light": {
+      "background": "oklch(0.176 0.014 258.4)",
+      "primary": "oklch(0.541 0.247 293.0)",
+      "primary-foreground": "oklch(0.176 0.014 258.4)",
+      "accent": "oklch(0.715 0.126 215.2)",
+      "accent-foreground": "oklch(0.176 0.014 258.4)",
+      "secondary-foreground": "oklch(0.176 0.014 258.4)",
+      "border": "oklch(0.715 0.126 215.2)",
+      "ring": "oklch(0.541 0.247 293.0)"
+    },
+    "dark": {
+      "background": "oklch(0.176 0.014 258.4)",
+      "primary": "oklch(0.541 0.247 293.0)",
+      "primary-foreground": "oklch(0.176 0.014 258.4)",
+      "accent": "oklch(0.715 0.126 215.2)",
+      "accent-foreground": "oklch(0.176 0.014 258.4)",
+      "secondary-foreground": "oklch(0.176 0.014 258.4)",
+      "border": "oklch(0.715 0.126 215.2)",
+      "ring": "oklch(0.541 0.247 293.0)"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cyberpunk-neon",
+  "type": "registry:style",
+  "title": "Cyberpunk Neon",
+  "description": "cyberpunk-neon — internet / Kinetic Motion tier: Kinetic. Display font: Orbitron 700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Orbitron 700",
+      "--font-body": "Share Tech Mono or Courier New",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.147 0.011 285.0)",
+      "primary": "oklch(0.702 0.322 328.4)",
+      "primary-foreground": "oklch(0.147 0.011 285.0)",
+      "accent": "oklch(0.882 0.199 160.1)",
+      "accent-foreground": "oklch(0.147 0.011 285.0)",
+      "secondary-foreground": "oklch(0.147 0.011 285.0)",
+      "border": "oklch(0.882 0.199 160.1)",
+      "ring": "oklch(0.702 0.322 328.4)"
+    },
+    "dark": {
+      "background": "oklch(0.147 0.011 285.0)",
+      "primary": "oklch(0.702 0.322 328.4)",
+      "primary-foreground": "oklch(0.147 0.011 285.0)",
+      "accent": "oklch(0.882 0.199 160.1)",
+      "accent-foreground": "oklch(0.147 0.011 285.0)",
+      "secondary-foreground": "oklch(0.147 0.011 285.0)",
+      "border": "oklch(0.882 0.199 160.1)",
+      "ring": "oklch(0.702 0.322 328.4)"
+    }
+  }
+}

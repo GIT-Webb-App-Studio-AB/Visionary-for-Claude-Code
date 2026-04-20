@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "swiss-muller-brockmann",
+  "type": "registry:style",
+  "title": "Swiss Muller Brockmann",
+  "description": "swiss-muller-brockmann — historical / Subtle Motion tier: Subtle. Display font: **Helvetica** (Müller.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Helvetica** (Müller",
+      "--font-body": "Helvetica",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "foreground": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "muted-foreground": "oklch(0.000 0.000 0.0)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "foreground": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "muted-foreground": "oklch(0.000 0.000 0.0)"
+    }
+  }
+}

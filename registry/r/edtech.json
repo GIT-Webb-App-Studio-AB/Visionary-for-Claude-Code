@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "edtech",
+  "type": "registry:style",
+  "title": "Edtech",
+  "description": "edtech — industry / Expressive Motion tier: Expressive. Display font: Nunito 700–800.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito 700–800",
+      "--font-body": "Plus Jakarta Sans 400",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.557 0.254 283.7)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.705 0.193 39.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.705 0.193 39.2)",
+      "ring": "oklch(0.557 0.254 283.7)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.557 0.254 283.7)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.705 0.193 39.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.705 0.193 39.2)",
+      "ring": "oklch(0.557 0.254 283.7)"
+    }
+  }
+}

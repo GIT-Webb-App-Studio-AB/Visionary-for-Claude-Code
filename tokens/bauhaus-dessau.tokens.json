@@ -1,0 +1,53 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "bauhaus-dessau — historical / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F0ECE4",
+      "$type": "color",
+      "$description": "`` (warm industrial off-white — the color of"
+    },
+    "primary": {
+      "$value": "#DC2626",
+      "$type": "color",
+      "$description": "the three Bauhaus primaries — `` (red square),"
+    },
+    "ink": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "``"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Universal** (Bayer 1925",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Futura",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.1,\"visualDuration\":0.4}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

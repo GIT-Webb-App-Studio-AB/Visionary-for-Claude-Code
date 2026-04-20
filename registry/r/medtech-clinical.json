@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "medtech-clinical",
+  "type": "registry:style",
+  "title": "Medtech Clinical",
+  "description": "medtech-clinical — industry / Subtle Motion tier: Subtle. Display font: IBM Plex Sans 500–600.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "IBM Plex Sans 500–600",
+      "--font-body": "IBM Plex Sans 400",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.982 0.002 247.8)",
+      "primary": "oklch(0.603 0.218 257.4)",
+      "primary-foreground": "oklch(0.982 0.002 247.8)",
+      "accent": "oklch(0.730 0.194 147.4)",
+      "accent-foreground": "oklch(0.982 0.002 247.8)",
+      "secondary-foreground": "oklch(0.982 0.002 247.8)",
+      "border": "oklch(0.730 0.194 147.4)",
+      "ring": "oklch(0.603 0.218 257.4)"
+    },
+    "dark": {
+      "background": "oklch(0.982 0.002 247.8)",
+      "primary": "oklch(0.603 0.218 257.4)",
+      "primary-foreground": "oklch(0.982 0.002 247.8)",
+      "accent": "oklch(0.730 0.194 147.4)",
+      "accent-foreground": "oklch(0.982 0.002 247.8)",
+      "secondary-foreground": "oklch(0.982 0.002 247.8)",
+      "border": "oklch(0.730 0.194 147.4)",
+      "ring": "oklch(0.603 0.218 257.4)"
+    }
+  }
+}

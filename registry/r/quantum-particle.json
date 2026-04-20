@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "quantum-particle",
+  "type": "registry:style",
+  "title": "Quantum Particle",
+  "description": "quantum-particle — graphic / Kinetic Motion tier: Kinetic. Display font: Space Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Grotesk",
+      "--font-body": "Space Grotesk",
+      "--radius": "999px"
+    },
+    "light": {
+      "background": "oklch(0.122 0.025 282.1)",
+      "primary": "oklch(0.546 0.274 290.6)",
+      "primary-foreground": "oklch(0.122 0.025 282.1)",
+      "accent": "oklch(0.755 0.153 231.6)",
+      "accent-foreground": "oklch(0.122 0.025 282.1)",
+      "secondary-foreground": "oklch(0.122 0.025 282.1)",
+      "border": "oklch(0.755 0.153 231.6)",
+      "ring": "oklch(0.546 0.274 290.6)"
+    },
+    "dark": {
+      "background": "oklch(0.122 0.025 282.1)",
+      "primary": "oklch(0.546 0.274 290.6)",
+      "primary-foreground": "oklch(0.122 0.025 282.1)",
+      "accent": "oklch(0.755 0.153 231.6)",
+      "accent-foreground": "oklch(0.122 0.025 282.1)",
+      "secondary-foreground": "oklch(0.122 0.025 282.1)",
+      "border": "oklch(0.755 0.153 231.6)",
+      "ring": "oklch(0.546 0.274 290.6)"
+    }
+  }
+}

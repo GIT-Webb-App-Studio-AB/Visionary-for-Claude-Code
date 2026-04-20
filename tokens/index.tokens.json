@@ -1,0 +1,613 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "Visionary — DTCG 1.0 token manifest. Import per-style tokens from tokens/{id}.tokens.json.",
+  "$version": "1.3.0",
+  "styles": {
+    "active-living-grid": {
+      "$ref": "./active-living-grid.tokens.json"
+    },
+    "african-design": {
+      "$ref": "./african-design.tokens.json"
+    },
+    "agricultural-seed-catalog": {
+      "$ref": "./agricultural-seed-catalog.tokens.json"
+    },
+    "agritech": {
+      "$ref": "./agritech.tokens.json"
+    },
+    "alien-nonhuman": {
+      "$ref": "./alien-nonhuman.tokens.json"
+    },
+    "ambient-copilot": {
+      "$ref": "./ambient-copilot.tokens.json"
+    },
+    "anxiety-urgency": {
+      "$ref": "./anxiety-urgency.tokens.json"
+    },
+    "apca-native-contrast": {
+      "$ref": "./apca-native-contrast.tokens.json"
+    },
+    "arabic-calligraphic": {
+      "$ref": "./arabic-calligraphic.tokens.json"
+    },
+    "architectural-brutalism": {
+      "$ref": "./architectural-brutalism.tokens.json"
+    },
+    "architecture-inspired": {
+      "$ref": "./architecture-inspired.tokens.json"
+    },
+    "art-deco": {
+      "$ref": "./art-deco.tokens.json"
+    },
+    "art-nouveau": {
+      "$ref": "./art-nouveau.tokens.json"
+    },
+    "aurora-mesh": {
+      "$ref": "./aurora-mesh.tokens.json"
+    },
+    "awe-sublime": {
+      "$ref": "./awe-sublime.tokens.json"
+    },
+    "bauhaus": {
+      "$ref": "./bauhaus.tokens.json"
+    },
+    "bauhaus-dessau": {
+      "$ref": "./bauhaus-dessau.tokens.json"
+    },
+    "bauhaus-weimar": {
+      "$ref": "./bauhaus-weimar.tokens.json"
+    },
+    "bento-grid": {
+      "$ref": "./bento-grid.tokens.json"
+    },
+    "big-bold-type": {
+      "$ref": "./big-bold-type.tokens.json"
+    },
+    "biomorphic-futurism": {
+      "$ref": "./biomorphic-futurism.tokens.json"
+    },
+    "blob-world": {
+      "$ref": "./blob-world.tokens.json"
+    },
+    "bloomberg-terminal": {
+      "$ref": "./bloomberg-terminal.tokens.json"
+    },
+    "bloomcore-botanical": {
+      "$ref": "./bloomcore-botanical.tokens.json"
+    },
+    "brutalist-honesty": {
+      "$ref": "./brutalist-honesty.tokens.json"
+    },
+    "brutalist-web": {
+      "$ref": "./brutalist-web.tokens.json"
+    },
+    "bubblegum-bling": {
+      "$ref": "./bubblegum-bling.tokens.json"
+    },
+    "calm-focus-mode": {
+      "$ref": "./calm-focus-mode.tokens.json"
+    },
+    "cassette-futurism": {
+      "$ref": "./cassette-futurism.tokens.json"
+    },
+    "catalog-archive": {
+      "$ref": "./catalog-archive.tokens.json"
+    },
+    "chaos-packaging-collage": {
+      "$ref": "./chaos-packaging-collage.tokens.json"
+    },
+    "chinese-guochao": {
+      "$ref": "./chinese-guochao.tokens.json"
+    },
+    "claymorphism": {
+      "$ref": "./claymorphism.tokens.json"
+    },
+    "clinical-cold": {
+      "$ref": "./clinical-cold.tokens.json"
+    },
+    "coastal-grandmother": {
+      "$ref": "./coastal-grandmother.tokens.json"
+    },
+    "colr-v1-color-type": {
+      "$ref": "./colr-v1-color-type.tokens.json"
+    },
+    "concrete-brutalist-material": {
+      "$ref": "./concrete-brutalist-material.tokens.json"
+    },
+    "condensed-editorial": {
+      "$ref": "./condensed-editorial.tokens.json"
+    },
+    "constructivism": {
+      "$ref": "./constructivism.tokens.json"
+    },
+    "corpcore-quiet-luxury": {
+      "$ref": "./corpcore-quiet-luxury.tokens.json"
+    },
+    "corporate-grunge": {
+      "$ref": "./corporate-grunge.tokens.json"
+    },
+    "cosmic-astronomical": {
+      "$ref": "./cosmic-astronomical.tokens.json"
+    },
+    "cottagecore": {
+      "$ref": "./cottagecore.tokens.json"
+    },
+    "cottagecore-tech": {
+      "$ref": "./cottagecore-tech.tokens.json"
+    },
+    "cyberpunk-neon": {
+      "$ref": "./cyberpunk-neon.tokens.json"
+    },
+    "dada": {
+      "$ref": "./dada.tokens.json"
+    },
+    "dark-academia": {
+      "$ref": "./dark-academia.tokens.json"
+    },
+    "dark-mode-first": {
+      "$ref": "./dark-mode-first.tokens.json"
+    },
+    "data-center": {
+      "$ref": "./data-center.tokens.json"
+    },
+    "data-physicalization": {
+      "$ref": "./data-physicalization.tokens.json"
+    },
+    "data-visualization": {
+      "$ref": "./data-visualization.tokens.json"
+    },
+    "de-stijl": {
+      "$ref": "./de-stijl.tokens.json"
+    },
+    "deconstructed-type": {
+      "$ref": "./deconstructed-type.tokens.json"
+    },
+    "default-computing-native": {
+      "$ref": "./default-computing-native.tokens.json"
+    },
+    "developer-tools": {
+      "$ref": "./developer-tools.tokens.json"
+    },
+    "dieter-rams": {
+      "$ref": "./dieter-rams.tokens.json"
+    },
+    "disco-op-art": {
+      "$ref": "./disco-op-art.tokens.json"
+    },
+    "dopamine-calm": {
+      "$ref": "./dopamine-calm.tokens.json"
+    },
+    "dopamine-design": {
+      "$ref": "./dopamine-design.tokens.json"
+    },
+    "dreamcore": {
+      "$ref": "./dreamcore.tokens.json"
+    },
+    "dyslexia-friendly": {
+      "$ref": "./dyslexia-friendly.tokens.json"
+    },
+    "e-girl": {
+      "$ref": "./e-girl.tokens.json"
+    },
+    "early-web-geocities": {
+      "$ref": "./early-web-geocities.tokens.json"
+    },
+    "eastern-european-brutalist": {
+      "$ref": "./eastern-european-brutalist.tokens.json"
+    },
+    "ecommerce-retail": {
+      "$ref": "./ecommerce-retail.tokens.json"
+    },
+    "editorial-serif-revival": {
+      "$ref": "./editorial-serif-revival.tokens.json"
+    },
+    "edtech": {
+      "$ref": "./edtech.tokens.json"
+    },
+    "energetic-athletic": {
+      "$ref": "./energetic-athletic.tokens.json"
+    },
+    "fabric-textile": {
+      "$ref": "./fabric-textile.tokens.json"
+    },
+    "fashion-editorial": {
+      "$ref": "./fashion-editorial.tokens.json"
+    },
+    "fintech-trust": {
+      "$ref": "./fintech-trust.tokens.json"
+    },
+    "flat": {
+      "$ref": "./flat.tokens.json"
+    },
+    "flow-field-vector": {
+      "$ref": "./flow-field-vector.tokens.json"
+    },
+    "fluent-design": {
+      "$ref": "./fluent-design.tokens.json"
+    },
+    "frutiger-aero": {
+      "$ref": "./frutiger-aero.tokens.json"
+    },
+    "frutiger-aero-kinetic": {
+      "$ref": "./frutiger-aero-kinetic.tokens.json"
+    },
+    "future-medieval": {
+      "$ref": "./future-medieval.tokens.json"
+    },
+    "futurism": {
+      "$ref": "./futurism.tokens.json"
+    },
+    "gamification": {
+      "$ref": "./gamification.tokens.json"
+    },
+    "gaming": {
+      "$ref": "./gaming.tokens.json"
+    },
+    "generative-algorithmic": {
+      "$ref": "./generative-algorithmic.tokens.json"
+    },
+    "glass-crystal": {
+      "$ref": "./glass-crystal.tokens.json"
+    },
+    "glass-dashboard": {
+      "$ref": "./glass-dashboard.tokens.json"
+    },
+    "glassmorphism": {
+      "$ref": "./glassmorphism.tokens.json"
+    },
+    "glitchcore": {
+      "$ref": "./glitchcore.tokens.json"
+    },
+    "goblincore": {
+      "$ref": "./goblincore.tokens.json"
+    },
+    "goblincore-pixel": {
+      "$ref": "./goblincore-pixel.tokens.json"
+    },
+    "govtech-civic": {
+      "$ref": "./govtech-civic.tokens.json"
+    },
+    "grainy-blur": {
+      "$ref": "./grainy-blur.tokens.json"
+    },
+    "guochao-new-chinese": {
+      "$ref": "./guochao-new-chinese.tokens.json"
+    },
+    "handwritten-gestural": {
+      "$ref": "./handwritten-gestural.tokens.json"
+    },
+    "healthcare-wellness": {
+      "$ref": "./healthcare-wellness.tokens.json"
+    },
+    "hero-character-sculpture": {
+      "$ref": "./hero-character-sculpture.tokens.json"
+    },
+    "high-contrast-a11y": {
+      "$ref": "./high-contrast-a11y.tokens.json"
+    },
+    "holographic": {
+      "$ref": "./holographic.tokens.json"
+    },
+    "hyper-comfort-hygge": {
+      "$ref": "./hyper-comfort-hygge.tokens.json"
+    },
+    "indigenous-first-nations": {
+      "$ref": "./indigenous-first-nations.tokens.json"
+    },
+    "japanese-minimalism": {
+      "$ref": "./japanese-minimalism.tokens.json"
+    },
+    "kinetic-type": {
+      "$ref": "./kinetic-type.tokens.json"
+    },
+    "kinetic-typography-v2": {
+      "$ref": "./kinetic-typography-v2.tokens.json"
+    },
+    "korean-k-design": {
+      "$ref": "./korean-k-design.tokens.json"
+    },
+    "latin-fiesta": {
+      "$ref": "./latin-fiesta.tokens.json"
+    },
+    "layered-type": {
+      "$ref": "./layered-type.tokens.json"
+    },
+    "leather-craft": {
+      "$ref": "./leather-craft.tokens.json"
+    },
+    "legal-editorial": {
+      "$ref": "./legal-editorial.tokens.json"
+    },
+    "legaltech": {
+      "$ref": "./legaltech.tokens.json"
+    },
+    "letterpress-emboss": {
+      "$ref": "./letterpress-emboss.tokens.json"
+    },
+    "light-mode-sanctuary": {
+      "$ref": "./light-mode-sanctuary.tokens.json"
+    },
+    "liminal-space": {
+      "$ref": "./liminal-space.tokens.json"
+    },
+    "liquid-glass": {
+      "$ref": "./liquid-glass.tokens.json"
+    },
+    "liquid-glass-ios26": {
+      "$ref": "./liquid-glass-ios26.tokens.json"
+    },
+    "lofi-analog": {
+      "$ref": "./lofi-analog.tokens.json"
+    },
+    "luxury-aspirational": {
+      "$ref": "./luxury-aspirational.tokens.json"
+    },
+    "map-cartographic": {
+      "$ref": "./map-cartographic.tokens.json"
+    },
+    "marine-nautical-chart": {
+      "$ref": "./marine-nautical-chart.tokens.json"
+    },
+    "material-design": {
+      "$ref": "./material-design.tokens.json"
+    },
+    "medievalcore": {
+      "$ref": "./medievalcore.tokens.json"
+    },
+    "medtech-clinical": {
+      "$ref": "./medtech-clinical.tokens.json"
+    },
+    "melancholic": {
+      "$ref": "./melancholic.tokens.json"
+    },
+    "memphis": {
+      "$ref": "./memphis.tokens.json"
+    },
+    "metal-chrome": {
+      "$ref": "./metal-chrome.tokens.json"
+    },
+    "microfilm-archive": {
+      "$ref": "./microfilm-archive.tokens.json"
+    },
+    "mono-aesthetic": {
+      "$ref": "./mono-aesthetic.tokens.json"
+    },
+    "monochrome": {
+      "$ref": "./monochrome.tokens.json"
+    },
+    "moodboard-collage": {
+      "$ref": "./moodboard-collage.tokens.json"
+    },
+    "music-album-art": {
+      "$ref": "./music-album-art.tokens.json"
+    },
+    "mycelium-fungal": {
+      "$ref": "./mycelium-fungal.tokens.json"
+    },
+    "naive-outsider-art": {
+      "$ref": "./naive-outsider-art.tokens.json"
+    },
+    "neobank-consumer": {
+      "$ref": "./neobank-consumer.tokens.json"
+    },
+    "neobrutalism-softened": {
+      "$ref": "./neobrutalism-softened.tokens.json"
+    },
+    "neon-dystopia": {
+      "$ref": "./neon-dystopia.tokens.json"
+    },
+    "neon-signage": {
+      "$ref": "./neon-signage.tokens.json"
+    },
+    "neubrutalism": {
+      "$ref": "./neubrutalism.tokens.json"
+    },
+    "neumorphism": {
+      "$ref": "./neumorphism.tokens.json"
+    },
+    "neural-network-ai": {
+      "$ref": "./neural-network-ai.tokens.json"
+    },
+    "new-wave-swiss-punk": {
+      "$ref": "./new-wave-swiss-punk.tokens.json"
+    },
+    "newspaper-broadsheet": {
+      "$ref": "./newspaper-broadsheet.tokens.json"
+    },
+    "op-art": {
+      "$ref": "./op-art.tokens.json"
+    },
+    "paper-cut": {
+      "$ref": "./paper-cut.tokens.json"
+    },
+    "paper-editorial": {
+      "$ref": "./paper-editorial.tokens.json"
+    },
+    "pharmaceutical-clean": {
+      "$ref": "./pharmaceutical-clean.tokens.json"
+    },
+    "photography-portfolio": {
+      "$ref": "./photography-portfolio.tokens.json"
+    },
+    "playful-joyful": {
+      "$ref": "./playful-joyful.tokens.json"
+    },
+    "pop-art": {
+      "$ref": "./pop-art.tokens.json"
+    },
+    "post-apocalyptic": {
+      "$ref": "./post-apocalyptic.tokens.json"
+    },
+    "post-internet-maximalism": {
+      "$ref": "./post-internet-maximalism.tokens.json"
+    },
+    "postmodern": {
+      "$ref": "./postmodern.tokens.json"
+    },
+    "print-to-web-editorial": {
+      "$ref": "./print-to-web-editorial.tokens.json"
+    },
+    "proptech": {
+      "$ref": "./proptech.tokens.json"
+    },
+    "psychedelic": {
+      "$ref": "./psychedelic.tokens.json"
+    },
+    "quantum-particle": {
+      "$ref": "./quantum-particle.tokens.json"
+    },
+    "reaction-diffusion": {
+      "$ref": "./reaction-diffusion.tokens.json"
+    },
+    "recombinant-hybrid": {
+      "$ref": "./recombinant-hybrid.tokens.json"
+    },
+    "responsive-editorial": {
+      "$ref": "./responsive-editorial.tokens.json"
+    },
+    "retrofuturism": {
+      "$ref": "./retrofuturism.tokens.json"
+    },
+    "risograph-screen-print": {
+      "$ref": "./risograph-screen-print.tokens.json"
+    },
+    "romantic-soft": {
+      "$ref": "./romantic-soft.tokens.json"
+    },
+    "saas-b2b-dashboard": {
+      "$ref": "./saas-b2b-dashboard.tokens.json"
+    },
+    "scandinavian-nordic": {
+      "$ref": "./scandinavian-nordic.tokens.json"
+    },
+    "sci-fi-hud": {
+      "$ref": "./sci-fi-hud.tokens.json"
+    },
+    "scientific-journal": {
+      "$ref": "./scientific-journal.tokens.json"
+    },
+    "seapunk": {
+      "$ref": "./seapunk.tokens.json"
+    },
+    "serif-revival": {
+      "$ref": "./serif-revival.tokens.json"
+    },
+    "skeuomorphism": {
+      "$ref": "./skeuomorphism.tokens.json"
+    },
+    "smoked-glass-chrome": {
+      "$ref": "./smoked-glass-chrome.tokens.json"
+    },
+    "social-media-native": {
+      "$ref": "./social-media-native.tokens.json"
+    },
+    "soft-apocalypse": {
+      "$ref": "./soft-apocalypse.tokens.json"
+    },
+    "solarpunk": {
+      "$ref": "./solarpunk.tokens.json"
+    },
+    "solarpunk-dark": {
+      "$ref": "./solarpunk-dark.tokens.json"
+    },
+    "solarpunk-futurism": {
+      "$ref": "./solarpunk-futurism.tokens.json"
+    },
+    "south-asian-bollywood": {
+      "$ref": "./south-asian-bollywood.tokens.json"
+    },
+    "spatial-ar": {
+      "$ref": "./spatial-ar.tokens.json"
+    },
+    "sports-analytics": {
+      "$ref": "./sports-analytics.tokens.json"
+    },
+    "stone-geological": {
+      "$ref": "./stone-geological.tokens.json"
+    },
+    "stone-mineral": {
+      "$ref": "./stone-mineral.tokens.json"
+    },
+    "streaming-media": {
+      "$ref": "./streaming-media.tokens.json"
+    },
+    "surveillance-panopticon": {
+      "$ref": "./surveillance-panopticon.tokens.json"
+    },
+    "swiss-crouwel-gridnik": {
+      "$ref": "./swiss-crouwel-gridnik.tokens.json"
+    },
+    "swiss-gerstner": {
+      "$ref": "./swiss-gerstner.tokens.json"
+    },
+    "swiss-muller-brockmann": {
+      "$ref": "./swiss-muller-brockmann.tokens.json"
+    },
+    "swiss-rationalism": {
+      "$ref": "./swiss-rationalism.tokens.json"
+    },
+    "synthwave": {
+      "$ref": "./synthwave.tokens.json"
+    },
+    "technical-mono": {
+      "$ref": "./technical-mono.tokens.json"
+    },
+    "terminal-cli": {
+      "$ref": "./terminal-cli.tokens.json"
+    },
+    "terrazzo-digital": {
+      "$ref": "./terrazzo-digital.tokens.json"
+    },
+    "trust-safety": {
+      "$ref": "./trust-safety.tokens.json"
+    },
+    "type-collage": {
+      "$ref": "./type-collage.tokens.json"
+    },
+    "uncanny-valley": {
+      "$ref": "./uncanny-valley.tokens.json"
+    },
+    "underwater-aquatic": {
+      "$ref": "./underwater-aquatic.tokens.json"
+    },
+    "vaporwave": {
+      "$ref": "./vaporwave.tokens.json"
+    },
+    "variable-font": {
+      "$ref": "./variable-font.tokens.json"
+    },
+    "vertical-cjk": {
+      "$ref": "./vertical-cjk.tokens.json"
+    },
+    "webcore": {
+      "$ref": "./webcore.tokens.json"
+    },
+    "whimsical-storybook": {
+      "$ref": "./whimsical-storybook.tokens.json"
+    },
+    "white-futurism": {
+      "$ref": "./white-futurism.tokens.json"
+    },
+    "wireframe-aesthetic": {
+      "$ref": "./wireframe-aesthetic.tokens.json"
+    },
+    "witchcore-ui": {
+      "$ref": "./witchcore-ui.tokens.json"
+    },
+    "wood-natural": {
+      "$ref": "./wood-natural.tokens.json"
+    },
+    "y2k-futurism": {
+      "$ref": "./y2k-futurism.tokens.json"
+    },
+    "zen-void": {
+      "$ref": "./zen-void.tokens.json"
+    },
+    "zine-diy": {
+      "$ref": "./zine-diy.tokens.json"
+    },
+    "zoetrope-early-cinema": {
+      "$ref": "./zoetrope-early-cinema.tokens.json"
+    }
+  }
+}

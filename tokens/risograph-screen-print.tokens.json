@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "risograph-screen-print — hybrid / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5F0E8",
+      "$type": "color",
+      "$description": "off-white with grain"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "riso black"
+    },
+    "accent": {
+      "$value": "#FF4B00",
+      "$type": "color",
+      "$description": "Fluorescent risograph ink — CMYK-limited 2-3 colors only (e.g.,  riso red + #00B4D8 riso teal"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Mono or Courier New",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Mono",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

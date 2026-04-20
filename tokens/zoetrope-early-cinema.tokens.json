@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "zoetrope-early-cinema — extended / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#D4C4A8",
+      "$type": "color",
+      "$description": "sepia photograph"
+    },
+    "primary": {
+      "$value": "#1A1008",
+      "$type": "color",
+      "$description": "darkroom black"
+    },
+    "accent": {
+      "$value": "#8B6340",
+      "$type": "color",
+      "$description": "projected light amber"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Playfair Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Playfair Display",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

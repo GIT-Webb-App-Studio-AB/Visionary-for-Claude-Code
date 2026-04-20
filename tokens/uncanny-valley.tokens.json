@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "uncanny-valley — extended / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F5F5F3",
+      "$type": "color",
+      "$description": "almost-white — not quite right"
+    },
+    "primary": {
+      "$value": "#1A1A18",
+      "$type": "color",
+      "$description": "almost-black — slightly warm"
+    },
+    "accent": {
+      "$value": "#E8C8B0",
+      "$type": "color",
+      "$description": "Almost-right skin tones () or desaturated primaries"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "System",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "System",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.03em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":15}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "5px",
+      "$type": "dimension"
+    }
+  }
+}

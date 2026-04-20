@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "map-cartographic",
+  "type": "registry:style",
+  "title": "Map Cartographic",
+  "description": "map-cartographic — hybrid / Subtle Motion tier: Subtle. Display font: Playfair Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display",
+      "--font-body": "Crimson Pro",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.899 0.030 80.7)",
+      "primary": "oklch(0.289 0.000 89.9)",
+      "primary-foreground": "oklch(0.899 0.030 80.7)",
+      "accent": "oklch(0.541 0.104 84.4)",
+      "accent-foreground": "oklch(0.899 0.030 80.7)",
+      "secondary-foreground": "oklch(0.899 0.030 80.7)",
+      "border": "oklch(0.541 0.104 84.4)",
+      "ring": "oklch(0.289 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.899 0.030 80.7)",
+      "primary": "oklch(0.289 0.000 89.9)",
+      "primary-foreground": "oklch(0.899 0.030 80.7)",
+      "accent": "oklch(0.541 0.104 84.4)",
+      "accent-foreground": "oklch(0.899 0.030 80.7)",
+      "secondary-foreground": "oklch(0.899 0.030 80.7)",
+      "border": "oklch(0.541 0.104 84.4)",
+      "ring": "oklch(0.289 0.000 89.9)"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "skeuomorphism — morphisms / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#2C1810",
+      "$type": "color",
+      "$description": "— dark wood grain texture base"
+    },
+    "primary": {
+      "$value": "#C8860A",
+      "$type": "color",
+      "$description": "— aged brass/gold for interactive elements"
+    },
+    "accent": {
+      "$value": "#8B0000",
+      "$type": "color",
+      "$description": "— deep red as used in leather-bound interfaces"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Georgia",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Georgia",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

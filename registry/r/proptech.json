@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "proptech",
+  "type": "registry:style",
+  "title": "Proptech",
+  "description": "proptech — industry / Expressive Motion tier: Expressive. Display font: Canela 400–700 (editorial real estate feel).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Canela 400–700 (editorial real estate feel)",
+      "--font-body": "DM Sans 400",
+      "--radius": "12px"
+    },
+    "light": {
+      "background": "oklch(0.977 0.005 78.3)",
+      "primary": "oklch(0.319 0.048 160.2)",
+      "primary-foreground": "oklch(0.977 0.005 78.3)",
+      "accent": "oklch(0.749 0.085 82.8)",
+      "accent-foreground": "oklch(0.977 0.005 78.3)",
+      "secondary-foreground": "oklch(0.977 0.005 78.3)",
+      "border": "oklch(0.749 0.085 82.8)",
+      "ring": "oklch(0.319 0.048 160.2)"
+    },
+    "dark": {
+      "background": "oklch(0.977 0.005 78.3)",
+      "primary": "oklch(0.319 0.048 160.2)",
+      "primary-foreground": "oklch(0.977 0.005 78.3)",
+      "accent": "oklch(0.749 0.085 82.8)",
+      "accent-foreground": "oklch(0.977 0.005 78.3)",
+      "secondary-foreground": "oklch(0.977 0.005 78.3)",
+      "border": "oklch(0.749 0.085 82.8)",
+      "ring": "oklch(0.319 0.048 160.2)"
+    }
+  }
+}

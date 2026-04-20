@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "corpcore-quiet-luxury — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F2EDE7",
+      "$type": "color",
+      "$description": "greige"
+    },
+    "primary": {
+      "$value": "#A69F96",
+      "$type": "color",
+      "$description": "stone"
+    },
+    "accent": {
+      "$value": "#C4A35A",
+      "$type": "color",
+      "$description": "discrete gold — not gaudy"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cormorant weight 300/400",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Cormorant",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":30}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "reaction-diffusion — extended / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "generated — algorithm determines visual field"
+    },
+    "primary": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "concentration high"
+    },
+    "accent": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "concentration low"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Mono",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Mono",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

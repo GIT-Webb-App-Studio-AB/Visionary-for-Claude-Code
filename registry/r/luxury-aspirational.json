@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "luxury-aspirational",
+  "type": "registry:style",
+  "title": "Luxury Aspirational",
+  "description": "luxury-aspirational — emotional / Expressive Motion tier: Expressive. Display font: Cormorant Garamond 400–600.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cormorant Garamond 400–600",
+      "--font-body": "Cormorant 400 (italic variant for pull quotes)",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.148 0.007 57.6)",
+      "primary": "oklch(0.749 0.085 82.8)",
+      "primary-foreground": "oklch(0.148 0.007 57.6)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.148 0.007 57.6)",
+      "secondary-foreground": "oklch(0.148 0.007 57.6)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.749 0.085 82.8)"
+    },
+    "dark": {
+      "background": "oklch(0.148 0.007 57.6)",
+      "primary": "oklch(0.749 0.085 82.8)",
+      "primary-foreground": "oklch(0.148 0.007 57.6)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.148 0.007 57.6)",
+      "secondary-foreground": "oklch(0.148 0.007 57.6)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.749 0.085 82.8)"
+    }
+  }
+}

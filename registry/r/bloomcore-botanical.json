@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bloomcore-botanical",
+  "type": "registry:style",
+  "title": "Bloomcore Botanical",
+  "description": "bloomcore-botanical — extended / Subtle Motion tier: Subtle. Display font: Playfair Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display",
+      "--font-body": "Lora",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.968 0.014 138.7)",
+      "primary": "oklch(0.479 0.099 142.0)",
+      "primary-foreground": "oklch(0.968 0.014 138.7)",
+      "accent": "oklch(0.490 0.094 47.2)",
+      "accent-foreground": "oklch(0.968 0.014 138.7)",
+      "secondary-foreground": "oklch(0.968 0.014 138.7)",
+      "border": "oklch(0.490 0.094 47.2)",
+      "ring": "oklch(0.479 0.099 142.0)"
+    },
+    "dark": {
+      "background": "oklch(0.968 0.014 138.7)",
+      "primary": "oklch(0.479 0.099 142.0)",
+      "primary-foreground": "oklch(0.968 0.014 138.7)",
+      "accent": "oklch(0.490 0.094 47.2)",
+      "accent-foreground": "oklch(0.968 0.014 138.7)",
+      "secondary-foreground": "oklch(0.968 0.014 138.7)",
+      "border": "oklch(0.490 0.094 47.2)",
+      "ring": "oklch(0.479 0.099 142.0)"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "luxury-aspirational — emotional / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#0D0A08",
+      "$type": "color",
+      "$description": "warm near-black for evening/editorial) or #F5F0E8 (cream for daytime"
+    },
+    "primary": {
+      "$value": "#C8A96E",
+      "$type": "color",
+      "$description": "warm gold — never #FFD700 which reads as cheap"
+    },
+    "accent": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "dark mode) or #1A1208 (light mode"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cormorant Garamond 400–600",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Cormorant 400 (italic variant for pull quotes)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.06em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.2,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":120,\"damping\":30,\"mass\":1.4}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "colr-v1-color-type — typography / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F8F6F0",
+      "$type": "color",
+      "$description": "`` (warm neutral that lets the color font breathe"
+    },
+    "text": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "``"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "one of: **Nabla** (variable + color",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Inter or Atkinson Hyperlegible",
+      "$type": "fontFamily"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.15,\"visualDuration\":0.4}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

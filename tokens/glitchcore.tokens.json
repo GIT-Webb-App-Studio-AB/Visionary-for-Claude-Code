@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "glitchcore — internet / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "— near-black maximum contrast; not pure black (#000000, the RGB channels need headroom to read against the background); not dark grey (#1A1A1A, reduces channel pop); #0A0A0A provides the maximum contrast surface for pure R, G, B channel offsets to read as distinct colors rather than blending"
+    },
+    "primary": {
+      "$value": "#FF0033",
+      "$type": "color",
+      "$description": "pure red channel  — the R channel of corrupted RGB data; not crimson, not coral, not hot pink; the red must be pure channel-shift red so the channel-split effect reads as data corruption rather than design choice; any deviation toward warmth or pink reads as synthwave"
+    },
+    "accent": {
+      "$value": "#00FF00",
+      "$type": "color",
+      "$description": "pure green channel  — the G channel; not lime, not neon green, not sage; must be the exact pure-green RGB value that appears when a green channel is isolated; the B channel (#0000FF) is available as tertiary where three-channel corruption is needed"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "IBM Plex Mono 700",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IBM Plex Mono 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.06em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

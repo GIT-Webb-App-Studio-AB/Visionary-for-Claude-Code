@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smoked-glass-chrome",
+  "type": "registry:style",
+  "title": "Smoked Glass Chrome",
+  "description": "smoked-glass-chrome — extended / Expressive Motion tier: Expressive. Display font: Inter (or Geist).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Inter (or Geist)",
+      "--font-body": "Inter",
+      "--radius": "12px"
+    },
+    "light": {
+      "background": "oklch(0.160 0.004 285.9)",
+      "primary": "oklch(0.808 0.000 89.9)",
+      "primary-foreground": "oklch(0.160 0.004 285.9)",
+      "accent-foreground": "oklch(0.160 0.004 285.9)",
+      "secondary-foreground": "oklch(0.160 0.004 285.9)",
+      "ring": "oklch(0.808 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.160 0.004 285.9)",
+      "primary": "oklch(0.808 0.000 89.9)",
+      "primary-foreground": "oklch(0.160 0.004 285.9)",
+      "accent-foreground": "oklch(0.160 0.004 285.9)",
+      "secondary-foreground": "oklch(0.160 0.004 285.9)",
+      "ring": "oklch(0.808 0.000 89.9)"
+    }
+  }
+}

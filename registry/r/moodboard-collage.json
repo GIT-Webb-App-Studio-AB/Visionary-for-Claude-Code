@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "moodboard-collage",
+  "type": "registry:style",
+  "title": "Moodboard Collage",
+  "description": "moodboard-collage — internet / Expressive Motion tier: Expressive. Display font: Multiple display fonts coexist.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Multiple display fonts coexist",
+      "--font-body": "Libre Franklin or DM Sans",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.218 0.000 89.9)",
+      "accent": "oklch(0.910 0.173 104.0)",
+      "accent-foreground": "oklch(0.218 0.000 89.9)",
+      "secondary-foreground": "oklch(0.218 0.000 89.9)",
+      "border": "oklch(0.910 0.173 104.0)"
+    },
+    "dark": {
+      "background": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.218 0.000 89.9)",
+      "accent": "oklch(0.910 0.173 104.0)",
+      "accent-foreground": "oklch(0.218 0.000 89.9)",
+      "secondary-foreground": "oklch(0.218 0.000 89.9)",
+      "border": "oklch(0.910 0.173 104.0)"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grainy-blur",
+  "type": "registry:style",
+  "title": "Grainy Blur",
+  "description": "grainy-blur — extended / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bricolage Grotesque",
+      "--font-body": "Bricolage Grotesque",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.663 0.229 12.6)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.663 0.229 12.6)",
+      "accent-foreground": "oklch(0.663 0.229 12.6)",
+      "secondary-foreground": "oklch(0.663 0.229 12.6)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.663 0.229 12.6)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.663 0.229 12.6)",
+      "accent-foreground": "oklch(0.663 0.229 12.6)",
+      "secondary-foreground": "oklch(0.663 0.229 12.6)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

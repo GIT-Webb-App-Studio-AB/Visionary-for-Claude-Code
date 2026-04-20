@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "indigenous-first-nations — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5EDD8",
+      "$type": "color",
+      "$description": "earth ochre"
+    },
+    "primary": {
+      "$value": "#5C3D11",
+      "$type": "color",
+      "$description": "dark earth"
+    },
+    "accent": {
+      "$value": "#8B4513",
+      "$type": "color",
+      "$description": "red ochre — widely used across many traditions"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Clean system sans",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "System sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

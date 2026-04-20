@@ -1,0 +1,54 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "postmodern — historical / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F8F4EE",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#1A1A2E",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#E8424A",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Playfair Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "JetBrains Mono (unexpected pairing",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":14}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

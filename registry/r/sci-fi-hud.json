@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sci-fi-hud",
+  "type": "registry:style",
+  "title": "Sci Fi Hud",
+  "description": "sci-fi-hud — graphic / Kinetic Motion tier: Kinetic. Display font: Orbitron.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Orbitron",
+      "--font-body": "Exo 2",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.127 0.027 236.3)",
+      "primary": "oklch(0.804 0.146 219.5)",
+      "primary-foreground": "oklch(0.127 0.027 236.3)",
+      "accent": "oklch(0.812 0.170 76.4)",
+      "accent-foreground": "oklch(0.127 0.027 236.3)",
+      "secondary-foreground": "oklch(0.127 0.027 236.3)",
+      "border": "oklch(0.812 0.170 76.4)",
+      "ring": "oklch(0.804 0.146 219.5)"
+    },
+    "dark": {
+      "background": "oklch(0.127 0.027 236.3)",
+      "primary": "oklch(0.804 0.146 219.5)",
+      "primary-foreground": "oklch(0.127 0.027 236.3)",
+      "accent": "oklch(0.812 0.170 76.4)",
+      "accent-foreground": "oklch(0.127 0.027 236.3)",
+      "secondary-foreground": "oklch(0.127 0.027 236.3)",
+      "border": "oklch(0.812 0.170 76.4)",
+      "ring": "oklch(0.804 0.146 219.5)"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frutiger-aero-kinetic",
+  "type": "registry:style",
+  "title": "Frutiger Aero Kinetic",
+  "description": "frutiger-aero-kinetic — extended / Kinetic Motion tier: Kinetic. Display font: Frutiger 95.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Frutiger 95",
+      "--font-body": "Trebuchet MS",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.883 0.066 236.8)",
+      "primary": "oklch(0.641 0.131 251.4)",
+      "primary-foreground": "oklch(0.883 0.066 236.8)",
+      "accent": "oklch(0.736 0.166 137.6)",
+      "accent-foreground": "oklch(0.883 0.066 236.8)",
+      "secondary": "oklch(0.787 0.133 46.3)",
+      "secondary-foreground": "oklch(0.883 0.066 236.8)",
+      "border": "oklch(0.736 0.166 137.6)",
+      "ring": "oklch(0.641 0.131 251.4)",
+      "muted": "oklch(0.787 0.133 46.3)"
+    },
+    "dark": {
+      "background": "oklch(0.883 0.066 236.8)",
+      "primary": "oklch(0.641 0.131 251.4)",
+      "primary-foreground": "oklch(0.883 0.066 236.8)",
+      "accent": "oklch(0.736 0.166 137.6)",
+      "accent-foreground": "oklch(0.883 0.066 236.8)",
+      "secondary": "oklch(0.787 0.133 46.3)",
+      "secondary-foreground": "oklch(0.883 0.066 236.8)",
+      "border": "oklch(0.736 0.166 137.6)",
+      "ring": "oklch(0.641 0.131 251.4)",
+      "muted": "oklch(0.787 0.133 46.3)"
+    }
+  }
+}

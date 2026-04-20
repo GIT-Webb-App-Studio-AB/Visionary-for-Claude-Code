@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "medievalcore",
+  "type": "registry:style",
+  "title": "Medievalcore",
+  "description": "medievalcore — graphic / Expressive Motion tier: Expressive. Display font: Cinzel.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cinzel",
+      "--font-body": "IM Fell English",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.192 0.025 65.8)",
+      "primary": "oklch(0.456 0.114 32.9)",
+      "primary-foreground": "oklch(0.192 0.025 65.8)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.192 0.025 65.8)",
+      "secondary-foreground": "oklch(0.192 0.025 65.8)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.456 0.114 32.9)"
+    },
+    "dark": {
+      "background": "oklch(0.192 0.025 65.8)",
+      "primary": "oklch(0.456 0.114 32.9)",
+      "primary-foreground": "oklch(0.192 0.025 65.8)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.192 0.025 65.8)",
+      "secondary-foreground": "oklch(0.192 0.025 65.8)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.456 0.114 32.9)"
+    }
+  }
+}

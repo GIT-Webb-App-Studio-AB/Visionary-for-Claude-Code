@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deconstructed-type",
+  "type": "registry:style",
+  "title": "Deconstructed Type",
+  "description": "deconstructed-type — typography / Kinetic Motion tier: Kinetic. Display font: Helvetica Neue (fragments scattered) + Neue Haas Grotesk Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Helvetica Neue (fragments scattered) + Neue Haas Grotesk Display",
+      "--font-body": "Helvetica Neue 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.949 0.008 91.5)",
+      "primary": "oklch(0.145 0.000 89.9)",
+      "primary-foreground": "oklch(0.949 0.008 91.5)",
+      "accent": "oklch(0.644 0.242 29.4)",
+      "accent-foreground": "oklch(0.949 0.008 91.5)",
+      "secondary-foreground": "oklch(0.949 0.008 91.5)",
+      "border": "oklch(0.644 0.242 29.4)",
+      "ring": "oklch(0.145 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.949 0.008 91.5)",
+      "primary": "oklch(0.145 0.000 89.9)",
+      "primary-foreground": "oklch(0.949 0.008 91.5)",
+      "accent": "oklch(0.644 0.242 29.4)",
+      "accent-foreground": "oklch(0.949 0.008 91.5)",
+      "secondary-foreground": "oklch(0.949 0.008 91.5)",
+      "border": "oklch(0.644 0.242 29.4)",
+      "ring": "oklch(0.145 0.000 89.9)"
+    }
+  }
+}

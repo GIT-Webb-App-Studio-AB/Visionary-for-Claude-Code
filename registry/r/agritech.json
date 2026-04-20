@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agritech",
+  "type": "registry:style",
+  "title": "Agritech",
+  "description": "agritech — industry / Subtle Motion tier: Subtle. Display font: Chillax 600 (approachable for farmer.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Chillax 600 (approachable for farmer",
+      "--font-body": "Plus Jakarta Sans 400",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.973 0.007 124.4)",
+      "primary": "oklch(0.467 0.125 140.2)",
+      "primary-foreground": "oklch(0.973 0.007 124.4)",
+      "accent": "oklch(0.696 0.160 55.5)",
+      "accent-foreground": "oklch(0.973 0.007 124.4)",
+      "secondary-foreground": "oklch(0.973 0.007 124.4)",
+      "border": "oklch(0.696 0.160 55.5)",
+      "ring": "oklch(0.467 0.125 140.2)"
+    },
+    "dark": {
+      "background": "oklch(0.973 0.007 124.4)",
+      "primary": "oklch(0.467 0.125 140.2)",
+      "primary-foreground": "oklch(0.973 0.007 124.4)",
+      "accent": "oklch(0.696 0.160 55.5)",
+      "accent-foreground": "oklch(0.973 0.007 124.4)",
+      "secondary-foreground": "oklch(0.973 0.007 124.4)",
+      "border": "oklch(0.696 0.160 55.5)",
+      "ring": "oklch(0.467 0.125 140.2)"
+    }
+  }
+}

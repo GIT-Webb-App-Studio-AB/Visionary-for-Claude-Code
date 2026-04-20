@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "y2k-futurism — internet / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#050A14",
+      "$type": "color",
+      "$description": "— near-black with blue tint"
+    },
+    "primary": {
+      "$value": "#C0C0C0",
+      "$type": "color",
+      "$description": "— chrome silver as the primary surface/button material"
+    },
+    "accent": {
+      "$value": "#00F5FF",
+      "$type": "color",
+      "$description": "— electric cyan for interactive highlights"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syncopate 700",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Rajdhani or Exo 2 for body",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.2em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

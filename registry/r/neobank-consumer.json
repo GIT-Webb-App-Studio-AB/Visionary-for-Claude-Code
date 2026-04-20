@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neobank-consumer",
+  "type": "registry:style",
+  "title": "Neobank Consumer",
+  "description": "neobank-consumer — industry / Expressive Motion tier: Expressive. Display font: Cabinet Grotesk 700–800.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cabinet Grotesk 700–800",
+      "--font-body": "Cabinet Grotesk 400",
+      "--radius": "20px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.517 0.277 280.4)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.955 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.955 0.000 89.9)",
+      "ring": "oklch(0.517 0.277 280.4)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.517 0.277 280.4)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.955 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.955 0.000 89.9)",
+      "ring": "oklch(0.517 0.277 280.4)"
+    }
+  }
+}

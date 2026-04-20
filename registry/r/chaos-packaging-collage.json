@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chaos-packaging-collage",
+  "type": "registry:style",
+  "title": "Chaos Packaging Collage",
+  "description": "chaos-packaging-collage — hybrid / Expressive Motion tier: Expressive. Display font: **rotating mix per view**.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**rotating mix per view**",
+      "--font-body": "Neue Haas Unica 16px",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.948 0.019 83.1)",
+      "primary-foreground": "oklch(0.948 0.019 83.1)",
+      "accent-foreground": "oklch(0.948 0.019 83.1)",
+      "secondary-foreground": "oklch(0.948 0.019 83.1)"
+    },
+    "dark": {
+      "background": "oklch(0.948 0.019 83.1)",
+      "primary-foreground": "oklch(0.948 0.019 83.1)",
+      "accent-foreground": "oklch(0.948 0.019 83.1)",
+      "secondary-foreground": "oklch(0.948 0.019 83.1)"
+    }
+  }
+}

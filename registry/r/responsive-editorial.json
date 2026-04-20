@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-editorial",
+  "type": "registry:style",
+  "title": "Responsive Editorial",
+  "description": "responsive-editorial — modern / Expressive Motion tier: Expressive. Display font: Source Serif 4.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Source Serif 4",
+      "--font-body": "Source Serif 4",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.531 0.197 19.5)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.531 0.197 19.5)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.531 0.197 19.5)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.531 0.197 19.5)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

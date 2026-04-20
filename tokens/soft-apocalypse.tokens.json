@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "soft-apocalypse — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#C9A8A8",
+      "$type": "color",
+      "$description": "dusty rose — the world ended gently"
+    },
+    "primary": {
+      "$value": "#3A2A2A",
+      "$type": "color",
+      "$description": "ash dark"
+    },
+    "accent": {
+      "$value": "#8C7A7A",
+      "$type": "color",
+      "$description": "warm ash"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":30}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "6px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

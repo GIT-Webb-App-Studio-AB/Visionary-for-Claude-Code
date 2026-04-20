@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frutiger-aero",
+  "type": "registry:style",
+  "title": "Frutiger Aero",
+  "description": "frutiger-aero — morphisms / Expressive Motion tier: Expressive. Display font: Frutiger (or Myriad Pro as fallback).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Frutiger (or Myriad Pro as fallback)",
+      "--font-body": "Trebuchet MS",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.912 0.037 222.4)",
+      "primary": "oklch(0.641 0.131 251.4)",
+      "primary-foreground": "oklch(0.912 0.037 222.4)",
+      "accent": "oklch(0.736 0.166 137.6)",
+      "accent-foreground": "oklch(0.912 0.037 222.4)",
+      "secondary-foreground": "oklch(0.912 0.037 222.4)",
+      "border": "oklch(0.736 0.166 137.6)",
+      "ring": "oklch(0.641 0.131 251.4)"
+    },
+    "dark": {
+      "background": "oklch(0.912 0.037 222.4)",
+      "primary": "oklch(0.641 0.131 251.4)",
+      "primary-foreground": "oklch(0.912 0.037 222.4)",
+      "accent": "oklch(0.736 0.166 137.6)",
+      "accent-foreground": "oklch(0.912 0.037 222.4)",
+      "secondary-foreground": "oklch(0.912 0.037 222.4)",
+      "border": "oklch(0.736 0.166 137.6)",
+      "ring": "oklch(0.641 0.131 251.4)"
+    }
+  }
+}

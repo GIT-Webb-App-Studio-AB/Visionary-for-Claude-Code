@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "trust-safety — emotional / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "or #F8F9FA"
+    },
+    "primary": {
+      "$value": "#2563EB",
+      "$type": "color",
+      "$description": "trustworthy blue — empirically associated with safety"
+    },
+    "accent": {
+      "$value": "#059669",
+      "$type": "color",
+      "$description": "confirmation green for positive trust signals"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Source Serif 4 600",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Source Sans 3 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.6,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400,\"damping\":40,\"mass\":0.9}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "6px",
+      "$type": "dimension"
+    }
+  }
+}

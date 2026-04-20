@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "serif-revival — typography / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFFDF7",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#1A1208",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#8B1A1A",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cormorant Garamond 600–700",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Source Serif 4 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.65,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":220,\"damping\":38,\"mass\":1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neobrutalism-softened",
+  "type": "registry:style",
+  "title": "Neobrutalism Softened",
+  "description": "neobrutalism-softened — morphisms / Expressive Motion tier: Expressive. Display font: **Satoshi** or **Cabinet Grotesk**.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Satoshi** or **Cabinet Grotesk**",
+      "--font-body": "Satoshi",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.974 0.026 90.1)",
+      "primary": "oklch(0.782 0.158 72.3)",
+      "primary-foreground": "oklch(0.974 0.026 90.1)",
+      "accent-foreground": "oklch(0.974 0.026 90.1)",
+      "secondary-foreground": "oklch(0.974 0.026 90.1)",
+      "ring": "oklch(0.782 0.158 72.3)"
+    },
+    "dark": {
+      "background": "oklch(0.974 0.026 90.1)",
+      "primary": "oklch(0.782 0.158 72.3)",
+      "primary-foreground": "oklch(0.974 0.026 90.1)",
+      "accent-foreground": "oklch(0.974 0.026 90.1)",
+      "secondary-foreground": "oklch(0.974 0.026 90.1)",
+      "ring": "oklch(0.782 0.158 72.3)"
+    }
+  }
+}

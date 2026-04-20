@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bauhaus-weimar",
+  "type": "registry:style",
+  "title": "Bauhaus Weimar",
+  "description": "bauhaus-weimar — extended / Expressive Motion tier: Expressive. Display font: **IM Fell** (hand.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**IM Fell** (hand",
+      "--font-body": "**EB Garamond** 16 px",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.947 0.023 87.2)",
+      "primary-foreground": "oklch(0.947 0.023 87.2)",
+      "accent": "oklch(0.583 0.054 130.6)",
+      "accent-foreground": "oklch(0.947 0.023 87.2)",
+      "secondary-foreground": "oklch(0.947 0.023 87.2)",
+      "border": "oklch(0.583 0.054 130.6)"
+    },
+    "dark": {
+      "background": "oklch(0.947 0.023 87.2)",
+      "primary-foreground": "oklch(0.947 0.023 87.2)",
+      "accent": "oklch(0.583 0.054 130.6)",
+      "accent-foreground": "oklch(0.947 0.023 87.2)",
+      "secondary-foreground": "oklch(0.947 0.023 87.2)",
+      "border": "oklch(0.583 0.054 130.6)"
+    }
+  }
+}

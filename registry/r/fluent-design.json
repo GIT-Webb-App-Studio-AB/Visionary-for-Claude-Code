@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fluent-design",
+  "type": "registry:style",
+  "title": "Fluent Design",
+  "description": "fluent-design — morphisms / Subtle Motion tier: Subtle. Display font: Segoe UI Variable (fallback: Segoe UI.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Segoe UI Variable (fallback: Segoe UI",
+      "--font-body": "Segoe UI",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.244 0.000 89.9)",
+      "primary": "oklch(0.804 0.122 230.8)",
+      "primary-foreground": "oklch(0.244 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.244 0.000 89.9)",
+      "secondary-foreground": "oklch(0.244 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.804 0.122 230.8)"
+    },
+    "dark": {
+      "background": "oklch(0.244 0.000 89.9)",
+      "primary": "oklch(0.804 0.122 230.8)",
+      "primary-foreground": "oklch(0.244 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.244 0.000 89.9)",
+      "secondary-foreground": "oklch(0.244 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.804 0.122 230.8)"
+    }
+  }
+}

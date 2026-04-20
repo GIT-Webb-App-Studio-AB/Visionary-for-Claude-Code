@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "whimsical-storybook",
+  "type": "registry:style",
+  "title": "Whimsical Storybook",
+  "description": "whimsical-storybook — emotional / Expressive Motion tier: Expressive. Display font: Playfair Display 700 (fairy.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display 700 (fairy",
+      "--font-body": "Lora 400 (italic body for narrative sections)",
+      "--radius": "12px"
+    },
+    "light": {
+      "background": "oklch(0.982 0.013 71.3)",
+      "primary": "oklch(0.490 0.132 298.4)",
+      "primary-foreground": "oklch(0.982 0.013 71.3)",
+      "accent": "oklch(0.806 0.136 84.7)",
+      "accent-foreground": "oklch(0.982 0.013 71.3)",
+      "secondary-foreground": "oklch(0.982 0.013 71.3)",
+      "border": "oklch(0.806 0.136 84.7)",
+      "ring": "oklch(0.490 0.132 298.4)"
+    },
+    "dark": {
+      "background": "oklch(0.982 0.013 71.3)",
+      "primary": "oklch(0.490 0.132 298.4)",
+      "primary-foreground": "oklch(0.982 0.013 71.3)",
+      "accent": "oklch(0.806 0.136 84.7)",
+      "accent-foreground": "oklch(0.982 0.013 71.3)",
+      "secondary-foreground": "oklch(0.982 0.013 71.3)",
+      "border": "oklch(0.806 0.136 84.7)",
+      "ring": "oklch(0.490 0.132 298.4)"
+    }
+  }
+}

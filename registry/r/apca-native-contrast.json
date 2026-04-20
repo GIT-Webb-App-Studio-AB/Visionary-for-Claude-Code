@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "apca-native-contrast",
+  "type": "registry:style",
+  "title": "Apca Native Contrast",
+  "description": "apca-native-contrast — modern / Subtle Motion tier: Subtle. Display font: **Atkinson Hyperlegible** or **Literata**.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Atkinson Hyperlegible** or **Literata**",
+      "--font-body": "same family",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.685 0.168 256.2)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.824 0.129 64.7)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.824 0.129 64.7)",
+      "ring": "oklch(0.685 0.168 256.2)"
+    },
+    "dark": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.685 0.168 256.2)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.824 0.129 64.7)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.824 0.129 64.7)",
+      "ring": "oklch(0.685 0.168 256.2)"
+    }
+  }
+}

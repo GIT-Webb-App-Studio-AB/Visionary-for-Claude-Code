@@ -1,0 +1,65 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "brutalist-honesty — emotional / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "raw white) or #D4D4D4 (raw grey"
+    },
+    "primary": {
+      "$value": "#000000",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#FF0000",
+      "$type": "color",
+      "$description": "none, or one strong flat color ( used sparingly"
+    },
+    "elevation-model": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "none — flat. Or hard offset box-shadow only: 4px 4px 0"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Helvetica Neue",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Helvetica Neue / Arial (system default)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.1,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":600,\"damping\":35,\"mass\":0.5}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

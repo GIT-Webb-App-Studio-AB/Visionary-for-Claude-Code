@@ -1,0 +1,75 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "leather-craft — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#3B1F0E",
+      "$type": "color",
+      "$description": "`` (dark saddle leather) — rich, warm, slightly"
+    },
+    "primary-action-/-accent-warm": {
+      "$value": "#C8842A",
+      "$type": "color",
+      "$description": "`` (burnished tan — the color"
+    },
+    "accent-2": {
+      "$value": "#8B2C1F",
+      "$type": "color",
+      "$description": "`` (oxblood — the stain color, not the"
+    },
+    "mid-brown": {
+      "$value": "#5C3A1E",
+      "$type": "color",
+      "$description": "`` (the color of an unoiled saddle"
+    },
+    "text": {
+      "$value": "#E8D5B7",
+      "$type": "color",
+      "$description": "`` (parchment cream — high-contrast cream reads like"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Libre Baskerville**",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Libre Baskerville",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.6,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "bento-grid — modern / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F4F4F5",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#18181B",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "card surfaces"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Bricolage Grotesque",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Bricolage Grotesque",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

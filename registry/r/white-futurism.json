@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "white-futurism",
+  "type": "registry:style",
+  "title": "White Futurism",
+  "description": "white-futurism — graphic / Subtle Motion tier: Subtle. Display font: **Geist** (Vercel.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Geist** (Vercel",
+      "--font-body": "Geist",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "foreground": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(0.563 0.241 260.8)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.563 0.241 260.8)",
+      "muted-foreground": "oklch(0.000 0.000 0.0)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "foreground": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(0.563 0.241 260.8)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.563 0.241 260.8)",
+      "muted-foreground": "oklch(0.000 0.000 0.0)"
+    }
+  }
+}

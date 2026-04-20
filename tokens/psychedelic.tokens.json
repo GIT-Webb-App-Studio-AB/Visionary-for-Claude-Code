@@ -1,0 +1,54 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "psychedelic — historical / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#1A0533",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#FF4FCB",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#4DFFD2",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Boogaloo (or any flowing display face with rounded strokes)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito (readable under visual noise)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":100,\"damping\":10}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "999px",
+      "$type": "dimension"
+    }
+  }
+}

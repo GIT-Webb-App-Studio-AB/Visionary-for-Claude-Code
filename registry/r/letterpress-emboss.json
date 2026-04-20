@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "letterpress-emboss",
+  "type": "registry:style",
+  "title": "Letterpress Emboss",
+  "description": "letterpress-emboss — extended / Subtle Motion tier: Subtle. Display font: Playfair Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display",
+      "--font-body": "Crimson Pro",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.941 0.014 84.6)",
+      "primary": "oklch(0.197 0.013 55.5)",
+      "primary-foreground": "oklch(0.941 0.014 84.6)",
+      "accent-foreground": "oklch(0.941 0.014 84.6)",
+      "secondary-foreground": "oklch(0.941 0.014 84.6)",
+      "ring": "oklch(0.197 0.013 55.5)"
+    },
+    "dark": {
+      "background": "oklch(0.941 0.014 84.6)",
+      "primary": "oklch(0.197 0.013 55.5)",
+      "primary-foreground": "oklch(0.941 0.014 84.6)",
+      "accent-foreground": "oklch(0.941 0.014 84.6)",
+      "secondary-foreground": "oklch(0.941 0.014 84.6)",
+      "ring": "oklch(0.197 0.013 55.5)"
+    }
+  }
+}

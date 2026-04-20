@@ -1,0 +1,42 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "early-web-geocities — graphic / Kinetic",
+  "color": {
+    "primary": {
+      "$value": "#FF0000",
+      "$type": "color",
+      "$description": "bright red) or #0000FF (hyperlink blue"
+    },
+    "accent": {
+      "$value": "#FFFF00",
+      "$type": "color",
+      "$description": "yellow — marquee text standard"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Comic Sans MS (intentional) or Impact",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Times New Roman (browser default era) or Verdana (early web",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

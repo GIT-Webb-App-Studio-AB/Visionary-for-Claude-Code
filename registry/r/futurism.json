@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "futurism",
+  "type": "registry:style",
+  "title": "Futurism",
+  "description": "futurism — historical / Expressive Motion tier: Expressive. Display font: Syne.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne",
+      "--font-body": "Syne",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.159 0.000 89.9)",
+      "primary": "oklch(0.641 0.245 31.7)",
+      "primary-foreground": "oklch(0.159 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.159 0.000 89.9)",
+      "secondary-foreground": "oklch(0.159 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.641 0.245 31.7)"
+    },
+    "dark": {
+      "background": "oklch(0.159 0.000 89.9)",
+      "primary": "oklch(0.641 0.245 31.7)",
+      "primary-foreground": "oklch(0.159 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.159 0.000 89.9)",
+      "secondary-foreground": "oklch(0.159 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.641 0.245 31.7)"
+    }
+  }
+}

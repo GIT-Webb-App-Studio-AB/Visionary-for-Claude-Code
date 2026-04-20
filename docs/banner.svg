@@ -14,6 +14,10 @@
       <stop offset="0%" stop-color="#A78BFA"/>
       <stop offset="100%" stop-color="#22D3EE"/>
     </linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
   </defs>
 
   <!-- Deep dark background -->
@@ -28,60 +32,67 @@
 
   <!-- Title block -->
   <text x="60" y="90" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#FFFFFF" letter-spacing="-2.5">visionary</text>
-  <text x="60" y="118" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280" letter-spacing="0.5">Design intelligence for Claude Code</text>
+  <text x="60" y="118" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280" letter-spacing="0.5">Design intelligence for Claude Code &middot; v1.3.0</text>
 
   <!-- Gradient divider -->
   <rect x="60" y="134" width="120" height="2" fill="url(#g2)"/>
 
   <!-- Stats row — gradient numbers -->
   <g font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
-    <text x="60" y="190" font-size="36" font-weight="700" fill="url(#g3)">186</text>
+    <text x="60" y="190" font-size="36" font-weight="700" fill="url(#g3)">202</text>
     <text x="60" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">STYLES</text>
 
     <text x="180" y="190" font-size="36" font-weight="700" fill="url(#g3)">8</text>
     <text x="180" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">STEPS</text>
 
-    <text x="250" y="190" font-size="36" font-weight="700" fill="url(#g3)">15</text>
-    <text x="250" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">STACKS</text>
+    <text x="240" y="190" font-size="36" font-weight="700" fill="url(#g3)">15</text>
+    <text x="240" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">STACKS</text>
 
-    <text x="340" y="190" font-size="36" font-weight="700" fill="url(#g3)">20+</text>
-    <text x="340" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">LANGS</text>
+    <text x="320" y="190" font-size="36" font-weight="700" fill="url(#g3)">20+</text>
+    <text x="320" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">LANGS</text>
 
-    <text x="450" y="190" font-size="36" font-weight="700" fill="url(#g3)">AA</text>
-    <text x="450" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">WCAG 2.2</text>
+    <text x="420" y="190" font-size="36" font-weight="700" fill="url(#g3)">AA</text>
+    <text x="420" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">WCAG 2.2 + APCA</text>
+
+    <text x="560" y="190" font-size="36" font-weight="700" fill="url(#g4)">18.35</text>
+    <text x="560" y="208" font-size="9" font-weight="600" fill="#4B5563" letter-spacing="1.5">BENCHMARK /20</text>
   </g>
 
   <!-- Right side: feature stack -->
-  <g transform="translate(700, 50)" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="500">
+  <g transform="translate(700, 42)" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="500">
     <g transform="translate(0, 0)">
       <rect width="6" height="6" fill="#7C3AED" rx="1" y="4"/>
       <text x="16" y="12" fill="#9CA3AF">Anti-default bias blocks generic AI output</text>
     </g>
-    <g transform="translate(0, 30)">
+    <g transform="translate(0, 26)">
       <rect width="6" height="6" fill="#6366F1" rx="1" y="4"/>
       <text x="16" y="12" fill="#9CA3AF">Weighted random — same prompt, different results</text>
     </g>
-    <g transform="translate(0, 60)">
+    <g transform="translate(0, 52)">
       <rect width="6" height="6" fill="#3B82F6" rx="1" y="4"/>
-      <text x="16" y="12" fill="#9CA3AF">Spring token motion system via motion/react</text>
+      <text x="16" y="12" fill="#9CA3AF">Motion v12 spring tokens + CSS-first escapes</text>
     </g>
-    <g transform="translate(0, 90)">
+    <g transform="translate(0, 78)">
       <rect width="6" height="6" fill="#06B6D4" rx="1" y="4"/>
-      <text x="16" y="12" fill="#9CA3AF">Playwright critique loop — screenshot, score, fix</text>
+      <text x="16" y="12" fill="#9CA3AF">Playwright + axe-core critique — deterministic a11y</text>
     </g>
-    <g transform="translate(0, 120)">
+    <g transform="translate(0, 104)">
       <rect width="6" height="6" fill="#22D3EE" rx="1" y="4"/>
-      <text x="16" y="12" fill="#9CA3AF">Cross-session taste calibration via system.md</text>
+      <text x="16" y="12" fill="#9CA3AF">Taste calibration — permanent flag after 3 rejections</text>
     </g>
-    <g transform="translate(0, 150)">
+    <g transform="translate(0, 130)">
       <rect width="6" height="6" fill="#67E8F9" rx="1" y="4"/>
-      <text x="16" y="12" fill="#9CA3AF">WCAG 2.2 AA — EU Accessibility Act compliant</text>
+      <text x="16" y="12" fill="#9CA3AF">DTCG tokens export — Figma / Style Dictionary / Penpot</text>
+    </g>
+    <g transform="translate(0, 156)">
+      <rect width="6" height="6" fill="#A78BFA" rx="1" y="4"/>
+      <text x="16" y="12" fill="#9CA3AF">shadcn registry + /variants, /apply, /designer, /annotate</text>
     </g>
   </g>
 
   <!-- Bottom -->
-  <text x="60" y="270" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#374151">by GIT Webb &amp; App Studio AB</text>
-  <text x="60" y="286" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#1F2937">Apache 2.0 — Free &amp; open source</text>
+  <text x="60" y="268" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#374151">by GIT Webb &amp; App Studio AB</text>
+  <text x="60" y="286" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#1F2937">Apache 2.0 &middot; Free &amp; open source &middot; 15 frameworks &middot; WCAG 2.2 AA + APCA</text>
 
   <!-- Bottom gradient line -->
   <rect x="0" y="297" width="400" height="3" fill="url(#g2)"/>

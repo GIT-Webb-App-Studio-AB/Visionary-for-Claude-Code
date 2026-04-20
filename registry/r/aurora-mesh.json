@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-mesh",
+  "type": "registry:style",
+  "title": "Aurora Mesh",
+  "description": "aurora-mesh — morphisms / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bricolage Grotesque",
+      "--font-body": "Bricolage Grotesque 400 or Inter",
+      "--radius": "20px"
+    },
+    "light": {
+      "background": "oklch(0.155 0.034 281.7)",
+      "primary": "oklch(0.541 0.247 293.0)",
+      "primary-foreground": "oklch(0.155 0.034 281.7)",
+      "accent": "oklch(0.715 0.126 215.2)",
+      "accent-foreground": "oklch(0.155 0.034 281.7)",
+      "secondary-foreground": "oklch(0.155 0.034 281.7)",
+      "border": "oklch(0.715 0.126 215.2)",
+      "ring": "oklch(0.541 0.247 293.0)"
+    },
+    "dark": {
+      "background": "oklch(0.155 0.034 281.7)",
+      "primary": "oklch(0.541 0.247 293.0)",
+      "primary-foreground": "oklch(0.155 0.034 281.7)",
+      "accent": "oklch(0.715 0.126 215.2)",
+      "accent-foreground": "oklch(0.155 0.034 281.7)",
+      "secondary-foreground": "oklch(0.155 0.034 281.7)",
+      "border": "oklch(0.715 0.126 215.2)",
+      "ring": "oklch(0.541 0.247 293.0)"
+    }
+  }
+}

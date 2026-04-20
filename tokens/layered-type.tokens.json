@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "layered-type — typography / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#0F0F0F",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#E8FF00",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syne 800 (foreground) + Syne 200 (background layer)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Syne 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":22,\"mass\":1.2}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

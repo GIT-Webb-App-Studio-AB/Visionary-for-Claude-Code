@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scandinavian-nordic",
+  "type": "registry:style",
+  "title": "Scandinavian Nordic",
+  "description": "scandinavian-nordic — graphic / Subtle Motion tier: Subtle. Display font: Söhne (or Aktiv Grotesk as alternative).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Söhne (or Aktiv Grotesk as alternative)",
+      "--font-body": "Söhne",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.976 0.003 106.4)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.976 0.003 106.4)",
+      "accent": "oklch(0.559 0.073 239.9)",
+      "accent-foreground": "oklch(0.976 0.003 106.4)",
+      "secondary-foreground": "oklch(0.976 0.003 106.4)",
+      "border": "oklch(0.559 0.073 239.9)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.976 0.003 106.4)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.976 0.003 106.4)",
+      "accent": "oklch(0.559 0.073 239.9)",
+      "accent-foreground": "oklch(0.976 0.003 106.4)",
+      "secondary-foreground": "oklch(0.976 0.003 106.4)",
+      "border": "oklch(0.559 0.073 239.9)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

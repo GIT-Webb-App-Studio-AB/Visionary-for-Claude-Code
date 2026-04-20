@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "memphis",
+  "type": "registry:style",
+  "title": "Memphis",
+  "description": "memphis — historical / Kinetic Motion tier: Kinetic. Display font: Futura Heavy.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Futura Heavy",
+      "--font-body": "Futura",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.645 0.260 2.5)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.968 0.211 109.8)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.968 0.211 109.8)",
+      "ring": "oklch(0.645 0.260 2.5)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.645 0.260 2.5)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.968 0.211 109.8)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.968 0.211 109.8)",
+      "ring": "oklch(0.645 0.260 2.5)"
+    }
+  }
+}

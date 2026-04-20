@@ -1,0 +1,52 @@
+{
+  "$schema": "https://visionary-claude.dev/schema/designer-pack.json",
+  "name": "April Greiman",
+  "era": "1970s–present, Made in Space studio, Los Angeles",
+  "description": "April Greiman was the first major designer to embrace digital tools (late 1980s Mac) — her *Design Quarterly 133* (1986) was a single life-size fold-out produced entirely on MacPaint and is still in design canon. Greiman fuses Swiss rigor with layered imagery, early digital aesthetic, and a New Wave sensibility that Wolfgang Weingart had trained her on at Basel. Distinct from both Vignelli (too-Swiss) and Scher (too-print) — Greiman is the first computer-native designer.",
+  "biases": {
+    "style_weight_multipliers": {
+      "new-wave-swiss-punk": 5.0,
+      "swiss-rationalism": 3.0,
+      "postmodern": 2.8,
+      "layered-type": 2.5,
+      "deconstructed-type": 2.5,
+      "holographic": 2.3,
+      "y2k-futurism": 2.0,
+      "type-collage": 2.0,
+      "recombinant-hybrid": 1.8,
+      "variable-font": 1.5,
+      "colr-v1-color-type": 1.5,
+      "synthwave": 1.3
+    },
+    "style_blocklist": [
+      "dieter-rams",
+      "fintech-trust",
+      "corpcore-quiet-luxury",
+      "brutalist-web",
+      "concrete-brutalist-material",
+      "dark-mode-first"
+    ],
+    "palette_tags_preferred": ["light", "pastel", "neon"],
+    "motion_tier_cap": "Kinetic",
+    "motion_tier_preferred": "Expressive",
+    "density_preferred": "balanced",
+    "touch_target_min": 44,
+    "typography_preferred": ["OCR-A", "OCR-B", "Univers", "Frutiger", "Eurostile", "Cabinet Grotesk"]
+  },
+  "rules": [
+    "Layer transparency is the signature — overlapping elements with mix-blend-mode or opacity 0.6–0.8, echoes early Mac composited imagery.",
+    "Digital-native type — OCR-A, OCR-B, and other machine-readable faces are welcome. This is the designer who made computers a typographic instrument.",
+    "Hybrid imagery — photography + pure geometry + type, composited in the same composition. The juxtaposition is the voice.",
+    "Diagonal composition, but with Swiss underlying grid — looks expressive, measures rigorous.",
+    "Color: soft neons and pastels over white or near-white. Never dark-mode (this is a late-1980s aesthetic).",
+    "Texture bleed — photocopied imagery, pixel edges, dithered gradients. The early-digital imperfection is wanted, not corrected.",
+    "Motion: subtle parallax layers, each at a different speed. Echoes the hybrid-imagery stacking.",
+    "Space is elastic — Greiman's layouts breathe on desktop and compress on mobile differently than a Swiss layout would."
+  ],
+  "references": [
+    "Design Quarterly 133: Does It Make Sense? (April Greiman, 1986)",
+    "Hybrid Imagery: The Fusion of Technology and Graphic Design (April Greiman, 1990)",
+    "Made in Space (April Greiman, 2003)",
+    "New Wave Typography (Rick Poynor, chapter on Greiman)"
+  ]
+}

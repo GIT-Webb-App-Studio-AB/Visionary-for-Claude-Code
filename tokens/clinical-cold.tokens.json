@@ -1,0 +1,66 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "clinical-cold — emotional / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F4F6F8",
+      "$type": "color",
+      "$description": "cold grey-blue tint"
+    },
+    "primary": {
+      "$value": "#0066CC",
+      "$type": "color",
+      "$description": "cold blue"
+    },
+    "accent": {
+      "$value": "#6B7280",
+      "$type": "color",
+      "$description": "neutral grey — no warmth"
+    },
+    "elevation-model": {
+      "$value": "#E5E7EB",
+      "$type": "color",
+      "$description": "flat borders (1px solid ) over shadows — clinical preference for flat surfaces"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "IBM Plex Sans 400–500",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IBM Plex Sans 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.4,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":600,\"damping\":45,\"mass\":0.6}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

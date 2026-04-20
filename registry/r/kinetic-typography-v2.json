@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kinetic-typography-v2",
+  "type": "registry:style",
+  "title": "Kinetic Typography V2",
+  "description": "kinetic-typography-v2 — typography / Kinetic Motion tier: Kinetic. Display font: **variable font required**.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**variable font required**",
+      "--font-body": "same family",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

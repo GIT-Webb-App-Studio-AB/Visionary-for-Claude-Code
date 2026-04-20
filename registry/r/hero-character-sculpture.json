@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-character-sculpture",
+  "type": "registry:style",
+  "title": "Hero Character Sculpture",
+  "description": "hero-character-sculpture — graphic / Kinetic Motion tier: Kinetic. Display font: Syne 800.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne 800",
+      "--font-body": "Syne",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.178 0.000 89.9)",
+      "primary-foreground": "oklch(0.178 0.000 89.9)",
+      "accent-foreground": "oklch(0.178 0.000 89.9)",
+      "secondary-foreground": "oklch(0.178 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.178 0.000 89.9)",
+      "primary-foreground": "oklch(0.178 0.000 89.9)",
+      "accent-foreground": "oklch(0.178 0.000 89.9)",
+      "secondary-foreground": "oklch(0.178 0.000 89.9)"
+    }
+  }
+}

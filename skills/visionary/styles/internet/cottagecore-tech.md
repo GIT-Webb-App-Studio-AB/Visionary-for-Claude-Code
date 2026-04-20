@@ -1,3 +1,17 @@
+---
+id: cottagecore-tech
+category: internet
+motion_tier: Expressive
+density: balanced
+locale_fit: [all]
+palette_tags: [dark, light, pastel, earth, editorial, organic]
+keywords: [cottagecore, tech, internet]
+accessibility:
+  contrast_floor: 4.5
+  reduced_motion: opacity-only
+  touch_target: 44
+---
+
 # Cottagecore Tech
 
 **Category:** internet
@@ -164,6 +178,23 @@
   50% { opacity: 0.6; transform: scale(0.8); }
 }
 ```
+
+## Accessibility
+
+### Contrast
+Body text must clear 4.5:1 (WCAG 2.2 AA) AND APCA Lc ≥ 75. Large text / UI labels: 3:1 and Lc ≥ 60. Run axe-core + apca-w3 during the critique loop.
+
+### Focus
+Render a `:focus-visible` ring only — no `:focus:not(:focus-visible)` reset (obsolete since March 2022). Prefer `Canvas` / `AccentColor` system colors in the ring so Windows High Contrast and forced-colors mode stay correct.
+
+### Motion
+Under `prefers-reduced-motion: reduce`, keep opacity transitions but drop transform/scale/translate — transform is a vestibular trigger. No autoplay exceeds 5 s without a pause control.
+
+### Touch target
+Touch targets default to 44×44 px — matches Apple HIG / Material (48dp) and has ~3× lower mis-tap rate than the 24-px WCAG floor. Inline links inside flowing prose are exempt.
+
+### RTL / Logical properties
+Use CSS logical properties (margin-inline, padding-inline, border-inline-*) by default so the same component works in RTL locales without a fork.
 
 ## Slop Watch
 - **Dark backgrounds (#1A2A1A, #0D1A0D):** The cottagecore-tech palette is fundamentally light — warm off-white grounds the work surface. A dark background requires inverting the entire color system and immediately reads as dark-mode developer aesthetic (VS Code dark theme territory) rather than the cozy-daylight developer aesthetic this hybrid targets. If the design needs a dark mode, it must be a separate theme, not a background choice within the light variant.

@@ -1,0 +1,300 @@
+{
+  "skill": "baseline-slop",
+  "version": "unknown",
+  "timestamp": "2026-04-20T19:25:52.447Z",
+  "prompts_run": 10,
+  "prompts_skipped": 90,
+  "prompts_skipped_ids": [
+    "saas-02",
+    "saas-03",
+    "saas-04",
+    "saas-05",
+    "saas-06",
+    "saas-07",
+    "saas-08",
+    "saas-09",
+    "saas-10",
+    "cons-01",
+    "cons-03",
+    "cons-04",
+    "cons-05",
+    "cons-06",
+    "cons-07",
+    "cons-08",
+    "cons-09",
+    "cons-10",
+    "ed-02",
+    "ed-03",
+    "ed-04",
+    "ed-05",
+    "ed-06",
+    "ed-07",
+    "ed-08",
+    "ed-09",
+    "ed-10",
+    "fin-02",
+    "fin-03",
+    "fin-04",
+    "fin-05",
+    "fin-06",
+    "fin-07",
+    "fin-08",
+    "fin-09",
+    "fin-10",
+    "cre-02",
+    "cre-03",
+    "cre-04",
+    "cre-05",
+    "cre-06",
+    "cre-07",
+    "cre-08",
+    "cre-09",
+    "cre-10",
+    "a11y-01",
+    "a11y-02",
+    "a11y-03",
+    "a11y-04",
+    "a11y-06",
+    "a11y-07",
+    "a11y-08",
+    "a11y-09",
+    "a11y-10",
+    "loc-01",
+    "loc-02",
+    "loc-04",
+    "loc-05",
+    "loc-06",
+    "loc-07",
+    "loc-08",
+    "loc-09",
+    "loc-10",
+    "mot-01",
+    "mot-03",
+    "mot-04",
+    "mot-05",
+    "mot-06",
+    "mot-07",
+    "mot-08",
+    "mot-09",
+    "mot-10",
+    "hc-02",
+    "hc-03",
+    "hc-04",
+    "hc-05",
+    "hc-06",
+    "hc-07",
+    "hc-08",
+    "hc-09",
+    "hc-10",
+    "tr-02",
+    "tr-03",
+    "tr-04",
+    "tr-05",
+    "tr-06",
+    "tr-07",
+    "tr-08",
+    "tr-09",
+    "tr-10"
+  ],
+  "samples_per_prompt": 1,
+  "mean_total": 12.6,
+  "mean_by_dimension": {
+    "distinctiveness": 3.5,
+    "coherence": 5,
+    "accessibility": 3.1,
+    "motion_readiness": 1
+  },
+  "mean_by_category": {
+    "saas_dashboard": 11.5,
+    "consumer_mobile": 11.5,
+    "editorial": 13.5,
+    "fintech_trust": 11,
+    "creative_portfolio": 13,
+    "accessibility_first": 12,
+    "multi_locale": 13.5,
+    "motion_marketing": 13,
+    "healthcare": 13.5,
+    "transplantation": 13.5
+  },
+  "per_prompt": [
+    {
+      "id": "saas-01",
+      "category": "saas_dashboard",
+      "scores": {
+        "distinctiveness": 3,
+        "coherence": 5,
+        "accessibility": 2.5,
+        "motion_readiness": 1
+      },
+      "total": 11.5,
+      "slop_flags": [
+        "purple-gradient",
+        "left-border-accent",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface",
+        "tailwind-blue-3b82f6",
+        "tailwind-emerald-10b981"
+      ]
+    },
+    {
+      "id": "cons-02",
+      "category": "consumer_mobile",
+      "scores": {
+        "distinctiveness": 3,
+        "coherence": 5,
+        "accessibility": 2.5,
+        "motion_readiness": 1
+      },
+      "total": 11.5,
+      "slop_flags": [
+        "purple-gradient",
+        "left-border-accent",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface",
+        "tailwind-blue-3b82f6"
+      ]
+    },
+    {
+      "id": "ed-01",
+      "category": "editorial",
+      "scores": {
+        "distinctiveness": 4,
+        "coherence": 5,
+        "accessibility": 3.5,
+        "motion_readiness": 1
+      },
+      "total": 13.5,
+      "slop_flags": [
+        "purple-gradient",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface"
+      ]
+    },
+    {
+      "id": "fin-01",
+      "category": "fintech_trust",
+      "scores": {
+        "distinctiveness": 2,
+        "coherence": 5,
+        "accessibility": 3,
+        "motion_readiness": 1
+      },
+      "total": 11,
+      "slop_flags": [
+        "left-border-accent",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface",
+        "tailwind-blue-3b82f6",
+        "tailwind-indigo-6366f1",
+        "tailwind-emerald-10b981",
+        "shadow-md-uniform"
+      ]
+    },
+    {
+      "id": "cre-01",
+      "category": "creative_portfolio",
+      "scores": {
+        "distinctiveness": 4,
+        "coherence": 5,
+        "accessibility": 3,
+        "motion_readiness": 1
+      },
+      "total": 13,
+      "slop_flags": [
+        "purple-gradient",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface"
+      ]
+    },
+    {
+      "id": "a11y-05",
+      "category": "accessibility_first",
+      "scores": {
+        "distinctiveness": 3,
+        "coherence": 5,
+        "accessibility": 3,
+        "motion_readiness": 1
+      },
+      "total": 12,
+      "slop_flags": [
+        "purple-gradient",
+        "left-border-accent",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface"
+      ]
+    },
+    {
+      "id": "loc-03",
+      "category": "multi_locale",
+      "scores": {
+        "distinctiveness": 4,
+        "coherence": 5,
+        "accessibility": 3.5,
+        "motion_readiness": 1
+      },
+      "total": 13.5,
+      "slop_flags": [
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface"
+      ]
+    },
+    {
+      "id": "mot-02",
+      "category": "motion_marketing",
+      "scores": {
+        "distinctiveness": 4,
+        "coherence": 5,
+        "accessibility": 3,
+        "motion_readiness": 1
+      },
+      "total": 13,
+      "slop_flags": [
+        "purple-gradient",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface"
+      ]
+    },
+    {
+      "id": "hc-01",
+      "category": "healthcare",
+      "scores": {
+        "distinctiveness": 4,
+        "coherence": 5,
+        "accessibility": 3.5,
+        "motion_readiness": 1
+      },
+      "total": 13.5,
+      "slop_flags": [
+        "left-border-accent",
+        "gradient-text-heading",
+        "inter-sole-typeface",
+        "symmetric-padding-no-rhythm"
+      ]
+    },
+    {
+      "id": "tr-01",
+      "category": "transplantation",
+      "scores": {
+        "distinctiveness": 4,
+        "coherence": 5,
+        "accessibility": 3.5,
+        "motion_readiness": 1
+      },
+      "total": 13.5,
+      "slop_flags": [
+        "left-border-accent",
+        "gradient-text-heading",
+        "hero-metric-layout",
+        "inter-sole-typeface"
+      ]
+    }
+  ]
+}

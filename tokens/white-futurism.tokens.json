@@ -1,0 +1,65 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "white-futurism — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "`` (pure white — the non-negotiable). Secondary"
+    },
+    "text": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "`` (absolute black — the cold-restraint register"
+    },
+    "primary": {
+      "$value": "#0066FF",
+      "$type": "color",
+      "$description": "`` (one single clean electric blue — not Apple's"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Geist** (Vercel",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Geist",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.05,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.22}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

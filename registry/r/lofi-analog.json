@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lofi-analog",
+  "type": "registry:style",
+  "title": "Lofi Analog",
+  "description": "lofi-analog — internet / Subtle Motion tier: Subtle. Display font: Special Elite.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Special Elite",
+      "--font-body": "Courier Prime",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.953 0.021 88.7)",
+      "primary": "oklch(0.541 0.104 84.4)",
+      "primary-foreground": "oklch(0.953 0.021 88.7)",
+      "accent": "oklch(0.570 0.163 28.3)",
+      "accent-foreground": "oklch(0.953 0.021 88.7)",
+      "secondary-foreground": "oklch(0.953 0.021 88.7)",
+      "border": "oklch(0.570 0.163 28.3)",
+      "ring": "oklch(0.541 0.104 84.4)"
+    },
+    "dark": {
+      "background": "oklch(0.953 0.021 88.7)",
+      "primary": "oklch(0.541 0.104 84.4)",
+      "primary-foreground": "oklch(0.953 0.021 88.7)",
+      "accent": "oklch(0.570 0.163 28.3)",
+      "accent-foreground": "oklch(0.953 0.021 88.7)",
+      "secondary-foreground": "oklch(0.953 0.021 88.7)",
+      "border": "oklch(0.570 0.163 28.3)",
+      "ring": "oklch(0.541 0.104 84.4)"
+    }
+  }
+}

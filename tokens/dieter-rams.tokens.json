@@ -1,0 +1,56 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "dieter-rams — historical / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5F5F0",
+      "$type": "color",
+      "$description": "warm white — off-white with intention"
+    },
+    "primary": {
+      "$value": "#FF6B00",
+      "$type": "color",
+      "$description": "functional orange — controls only, never decorative"
+    },
+    "accent": {
+      "$value": "#1A1A1A",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Aktiv Grotesk",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Aktiv Grotesk",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":600,\"damping\":60}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

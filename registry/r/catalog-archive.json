@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "catalog-archive",
+  "type": "registry:style",
+  "title": "Catalog Archive",
+  "description": "catalog-archive — hybrid / Subtle Motion tier: Subtle. Display font: Neue Haas Grotesk (or Aktiv Grotesk).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Neue Haas Grotesk (or Aktiv Grotesk)",
+      "--font-body": "Adobe Caslon (or EB Garamond as web fallback)",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.977 0.007 80.7)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.977 0.007 80.7)",
+      "accent": "oklch(0.393 0.123 14.8)",
+      "accent-foreground": "oklch(0.977 0.007 80.7)",
+      "secondary-foreground": "oklch(0.977 0.007 80.7)",
+      "border": "oklch(0.393 0.123 14.8)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.977 0.007 80.7)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.977 0.007 80.7)",
+      "accent": "oklch(0.393 0.123 14.8)",
+      "accent-foreground": "oklch(0.977 0.007 80.7)",
+      "secondary-foreground": "oklch(0.977 0.007 80.7)",
+      "border": "oklch(0.393 0.123 14.8)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    }
+  }
+}

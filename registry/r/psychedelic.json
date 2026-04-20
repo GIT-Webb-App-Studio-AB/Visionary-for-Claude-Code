@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "psychedelic",
+  "type": "registry:style",
+  "title": "Psychedelic",
+  "description": "psychedelic — historical / Kinetic Motion tier: Kinetic. Display font: Boogaloo (or any flowing display face with rounded strokes).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Boogaloo (or any flowing display face with rounded strokes)",
+      "--font-body": "Nunito (readable under visual noise)",
+      "--radius": "999px"
+    },
+    "light": {
+      "background": "oklch(0.189 0.085 299.1)",
+      "primary": "oklch(0.710 0.243 342.0)",
+      "primary-foreground": "oklch(0.189 0.085 299.1)",
+      "accent": "oklch(0.900 0.156 171.9)",
+      "accent-foreground": "oklch(0.189 0.085 299.1)",
+      "secondary-foreground": "oklch(0.189 0.085 299.1)",
+      "border": "oklch(0.900 0.156 171.9)",
+      "ring": "oklch(0.710 0.243 342.0)"
+    },
+    "dark": {
+      "background": "oklch(0.189 0.085 299.1)",
+      "primary": "oklch(0.710 0.243 342.0)",
+      "primary-foreground": "oklch(0.189 0.085 299.1)",
+      "accent": "oklch(0.900 0.156 171.9)",
+      "accent-foreground": "oklch(0.189 0.085 299.1)",
+      "secondary-foreground": "oklch(0.189 0.085 299.1)",
+      "border": "oklch(0.900 0.156 171.9)",
+      "ring": "oklch(0.710 0.243 342.0)"
+    }
+  }
+}

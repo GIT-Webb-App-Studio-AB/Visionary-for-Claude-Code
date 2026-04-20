@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "recombinant-hybrid",
+  "type": "registry:style",
+  "title": "Recombinant Hybrid",
+  "description": "recombinant-hybrid — hybrid / Expressive Motion tier: Expressive. Display font: TWO faces.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "TWO faces",
+      "--font-body": "the more",
+      "--radius": "8px"
+    },
+    "light": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    },
+    "dark": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    }
+  }
+}

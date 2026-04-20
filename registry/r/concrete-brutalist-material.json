@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "concrete-brutalist-material",
+  "type": "registry:style",
+  "title": "Concrete Brutalist Material",
+  "description": "concrete-brutalist-material — graphic / Subtle Motion tier: Subtle. Display font: **Space Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Space Grotesk",
+      "--font-body": "Space Grotesk",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.833 0.000 89.9)",
+      "primary-foreground": "oklch(0.833 0.000 89.9)",
+      "accent": "oklch(0.551 0.023 264.4)",
+      "accent-foreground": "oklch(0.833 0.000 89.9)",
+      "secondary-foreground": "oklch(0.833 0.000 89.9)",
+      "border": "oklch(0.551 0.023 264.4)"
+    },
+    "dark": {
+      "background": "oklch(0.833 0.000 89.9)",
+      "primary-foreground": "oklch(0.833 0.000 89.9)",
+      "accent": "oklch(0.551 0.023 264.4)",
+      "accent-foreground": "oklch(0.833 0.000 89.9)",
+      "secondary-foreground": "oklch(0.833 0.000 89.9)",
+      "border": "oklch(0.551 0.023 264.4)"
+    }
+  }
+}

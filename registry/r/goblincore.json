@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "goblincore",
+  "type": "registry:style",
+  "title": "Goblincore",
+  "description": "goblincore — internet / Expressive Motion tier: Expressive. Display font: IM Fell English.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "IM Fell English",
+      "--font-body": "IM Fell English or Libre Baskerville",
+      "--radius": "3px"
+    },
+    "light": {
+      "background": "oklch(0.216 0.020 99.1)",
+      "primary": "oklch(0.598 0.109 129.1)",
+      "primary-foreground": "oklch(0.216 0.020 99.1)",
+      "accent": "oklch(0.602 0.080 69.2)",
+      "accent-foreground": "oklch(0.216 0.020 99.1)",
+      "secondary-foreground": "oklch(0.216 0.020 99.1)",
+      "border": "oklch(0.602 0.080 69.2)",
+      "ring": "oklch(0.598 0.109 129.1)"
+    },
+    "dark": {
+      "background": "oklch(0.216 0.020 99.1)",
+      "primary": "oklch(0.598 0.109 129.1)",
+      "primary-foreground": "oklch(0.216 0.020 99.1)",
+      "accent": "oklch(0.602 0.080 69.2)",
+      "accent-foreground": "oklch(0.216 0.020 99.1)",
+      "secondary-foreground": "oklch(0.216 0.020 99.1)",
+      "border": "oklch(0.602 0.080 69.2)",
+      "ring": "oklch(0.598 0.109 129.1)"
+    }
+  }
+}

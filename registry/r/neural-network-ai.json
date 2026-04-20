@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neural-network-ai",
+  "type": "registry:style",
+  "title": "Neural Network Ai",
+  "description": "neural-network-ai — graphic / Kinetic Motion tier: Kinetic. Display font: Space Mono.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Mono",
+      "--font-body": "Space Mono",
+      "--radius": "999px"
+    },
+    "light": {
+      "background": "oklch(0.134 0.031 255.4)",
+      "primary": "oklch(0.693 0.165 254.0)",
+      "primary-foreground": "oklch(0.134 0.031 255.4)",
+      "accent": "oklch(0.868 0.160 178.2)",
+      "accent-foreground": "oklch(0.134 0.031 255.4)",
+      "secondary-foreground": "oklch(0.134 0.031 255.4)",
+      "border": "oklch(0.868 0.160 178.2)",
+      "ring": "oklch(0.693 0.165 254.0)"
+    },
+    "dark": {
+      "background": "oklch(0.134 0.031 255.4)",
+      "primary": "oklch(0.693 0.165 254.0)",
+      "primary-foreground": "oklch(0.134 0.031 255.4)",
+      "accent": "oklch(0.868 0.160 178.2)",
+      "accent-foreground": "oklch(0.134 0.031 255.4)",
+      "secondary-foreground": "oklch(0.134 0.031 255.4)",
+      "border": "oklch(0.868 0.160 178.2)",
+      "ring": "oklch(0.693 0.165 254.0)"
+    }
+  }
+}

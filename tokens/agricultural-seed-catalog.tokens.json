@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "agricultural-seed-catalog — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5EDD8",
+      "$type": "color",
+      "$description": "cream paper — Burpee catalog warmth"
+    },
+    "primary": {
+      "$value": "#1C1C1C",
+      "$type": "color",
+      "$description": "typeset black"
+    },
+    "accent": {
+      "$value": "#C4861A",
+      "$type": "color",
+      "$description": "harvest gold"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Clarendon (or Rockwell)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Rockwell",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

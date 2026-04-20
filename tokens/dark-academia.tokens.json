@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "dark-academia — internet / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#1A1510",
+      "$type": "color",
+      "$description": "— warm dark brown that reads as candlelit library"
+    },
+    "primary": {
+      "$value": "#C9A84C",
+      "$type": "color",
+      "$description": "— aged gold for links and interactive elements"
+    },
+    "accent": {
+      "$value": "#8B7355",
+      "$type": "color",
+      "$description": "— parchment tan as secondary text and borders"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "EB Garamond",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "EB Garamond 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

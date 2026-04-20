@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "future-medieval",
+  "type": "registry:style",
+  "title": "Future Medieval",
+  "description": "future-medieval — graphic / Expressive Motion tier: Expressive. Display font: MedievalSharp (or UnifrakturMaguntia).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "MedievalSharp (or UnifrakturMaguntia)",
+      "--font-body": "Cinzel",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.166 0.027 283.1)",
+      "primary": "oklch(0.743 0.117 89.5)",
+      "primary-foreground": "oklch(0.166 0.027 283.1)",
+      "accent": "oklch(0.357 0.114 13.8)",
+      "accent-foreground": "oklch(0.166 0.027 283.1)",
+      "secondary-foreground": "oklch(0.166 0.027 283.1)",
+      "border": "oklch(0.357 0.114 13.8)",
+      "ring": "oklch(0.743 0.117 89.5)"
+    },
+    "dark": {
+      "background": "oklch(0.166 0.027 283.1)",
+      "primary": "oklch(0.743 0.117 89.5)",
+      "primary-foreground": "oklch(0.166 0.027 283.1)",
+      "accent": "oklch(0.357 0.114 13.8)",
+      "accent-foreground": "oklch(0.166 0.027 283.1)",
+      "secondary-foreground": "oklch(0.166 0.027 283.1)",
+      "border": "oklch(0.357 0.114 13.8)",
+      "ring": "oklch(0.743 0.117 89.5)"
+    }
+  }
+}

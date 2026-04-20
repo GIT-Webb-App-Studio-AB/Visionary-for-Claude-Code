@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calm-focus-mode",
+  "type": "registry:style",
+  "title": "Calm Focus Mode",
+  "description": "calm-focus-mode — emotional / Subtle Motion tier: Subtle. Display font: Atkinson Hyperlegible.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Atkinson Hyperlegible",
+      "--font-body": "Atkinson Hyperlegible",
+      "--radius": "6px"
+    },
+    "light": {
+      "background": "oklch(0.970 0.007 88.6)",
+      "foreground": "oklch(0.285 0.000 89.9)",
+      "primary": "oklch(0.516 0.058 132.3)",
+      "primary-foreground": "oklch(0.970 0.007 88.6)",
+      "accent": "oklch(0.588 0.048 80.2)",
+      "accent-foreground": "oklch(0.970 0.007 88.6)",
+      "secondary-foreground": "oklch(0.970 0.007 88.6)",
+      "border": "oklch(0.588 0.048 80.2)",
+      "ring": "oklch(0.516 0.058 132.3)",
+      "muted-foreground": "oklch(0.285 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.970 0.007 88.6)",
+      "foreground": "oklch(0.285 0.000 89.9)",
+      "primary": "oklch(0.516 0.058 132.3)",
+      "primary-foreground": "oklch(0.970 0.007 88.6)",
+      "accent": "oklch(0.588 0.048 80.2)",
+      "accent-foreground": "oklch(0.970 0.007 88.6)",
+      "secondary-foreground": "oklch(0.970 0.007 88.6)",
+      "border": "oklch(0.588 0.048 80.2)",
+      "ring": "oklch(0.516 0.058 132.3)",
+      "muted-foreground": "oklch(0.285 0.000 89.9)"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mycelium-fungal",
+  "type": "registry:style",
+  "title": "Mycelium Fungal",
+  "description": "mycelium-fungal — extended / Subtle Motion tier: Subtle. Display font: Crimson Pro.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Crimson Pro",
+      "--font-body": "Crimson Pro",
+      "--radius": "12px"
+    },
+    "light": {
+      "background": "oklch(0.190 0.021 69.3)",
+      "primary": "oklch(0.671 0.140 73.8)",
+      "primary-foreground": "oklch(0.190 0.021 69.3)",
+      "accent": "oklch(0.529 0.108 138.4)",
+      "accent-foreground": "oklch(0.190 0.021 69.3)",
+      "secondary-foreground": "oklch(0.190 0.021 69.3)",
+      "border": "oklch(0.529 0.108 138.4)",
+      "ring": "oklch(0.671 0.140 73.8)"
+    },
+    "dark": {
+      "background": "oklch(0.190 0.021 69.3)",
+      "primary": "oklch(0.671 0.140 73.8)",
+      "primary-foreground": "oklch(0.190 0.021 69.3)",
+      "accent": "oklch(0.529 0.108 138.4)",
+      "accent-foreground": "oklch(0.190 0.021 69.3)",
+      "secondary-foreground": "oklch(0.190 0.021 69.3)",
+      "border": "oklch(0.529 0.108 138.4)",
+      "ring": "oklch(0.671 0.140 73.8)"
+    }
+  }
+}

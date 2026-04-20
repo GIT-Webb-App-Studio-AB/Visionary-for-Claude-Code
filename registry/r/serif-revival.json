@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "serif-revival",
+  "type": "registry:style",
+  "title": "Serif Revival",
+  "description": "serif-revival — typography / Subtle Motion tier: Subtle. Display font: Cormorant Garamond 600–700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cormorant Garamond 600–700",
+      "--font-body": "Source Serif 4 400",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.994 0.008 91.5)",
+      "primary": "oklch(0.189 0.023 72.3)",
+      "primary-foreground": "oklch(0.994 0.008 91.5)",
+      "accent": "oklch(0.416 0.148 26.6)",
+      "accent-foreground": "oklch(0.994 0.008 91.5)",
+      "secondary-foreground": "oklch(0.994 0.008 91.5)",
+      "border": "oklch(0.416 0.148 26.6)",
+      "ring": "oklch(0.189 0.023 72.3)"
+    },
+    "dark": {
+      "background": "oklch(0.994 0.008 91.5)",
+      "primary": "oklch(0.189 0.023 72.3)",
+      "primary-foreground": "oklch(0.994 0.008 91.5)",
+      "accent": "oklch(0.416 0.148 26.6)",
+      "accent-foreground": "oklch(0.994 0.008 91.5)",
+      "secondary-foreground": "oklch(0.994 0.008 91.5)",
+      "border": "oklch(0.416 0.148 26.6)",
+      "ring": "oklch(0.189 0.023 72.3)"
+    }
+  }
+}

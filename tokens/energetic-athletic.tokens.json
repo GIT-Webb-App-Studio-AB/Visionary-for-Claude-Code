@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "energetic-athletic — emotional / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "or #F5F5F5"
+    },
+    "primary": {
+      "$value": "#FF2D00",
+      "$type": "color",
+      "$description": "athletic red) or #00D084 (performance green"
+    },
+    "accent": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "dark) or #000000 (light"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Barlow Condensed 800–900",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Barlow 500",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 0.9,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":500,\"damping\":22,\"mass\":0.7}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

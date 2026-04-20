@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "japanese-minimalism — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FAFAF8",
+      "$type": "color",
+      "$description": "washi white"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "sumi ink"
+    },
+    "accent": {
+      "$value": "#C0392B",
+      "$type": "color",
+      "$description": "vermillion seal red — used sparingly, single instance"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Noto Serif JP",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Noto Sans JP",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.05em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":32}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

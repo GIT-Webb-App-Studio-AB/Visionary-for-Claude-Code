@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "govtech-civic",
+  "type": "registry:style",
+  "title": "Govtech Civic",
+  "description": "govtech-civic — industry / Subtle Motion tier: Subtle. Display font: Source Serif 4 600.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Source Serif 4 600",
+      "--font-body": "Source Sans 3 400",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.473 0.132 249.5)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.586 0.197 27.4)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.586 0.197 27.4)",
+      "ring": "oklch(0.473 0.132 249.5)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.473 0.132 249.5)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.586 0.197 27.4)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.586 0.197 27.4)",
+      "ring": "oklch(0.473 0.132 249.5)"
+    }
+  }
+}

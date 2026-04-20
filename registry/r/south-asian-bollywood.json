@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "south-asian-bollywood",
+  "type": "registry:style",
+  "title": "South Asian Bollywood",
+  "description": "south-asian-bollywood — graphic / Expressive Motion tier: Expressive. Display font: Noto Sans Devanagari.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Noto Sans Devanagari",
+      "--font-body": "Poppins (acceptable here for its Bollywood",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.176 0.092 303.9)",
+      "primary": "oklch(0.702 0.200 45.1)",
+      "primary-foreground": "oklch(0.176 0.092 303.9)",
+      "accent": "oklch(0.887 0.182 95.3)",
+      "accent-foreground": "oklch(0.176 0.092 303.9)",
+      "secondary-foreground": "oklch(0.176 0.092 303.9)",
+      "border": "oklch(0.887 0.182 95.3)",
+      "ring": "oklch(0.702 0.200 45.1)"
+    },
+    "dark": {
+      "background": "oklch(0.176 0.092 303.9)",
+      "primary": "oklch(0.702 0.200 45.1)",
+      "primary-foreground": "oklch(0.176 0.092 303.9)",
+      "accent": "oklch(0.887 0.182 95.3)",
+      "accent-foreground": "oklch(0.176 0.092 303.9)",
+      "secondary-foreground": "oklch(0.176 0.092 303.9)",
+      "border": "oklch(0.887 0.182 95.3)",
+      "ring": "oklch(0.702 0.200 45.1)"
+    }
+  }
+}

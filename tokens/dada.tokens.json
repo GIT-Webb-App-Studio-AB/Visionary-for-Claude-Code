@@ -1,0 +1,41 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "dada — historical / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#F0EBE0",
+      "$type": "color",
+      "$description": "aged paper"
+    },
+    "primary": {
+      "$value": "#1C1C1C",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#B22222",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Mixed",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Any serif",
+      "$type": "fontFamily"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":120,\"damping\":8}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {}
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "type-collage",
+  "type": "registry:style",
+  "title": "Type Collage",
+  "description": "type-collage — graphic / Expressive Motion tier: Expressive. Display font: Mixed variable.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Mixed variable",
+      "--font-body": "Variable; contrast of weights",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.941 0.016 86.4)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.941 0.016 86.4)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent-foreground": "oklch(0.941 0.016 86.4)",
+      "secondary-foreground": "oklch(0.941 0.016 86.4)",
+      "border": "oklch(0.628 0.258 29.2)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.941 0.016 86.4)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.941 0.016 86.4)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent-foreground": "oklch(0.941 0.016 86.4)",
+      "secondary-foreground": "oklch(0.941 0.016 86.4)",
+      "border": "oklch(0.628 0.258 29.2)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

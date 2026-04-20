@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corpcore-quiet-luxury",
+  "type": "registry:style",
+  "title": "Corpcore Quiet Luxury",
+  "description": "corpcore-quiet-luxury — extended / Subtle Motion tier: Subtle. Display font: Cormorant weight 300/400.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cormorant weight 300/400",
+      "--font-body": "Cormorant",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.948 0.010 72.7)",
+      "primary": "oklch(0.706 0.015 74.4)",
+      "primary-foreground": "oklch(0.948 0.010 72.7)",
+      "accent": "oklch(0.730 0.100 85.6)",
+      "accent-foreground": "oklch(0.948 0.010 72.7)",
+      "secondary-foreground": "oklch(0.948 0.010 72.7)",
+      "border": "oklch(0.730 0.100 85.6)",
+      "ring": "oklch(0.706 0.015 74.4)"
+    },
+    "dark": {
+      "background": "oklch(0.948 0.010 72.7)",
+      "primary": "oklch(0.706 0.015 74.4)",
+      "primary-foreground": "oklch(0.948 0.010 72.7)",
+      "accent": "oklch(0.730 0.100 85.6)",
+      "accent-foreground": "oklch(0.948 0.010 72.7)",
+      "secondary-foreground": "oklch(0.948 0.010 72.7)",
+      "border": "oklch(0.730 0.100 85.6)",
+      "ring": "oklch(0.706 0.015 74.4)"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "zen-void",
+  "type": "registry:style",
+  "title": "Zen Void",
+  "description": "zen-void — emotional / Subtle Motion tier: Subtle. Display font: Libre Baskerville 300–400 (light weight signals restraint).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Libre Baskerville 300–400 (light weight signals restraint)",
+      "--font-body": "Libre Baskerville 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.985 0.003 106.4)",
+      "primary": "oklch(0.217 0.004 106.7)",
+      "primary-foreground": "oklch(0.985 0.003 106.4)",
+      "accent-foreground": "oklch(0.985 0.003 106.4)",
+      "secondary-foreground": "oklch(0.985 0.003 106.4)",
+      "ring": "oklch(0.217 0.004 106.7)"
+    },
+    "dark": {
+      "background": "oklch(0.985 0.003 106.4)",
+      "primary": "oklch(0.217 0.004 106.7)",
+      "primary-foreground": "oklch(0.985 0.003 106.4)",
+      "accent-foreground": "oklch(0.985 0.003 106.4)",
+      "secondary-foreground": "oklch(0.985 0.003 106.4)",
+      "ring": "oklch(0.217 0.004 106.7)"
+    }
+  }
+}

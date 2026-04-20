@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dopamine-calm",
+  "type": "registry:style",
+  "title": "Dopamine Calm",
+  "description": "dopamine-calm — extended / Subtle Motion tier: Subtle. Display font: **Nunito** (warm geometric.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Nunito** (warm geometric",
+      "--font-body": "Nunito",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.983 0.011 63.4)",
+      "foreground": "oklch(0.287 0.007 67.5)",
+      "primary": "oklch(0.588 0.083 145.4)",
+      "primary-foreground": "oklch(0.983 0.011 63.4)",
+      "accent-foreground": "oklch(0.983 0.011 63.4)",
+      "secondary-foreground": "oklch(0.983 0.011 63.4)",
+      "ring": "oklch(0.588 0.083 145.4)",
+      "muted-foreground": "oklch(0.287 0.007 67.5)"
+    },
+    "dark": {
+      "background": "oklch(0.983 0.011 63.4)",
+      "foreground": "oklch(0.287 0.007 67.5)",
+      "primary": "oklch(0.588 0.083 145.4)",
+      "primary-foreground": "oklch(0.983 0.011 63.4)",
+      "accent-foreground": "oklch(0.983 0.011 63.4)",
+      "secondary-foreground": "oklch(0.983 0.011 63.4)",
+      "ring": "oklch(0.588 0.083 145.4)",
+      "muted-foreground": "oklch(0.287 0.007 67.5)"
+    }
+  }
+}

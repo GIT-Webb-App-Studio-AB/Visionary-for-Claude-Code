@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uncanny-valley",
+  "type": "registry:style",
+  "title": "Uncanny Valley",
+  "description": "uncanny-valley — extended / Expressive Motion tier: Expressive. Display font: System.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "System",
+      "--font-body": "System",
+      "--radius": "5px"
+    },
+    "light": {
+      "background": "oklch(0.970 0.003 106.4)",
+      "primary": "oklch(0.217 0.004 106.7)",
+      "primary-foreground": "oklch(0.970 0.003 106.4)",
+      "accent": "oklch(0.854 0.049 58.9)",
+      "accent-foreground": "oklch(0.970 0.003 106.4)",
+      "secondary-foreground": "oklch(0.970 0.003 106.4)",
+      "border": "oklch(0.854 0.049 58.9)",
+      "ring": "oklch(0.217 0.004 106.7)"
+    },
+    "dark": {
+      "background": "oklch(0.970 0.003 106.4)",
+      "primary": "oklch(0.217 0.004 106.7)",
+      "primary-foreground": "oklch(0.970 0.003 106.4)",
+      "accent": "oklch(0.854 0.049 58.9)",
+      "accent-foreground": "oklch(0.970 0.003 106.4)",
+      "secondary-foreground": "oklch(0.970 0.003 106.4)",
+      "border": "oklch(0.854 0.049 58.9)",
+      "ring": "oklch(0.217 0.004 106.7)"
+    }
+  }
+}

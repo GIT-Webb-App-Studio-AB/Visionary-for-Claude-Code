@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "scandinavian-nordic — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F7F7F5",
+      "$type": "color",
+      "$description": "warm grey-white — not pure white"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "near-black"
+    },
+    "accent": {
+      "$value": "#4A7A9B",
+      "$type": "color",
+      "$description": "coastal blue — desaturated) or #4A7A5A (forest green — desaturated"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Söhne (or Aktiv Grotesk as alternative)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Söhne",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":26}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

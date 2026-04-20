@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "layered-type",
+  "type": "registry:style",
+  "title": "Layered Type",
+  "description": "layered-type — typography / Expressive Motion tier: Expressive. Display font: Syne 800 (foreground) + Syne 200 (background layer).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne 800 (foreground) + Syne 200 (background layer)",
+      "--font-body": "Syne 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.168 0.000 89.9)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.168 0.000 89.9)",
+      "accent": "oklch(0.950 0.218 116.2)",
+      "accent-foreground": "oklch(0.168 0.000 89.9)",
+      "secondary-foreground": "oklch(0.168 0.000 89.9)",
+      "border": "oklch(0.950 0.218 116.2)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.168 0.000 89.9)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.168 0.000 89.9)",
+      "accent": "oklch(0.950 0.218 116.2)",
+      "accent-foreground": "oklch(0.168 0.000 89.9)",
+      "secondary-foreground": "oklch(0.168 0.000 89.9)",
+      "border": "oklch(0.950 0.218 116.2)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

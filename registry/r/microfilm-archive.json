@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "microfilm-archive",
+  "type": "registry:style",
+  "title": "Microfilm Archive",
+  "description": "microfilm-archive — extended / Subtle Motion tier: Subtle. Display font: Courier Prime.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Courier Prime",
+      "--font-body": "Courier Prime",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.154 0.034 109.8)",
+      "primary": "oklch(0.818 0.171 77.9)",
+      "primary-foreground": "oklch(0.154 0.034 109.8)",
+      "accent-foreground": "oklch(0.154 0.034 109.8)",
+      "secondary-foreground": "oklch(0.154 0.034 109.8)",
+      "ring": "oklch(0.818 0.171 77.9)"
+    },
+    "dark": {
+      "background": "oklch(0.154 0.034 109.8)",
+      "primary": "oklch(0.818 0.171 77.9)",
+      "primary-foreground": "oklch(0.154 0.034 109.8)",
+      "accent-foreground": "oklch(0.154 0.034 109.8)",
+      "secondary-foreground": "oklch(0.154 0.034 109.8)",
+      "ring": "oklch(0.818 0.171 77.9)"
+    }
+  }
+}

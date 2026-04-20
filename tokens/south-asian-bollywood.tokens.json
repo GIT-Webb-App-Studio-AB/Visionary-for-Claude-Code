@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "south-asian-bollywood — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#1A0030",
+      "$type": "color",
+      "$description": "Bollywood dark violet — velvet curtain"
+    },
+    "primary": {
+      "$value": "#FF6B00",
+      "$type": "color",
+      "$description": "marigold orange — auspicious"
+    },
+    "accent": {
+      "$value": "#FFD700",
+      "$type": "color",
+      "$description": "gold — jewelry reference"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Noto Sans Devanagari",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Poppins (acceptable here for its Bollywood",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":220,\"damping\":16}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "24px",
+      "$type": "dimension"
+    }
+  }
+}

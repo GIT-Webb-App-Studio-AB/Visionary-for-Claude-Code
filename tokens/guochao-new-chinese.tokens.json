@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "guochao-new-chinese — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FAF0E6",
+      "$type": "color",
+      "$description": "rice paper"
+    },
+    "primary": {
+      "$value": "#C0222B",
+      "$type": "color",
+      "$description": "imperial red"
+    },
+    "accent": {
+      "$value": "#C9A84C",
+      "$type": "color",
+      "$description": "imperial gold"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Noto Serif SC (or Source Han Serif)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Noto Sans SC",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.05em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "eastern-european-brutalist",
+  "type": "registry:style",
+  "title": "Eastern European Brutalist",
+  "description": "eastern-european-brutalist — graphic / Subtle Motion tier: Subtle. Display font: Oswald Condensed.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Oswald Condensed",
+      "--font-body": "Roboto (the irony is intentional",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.285 0.000 89.9)",
+      "primary": "oklch(0.531 0.218 29.2)",
+      "primary-foreground": "oklch(0.285 0.000 89.9)",
+      "accent": "oklch(0.909 0.023 84.6)",
+      "accent-foreground": "oklch(0.285 0.000 89.9)",
+      "secondary-foreground": "oklch(0.285 0.000 89.9)",
+      "border": "oklch(0.909 0.023 84.6)",
+      "ring": "oklch(0.531 0.218 29.2)"
+    },
+    "dark": {
+      "background": "oklch(0.285 0.000 89.9)",
+      "primary": "oklch(0.531 0.218 29.2)",
+      "primary-foreground": "oklch(0.285 0.000 89.9)",
+      "accent": "oklch(0.909 0.023 84.6)",
+      "accent-foreground": "oklch(0.285 0.000 89.9)",
+      "secondary-foreground": "oklch(0.285 0.000 89.9)",
+      "border": "oklch(0.909 0.023 84.6)",
+      "ring": "oklch(0.531 0.218 29.2)"
+    }
+  }
+}

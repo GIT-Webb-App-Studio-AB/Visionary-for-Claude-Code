@@ -196,6 +196,217 @@ bounce:  { stiffness: 400, damping: 10, mass: 0.8 }
 - **Color system**: React Native `StyleSheet` or NativeWind (Tailwind for RN). Theme via React Context or Tamagui's `createTamagui`. `useColorScheme()` for system dark mode detection.
 - **Anti-patterns**: Never use `Animated` from `react-native` core — use `react-native-reanimated`. Never run animations on the JS thread — `reanimated` runs on UI thread via worklets. Never use `transform: [{ translateX: value }]` without shared values. Never set touch targets below 48dp/44pt. Never use `opacity: 0` to hide elements from screen readers — use `accessibilityElementsHidden` or `importantForAccessibility="no-hide-descendants"`.
 
+### 15. Vanilla JS / HTML + CSS (continued below)
+
+---
+
+## Version-Specific Emitters
+
+When `hooks/scripts/detect-framework.mjs` reports a specific framework version,
+the generator MUST emit the syntax that matches. These sections are the
+authoritative mappings for the version-sensitive surfaces.
+
+### Tailwind v3 vs v4 — Dual Emitter
+
+`detect-framework.mjs` writes `styling.version` and appends `@theme` / Oxide
+plugin detection. Choose emitter based on the detected variant.
+
+#### v3 emitter (existing projects — backward compatibility)
+
+```js
+// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{ts,tsx,js,jsx,html}'],
+  theme: {
+    extend: {
+      colors: {
+        accent: 'hsl(var(--accent) / <alpha-value>)',
+        'visionary-primary': 'var(--visionary-color-primary)',
+      },
+      fontFamily: {
+        display: ['Geist', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+```css
+/* globals.css — v3 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: 210 50% 50%;
+  --visionary-color-primary: #0066FF;
+}
+```
+
+#### v4 emitter (default for new projects — 5× faster, oklch-first)
+
+```css
+/* app.css — v4 (CSS-first, NO tailwind.config.js) */
+@import "tailwindcss";
+
+@theme {
+  --color-accent: oklch(0.62 0.18 252);
+  --color-visionary-primary: oklch(0.62 0.18 252);
+  --font-display: "Geist", system-ui, sans-serif;
+  --radius-md: 12px;
+  --spacing-section: 4rem;
+}
+
+/* Variants on top of the theme */
+@variant dark (&:where(.dark, .dark *));
+```
+
+`vite.config.ts` (or `postcss.config.js`) swap:
+
+```ts
+// v4 Vite
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+export default defineConfig({ plugins: [tailwindcss()] });
+```
+
+```js
+// v4 PostCSS (non-Vite)
+module.exports = { plugins: { "@tailwindcss/postcss": {} } };
+```
+
+#### Emitter-selection rule
+
+Read `.visionary-cache/detected-framework.json` (or `CLAUDE_PLUGIN_DATA/visionary-cache/…`):
+
+- `styling.system === "tailwind"` AND `styling.notes` contains `"v4"` → v4 emitter
+- `styling.system === "tailwind"` AND major < 4 → v3 emitter
+- No tailwind detected → fall back to CSS Modules / vanilla CSS with
+  `--visionary-color-*` custom properties
+
+NEVER mix v3 and v4 syntax in the same project — `@theme` blocks break v3 JIT,
+and `tailwind.config.js` is silently ignored by v4 Oxide.
+
+#### Differences worth memorizing
+
+| Concept | v3 | v4 |
+|---|---|---|
+| Config location | `tailwind.config.js` | `@theme` block in CSS |
+| Content scanning | `content: [...]` array required | Automatic (Oxide) |
+| Color format | hex / hsl custom-props | oklch native |
+| Plugin | `tailwindcss` (PostCSS) | `@tailwindcss/vite` / `@tailwindcss/postcss` |
+| CSS nesting | requires `tailwindcss/nesting` | Native CSS nesting |
+| Container queries | plugin | Built-in `@container` |
+| Opacity modifier | `bg-red-500/50` + `<alpha-value>` | Native `color-mix()` |
+
+---
+
+### Next.js 16 — Cache Components + React Compiler + `<Form>`
+
+`detect-framework.mjs` flags Next 16 when `cacheComponents: true` is in
+`next.config.*` OR `next` major ≥ 16. Emit the v16 syntax below. On v15 or
+earlier, fall back to the pre-16 patterns in section 2 above.
+
+#### Cache Components (default in v16)
+
+```tsx
+// app/dashboard/page.tsx — Cache Components default behavior
+import { Suspense } from "react";
+import { Dashboard } from "@/components/Dashboard";
+
+// No more `force-dynamic` / `revalidate` ceremony for most pages.
+// Static by default; explicitly opt into dynamic with `use cache: false`
+// or by reading cookies/headers inside a child component.
+export default async function Page() {
+  return (
+    <Suspense fallback={<DashboardSkeleton />}>
+      <Dashboard />
+    </Suspense>
+  );
+}
+```
+
+```tsx
+// Opt out of caching for a specific leaf — no page-level directive needed
+"use cache: false";
+
+export async function LiveStats() {
+  const data = await fetch("/api/stats", { cache: "no-store" }).then(r => r.json());
+  return <div>{data.count}</div>;
+}
+```
+
+#### React Compiler (stable in v16 — delete your useMemo / useCallback chain)
+
+```tsx
+// Before (React 18 / Next 14-15 era)
+function Card({ item }: { item: Item }) {
+  const label = useMemo(() => formatLabel(item), [item]);
+  const onClick = useCallback(() => select(item.id), [item.id]);
+  return <button onClick={onClick}>{label}</button>;
+}
+
+// After (Next 16 with compiler stable) — JUST DELETE THEM
+function Card({ item }: { item: Item }) {
+  const label = formatLabel(item);
+  const onClick = () => select(item.id);
+  return <button onClick={onClick}>{label}</button>;
+}
+```
+
+Generated code MUST NOT add `useMemo` / `useCallback` / `React.memo` in Next
+16 projects — the compiler handles it, and manual memoization actively hurts
+(runs before compiler optimizations, introducing dead code).
+
+#### `<Form>` component — progressive-enhancement forms
+
+```tsx
+// app/search/page.tsx
+import Form from "next/form";
+
+export default function SearchPage() {
+  return (
+    // <Form> prefetches the action route, handles client-nav if JS is on,
+    // and falls back to real <form> submission if not. Beats <form action=...>
+    // for any search / filter UI.
+    <Form action="/search">
+      <input name="q" type="search" aria-label="Search" />
+      <button type="submit">Search</button>
+    </Form>
+  );
+}
+```
+
+#### PPR (Partial Prerendering) — default, no opt-in needed
+
+Don't add `experimental: { ppr: true }` to `next.config.*` — it's the v16
+default. Remove the flag if migrating from v15.
+
+#### Turbopack — default dev + build
+
+`next dev` and `next build` both run Turbopack by default in v16. Don't emit
+`--turbo` flags in scripts (no-op and will warn).
+
+#### What changed in the generated code
+
+| Surface | v15 pattern | v16 pattern |
+|---|---|---|
+| Memoization | `useMemo`, `useCallback`, `React.memo` | **Omit — compiler handles it** |
+| Cache opt-in | `fetch(..., { next: { revalidate } })` | `"use cache"` directive OR implicit via Cache Components |
+| Dynamic opt-in | `export const dynamic = "force-dynamic"` | Read cookies/headers in a child component, OR `"use cache: false"` |
+| Forms | `<form action={...}>` or manual `router.push` | `<Form action="/route">` from `next/form` |
+| Params type | `params: { id: string }` | `params: Promise<{ id: string }>` (await it) |
+
+```tsx
+// v16 async params (breaking change from v15)
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  // ...
+}
+```
+
 ### 15. Vanilla JS / HTML + CSS
 
 - **Detection**: No `package.json` with framework dependencies; plain `.html`, `.css`, `.js` files; no build tool config (or only simple bundler like Parcel/esbuild); `<script>` tags in HTML

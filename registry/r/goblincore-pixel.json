@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "goblincore-pixel",
+  "type": "registry:style",
+  "title": "Goblincore Pixel",
+  "description": "goblincore-pixel — extended / Expressive Motion tier: Expressive. Display font: VT323 (or Press Start 2P).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "VT323 (or Press Start 2P)",
+      "--font-body": "VT323",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.268 0.038 144.4)",
+      "primary": "oklch(0.497 0.063 69.0)",
+      "primary-foreground": "oklch(0.268 0.038 144.4)",
+      "accent": "oklch(0.577 0.118 143.9)",
+      "accent-foreground": "oklch(0.268 0.038 144.4)",
+      "secondary-foreground": "oklch(0.268 0.038 144.4)",
+      "border": "oklch(0.577 0.118 143.9)",
+      "ring": "oklch(0.497 0.063 69.0)"
+    },
+    "dark": {
+      "background": "oklch(0.268 0.038 144.4)",
+      "primary": "oklch(0.497 0.063 69.0)",
+      "primary-foreground": "oklch(0.268 0.038 144.4)",
+      "accent": "oklch(0.577 0.118 143.9)",
+      "accent-foreground": "oklch(0.268 0.038 144.4)",
+      "secondary-foreground": "oklch(0.268 0.038 144.4)",
+      "border": "oklch(0.577 0.118 143.9)",
+      "ring": "oklch(0.497 0.063 69.0)"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "saas-b2b-dashboard",
+  "type": "registry:style",
+  "title": "Saas B2b Dashboard",
+  "description": "saas-b2b-dashboard — industry / Subtle Motion tier: Subtle. Display font: Space Grotesk 600–700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Grotesk 600–700",
+      "--font-body": "DM Sans 400 (with tabular",
+      "--radius": "6px"
+    },
+    "light": {
+      "background": "oklch(0.982 0.002 247.8)",
+      "primary": "oklch(0.546 0.215 262.9)",
+      "primary-foreground": "oklch(0.982 0.002 247.8)",
+      "accent": "oklch(0.696 0.149 162.5)",
+      "accent-foreground": "oklch(0.982 0.002 247.8)",
+      "secondary-foreground": "oklch(0.982 0.002 247.8)",
+      "border": "oklch(0.696 0.149 162.5)",
+      "ring": "oklch(0.546 0.215 262.9)"
+    },
+    "dark": {
+      "background": "oklch(0.982 0.002 247.8)",
+      "primary": "oklch(0.546 0.215 262.9)",
+      "primary-foreground": "oklch(0.982 0.002 247.8)",
+      "accent": "oklch(0.696 0.149 162.5)",
+      "accent-foreground": "oklch(0.982 0.002 247.8)",
+      "secondary-foreground": "oklch(0.982 0.002 247.8)",
+      "border": "oklch(0.696 0.149 162.5)",
+      "ring": "oklch(0.546 0.215 262.9)"
+    }
+  }
+}

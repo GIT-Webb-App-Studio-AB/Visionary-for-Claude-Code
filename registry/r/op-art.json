@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "op-art",
+  "type": "registry:style",
+  "title": "Op Art",
+  "description": "op-art — historical / Subtle Motion tier: Subtle. Display font: Space Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Grotesk",
+      "--font-body": "Space Grotesk",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.000 0.000 0.0)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.000 0.000 0.0)"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glassmorphism",
+  "type": "registry:style",
+  "title": "Glassmorphism",
+  "description": "glassmorphism — morphisms / Expressive Motion tier: Expressive. Display font: Space Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Grotesk",
+      "--font-body": "Inter",
+      "--radius": "20px"
+    },
+    "light": {
+      "background": "oklch(0.174 0.023 283.8)",
+      "primary": "oklch(0.585 0.204 277.1)",
+      "primary-foreground": "oklch(0.174 0.023 283.8)",
+      "accent": "oklch(0.709 0.159 293.5)",
+      "accent-foreground": "oklch(0.174 0.023 283.8)",
+      "secondary-foreground": "oklch(0.174 0.023 283.8)",
+      "border": "oklch(0.709 0.159 293.5)",
+      "ring": "oklch(0.585 0.204 277.1)"
+    },
+    "dark": {
+      "background": "oklch(0.174 0.023 283.8)",
+      "primary": "oklch(0.585 0.204 277.1)",
+      "primary-foreground": "oklch(0.174 0.023 283.8)",
+      "accent": "oklch(0.709 0.159 293.5)",
+      "accent-foreground": "oklch(0.174 0.023 283.8)",
+      "secondary-foreground": "oklch(0.174 0.023 283.8)",
+      "border": "oklch(0.709 0.159 293.5)",
+      "ring": "oklch(0.585 0.204 277.1)"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "japanese-minimalism",
+  "type": "registry:style",
+  "title": "Japanese Minimalism",
+  "description": "japanese-minimalism — graphic / Subtle Motion tier: Subtle. Display font: Noto Serif JP.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Noto Serif JP",
+      "--font-body": "Noto Sans JP",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.985 0.003 106.4)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.985 0.003 106.4)",
+      "accent": "oklch(0.543 0.174 29.7)",
+      "accent-foreground": "oklch(0.985 0.003 106.4)",
+      "secondary-foreground": "oklch(0.985 0.003 106.4)",
+      "border": "oklch(0.543 0.174 29.7)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.985 0.003 106.4)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.985 0.003 106.4)",
+      "accent": "oklch(0.543 0.174 29.7)",
+      "accent-foreground": "oklch(0.985 0.003 106.4)",
+      "secondary-foreground": "oklch(0.985 0.003 106.4)",
+      "border": "oklch(0.543 0.174 29.7)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

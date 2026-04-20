@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "paper-cut",
+  "type": "registry:style",
+  "title": "Paper Cut",
+  "description": "paper-cut — extended / Expressive Motion tier: Expressive. Display font: Nunito ExtraBold.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito ExtraBold",
+      "--font-body": "Nunito",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.966 0.009 78.3)",
+      "primary": "oklch(0.626 0.200 25.1)",
+      "primary-foreground": "oklch(0.966 0.009 78.3)",
+      "accent": "oklch(0.476 0.078 162.2)",
+      "accent-foreground": "oklch(0.966 0.009 78.3)",
+      "secondary-foreground": "oklch(0.966 0.009 78.3)",
+      "border": "oklch(0.476 0.078 162.2)",
+      "ring": "oklch(0.626 0.200 25.1)"
+    },
+    "dark": {
+      "background": "oklch(0.966 0.009 78.3)",
+      "primary": "oklch(0.626 0.200 25.1)",
+      "primary-foreground": "oklch(0.966 0.009 78.3)",
+      "accent": "oklch(0.476 0.078 162.2)",
+      "accent-foreground": "oklch(0.966 0.009 78.3)",
+      "secondary-foreground": "oklch(0.966 0.009 78.3)",
+      "border": "oklch(0.476 0.078 162.2)",
+      "ring": "oklch(0.626 0.200 25.1)"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "biomorphic-futurism — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#0A1A0E",
+      "$type": "color",
+      "$description": "biopunk dark green"
+    },
+    "primary": {
+      "$value": "#39FF14",
+      "$type": "color",
+      "$description": "bioluminescent green"
+    },
+    "accent": {
+      "$value": "#7FFF00",
+      "$type": "color",
+      "$description": "chlorophyll lime"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Bricolage Grotesque",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Bricolage Grotesque",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":140,\"damping\":14}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

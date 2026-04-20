@@ -1,0 +1,51 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "liquid-glass-ios26 — morphisms / Expressive",
+  "color": {
+    "primary": {
+      "$value": "#0A84FF",
+      "$type": "color",
+      "$description": "`oklch(0.62 0.18 252)` (Apple system blue in oklch; falls back to"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "SF Pro Display (iOS native) or Geist as system fallback",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "SF Pro Text / Geist",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.25,\"visualDuration\":0.38}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "28px",
+      "$type": "dimension"
+    }
+  }
+}

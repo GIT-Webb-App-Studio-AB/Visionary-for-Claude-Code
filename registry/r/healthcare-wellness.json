@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "healthcare-wellness",
+  "type": "registry:style",
+  "title": "Healthcare Wellness",
+  "description": "healthcare-wellness — industry / Expressive Motion tier: Expressive. Display font: Chillax 600–700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Chillax 600–700",
+      "--font-body": "Plus Jakarta Sans 400",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.986 0.009 84.6)",
+      "primary": "oklch(0.476 0.078 162.2)",
+      "primary-foreground": "oklch(0.986 0.009 84.6)",
+      "accent": "oklch(0.781 0.127 57.9)",
+      "accent-foreground": "oklch(0.986 0.009 84.6)",
+      "secondary-foreground": "oklch(0.986 0.009 84.6)",
+      "border": "oklch(0.781 0.127 57.9)",
+      "ring": "oklch(0.476 0.078 162.2)"
+    },
+    "dark": {
+      "background": "oklch(0.986 0.009 84.6)",
+      "primary": "oklch(0.476 0.078 162.2)",
+      "primary-foreground": "oklch(0.986 0.009 84.6)",
+      "accent": "oklch(0.781 0.127 57.9)",
+      "accent-foreground": "oklch(0.986 0.009 84.6)",
+      "secondary-foreground": "oklch(0.986 0.009 84.6)",
+      "border": "oklch(0.781 0.127 57.9)",
+      "ring": "oklch(0.476 0.078 162.2)"
+    }
+  }
+}

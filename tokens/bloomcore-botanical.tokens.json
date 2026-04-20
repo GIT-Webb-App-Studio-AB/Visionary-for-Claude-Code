@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "bloomcore-botanical — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F0F7EE",
+      "$type": "color",
+      "$description": "tender leaf white"
+    },
+    "primary": {
+      "$value": "#3A6B35",
+      "$type": "color",
+      "$description": "botanical green"
+    },
+    "accent": {
+      "$value": "#8B4E2E",
+      "$type": "color",
+      "$description": "earth terracotta) or #B5749C (pressed flower mauve"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Playfair Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Lora",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "20px",
+      "$type": "dimension"
+    }
+  }
+}

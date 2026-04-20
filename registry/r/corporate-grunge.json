@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corporate-grunge",
+  "type": "registry:style",
+  "title": "Corporate Grunge",
+  "description": "corporate-grunge — graphic / Subtle Motion tier: Subtle. Display font: Arial.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Arial",
+      "--font-body": "Arial",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.920 0.012 84.6)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.920 0.012 84.6)",
+      "accent": "oklch(0.454 0.119 40.5)",
+      "accent-foreground": "oklch(0.920 0.012 84.6)",
+      "secondary-foreground": "oklch(0.920 0.012 84.6)",
+      "border": "oklch(0.454 0.119 40.5)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.920 0.012 84.6)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.920 0.012 84.6)",
+      "accent": "oklch(0.454 0.119 40.5)",
+      "accent-foreground": "oklch(0.920 0.012 84.6)",
+      "secondary-foreground": "oklch(0.920 0.012 84.6)",
+      "border": "oklch(0.454 0.119 40.5)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    }
+  }
+}

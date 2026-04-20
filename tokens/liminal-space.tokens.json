@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "liminal-space — internet / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F2F0E8",
+      "$type": "color",
+      "$description": "— fluorescent-washed institutional off-white; not pure white (too crisp), not grey (too designed); the specific hue of linoleum-floor light at 2am"
+    },
+    "primary": {
+      "$value": "#5B8DB8",
+      "$type": "color",
+      "$description": "— faded corporate blue; the color of a 1998 intranet button that nobody updated; action but without urgency"
+    },
+    "accent": {
+      "$value": "#D4A843",
+      "$type": "color",
+      "$description": "— yellowed linoleum gold; the color of something that was once cream-white but has absorbed decades of fluorescent light"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Arial or Helvetica",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Arial or Helvetica (same face throughout",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

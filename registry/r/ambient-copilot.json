@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ambient-copilot",
+  "type": "registry:style",
+  "title": "Ambient Copilot",
+  "description": "ambient-copilot — modern / Subtle Motion tier: Subtle. Display font: Geist or SF Pro Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Geist or SF Pro Display",
+      "--font-body": "Geist",
+      "--radius": "12px"
+    },
+    "light": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    },
+    "dark": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    }
+  }
+}

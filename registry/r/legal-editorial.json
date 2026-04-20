@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legal-editorial",
+  "type": "registry:style",
+  "title": "Legal Editorial",
+  "description": "legal-editorial — extended / Subtle Motion tier: Subtle. Display font: Times New Roman (or Libre Baskerville).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Times New Roman (or Libre Baskerville)",
+      "--font-body": "Libre Baskerville",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.357 0.114 13.8)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.357 0.114 13.8)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.357 0.114 13.8)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.357 0.114 13.8)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

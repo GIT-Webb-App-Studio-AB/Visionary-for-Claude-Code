@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "energetic-athletic",
+  "type": "registry:style",
+  "title": "Energetic Athletic",
+  "description": "energetic-athletic — emotional / Kinetic Motion tier: Kinetic. Display font: Barlow Condensed 800–900.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Barlow Condensed 800–900",
+      "--font-body": "Barlow 500",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.643 0.244 31.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.643 0.244 31.9)"
+    },
+    "dark": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.643 0.244 31.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.643 0.244 31.9)"
+    }
+  }
+}

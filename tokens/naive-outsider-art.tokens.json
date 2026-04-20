@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "naive-outsider-art — extended / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F9F5ED",
+      "$type": "color",
+      "$description": "off-white — aged paper"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "pencil/marker black"
+    },
+    "accent": {
+      "$value": "#FF0000",
+      "$type": "color",
+      "$description": "Primary crayon set — , #0000FF, #FFFF00, #008000 (one at a time"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Caveat (or Patrick Hand)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Caveat",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":16}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

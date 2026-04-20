@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "stone-mineral — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#E8E4DC",
+      "$type": "color",
+      "$description": "granite pale"
+    },
+    "primary": {
+      "$value": "#2A2A2A",
+      "$type": "color",
+      "$description": "basalt dark"
+    },
+    "accent": {
+      "$value": "#4A8B8C",
+      "$type": "color",
+      "$description": "mineral teal — malachite reference"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "EB Garamond",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "EB Garamond",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400,\"damping\":45}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

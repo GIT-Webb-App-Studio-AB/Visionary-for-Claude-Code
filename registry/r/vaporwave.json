@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vaporwave",
+  "type": "registry:style",
+  "title": "Vaporwave",
+  "description": "vaporwave — internet / Kinetic Motion tier: Kinetic. Display font: VCR OSD Mono.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "VCR OSD Mono",
+      "--font-body": "VCR OSD Mono or Press Start 2P for pixel aesthetic variant",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.300 0.128 286.5)",
+      "primary": "oklch(0.702 0.322 328.4)",
+      "primary-foreground": "oklch(0.300 0.128 286.5)",
+      "accent": "oklch(0.905 0.155 194.8)",
+      "accent-foreground": "oklch(0.300 0.128 286.5)",
+      "secondary-foreground": "oklch(0.300 0.128 286.5)",
+      "border": "oklch(0.905 0.155 194.8)",
+      "ring": "oklch(0.702 0.322 328.4)"
+    },
+    "dark": {
+      "background": "oklch(0.300 0.128 286.5)",
+      "primary": "oklch(0.702 0.322 328.4)",
+      "primary-foreground": "oklch(0.300 0.128 286.5)",
+      "accent": "oklch(0.905 0.155 194.8)",
+      "accent-foreground": "oklch(0.300 0.128 286.5)",
+      "secondary-foreground": "oklch(0.300 0.128 286.5)",
+      "border": "oklch(0.905 0.155 194.8)",
+      "ring": "oklch(0.702 0.322 328.4)"
+    }
+  }
+}

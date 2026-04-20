@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "latin-fiesta — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFF8F0",
+      "$type": "color",
+      "$description": "warm cream"
+    },
+    "primary": {
+      "$value": "#D4380D",
+      "$type": "color",
+      "$description": "terracotta orange-red"
+    },
+    "accent": {
+      "$value": "#1A7A4A",
+      "$type": "color",
+      "$description": "Mexican jade green"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Lato ExtraBold",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Lato",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":240,\"damping\":16}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "20px",
+      "$type": "dimension"
+    }
+  }
+}

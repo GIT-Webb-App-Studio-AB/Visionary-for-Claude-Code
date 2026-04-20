@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hyper-comfort-hygge",
+  "type": "registry:style",
+  "title": "Hyper Comfort Hygge",
+  "description": "hyper-comfort-hygge — extended / Subtle Motion tier: Subtle. Display font: Nunito (or Quicksand).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito (or Quicksand)",
+      "--font-body": "Nunito",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.958 0.015 77.1)",
+      "primary": "oklch(0.682 0.082 44.7)",
+      "primary-foreground": "oklch(0.958 0.015 77.1)",
+      "accent": "oklch(0.710 0.073 152.0)",
+      "accent-foreground": "oklch(0.958 0.015 77.1)",
+      "secondary-foreground": "oklch(0.958 0.015 77.1)",
+      "border": "oklch(0.710 0.073 152.0)",
+      "ring": "oklch(0.682 0.082 44.7)"
+    },
+    "dark": {
+      "background": "oklch(0.958 0.015 77.1)",
+      "primary": "oklch(0.682 0.082 44.7)",
+      "primary-foreground": "oklch(0.958 0.015 77.1)",
+      "accent": "oklch(0.710 0.073 152.0)",
+      "accent-foreground": "oklch(0.958 0.015 77.1)",
+      "secondary-foreground": "oklch(0.958 0.015 77.1)",
+      "border": "oklch(0.710 0.073 152.0)",
+      "ring": "oklch(0.682 0.082 44.7)"
+    }
+  }
+}

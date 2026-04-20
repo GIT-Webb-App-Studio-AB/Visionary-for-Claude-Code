@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-glass-ios26",
+  "type": "registry:style",
+  "title": "Liquid Glass Ios26",
+  "description": "liquid-glass-ios26 — morphisms / Expressive Motion tier: Expressive. Display font: SF Pro Display (iOS native) or Geist as system fallback.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "SF Pro Display (iOS native) or Geist as system fallback",
+      "--font-body": "SF Pro Text / Geist",
+      "--radius": "16px"
+    },
+    "light": {
+      "primary": "oklch(0.624 0.206 255.5)",
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)",
+      "ring": "oklch(0.624 0.206 255.5)"
+    },
+    "dark": {
+      "primary": "oklch(0.624 0.206 255.5)",
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)",
+      "ring": "oklch(0.624 0.206 255.5)"
+    }
+  }
+}

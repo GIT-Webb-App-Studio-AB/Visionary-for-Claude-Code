@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "dreamcore — internet / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5F5C8",
+      "$type": "color",
+      "$description": "— washed-out yellow, the liminal color signature of dreamcore; this specific hex reproduces the quality of fluorescent lighting in empty institutional spaces (hospital corridors, school hallways after hours, empty swimming pools) as captured on 1990s/early-2000s consumer cameras with slightly overexposed film; not cream (#F5EFE0, too warm), not pale yellow (#FFFF99, too saturated); #F5F5C8 is specifically the color of institutional spaces under harsh fluorescent light"
+    },
+    "primary": {
+      "$value": "#7BA3A0",
+      "$type": "color",
+      "$description": "muted teal  — the color of a faded poster or weathered institutional signage; desaturated enough to feel like memory rather than direct perception; reads as guidance and navigation without asserting presence; not teal (#008080, too vivid), not sage (#9CAF88, wrong hue axis"
+    },
+    "accent": {
+      "$value": "#C8B8D4",
+      "$type": "color",
+      "$description": "dusty lilac  — the color of something that was once more vibrant but has been left in light too long; suggests personal objects in abandoned spaces, faded fabric, old photographs; not purple (too deliberate), not pink (too warm and present"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "EB Garamond",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "EB Garamond 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

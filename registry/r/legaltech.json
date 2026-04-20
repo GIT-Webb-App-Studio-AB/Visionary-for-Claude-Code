@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legaltech",
+  "type": "registry:style",
+  "title": "Legaltech",
+  "description": "legaltech — industry / Subtle Motion tier: Subtle. Display font: Libre Baskerville 700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Libre Baskerville 700",
+      "--font-body": "Libre Baskerville 400",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.985 0.003 106.4)",
+      "primary": "oklch(0.277 0.057 264.7)",
+      "primary-foreground": "oklch(0.985 0.003 106.4)",
+      "accent": "oklch(0.745 0.113 90.0)",
+      "accent-foreground": "oklch(0.985 0.003 106.4)",
+      "secondary-foreground": "oklch(0.985 0.003 106.4)",
+      "border": "oklch(0.745 0.113 90.0)",
+      "ring": "oklch(0.277 0.057 264.7)"
+    },
+    "dark": {
+      "background": "oklch(0.985 0.003 106.4)",
+      "primary": "oklch(0.277 0.057 264.7)",
+      "primary-foreground": "oklch(0.985 0.003 106.4)",
+      "accent": "oklch(0.745 0.113 90.0)",
+      "accent-foreground": "oklch(0.985 0.003 106.4)",
+      "secondary-foreground": "oklch(0.985 0.003 106.4)",
+      "border": "oklch(0.745 0.113 90.0)",
+      "ring": "oklch(0.277 0.057 264.7)"
+    }
+  }
+}

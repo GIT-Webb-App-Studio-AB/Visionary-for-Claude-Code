@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "corporate-grunge — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#E8E4DC",
+      "$type": "color",
+      "$description": "aged office paper"
+    },
+    "primary": {
+      "$value": "#1C1C1C",
+      "$type": "color",
+      "$description": "stamp black"
+    },
+    "accent": {
+      "$value": "#8B3A1A",
+      "$type": "color",
+      "$description": "rust — corporate degradation"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Arial",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Arial",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":300,\"damping\":32}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

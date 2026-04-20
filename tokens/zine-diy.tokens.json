@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "zine-diy — hybrid / Static",
+  "color": {
+    "bg": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "`` (xerox black) OR unbleached `#F8F5ED` (paper)."
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "`` on paper, `#F8F5ED` on xerox (high-contrast"
+    },
+    "signature-accent": {
+      "$value": "#FF2D78",
+      "$type": "color",
+      "$description": "**one** of `` (hot pink — Riot Grrrl), `#E8FF00`"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "deliberately mixed",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Courier New at 14 px with ~5 % opacity noise overlay",
+      "$type": "fontFamily"
+    },
+    "leading": {
+      "$value": 1.4,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Static",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

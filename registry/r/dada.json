@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dada",
+  "type": "registry:style",
+  "title": "Dada",
+  "description": "dada — historical / Kinetic Motion tier: Kinetic. Display font: Mixed.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Mixed",
+      "--font-body": "Any serif",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.941 0.016 86.4)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.941 0.016 86.4)",
+      "accent": "oklch(0.497 0.180 26.8)",
+      "accent-foreground": "oklch(0.941 0.016 86.4)",
+      "secondary-foreground": "oklch(0.941 0.016 86.4)",
+      "border": "oklch(0.497 0.180 26.8)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.941 0.016 86.4)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.941 0.016 86.4)",
+      "accent": "oklch(0.497 0.180 26.8)",
+      "accent-foreground": "oklch(0.941 0.016 86.4)",
+      "secondary-foreground": "oklch(0.941 0.016 86.4)",
+      "border": "oklch(0.497 0.180 26.8)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    }
+  }
+}

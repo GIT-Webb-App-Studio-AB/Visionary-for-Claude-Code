@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gaming",
+  "type": "registry:style",
+  "title": "Gaming",
+  "description": "gaming — industry / Kinetic Motion tier: Kinetic. Display font: Orbitron 700–900 (sci.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Orbitron 700–900 (sci",
+      "--font-body": "Exo 2 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.113 0.057 308.8)",
+      "primary": "oklch(0.870 0.148 202.9)",
+      "primary-foreground": "oklch(0.113 0.057 308.8)",
+      "accent": "oklch(0.916 0.240 128.1)",
+      "accent-foreground": "oklch(0.113 0.057 308.8)",
+      "secondary-foreground": "oklch(0.113 0.057 308.8)",
+      "border": "oklch(0.916 0.240 128.1)",
+      "ring": "oklch(0.870 0.148 202.9)"
+    },
+    "dark": {
+      "background": "oklch(0.113 0.057 308.8)",
+      "primary": "oklch(0.870 0.148 202.9)",
+      "primary-foreground": "oklch(0.113 0.057 308.8)",
+      "accent": "oklch(0.916 0.240 128.1)",
+      "accent-foreground": "oklch(0.113 0.057 308.8)",
+      "secondary-foreground": "oklch(0.113 0.057 308.8)",
+      "border": "oklch(0.916 0.240 128.1)",
+      "ring": "oklch(0.870 0.148 202.9)"
+    }
+  }
+}

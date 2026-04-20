@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "dark-mode-first — modern / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#09090B",
+      "$type": "color",
+      "$description": "zinc-950"
+    },
+    "primary": {
+      "$value": "#FAFAFA",
+      "$type": "color",
+      "$description": "zinc-50"
+    },
+    "accent": {
+      "$value": "#3B82F6",
+      "$type": "color"
+    },
+    "elevation-model": {
+      "$value": "#09090B",
+      "$type": "color",
+      "$description": "layered zinc scale —  → #18181B → #27272A → #3F3F46; no glows by default"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Geist (or Inter)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Geist",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":24}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

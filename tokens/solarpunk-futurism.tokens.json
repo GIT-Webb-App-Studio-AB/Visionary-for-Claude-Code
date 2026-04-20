@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "solarpunk-futurism — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F0F7E6",
+      "$type": "color",
+      "$description": "sunlit leaf"
+    },
+    "primary": {
+      "$value": "#4A7C59",
+      "$type": "color",
+      "$description": "deep botanical green"
+    },
+    "accent": {
+      "$value": "#E8B84B",
+      "$type": "color",
+      "$description": "solar gold"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.005em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":16}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "12px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "24px",
+      "$type": "dimension"
+    }
+  }
+}

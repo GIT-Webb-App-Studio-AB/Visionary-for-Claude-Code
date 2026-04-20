@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "trust-safety",
+  "type": "registry:style",
+  "title": "Trust Safety",
+  "description": "trust-safety — emotional / Subtle Motion tier: Subtle. Display font: Source Serif 4 600.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Source Serif 4 600",
+      "--font-body": "Source Sans 3 400",
+      "--radius": "6px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.546 0.215 262.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.596 0.127 163.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.596 0.127 163.2)",
+      "ring": "oklch(0.546 0.215 262.9)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.546 0.215 262.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.596 0.127 163.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.596 0.127 163.2)",
+      "ring": "oklch(0.546 0.215 262.9)"
+    }
+  }
+}

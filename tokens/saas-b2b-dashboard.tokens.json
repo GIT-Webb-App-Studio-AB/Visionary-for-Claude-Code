@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "saas-b2b-dashboard — industry / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F8F9FA",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#2563EB",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#10B981",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Grotesk 600–700",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans 400 (with tabular",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.2,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":350,\"damping\":35,\"mass\":0.8}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "6px",
+      "$type": "dimension"
+    }
+  }
+}

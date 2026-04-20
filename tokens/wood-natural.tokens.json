@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "wood-natural — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#8B5E3C",
+      "$type": "color",
+      "$description": "mid-oak"
+    },
+    "primary": {
+      "$value": "#F5E6C8",
+      "$type": "color",
+      "$description": "pale birch"
+    },
+    "accent": {
+      "$value": "#4A2C0A",
+      "$type": "color",
+      "$description": "walnut dark"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Bitter",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Source Serif 4",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.005em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":30}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "6px",
+      "$type": "dimension"
+    }
+  }
+}

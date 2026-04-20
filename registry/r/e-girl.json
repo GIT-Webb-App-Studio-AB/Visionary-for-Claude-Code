@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "e-girl",
+  "type": "registry:style",
+  "title": "E Girl",
+  "description": "e-girl — internet / Expressive Motion tier: Expressive. Display font: Bebas Neue or.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bebas Neue or",
+      "--font-body": "DM Sans 500 or Poppins 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.655 0.261 356.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.000 0.000 0.0)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.000 0.000 0.0)",
+      "ring": "oklch(0.655 0.261 356.9)"
+    },
+    "dark": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(0.655 0.261 356.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.000 0.000 0.0)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.000 0.000 0.0)",
+      "ring": "oklch(0.655 0.261 356.9)"
+    }
+  }
+}

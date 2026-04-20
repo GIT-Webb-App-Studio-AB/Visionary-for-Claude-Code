@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "swiss-gerstner — historical / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5F3EE",
+      "$type": "color",
+      "$description": "`` (warm print white — Gerstner rarely used pure"
+    },
+    "text": {
+      "$value": "#111111",
+      "$type": "color",
+      "$description": "``"
+    },
+    "accent": {
+      "$value": "#B83200",
+      "$type": "color",
+      "$description": "`` (Gerstner red, from Hoffmann-La Roche) or `#0039A6`"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Akzidenz",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Akzidenz",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.4,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

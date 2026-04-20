@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "cosmic-astronomical — graphic / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#00010D",
+      "$type": "color",
+      "$description": "deep space indigo-black"
+    },
+    "primary": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "star white"
+    },
+    "accent": {
+      "$value": "#9B59FF",
+      "$type": "color",
+      "$description": "nebula violet"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":60,\"damping\":12}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "999px",
+      "$type": "dimension"
+    }
+  }
+}

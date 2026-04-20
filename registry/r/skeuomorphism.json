@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeuomorphism",
+  "type": "registry:style",
+  "title": "Skeuomorphism",
+  "description": "skeuomorphism — morphisms / Subtle Motion tier: Subtle. Display font: Georgia.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Georgia",
+      "--font-body": "Georgia",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.234 0.036 42.5)",
+      "primary": "oklch(0.671 0.140 73.8)",
+      "primary-foreground": "oklch(0.234 0.036 42.5)",
+      "accent": "oklch(0.400 0.164 29.2)",
+      "accent-foreground": "oklch(0.234 0.036 42.5)",
+      "secondary-foreground": "oklch(0.234 0.036 42.5)",
+      "border": "oklch(0.400 0.164 29.2)",
+      "ring": "oklch(0.671 0.140 73.8)"
+    },
+    "dark": {
+      "background": "oklch(0.234 0.036 42.5)",
+      "primary": "oklch(0.671 0.140 73.8)",
+      "primary-foreground": "oklch(0.234 0.036 42.5)",
+      "accent": "oklch(0.400 0.164 29.2)",
+      "accent-foreground": "oklch(0.234 0.036 42.5)",
+      "secondary-foreground": "oklch(0.234 0.036 42.5)",
+      "border": "oklch(0.400 0.164 29.2)",
+      "ring": "oklch(0.671 0.140 73.8)"
+    }
+  }
+}

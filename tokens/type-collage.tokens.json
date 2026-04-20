@@ -1,0 +1,48 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "type-collage — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F0EBE0",
+      "$type": "color",
+      "$description": "newsprint off-white"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "cut-out black"
+    },
+    "accent": {
+      "$value": "#FF0000",
+      "$type": "color",
+      "$description": "CMYK-limited accent (single saturated color:  or #0000FF or #FFFF00"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Mixed variable",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Variable; contrast of weights",
+      "$type": "fontFamily"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

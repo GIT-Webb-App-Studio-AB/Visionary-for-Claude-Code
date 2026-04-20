@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "swiss-gerstner",
+  "type": "registry:style",
+  "title": "Swiss Gerstner",
+  "description": "swiss-gerstner — historical / Subtle Motion tier: Subtle. Display font: **Akzidenz.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Akzidenz",
+      "--font-body": "Akzidenz",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.964 0.007 88.6)",
+      "foreground": "oklch(0.178 0.000 89.9)",
+      "primary-foreground": "oklch(0.964 0.007 88.6)",
+      "accent": "oklch(0.519 0.177 36.2)",
+      "accent-foreground": "oklch(0.964 0.007 88.6)",
+      "secondary-foreground": "oklch(0.964 0.007 88.6)",
+      "border": "oklch(0.519 0.177 36.2)",
+      "muted-foreground": "oklch(0.178 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.964 0.007 88.6)",
+      "foreground": "oklch(0.178 0.000 89.9)",
+      "primary-foreground": "oklch(0.964 0.007 88.6)",
+      "accent": "oklch(0.519 0.177 36.2)",
+      "accent-foreground": "oklch(0.964 0.007 88.6)",
+      "secondary-foreground": "oklch(0.964 0.007 88.6)",
+      "border": "oklch(0.519 0.177 36.2)",
+      "muted-foreground": "oklch(0.178 0.000 89.9)"
+    }
+  }
+}

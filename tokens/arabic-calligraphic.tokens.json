@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "arabic-calligraphic — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFFDF7",
+      "$type": "color",
+      "$description": "warm white — parchment reference"
+    },
+    "primary": {
+      "$value": "#1A472A",
+      "$type": "color",
+      "$description": "deep Islamic green"
+    },
+    "accent": {
+      "$value": "#C9A84C",
+      "$type": "color",
+      "$description": "gold leaf"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Amiri",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Noto Naskh Arabic",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

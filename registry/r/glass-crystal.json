@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-crystal",
+  "type": "registry:style",
+  "title": "Glass Crystal",
+  "description": "glass-crystal — graphic / Expressive Motion tier: Expressive. Display font: Space Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Grotesk",
+      "--font-body": "Inter",
+      "--radius": "12px"
+    },
+    "light": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    },
+    "dark": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    }
+  }
+}

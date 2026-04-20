@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "neural-network-ai — graphic / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#020814",
+      "$type": "color",
+      "$description": "compute black"
+    },
+    "primary": {
+      "$value": "#4A9EFF",
+      "$type": "color",
+      "$description": "electric node blue"
+    },
+    "accent": {
+      "$value": "#00F5D4",
+      "$type": "color",
+      "$description": "activation teal"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Mono",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Mono",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "999px",
+      "$type": "dimension"
+    }
+  }
+}

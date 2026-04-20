@@ -1,3 +1,17 @@
+---
+id: liminal-space
+category: internet
+motion_tier: Subtle
+density: sparse
+locale_fit: [all]
+palette_tags: [light, neon, editorial]
+keywords: [liminal, space, internet]
+accessibility:
+  contrast_floor: 4.5
+  reduced_motion: opacity-only
+  touch_target: 44
+---
+
 # Liminal Space
 
 **Category:** internet
@@ -122,6 +136,23 @@
   filter: saturate(0.7) brightness(0.95);
 }
 ```
+
+## Accessibility
+
+### Contrast
+Body text must clear 4.5:1 (WCAG 2.2 AA) AND APCA Lc ≥ 75. Large text / UI labels: 3:1 and Lc ≥ 60. Run axe-core + apca-w3 during the critique loop.
+
+### Focus
+Render a `:focus-visible` ring only — no `:focus:not(:focus-visible)` reset (obsolete since March 2022). Prefer `Canvas` / `AccentColor` system colors in the ring so Windows High Contrast and forced-colors mode stay correct.
+
+### Motion
+Under `prefers-reduced-motion: reduce`, keep opacity transitions but drop transform/scale/translate — transform is a vestibular trigger. No autoplay exceeds 5 s without a pause control.
+
+### Touch target
+Touch targets default to 44×44 px — matches Apple HIG / Material (48dp) and has ~3× lower mis-tap rate than the 24-px WCAG floor. Inline links inside flowing prose are exempt.
+
+### RTL / Logical properties
+Use CSS logical properties (margin-inline, padding-inline, border-inline-*) by default so the same component works in RTL locales without a fork.
 
 ## Slop Watch
 - **Aesthetic intentionality — great type choices, art-directed color palette:** The entire logic of liminal space is that no one designed it; it emerged from institutional procurement decisions, municipal budgets, and maintenance neglect. If a designer's hand is visible — a beautiful serif, a considered color relationship, deliberate negative space — the viewer understands they are looking at designed content placed in liminal space, not liminal space itself. The aesthetic requires the appearance of zero design decisions having been made.

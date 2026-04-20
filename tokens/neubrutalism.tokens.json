@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "neubrutalism — morphisms / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "— pure white is canonical; yellow (#FFFF00) and lime (#00FF00) variants acceptable"
+    },
+    "primary": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "— black fills with white text"
+    },
+    "accent": {
+      "$value": "#FF4500",
+      "$type": "color",
+      "$description": "— saturated orange-red used for hover states and accents"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Grotesk 700 or higher",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Grotesk 500",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

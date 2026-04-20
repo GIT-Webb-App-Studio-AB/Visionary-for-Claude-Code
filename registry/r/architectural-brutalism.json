@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "architectural-brutalism",
+  "type": "registry:style",
+  "title": "Architectural Brutalism",
+  "description": "architectural-brutalism — historical / Subtle Motion tier: Subtle. Display font: Syne.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne",
+      "--font-body": "Space Grotesk",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.551 0.023 264.4)",
+      "primary": "oklch(0.278 0.030 256.8)",
+      "primary-foreground": "oklch(0.551 0.023 264.4)",
+      "accent": "oklch(0.967 0.003 264.5)",
+      "accent-foreground": "oklch(0.551 0.023 264.4)",
+      "secondary-foreground": "oklch(0.551 0.023 264.4)",
+      "border": "oklch(0.967 0.003 264.5)",
+      "ring": "oklch(0.278 0.030 256.8)"
+    },
+    "dark": {
+      "background": "oklch(0.551 0.023 264.4)",
+      "primary": "oklch(0.278 0.030 256.8)",
+      "primary-foreground": "oklch(0.551 0.023 264.4)",
+      "accent": "oklch(0.967 0.003 264.5)",
+      "accent-foreground": "oklch(0.551 0.023 264.4)",
+      "secondary-foreground": "oklch(0.551 0.023 264.4)",
+      "border": "oklch(0.967 0.003 264.5)",
+      "ring": "oklch(0.278 0.030 256.8)"
+    }
+  }
+}

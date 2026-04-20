@@ -1,0 +1,66 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "frutiger-aero-kinetic — extended / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#B0E0FF",
+      "$type": "color",
+      "$description": "linear-gradient(135deg,  0%, #E8D4F8 50%, #D4F0E8 100%) — cascading Vista pastels"
+    },
+    "primary": {
+      "$value": "#4A90D9",
+      "$type": "color",
+      "$description": "Vista button blue"
+    },
+    "accent": {
+      "$value": "#72C152",
+      "$type": "color",
+      "$description": "nature green"
+    },
+    "accent-2": {
+      "$value": "#FF9D6D",
+      "$type": "color",
+      "$description": "coral for alerts), #FFE066 (sun yellow"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Frutiger 95",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Trebuchet MS",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":380,\"damping\":23,\"mass\":0.88}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-grid",
+  "type": "registry:style",
+  "title": "Bento Grid",
+  "description": "bento-grid — modern / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bricolage Grotesque",
+      "--font-body": "Bricolage Grotesque",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.967 0.001 286.4)",
+      "primary": "oklch(0.210 0.006 285.9)",
+      "primary-foreground": "oklch(0.967 0.001 286.4)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.967 0.001 286.4)",
+      "secondary-foreground": "oklch(0.967 0.001 286.4)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.210 0.006 285.9)"
+    },
+    "dark": {
+      "background": "oklch(0.967 0.001 286.4)",
+      "primary": "oklch(0.210 0.006 285.9)",
+      "primary-foreground": "oklch(0.967 0.001 286.4)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.967 0.001 286.4)",
+      "secondary-foreground": "oklch(0.967 0.001 286.4)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.210 0.006 285.9)"
+    }
+  }
+}

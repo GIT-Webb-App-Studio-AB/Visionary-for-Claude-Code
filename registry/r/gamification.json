@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gamification",
+  "type": "registry:style",
+  "title": "Gamification",
+  "description": "gamification — modern / Kinetic Motion tier: Kinetic. Display font: Nunito ExtraBold.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito ExtraBold",
+      "--font-body": "Fredoka (or Nunito",
+      "--radius": "12px"
+    },
+    "light": {
+      "background": "oklch(0.209 0.066 293.0)",
+      "primary": "oklch(0.769 0.165 70.1)",
+      "primary-foreground": "oklch(0.209 0.066 293.0)",
+      "accent": "oklch(0.606 0.219 292.7)",
+      "accent-foreground": "oklch(0.209 0.066 293.0)",
+      "secondary-foreground": "oklch(0.209 0.066 293.0)",
+      "border": "oklch(0.606 0.219 292.7)",
+      "ring": "oklch(0.769 0.165 70.1)"
+    },
+    "dark": {
+      "background": "oklch(0.209 0.066 293.0)",
+      "primary": "oklch(0.769 0.165 70.1)",
+      "primary-foreground": "oklch(0.209 0.066 293.0)",
+      "accent": "oklch(0.606 0.219 292.7)",
+      "accent-foreground": "oklch(0.209 0.066 293.0)",
+      "secondary-foreground": "oklch(0.209 0.066 293.0)",
+      "border": "oklch(0.606 0.219 292.7)",
+      "ring": "oklch(0.769 0.165 70.1)"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "webcore — internet / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#C0C0C0",
+      "$type": "color",
+      "$description": "— Windows 95 system grey; the exact hex value of the Windows desktop and dialog box background; not light grey (#D3D3D3, too soft), not silver (#A9A9A9, too dark); this is the precise platform color that defined the 1990s computing experience"
+    },
+    "primary": {
+      "$value": "#000080",
+      "$type": "color",
+      "$description": "— classic browser hyperlink navy; the default `<a>` link color in Netscape Navigator and Internet Explorer before CSS color overrides; not blue (#0000FF, too bright), not dark blue (#00005A, too dark); this is the exact default browser unvisited link color"
+    },
+    "accent": {
+      "$value": "#800080",
+      "$type": "color",
+      "$description": "— visited link purple; the exact default browser visited link color; in 1990s web design, visited/unvisited link color changes were one of the only \"design\" features available; the purple pair to the navy is not decorative choice but browser default behavior preserved as aesthetic"
+    },
+    "elevation-model": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Windows 95 beveled borders — 2px inset highlight/shadow mechanism; top and left edges use  (light source hits these faces), bottom and right edges use #808080 (shadow faces); this is the exact CSS implementation of the Windows 95 3D button/panel widget style; no box-shadow property (that didn't exist until CSS3"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Times New Roman",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Arial",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

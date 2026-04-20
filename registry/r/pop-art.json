@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pop-art",
+  "type": "registry:style",
+  "title": "Pop Art",
+  "description": "pop-art — historical / Kinetic Motion tier: Kinetic. Display font: Futura.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Futura",
+      "--font-body": "Futura",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.968 0.211 109.8)",
+      "primary": "oklch(0.628 0.258 29.2)",
+      "primary-foreground": "oklch(0.968 0.211 109.8)",
+      "accent": "oklch(0.452 0.313 264.1)",
+      "accent-foreground": "oklch(0.968 0.211 109.8)",
+      "secondary-foreground": "oklch(0.968 0.211 109.8)",
+      "border": "oklch(0.452 0.313 264.1)",
+      "ring": "oklch(0.628 0.258 29.2)"
+    },
+    "dark": {
+      "background": "oklch(0.968 0.211 109.8)",
+      "primary": "oklch(0.628 0.258 29.2)",
+      "primary-foreground": "oklch(0.968 0.211 109.8)",
+      "accent": "oklch(0.452 0.313 264.1)",
+      "accent-foreground": "oklch(0.968 0.211 109.8)",
+      "secondary-foreground": "oklch(0.968 0.211 109.8)",
+      "border": "oklch(0.452 0.313 264.1)",
+      "ring": "oklch(0.628 0.258 29.2)"
+    }
+  }
+}

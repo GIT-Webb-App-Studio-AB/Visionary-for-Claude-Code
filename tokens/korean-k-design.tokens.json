@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "korean-k-design — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "clean white — K-pop staging brightness"
+    },
+    "primary": {
+      "$value": "#FF2D78",
+      "$type": "color",
+      "$description": "hot pink — idol era energy"
+    },
+    "accent": {
+      "$value": "#3D5AFE",
+      "$type": "color",
+      "$description": "electric blue — K-drama poster blue"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Pretendard",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Noto Sans KR (fallback when Pretendard unavailable)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":280,\"damping\":18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

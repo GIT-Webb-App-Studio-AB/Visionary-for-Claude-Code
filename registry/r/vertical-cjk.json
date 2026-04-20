@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vertical-cjk",
+  "type": "registry:style",
+  "title": "Vertical Cjk",
+  "description": "vertical-cjk — typography / Subtle Motion tier: Subtle. Display font: Noto Serif CJK SC (Simplified) / JP (Japanese).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Noto Serif CJK SC (Simplified) / JP (Japanese)",
+      "--font-body": "Noto Sans CJK SC / JP",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.984 0.005 106.5)",
+      "primary": "oklch(0.189 0.023 72.3)",
+      "primary-foreground": "oklch(0.984 0.005 106.5)",
+      "accent": "oklch(0.543 0.174 29.7)",
+      "accent-foreground": "oklch(0.984 0.005 106.5)",
+      "secondary-foreground": "oklch(0.984 0.005 106.5)",
+      "border": "oklch(0.543 0.174 29.7)",
+      "ring": "oklch(0.189 0.023 72.3)"
+    },
+    "dark": {
+      "background": "oklch(0.984 0.005 106.5)",
+      "primary": "oklch(0.189 0.023 72.3)",
+      "primary-foreground": "oklch(0.984 0.005 106.5)",
+      "accent": "oklch(0.543 0.174 29.7)",
+      "accent-foreground": "oklch(0.984 0.005 106.5)",
+      "secondary-foreground": "oklch(0.984 0.005 106.5)",
+      "border": "oklch(0.543 0.174 29.7)",
+      "ring": "oklch(0.189 0.023 72.3)"
+    }
+  }
+}

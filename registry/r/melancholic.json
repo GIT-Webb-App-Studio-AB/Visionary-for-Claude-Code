@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "melancholic",
+  "type": "registry:style",
+  "title": "Melancholic",
+  "description": "melancholic — emotional / Subtle Motion tier: Subtle. Display font: Libre Baskerville 400 (weight restrained.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Libre Baskerville 400 (weight restrained",
+      "--font-body": "Libre Baskerville 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.227 0.004 286.1)",
+      "primary": "oklch(0.626 0.031 248.3)",
+      "primary-foreground": "oklch(0.227 0.004 286.1)",
+      "accent": "oklch(0.447 0.034 261.3)",
+      "accent-foreground": "oklch(0.227 0.004 286.1)",
+      "secondary-foreground": "oklch(0.227 0.004 286.1)",
+      "border": "oklch(0.447 0.034 261.3)",
+      "ring": "oklch(0.626 0.031 248.3)"
+    },
+    "dark": {
+      "background": "oklch(0.227 0.004 286.1)",
+      "primary": "oklch(0.626 0.031 248.3)",
+      "primary-foreground": "oklch(0.227 0.004 286.1)",
+      "accent": "oklch(0.447 0.034 261.3)",
+      "accent-foreground": "oklch(0.227 0.004 286.1)",
+      "secondary-foreground": "oklch(0.227 0.004 286.1)",
+      "border": "oklch(0.447 0.034 261.3)",
+      "ring": "oklch(0.626 0.031 248.3)"
+    }
+  }
+}

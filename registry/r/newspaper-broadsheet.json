@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newspaper-broadsheet",
+  "type": "registry:style",
+  "title": "Newspaper Broadsheet",
+  "description": "newspaper-broadsheet — graphic / Subtle Motion tier: Subtle. Display font: Libre Baskerville.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Libre Baskerville",
+      "--font-body": "Source Serif 4",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.953 0.016 86.4)",
+      "primary": "oklch(0.184 0.023 59.8)",
+      "primary-foreground": "oklch(0.953 0.016 86.4)",
+      "accent": "oklch(0.416 0.148 26.6)",
+      "accent-foreground": "oklch(0.953 0.016 86.4)",
+      "secondary-foreground": "oklch(0.953 0.016 86.4)",
+      "border": "oklch(0.416 0.148 26.6)",
+      "ring": "oklch(0.184 0.023 59.8)"
+    },
+    "dark": {
+      "background": "oklch(0.953 0.016 86.4)",
+      "primary": "oklch(0.184 0.023 59.8)",
+      "primary-foreground": "oklch(0.953 0.016 86.4)",
+      "accent": "oklch(0.416 0.148 26.6)",
+      "accent-foreground": "oklch(0.953 0.016 86.4)",
+      "secondary-foreground": "oklch(0.953 0.016 86.4)",
+      "border": "oklch(0.416 0.148 26.6)",
+      "ring": "oklch(0.184 0.023 59.8)"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "kinetic-typography-v2 — typography / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "`` or `#0A0A0A` (pure, no gradient — the type IS the"
+    },
+    "foreground": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "`` on white, `#FFFFFF` on black. Contrast is"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**variable font required**",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "same family",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.2,\"visualDuration\":0.4}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "responsive-editorial — modern / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#C41E3A",
+      "$type": "color",
+      "$description": "editorial red — link, pullquote, highlight"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Source Serif 4",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Source Serif 4",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

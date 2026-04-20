@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "healthcare-wellness — industry / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FDFAF4",
+      "$type": "color",
+      "$description": "warm cream"
+    },
+    "primary": {
+      "$value": "#2D6A4F",
+      "$type": "color",
+      "$description": "sage green"
+    },
+    "accent": {
+      "$value": "#F4A261",
+      "$type": "color",
+      "$description": "warm amber"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Chillax 600–700",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Plus Jakarta Sans 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.15,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":28,\"mass\":1.1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

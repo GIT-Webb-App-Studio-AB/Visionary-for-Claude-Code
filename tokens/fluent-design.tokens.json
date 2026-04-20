@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "fluent-design — morphisms / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#202020",
+      "$type": "color",
+      "$description": "— WinUI dark canvas"
+    },
+    "primary": {
+      "$value": "#60CDFF",
+      "$type": "color",
+      "$description": "— Fluent accent blue (light mode: #0078D4"
+    },
+    "accent": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "at varying opacities for layering"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Segoe UI Variable (fallback: Segoe UI",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Segoe UI",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

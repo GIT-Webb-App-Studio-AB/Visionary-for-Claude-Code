@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/capture-and-critique.sh"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/capture-and-critique.mjs"
           }
         ]
       }
@@ -16,17 +16,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/detect-framework.sh"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/detect-framework.mjs"
           }
         ]
       }
     ],
-    "Stop": [
+    "UserPromptSubmit": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/update-taste.sh"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/update-taste.mjs"
           }
         ]
       }

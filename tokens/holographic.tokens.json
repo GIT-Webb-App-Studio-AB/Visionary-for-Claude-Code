@@ -1,0 +1,42 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "holographic — morphisms / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0D0D0D",
+      "$type": "color",
+      "$description": "— near-black for maximum iridescence contrast"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cabinet Grotesk 800",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Cabinet Grotesk 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.03em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

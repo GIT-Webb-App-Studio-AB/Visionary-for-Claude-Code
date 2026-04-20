@@ -1,8 +1,8 @@
 # Visual Style Index
 
-This index lists all 186 styles. Claude reads this file first to pick 2-3 candidates, then loads only those style files. Keep this file under 3KB.
+This index lists all 202 styles. Claude reads this file first to pick 2-3 candidates, then loads only those style files. Keep this file under 3KB.
 
-## Morphisms (12)
+## Morphisms (14)
 - **glassmorphism** — Frosted glass panels, backdrop blur, translucent surfaces on dark backgrounds
 - **liquid-glass** — iOS 26 adaptive glass, color-mix oklch, system-native translucency
 - **neumorphism** — Dual soft shadows on grey, pressed/raised surface illusion, monochromatic
@@ -12,9 +12,11 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **material-design** — Google dp elevation system, Roboto, semantic motion via shared-axis
 - **fluent-design** — Microsoft acrylic/mica blur, cursor-reactive reveal lighting, Windows-native
 - **neubrutalism** — 3px solid black borders, hard offset shadow, zero border-radius, aggressive type
+- **neobrutalism-softened** — 2024+ softened neo-brutalism, charcoal borders, tinted shadows, pastel bg
 - **frutiger-aero** — Glass + nature + chrome, specular highlights, 2006–2014 Vista-era aesthetic
 - **aurora-mesh** — Animated mesh gradient background, dark canvas, blur-reveal card entries
 - **holographic** — Iridescent hue-rotating CSS, spectral glow, Cabinet Grotesk, full Kinetic tier
+- **liquid-glass-ios26** — Apple iOS 26+ adaptive glass, color-mix oklch, scroll-reactive tab bar
 
 ## Internet Aesthetics (18)
 - **vaporwave** — Magenta + cyan on purple, VCR OSD Mono, perspective grid floor, scanline reveals
@@ -36,7 +38,7 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **e-girl** — Hot pink #FF1493 + black duality, hard offset shadows, bounce animation, zero radius
 - **cottagecore-tech** — Nature + function hybrid, Lora + Source Sans, sage green on warm white
 
-## Historical Movements (16)
+## Historical Movements (19)
 - **bauhaus** — Form follows function, primary colors, geometric sans, grid discipline
 - **swiss-rationalism** — Helvetica, mathematical grid, asymmetric layout, information hierarchy
 - **constructivism** — Diagonal composition, red/black, heavy sans, propaganda-poster energy
@@ -53,8 +55,11 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **op-art** — Black/white geometric illusion, optical vibration, perfect mathematical repeat
 - **architectural-brutalism** — Concrete texture, raw material, exposed structure, heavy type
 - **dieter-rams** — Ten principles of good design, beige/grey, invisible UI, function absolute
+- **swiss-gerstner** — Karl Gerstner programmatic grid, Akzidenz-Grotesk, 8-col modular, single accent
+- **swiss-muller-brockmann** — Tonhalle Zürich poster discipline, asymmetric, pure geometric hero
+- **swiss-crouwel-gridnik** — Total Design / Stedelijk catalogue, visible grid, Gridnik uppercase display
 
-## Contemporary UI (14)
+## Contemporary UI (17)
 - **bento-grid** — Mosaic card layout, varied aspect ratios, modular content blocks
 - **active-living-grid** — Animated bento, card size changes respond to content state
 - **dark-mode-first** — OLED-optimized #000, high-contrast accents, zero light bleed
@@ -69,8 +74,11 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **gamification** — XP bars, badges, achievement popups, progress loops, reward motion
 - **spatial-ar** — Depth-layered UI, parallax, visionOS-influenced, gesture-ready
 - **responsive-editorial** — Magazine layout adapts to screen, fluid typography, image-text rhythm
+- **ambient-copilot** — AI as invisible layer, anchor-pinned surfaces, `@starting-style` crystallize-in
+- **dyslexia-friendly** — Atkinson Hyperlegible, cream bg, 0.035em tracking, 1.8 leading, research-backed
+- **apca-native-contrast** — Lc 75+/90+ floors, Atkinson/Literata, oklch system colors, 48px targets
 
-## Typography-Led (10)
+## Typography-Led (15)
 - **kinetic-type** — Type as motion — letters animate, words dance, reading is the experience
 - **big-bold-type** — Display type at 120px+, type IS the UI, minimal other visual elements
 - **variable-font** — Weight/width axes animate on interaction, type responds to scroll/hover
@@ -81,6 +89,11 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **deconstructed-type** — Letters overlap, break baseline, fragment — Neville Brody influence
 - **condensed-editorial** — Ultra-narrow type, high vertical density, newspaper-column efficiency
 - **serif-revival** — Premium editorial serif for everything, anti-sans backlash, long-form warmth
+- **editorial-serif-revival** — Vela Serif / Gentium Plus body, hot-metal hover letter-spacing, reading-progress
+- **technical-mono** — Monospace precision, documentation-grade type, functional beauty
+- **type-collage** — Words as visual material, letterform as shape, typography as image
+- **kinetic-typography-v2** — Scroll-linked CSS animation-timeline, variable-font axes sweep, pause-required
+- **colr-v1-color-type** — COLR v1 multi-color fonts, font-palette swaps, Nabla/Rocher/Bungee Spice
 
 ## Industry-Specific (16)
 - **fintech-trust** — Navy + white, restrained motion, regulatory-grade typography, zero decoration
@@ -100,7 +113,7 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **social-media-native** — Portrait-first, video-optimized, infinite scroll, algorithm-native pattern
 - **streaming-media** — Dark canvas, thumbnail-first, autoplay-ready, minimal chrome
 
-## Emotional/Psychological (12)
+## Emotional/Psychological (13)
 - **dopamine-design** — Variable rewards, surprise animation, bright celebration, compulsion loop
 - **zen-void** — Maximum whitespace, one element per view, breath-paced motion, silence as design
 - **anxiety-urgency** — Countdown timers, stock indicators, red accents, information pressure
@@ -113,6 +126,7 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **romantic-soft** — Blush + ivory, script accents, soft photography, emotional warmth
 - **melancholic** — Desaturated palette, slow motion, minor-key interaction, introspective space
 - **energetic-athletic** — Bold italic, high contrast, action-ready motion, performance focus
+- **calm-focus-mode** — Neurodivergent-first, Atkinson Hyperlegible, zero motion under reduce, one-CTA
 
 ## Material/Texture (10)
 - **paper-editorial** — Paper texture, print grid, ink-press type, newspaper or magazine heritage
@@ -126,13 +140,14 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **neon-signage** — Tube glass letter shapes, glow physics, bar/diner sign heritage
 - **paper-cut** — Layered paper shadow system, crafted depth, flat element physical stacking
 
-## Futurist/Sci-Fi (14)
+## Futurist/Sci-Fi (16)
 - **sci-fi-hud** — Heads-up display UI, circular data readouts, targeting reticles, wireframe overlay
 - **biomorphic-futurism** — Organic alien forms, bioluminescence palette, living-system motion
 - **quantum-particle** — Particle system animation, quantum uncertainty visualization, physics-inspired
 - **cosmic-astronomical** — Deep space photography, nebula palette, stellar scale, awe dimension
 - **retrofuturism** — Past's vision of the future — Googie, Atomic Age, Sputnik-era optimism
 - **solarpunk-futurism** — Hopeful future, green technology aesthetic, sustainable abundance
+- **solarpunk-dark** — Darker solarpunk variant, deep forest + solar gold, Nunito, expressive
 - **post-apocalyptic** — Degraded surfaces, utility-first, salvage aesthetic, resource scarcity signals
 - **alien-nonhuman** — Non-human information architecture, bioluminescent, radial symmetry
 - **underwater-aquatic** — Caustic light patterns, pressure-depth palette, bioluminescent accents
@@ -141,12 +156,14 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **data-center** — Server rack reference, blinking LEDs, cable management, infrastructure beautiful
 - **neural-network-ai** — Node-edge visualization, activation patterns, weights as visual metaphor
 - **generative-algorithmic** — Code as design tool, emergent pattern, mathematical beauty
+- **surveillance-panopticon** — CCTV grid, timestamp overlay, security camera reference
 
-## Cultural/Regional (10)
+## Cultural/Regional (11)
 - **scandinavian-nordic** — Hygge warmth, functional minimalism, natural materials, high contrast dark
 - **japanese-minimalism** — Ma (negative space) as design value, wabi-sabi, natural imperfection
 - **korean-k-design** — Gradient-forward, skincare-influenced softness, pastel precision, cute-functional
 - **chinese-guochao** — New Chinese wave, traditional motif + modern typography, red/gold reinterpreted
+- **guochao-new-chinese** — Contemporary Chinese brand aesthetic, Eastern motif modernized
 - **latin-fiesta** — Warm saturated palette, typographic energy, pattern density, celebration
 - **african-design** — Kente-inspired geometry, warm earth + bright accent, pattern complexity
 - **arabic-calligraphic** — Right-to-left native, calligraphic letterform, geometric arabesque
@@ -154,7 +171,7 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **eastern-european-brutalist** — Soviet-era building reference, concrete, utilitarian, bloc aesthetic
 - **indigenous-first-nations** — Land-inspired color, traditional geometry interpreted, respectful reference
 
-## Hybrid/Cross-Domain (12)
+## Hybrid/Cross-Domain (14)
 - **print-to-web-editorial** — Magazine layout transplanted to screen, editorial grid, print typographic rules
 - **architecture-inspired** — Blueprint grid, section drawing reference, structural honest beauty
 - **fashion-editorial** — White space luxury, model photography, editorial italic, runway influence
@@ -167,23 +184,21 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **map-cartographic** — Contour lines, legend systems, geographic data visualization
 - **scientific-journal** — Dense information, serif body, figure caption system, academic rigour
 - **catalog-archive** — Grid product layout, reference number system, utilitarian classification
+- **chaos-packaging-collage** — Anti-AI-slop, GT Alpina + Bureau Grotesque + hand-drawn, torn-paper
+- **recombinant-hybrid** — Explicit multi-aesthetic juxtaposition — skeuo+surveillance, pixel+vapor
 
-## Extended (42)
+## Extended (39)
+- **bauhaus-weimar** — 1919-1925 expressionist Bauhaus, Itten era, EB Garamond, walnut ink, parchment
+- **bauhaus-dessau** — 1925+ industrial Bauhaus, Bayer Universal, three-primary + diagonal composition
+- **default-computing-native** — Platform-native (macOS/GNOME/KDE/Windows/iOS), system-ui, Canvas/AccentColor
+- **dopamine-calm** — Gentle-reward middle path between dopamine-design and calm-focus-mode, sage + gold
+- **cassette-futurism** — Nostromo/Severance/Alien aesthetic, beige panels + CRT green, Futura PT, stencil labels
 - **grainy-blur** — Grain texture over blur layers, analog imperfection on digital blur
-- **surveillance-panopticon** — CCTV grid, timestamp overlay, security camera reference
-- **future-medieval** — Fantasy HUD, rune-meets-tech, organic metal aesthetic
-- **technical-mono** — Monospace precision, documentation-grade type, functional beauty
-- **type-collage** — Words as visual material, letterform as shape, typography as image
-- **hero-character-sculpture** — 3D character renders as UI anchor, Spline/Lottie integration
 - **blob-world** — SVG blob shapes animate, organic morphing UI, friendly formless
-- **corporate-grunge** — Polished surface hiding dysfunction, clean UI over broken system
-- **witchcore-ui** — Dark mystical, tarot card reference, celestial motifs, ritual interface
-- **medievalcore** — Illuminated manuscript reference, drop cap, heraldic color, parchment
 - **coastal-grandmother** — Linen + sage + white, leisure pace, comfortable editorial warmth
 - **corpcore-quiet-luxury** — Quiet luxury applied to SaaS, understated premium, anti-loud
 - **terrazzo-digital** — Chip pattern abstracted to UI, multicolor fragment system, Italian floor tile
 - **smoked-glass-chrome** — Tinted glass + chrome edge, luxury car interior reference
-- **early-web-geocities** — Animated GIF era, tiled backgrounds, guestbooks, chaotic personal page
 - **bubblegum-bling** — Pink + rhinestone sparkle, high glam, maximalist feminine aesthetic
 - **bloomcore-botanical** — Flower photography as UI texture, botanical illustration, bloom as metaphor
 - **mycelium-fungal** — Spore network visualization, earth tones, underground system beauty
@@ -203,14 +218,15 @@ This index lists all 186 styles. Claude reads this file first to pick 2-3 candid
 - **microfilm-archive** — Grainy B&W, document scan aesthetic, archival reference
 - **zoetrope-early-cinema** — Film strip composition, silent era reference, motion study frames
 - **letterpress-emboss** — Deboss/emboss illusion, ink-press texture, artisan print reference
-- **guochao-new-chinese** — Contemporary Chinese brand aesthetic, Eastern motif modernized
 - **disco-op-art** — Optical art meets 1970s disco, geometric pattern + warm bronze palette
-- **goblincore-digital** — Goblincore aesthetic applied to digital interfaces, earthy UI
-- **cottagecore-tech** — Nature + technology hybrid (see internet aesthetics category)
-- **frutiger-aero-2** — Extended Frutiger Aero with additional nature-tech references
-- **post-internet-maximalism-2** — Second-wave post-internet, social media native maximalism
-- **solarpunk-futurism-2** — Advanced solarpunk with speculative technology integration
-- **dreamcore-2** — Extended dreamcore, deeper liminal, more architectural void references
+- **goblincore-pixel** — Goblincore aesthetic applied to pixel/retro UI — VT323, dim bioluminescent glow
+- **frutiger-aero-kinetic** — Frutiger Aero extended with kinetic entry animations and Vista-era glow
+- **corporate-grunge** — Polished surface hiding dysfunction, clean UI over broken system
+- **early-web-geocities** — Animated GIF era, tiled backgrounds, guestbooks, chaotic personal page
+- **future-medieval** — Fantasy HUD, rune-meets-tech, organic metal aesthetic
+- **hero-character-sculpture** — 3D character renders as UI anchor, Spline/Lottie integration
+- **medievalcore** — Illuminated manuscript reference, drop cap, heraldic color, parchment
+- **witchcore-ui** — Dark mystical, tarot card reference, celestial motifs, ritual interface
 
 ## Transplantation Pairs (cross-domain application)
 - **Newspaper Grid → Logistics** — Broadsheet authority applied where no one expects editorial rigour

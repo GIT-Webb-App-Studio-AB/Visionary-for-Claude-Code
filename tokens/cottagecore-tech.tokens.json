@@ -1,0 +1,62 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "cottagecore-tech — internet / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F7F4EE",
+      "$type": "color",
+      "$description": "— warm off-white; slightly cooler than pure cottagecore (which runs #FAF7F0) because the tech utility read requires slightly more neutrality; the warmth is present but not dominant"
+    },
+    "primary": {
+      "$value": "#4A7C59",
+      "$type": "color",
+      "$description": "— sage; nature-derived and readable on the light background; passes WCAG AA at normal weight; references living plant color not forest darkness"
+    },
+    "accent": {
+      "$value": "#8B6F4A",
+      "$type": "color",
+      "$description": "— warm brown for borders, secondary actions, code block backgrounds; references natural wood and craft materials; the material of the desk the developer works at"
+    },
+    "elevation-model": {
+      "$value": "#8B6F4A",
+      "$type": "color",
+      "$description": "Subtle — 1px border ( at 30% opacity) + very light box-shadow (0 2px 8px rgba(74, 59, 38, 0.08)); references the physical craft of binding a notebook or framing pressed flowers; NOT digital glass morphism (no blur), NOT drop shadows from overhead light (too digital"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Lora 600",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Source Sans 3 or DM Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":140,\"damping\":16,\"mass\":1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

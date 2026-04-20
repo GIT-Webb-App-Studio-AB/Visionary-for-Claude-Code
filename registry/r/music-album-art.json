@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "music-album-art",
+  "type": "registry:style",
+  "title": "Music Album Art",
+  "description": "music-album-art — hybrid / Kinetic Motion tier: Kinetic. Display font: Art.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Art",
+      "--font-body": "DM Sans (neutral fallback for track listings and credits)",
+      "--radius": "0px"
+    },
+    "light": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    },
+    "dark": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    }
+  }
+}

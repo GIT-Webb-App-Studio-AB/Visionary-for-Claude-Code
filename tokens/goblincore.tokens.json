@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "goblincore — internet / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#1C1A0F",
+      "$type": "color",
+      "$description": "— earthy near-black, like forest floor at dusk"
+    },
+    "primary": {
+      "$value": "#6B8C42",
+      "$type": "color",
+      "$description": "— muddy olive green"
+    },
+    "accent": {
+      "$value": "#A0784A",
+      "$type": "color",
+      "$description": "— mushroom brown used for borders and decorative elements"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "IM Fell English",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IM Fell English or Libre Baskerville",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "3px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dyslexia-friendly",
+  "type": "registry:style",
+  "title": "Dyslexia Friendly",
+  "description": "dyslexia-friendly — modern / Subtle Motion tier: Subtle. Display font: **Atkinson Hyperlegible** (Braille Institute.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Atkinson Hyperlegible** (Braille Institute",
+      "--font-body": "Atkinson Hyperlegible",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.978 0.024 85.8)",
+      "foreground": "oklch(0.278 0.030 256.8)",
+      "primary": "oklch(0.387 0.150 266.4)",
+      "primary-foreground": "oklch(0.978 0.024 85.8)",
+      "accent": "oklch(0.536 0.084 142.3)",
+      "accent-foreground": "oklch(0.978 0.024 85.8)",
+      "secondary-foreground": "oklch(0.978 0.024 85.8)",
+      "border": "oklch(0.536 0.084 142.3)",
+      "ring": "oklch(0.387 0.150 266.4)",
+      "muted-foreground": "oklch(0.278 0.030 256.8)"
+    },
+    "dark": {
+      "background": "oklch(0.978 0.024 85.8)",
+      "foreground": "oklch(0.278 0.030 256.8)",
+      "primary": "oklch(0.387 0.150 266.4)",
+      "primary-foreground": "oklch(0.978 0.024 85.8)",
+      "accent": "oklch(0.536 0.084 142.3)",
+      "accent-foreground": "oklch(0.978 0.024 85.8)",
+      "secondary-foreground": "oklch(0.978 0.024 85.8)",
+      "border": "oklch(0.536 0.084 142.3)",
+      "ring": "oklch(0.387 0.150 266.4)",
+      "muted-foreground": "oklch(0.278 0.030 256.8)"
+    }
+  }
+}

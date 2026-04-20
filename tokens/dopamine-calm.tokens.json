@@ -1,0 +1,63 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "dopamine-calm — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFF8F2",
+      "$type": "color",
+      "$description": "`` (warm ivory — evokes morning light"
+    },
+    "text": {
+      "$value": "#2D2A27",
+      "$type": "color",
+      "$description": "``"
+    },
+    "primary": {
+      "$value": "#5C8A5E",
+      "$type": "color",
+      "$description": "`` (muted sage — research validates"
+    },
+    "reward-accent": {
+      "$value": "#E8A94E",
+      "$type": "color",
+      "$description": "`` (warm gold — reserved for completion"
+    },
+    "soft-chrome": {
+      "$value": "#E0D9CE",
+      "$type": "color",
+      "$description": "`` (backdrop for cards"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Nunito** (warm geometric",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.1,\"visualDuration\":0.4}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

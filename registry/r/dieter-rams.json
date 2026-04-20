@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dieter-rams",
+  "type": "registry:style",
+  "title": "Dieter Rams",
+  "description": "dieter-rams — historical / Subtle Motion tier: Subtle. Display font: Aktiv Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Aktiv Grotesk",
+      "--font-body": "Aktiv Grotesk",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.969 0.007 106.5)",
+      "primary": "oklch(0.702 0.200 45.1)",
+      "primary-foreground": "oklch(0.969 0.007 106.5)",
+      "accent": "oklch(0.218 0.000 89.9)",
+      "accent-foreground": "oklch(0.969 0.007 106.5)",
+      "secondary-foreground": "oklch(0.969 0.007 106.5)",
+      "border": "oklch(0.218 0.000 89.9)",
+      "ring": "oklch(0.702 0.200 45.1)"
+    },
+    "dark": {
+      "background": "oklch(0.969 0.007 106.5)",
+      "primary": "oklch(0.702 0.200 45.1)",
+      "primary-foreground": "oklch(0.969 0.007 106.5)",
+      "accent": "oklch(0.218 0.000 89.9)",
+      "accent-foreground": "oklch(0.969 0.007 106.5)",
+      "secondary-foreground": "oklch(0.969 0.007 106.5)",
+      "border": "oklch(0.218 0.000 89.9)",
+      "ring": "oklch(0.702 0.200 45.1)"
+    }
+  }
+}

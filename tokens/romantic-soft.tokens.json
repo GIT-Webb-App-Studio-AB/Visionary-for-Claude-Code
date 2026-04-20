@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "romantic-soft — emotional / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFF7F7",
+      "$type": "color",
+      "$description": "blush white) or #FDF4FF (lavender white"
+    },
+    "primary": {
+      "$value": "#C2185B",
+      "$type": "color",
+      "$description": "deep rose"
+    },
+    "accent": {
+      "$value": "#F8BBD9",
+      "$type": "color",
+      "$description": "soft pink) or #E8D5FF (soft lavender"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cormorant Garamond 400",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Lora 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.3,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":150,\"damping\":25,\"mass\":1.3}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "20px",
+      "$type": "dimension"
+    }
+  }
+}

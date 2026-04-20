@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clinical-cold",
+  "type": "registry:style",
+  "title": "Clinical Cold",
+  "description": "clinical-cold — emotional / Subtle Motion tier: Subtle. Display font: IBM Plex Sans 400–500.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "IBM Plex Sans 400–500",
+      "--font-body": "IBM Plex Sans 400",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.972 0.003 247.9)",
+      "primary": "oklch(0.522 0.177 255.8)",
+      "primary-foreground": "oklch(0.972 0.003 247.9)",
+      "accent": "oklch(0.551 0.023 264.4)",
+      "accent-foreground": "oklch(0.972 0.003 247.9)",
+      "secondary-foreground": "oklch(0.972 0.003 247.9)",
+      "border": "oklch(0.551 0.023 264.4)",
+      "ring": "oklch(0.522 0.177 255.8)"
+    },
+    "dark": {
+      "background": "oklch(0.972 0.003 247.9)",
+      "primary": "oklch(0.522 0.177 255.8)",
+      "primary-foreground": "oklch(0.972 0.003 247.9)",
+      "accent": "oklch(0.551 0.023 264.4)",
+      "accent-foreground": "oklch(0.972 0.003 247.9)",
+      "secondary-foreground": "oklch(0.972 0.003 247.9)",
+      "border": "oklch(0.551 0.023 264.4)",
+      "ring": "oklch(0.522 0.177 255.8)"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cottagecore",
+  "type": "registry:style",
+  "title": "Cottagecore",
+  "description": "cottagecore — internet / Expressive Motion tier: Expressive. Display font: Playfair Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display",
+      "--font-body": "Lora 400",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.986 0.007 80.7)",
+      "primary": "oklch(0.587 0.088 143.4)",
+      "primary-foreground": "oklch(0.986 0.007 80.7)",
+      "accent": "oklch(0.664 0.086 7.2)",
+      "accent-foreground": "oklch(0.986 0.007 80.7)",
+      "secondary-foreground": "oklch(0.986 0.007 80.7)",
+      "border": "oklch(0.664 0.086 7.2)",
+      "ring": "oklch(0.587 0.088 143.4)"
+    },
+    "dark": {
+      "background": "oklch(0.986 0.007 80.7)",
+      "primary": "oklch(0.587 0.088 143.4)",
+      "primary-foreground": "oklch(0.986 0.007 80.7)",
+      "accent": "oklch(0.664 0.086 7.2)",
+      "accent-foreground": "oklch(0.986 0.007 80.7)",
+      "secondary-foreground": "oklch(0.986 0.007 80.7)",
+      "border": "oklch(0.664 0.086 7.2)",
+      "ring": "oklch(0.587 0.088 143.4)"
+    }
+  }
+}

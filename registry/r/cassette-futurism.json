@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cassette-futurism",
+  "type": "registry:style",
+  "title": "Cassette Futurism",
+  "description": "cassette-futurism — extended / Subtle Motion tier: Subtle. Display font: **Futura PT.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Futura PT",
+      "--font-body": "IBM Plex Mono or Space Mono",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.790 0.048 86.4)",
+      "primary": "oklch(0.608 0.168 32.9)",
+      "primary-foreground": "oklch(0.790 0.048 86.4)",
+      "accent": "oklch(0.873 0.111 87.7)",
+      "accent-foreground": "oklch(0.790 0.048 86.4)",
+      "secondary-foreground": "oklch(0.790 0.048 86.4)",
+      "border": "oklch(0.873 0.111 87.7)",
+      "ring": "oklch(0.608 0.168 32.9)"
+    },
+    "dark": {
+      "background": "oklch(0.790 0.048 86.4)",
+      "primary": "oklch(0.608 0.168 32.9)",
+      "primary-foreground": "oklch(0.790 0.048 86.4)",
+      "accent": "oklch(0.873 0.111 87.7)",
+      "accent-foreground": "oklch(0.790 0.048 86.4)",
+      "secondary-foreground": "oklch(0.790 0.048 86.4)",
+      "border": "oklch(0.873 0.111 87.7)",
+      "ring": "oklch(0.608 0.168 32.9)"
+    }
+  }
+}

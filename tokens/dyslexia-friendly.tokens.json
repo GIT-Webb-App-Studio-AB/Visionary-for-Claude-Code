@@ -1,0 +1,71 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "dyslexia-friendly — modern / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFF7E6",
+      "$type": "color",
+      "$description": "`` (cream / pale yellow — high-contrast black on"
+    },
+    "text": {
+      "$value": "#1F2937",
+      "$type": "color",
+      "$description": "`` (dark grey, not black — pure black on cream"
+    },
+    "primary": {
+      "$value": "#1F3A93",
+      "$type": "color",
+      "$description": "`` (deep blue — dyslexic-friendly research"
+    },
+    "accent": {
+      "$value": "#507A4C",
+      "$type": "color",
+      "$description": "`` (deep sage"
+    },
+    "forbidden": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "pure white (``) backgrounds, pure black text, red on"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Atkinson Hyperlegible** (Braille Institute",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Atkinson Hyperlegible",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.035em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.8,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.25}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

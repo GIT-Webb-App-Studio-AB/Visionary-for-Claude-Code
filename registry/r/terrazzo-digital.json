@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "terrazzo-digital",
+  "type": "registry:style",
+  "title": "Terrazzo Digital",
+  "description": "terrazzo-digital — extended / Subtle Motion tier: Subtle. Display font: Neue Haas Grotesk.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Neue Haas Grotesk",
+      "--font-body": "DM Sans",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.639 0.120 41.7)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.639 0.120 41.7)",
+      "accent": "oklch(0.639 0.120 41.7)",
+      "accent-foreground": "oklch(0.639 0.120 41.7)",
+      "secondary-foreground": "oklch(0.639 0.120 41.7)",
+      "border": "oklch(0.639 0.120 41.7)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.639 0.120 41.7)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.639 0.120 41.7)",
+      "accent": "oklch(0.639 0.120 41.7)",
+      "accent-foreground": "oklch(0.639 0.120 41.7)",
+      "secondary-foreground": "oklch(0.639 0.120 41.7)",
+      "border": "oklch(0.639 0.120 41.7)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    }
+  }
+}

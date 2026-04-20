@@ -1,0 +1,56 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "glass-dashboard — modern / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#080B14",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#22D3EE",
+      "$type": "color",
+      "$description": "cyan-400"
+    },
+    "accent": {
+      "$value": "#A78BFA",
+      "$type": "color",
+      "$description": "violet-400"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syne",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

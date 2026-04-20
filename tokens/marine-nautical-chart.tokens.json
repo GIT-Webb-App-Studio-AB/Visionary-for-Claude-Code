@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "marine-nautical-chart — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F0F4F8",
+      "$type": "color",
+      "$description": "chart paper blue-white"
+    },
+    "primary": {
+      "$value": "#1A2B5A",
+      "$type": "color",
+      "$description": "deep navy"
+    },
+    "accent": {
+      "$value": "#4A7A9B",
+      "$type": "color",
+      "$description": "coastal water blue"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Gill Sans (or Futura)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Gill Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

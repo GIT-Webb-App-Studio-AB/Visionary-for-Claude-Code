@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bauhaus-dessau",
+  "type": "registry:style",
+  "title": "Bauhaus Dessau",
+  "description": "bauhaus-dessau — historical / Expressive Motion tier: Expressive. Display font: **Universal** (Bayer 1925.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Universal** (Bayer 1925",
+      "--font-body": "Futura",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.944 0.012 84.6)",
+      "primary": "oklch(0.577 0.215 27.3)",
+      "primary-foreground": "oklch(0.944 0.012 84.6)",
+      "accent-foreground": "oklch(0.944 0.012 84.6)",
+      "secondary-foreground": "oklch(0.944 0.012 84.6)",
+      "ring": "oklch(0.577 0.215 27.3)"
+    },
+    "dark": {
+      "background": "oklch(0.944 0.012 84.6)",
+      "primary": "oklch(0.577 0.215 27.3)",
+      "primary-foreground": "oklch(0.944 0.012 84.6)",
+      "accent-foreground": "oklch(0.944 0.012 84.6)",
+      "secondary-foreground": "oklch(0.944 0.012 84.6)",
+      "ring": "oklch(0.577 0.215 27.3)"
+    }
+  }
+}

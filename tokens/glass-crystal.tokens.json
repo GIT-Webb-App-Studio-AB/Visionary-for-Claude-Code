@@ -1,0 +1,45 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "glass-crystal — graphic / Expressive",
+  "color": {},
+  "typography": {
+    "display": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Inter",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":260,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "12px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "20px",
+      "$type": "dimension"
+    }
+  }
+}

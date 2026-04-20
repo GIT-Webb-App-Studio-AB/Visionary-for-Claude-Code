@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "african-design — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#1A0A00",
+      "$type": "color",
+      "$description": "dark earth"
+    },
+    "primary": {
+      "$value": "#E8621A",
+      "$type": "color",
+      "$description": "kente orange"
+    },
+    "accent": {
+      "$value": "#F5C842",
+      "$type": "color",
+      "$description": "gold thread"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito ExtraBold",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":16}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

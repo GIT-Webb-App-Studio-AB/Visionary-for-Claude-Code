@@ -1,0 +1,66 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "concrete-brutalist-material — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#C8C8C8",
+      "$type": "color",
+      "$description": "`` (wet-cured concrete grey). Alternative `#A8A6A1`"
+    },
+    "primary-action-/-text": {
+      "$value": "#1C1C1C",
+      "$type": "color",
+      "$description": "`` (formwork black — the color of"
+    },
+    "accent": {
+      "$value": "#6B7280",
+      "$type": "color",
+      "$description": "`` (aggregate grey — the sparkle of exposed stone in"
+    },
+    "board-form-detail": {
+      "$value": "#9A9A9A",
+      "$type": "color",
+      "$description": "thin (1–2 px) horizontal lines in `` spaced"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.4,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.15}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

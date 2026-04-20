@@ -1,0 +1,66 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "editorial-serif-revival — typography / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F8F5EE",
+      "$type": "color",
+      "$description": "`` (warm cream, newsprint-adjacent) or `#FFFFFF` for"
+    },
+    "text": {
+      "$value": "#1E1B16",
+      "$type": "color",
+      "$description": "`` (off-black with warmth — pure #000 looks too"
+    },
+    "primary": {
+      "$value": "#7C2D12",
+      "$type": "color",
+      "$description": "`` (editorial oxblood) OR `#1E3A5F` (editorial navy"
+    },
+    "accent": {
+      "$value": "#9C7B4A",
+      "$type": "color",
+      "$description": "`` (warm gold) — used at ≤ 5 % of surface"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Vela Serif** (variable",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "same family as display",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.65,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.05,\"visualDuration\":0.3}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

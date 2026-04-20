@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bubblegum-bling",
+  "type": "registry:style",
+  "title": "Bubblegum Bling",
+  "description": "bubblegum-bling — extended / Kinetic Motion tier: Kinetic. Display font: Fredoka One.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Fredoka One",
+      "--font-body": "Fredoka One",
+      "--radius": "24px"
+    },
+    "light": {
+      "background": "oklch(0.854 0.109 339.5)",
+      "primary": "oklch(0.655 0.261 356.9)",
+      "primary-foreground": "oklch(0.854 0.109 339.5)",
+      "accent": "oklch(0.887 0.182 95.3)",
+      "accent-foreground": "oklch(0.854 0.109 339.5)",
+      "secondary-foreground": "oklch(0.854 0.109 339.5)",
+      "border": "oklch(0.887 0.182 95.3)",
+      "ring": "oklch(0.655 0.261 356.9)"
+    },
+    "dark": {
+      "background": "oklch(0.854 0.109 339.5)",
+      "primary": "oklch(0.655 0.261 356.9)",
+      "primary-foreground": "oklch(0.854 0.109 339.5)",
+      "accent": "oklch(0.887 0.182 95.3)",
+      "accent-foreground": "oklch(0.854 0.109 339.5)",
+      "secondary-foreground": "oklch(0.854 0.109 339.5)",
+      "border": "oklch(0.887 0.182 95.3)",
+      "ring": "oklch(0.655 0.261 356.9)"
+    }
+  }
+}

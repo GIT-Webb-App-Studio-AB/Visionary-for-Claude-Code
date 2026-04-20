@@ -1,0 +1,55 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "architectural-brutalism — historical / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#6B7280",
+      "$type": "color",
+      "$description": "exposed concrete"
+    },
+    "primary": {
+      "$value": "#1F2937",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#F3F4F6",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syne",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":500,\"damping\":50}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

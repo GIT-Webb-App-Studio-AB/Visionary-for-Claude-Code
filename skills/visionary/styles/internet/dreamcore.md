@@ -1,3 +1,17 @@
+---
+id: dreamcore
+category: internet
+motion_tier: Subtle
+density: sparse
+locale_fit: [all]
+palette_tags: [dark, light, neon, pastel]
+keywords: [dreamcore, internet]
+accessibility:
+  contrast_floor: 4.5
+  reduced_motion: opacity-only
+  touch_target: 44
+---
+
 # Dreamcore
 
 **Category:** internet
@@ -113,6 +127,23 @@
   opacity: 0.8;
 }
 ```
+
+## Accessibility
+
+### Contrast
+Body text must clear 4.5:1 (WCAG 2.2 AA) AND APCA Lc ≥ 75. Large text / UI labels: 3:1 and Lc ≥ 60. Run axe-core + apca-w3 during the critique loop.
+
+### Focus
+Render a `:focus-visible` ring only — no `:focus:not(:focus-visible)` reset (obsolete since March 2022). Prefer `Canvas` / `AccentColor` system colors in the ring so Windows High Contrast and forced-colors mode stay correct.
+
+### Motion
+Under `prefers-reduced-motion: reduce`, keep opacity transitions but drop transform/scale/translate — transform is a vestibular trigger. No autoplay exceeds 5 s without a pause control.
+
+### Touch target
+Touch targets default to 44×44 px — matches Apple HIG / Material (48dp) and has ~3× lower mis-tap rate than the 24-px WCAG floor. Inline links inside flowing prose are exempt.
+
+### RTL / Logical properties
+Use CSS logical properties (margin-inline, padding-inline, border-inline-*) by default so the same component works in RTL locales without a fork.
 
 ## Slop Watch
 - **Using scale transforms or translate entrances for motion:** Scale transforms (element growing from 0.95 to 1.0) and translate entrances (element sliding from below) both imply physical space — the element exists somewhere and moves to its destination. Dreamcore's central aesthetic claim is that space is ambiguous and physicality is absent. Any motion that implies an object moving through space directly contradicts the liminal, between-states quality. Only opacity transitions are permitted, because they suggest presence increasing rather than movement occurring.

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "coastal-grandmother",
+  "type": "registry:style",
+  "title": "Coastal Grandmother",
+  "description": "coastal-grandmother — extended / Subtle Motion tier: Subtle. Display font: Lora.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Lora",
+      "--font-body": "Source Serif 4",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.459 0.063 251.6)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.664 0.054 197.5)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.664 0.054 197.5)",
+      "ring": "oklch(0.459 0.063 251.6)"
+    },
+    "dark": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.459 0.063 251.6)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.664 0.054 197.5)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.664 0.054 197.5)",
+      "ring": "oklch(0.459 0.063 251.6)"
+    }
+  }
+}

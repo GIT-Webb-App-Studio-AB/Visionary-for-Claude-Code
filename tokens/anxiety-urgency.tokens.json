@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "anxiety-urgency — emotional / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "or #FFF5F5 (barely-there warning tint"
+    },
+    "primary": {
+      "$value": "#EF4444",
+      "$type": "color",
+      "$description": "urgent red"
+    },
+    "accent": {
+      "$value": "#F97316",
+      "$type": "color",
+      "$description": "warning amber for secondary urgency"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Helvetica Neue 700 or Inter 700 (familiar",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Inter 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.3,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":600,\"damping\":25,\"mass\":0.6}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

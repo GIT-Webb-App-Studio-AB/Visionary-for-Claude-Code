@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "holographic",
+  "type": "registry:style",
+  "title": "Holographic",
+  "description": "holographic — morphisms / Kinetic Motion tier: Kinetic. Display font: Cabinet Grotesk 800.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cabinet Grotesk 800",
+      "--font-body": "Cabinet Grotesk 400",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.159 0.000 89.9)",
+      "primary-foreground": "oklch(0.159 0.000 89.9)",
+      "accent-foreground": "oklch(0.159 0.000 89.9)",
+      "secondary-foreground": "oklch(0.159 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.159 0.000 89.9)",
+      "primary-foreground": "oklch(0.159 0.000 89.9)",
+      "accent-foreground": "oklch(0.159 0.000 89.9)",
+      "secondary-foreground": "oklch(0.159 0.000 89.9)"
+    }
+  }
+}

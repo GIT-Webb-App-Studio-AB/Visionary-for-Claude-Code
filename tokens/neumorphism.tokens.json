@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "neumorphism — morphisms / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#E0E5EC",
+      "$type": "color",
+      "$description": "— the exact grey that enables dual-shadow depth trick"
+    },
+    "primary": {
+      "$value": "#5B9CF6",
+      "$type": "color",
+      "$description": "— pressed-state indicator (flat color, no shadow"
+    },
+    "accent": {
+      "$value": "#C879FF",
+      "$type": "color",
+      "$description": "— used sparingly on active states only"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Manrope",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Manrope",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "handwritten-gestural — typography / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFFEF7",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#2D6A4F",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Caveat 700 (casual) or Reenie Beanie (loose gestural)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Plus Jakarta Sans 400 (contrast: structured body anchors the gestural display)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.2,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":20,\"mass\":1.1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

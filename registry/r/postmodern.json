@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "postmodern",
+  "type": "registry:style",
+  "title": "Postmodern",
+  "description": "postmodern — historical / Expressive Motion tier: Expressive. Display font: Playfair Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display",
+      "--font-body": "JetBrains Mono (unexpected pairing",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.969 0.009 78.3)",
+      "primary": "oklch(0.228 0.038 282.9)",
+      "primary-foreground": "oklch(0.969 0.009 78.3)",
+      "accent": "oklch(0.624 0.202 22.8)",
+      "accent-foreground": "oklch(0.969 0.009 78.3)",
+      "secondary-foreground": "oklch(0.969 0.009 78.3)",
+      "border": "oklch(0.624 0.202 22.8)",
+      "ring": "oklch(0.228 0.038 282.9)"
+    },
+    "dark": {
+      "background": "oklch(0.969 0.009 78.3)",
+      "primary": "oklch(0.228 0.038 282.9)",
+      "primary-foreground": "oklch(0.969 0.009 78.3)",
+      "accent": "oklch(0.624 0.202 22.8)",
+      "accent-foreground": "oklch(0.969 0.009 78.3)",
+      "secondary-foreground": "oklch(0.969 0.009 78.3)",
+      "border": "oklch(0.624 0.202 22.8)",
+      "ring": "oklch(0.228 0.038 282.9)"
+    }
+  }
+}

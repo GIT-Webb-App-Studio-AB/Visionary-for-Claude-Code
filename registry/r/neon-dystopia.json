@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neon-dystopia",
+  "type": "registry:style",
+  "title": "Neon Dystopia",
+  "description": "neon-dystopia — graphic / Kinetic Motion tier: Kinetic. Display font: Syne.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne",
+      "--font-body": "Syne",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.134 0.000 89.9)",
+      "primary": "oklch(0.651 0.249 5.7)",
+      "primary-foreground": "oklch(0.134 0.000 89.9)",
+      "accent": "oklch(0.890 0.174 171.3)",
+      "accent-foreground": "oklch(0.134 0.000 89.9)",
+      "secondary-foreground": "oklch(0.134 0.000 89.9)",
+      "border": "oklch(0.890 0.174 171.3)",
+      "ring": "oklch(0.651 0.249 5.7)"
+    },
+    "dark": {
+      "background": "oklch(0.134 0.000 89.9)",
+      "primary": "oklch(0.651 0.249 5.7)",
+      "primary-foreground": "oklch(0.134 0.000 89.9)",
+      "accent": "oklch(0.890 0.174 171.3)",
+      "accent-foreground": "oklch(0.134 0.000 89.9)",
+      "secondary-foreground": "oklch(0.134 0.000 89.9)",
+      "border": "oklch(0.890 0.174 171.3)",
+      "ring": "oklch(0.651 0.249 5.7)"
+    }
+  }
+}

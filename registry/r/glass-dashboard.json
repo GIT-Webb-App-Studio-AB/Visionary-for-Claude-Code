@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-dashboard",
+  "type": "registry:style",
+  "title": "Glass Dashboard",
+  "description": "glass-dashboard — modern / Expressive Motion tier: Expressive. Display font: Syne.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne",
+      "--font-body": "DM Sans",
+      "--radius": "16px"
+    },
+    "light": {
+      "background": "oklch(0.151 0.020 269.2)",
+      "primary": "oklch(0.797 0.134 211.5)",
+      "primary-foreground": "oklch(0.151 0.020 269.2)",
+      "accent": "oklch(0.709 0.159 293.5)",
+      "accent-foreground": "oklch(0.151 0.020 269.2)",
+      "secondary-foreground": "oklch(0.151 0.020 269.2)",
+      "border": "oklch(0.709 0.159 293.5)",
+      "ring": "oklch(0.797 0.134 211.5)"
+    },
+    "dark": {
+      "background": "oklch(0.151 0.020 269.2)",
+      "primary": "oklch(0.797 0.134 211.5)",
+      "primary-foreground": "oklch(0.151 0.020 269.2)",
+      "accent": "oklch(0.709 0.159 293.5)",
+      "accent-foreground": "oklch(0.151 0.020 269.2)",
+      "secondary-foreground": "oklch(0.151 0.020 269.2)",
+      "border": "oklch(0.709 0.159 293.5)",
+      "ring": "oklch(0.797 0.134 211.5)"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "_comment": "Submission artifact for the Anthropic official plugin marketplace. Format approximated from the public schema of the anthropics/claude-plugins repo (April 2026). Submit as a PR adding this file under plugins/visionary-claude/plugin.json (or the current repo convention). Maintainer: verify exact schema before filing the PR.",
+
+  "name": "visionary-claude",
+  "display_name": "Visionary — Design Intelligence",
+  "version": "1.3.0",
+  "author": {
+    "name": "GIT Webb & App Studio AB",
+    "url": "https://github.com/GIT-Webb-App-Studio-AB",
+    "sponsor_url": "https://github.com/sponsors/gitwebb"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+  "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+
+  "summary": "202 design styles, 8-step weighted-random selection algorithm, Playwright + axe-core visual critique loop, DTCG token export, cross-session taste calibration. Verified benchmark delta: +5.75 points over generic-slop baseline on 10 representative prompts.",
+
+  "categories": [
+    "design",
+    "ui-ux",
+    "frontend",
+    "accessibility",
+    "motion",
+    "typography",
+    "design-tokens"
+  ],
+
+  "tags": [
+    "design-system",
+    "motion",
+    "wcag-2.2",
+    "apca",
+    "dtcg",
+    "figma",
+    "shadcn",
+    "playwright",
+    "axe-core",
+    "next.js-16",
+    "tailwind-v4",
+    "motion-v12",
+    "react-19",
+    "vue-3",
+    "svelte-5",
+    "flutter",
+    "swiftui",
+    "jetpack-compose",
+    "react-native"
+  ],
+
+  "install": {
+    "command": "claude plugin install visionary-claude",
+    "marketplace_source": "GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code"
+  },
+
+  "requirements": {
+    "claude_code": ">=1.0.0",
+    "node": ">=18",
+    "python": "none"
+  },
+
+  "commands": [
+    { "name": "visionary",       "description": "Generate a single component via the 8-step algorithm" },
+    { "name": "variants",        "description": "Generate 3 mutually-distinct takes before critique" },
+    { "name": "apply",           "description": "Lock a chosen style across the product, emit DTCG tokens" },
+    { "name": "designer",        "description": "Apply a named-designer taste profile (Rams, Kowalski, Vignelli, Scher, Greiman)" },
+    { "name": "annotate",        "description": "Browser-annotate → code-edit (Design Mode parity)" },
+    { "name": "import-artifact", "description": "Import a Claude.ai Artifact into a Visionary-managed project" }
+  ],
+
+  "agents": [
+    { "name": "visual-critic", "description": "8-dimension aesthetic scoring agent (axe-core grounded)" }
+  ],
+
+  "hooks": [
+    { "event": "SessionStart",       "description": "Framework detection (Next 16, Tailwind v4, Motion v12, Base UI, DTCG)" },
+    { "event": "PostToolUse",        "description": "Visual critique loop trigger (Write|Edit|MultiEdit)" },
+    { "event": "UserPromptSubmit",   "description": "Taste calibration (rejection/approval signal → system.md)" }
+  ],
+
+  "evidence": {
+    "benchmark_result": "results/visionary-1.3.0.json",
+    "mean_total_score": 18.35,
+    "baseline_score":   12.60,
+    "delta":             "+5.75",
+    "dimensions_measured": ["distinctiveness", "coherence", "accessibility", "motion_readiness"]
+  },
+
+  "keywords_seo": [
+    "claude code design plugin",
+    "ai-generated ui",
+    "anti ai-slop",
+    "wcag compliant generator",
+    "design system claude",
+    "motion design claude code",
+    "figma tokens claude",
+    "shadcn registry claude"
+  ],
+
+  "screenshots": [
+    { "path": "docs/banner.svg", "alt": "Visionary for Claude Code — 202 design styles, 8-step algorithm, motion-first" }
+  ],
+
+  "submission_date": "2026-04-20",
+  "submission_contact": "davidrydgren@gmail.com"
+}

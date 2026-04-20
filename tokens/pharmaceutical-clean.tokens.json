@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "pharmaceutical-clean — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FAFCFF",
+      "$type": "color",
+      "$description": "clinical white with blue undertone"
+    },
+    "primary": {
+      "$value": "#005CB9",
+      "$type": "color",
+      "$description": "pharma blue — FDA-adjacent"
+    },
+    "accent": {
+      "$value": "#E8F0F8",
+      "$type": "color",
+      "$description": "light clinical tint"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Helvetica Neue (or Inter)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Inter",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":260,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

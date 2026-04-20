@@ -1,12 +1,13 @@
 {
+  "_comment": "MCP package versions are locked to minor ranges to avoid surprise breakage. Bump deliberately, not automatically. When upgrading, verify Playwright's browser_take_screenshot signature and Context7's resolve-library-id/query-docs API still match our hook and subagent instructions.",
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest", "--headless"]
+      "args": ["@playwright/mcp@^0.0.70", "--headless"]
     },
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
+      "args": ["-y", "@upstash/context7-mcp@^1.0"]
     }
   }
 }

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "witchcore-ui — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#1A0A2E",
+      "$type": "color",
+      "$description": "deep purple void"
+    },
+    "primary": {
+      "$value": "#7B2FBE",
+      "$type": "color",
+      "$description": "amethyst purple"
+    },
+    "accent": {
+      "$value": "#C9A84C",
+      "$type": "color",
+      "$description": "spell gold"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cinzel Decorative",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Cinzel",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.06em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

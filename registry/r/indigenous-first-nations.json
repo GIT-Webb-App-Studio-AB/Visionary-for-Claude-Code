@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "indigenous-first-nations",
+  "type": "registry:style",
+  "title": "Indigenous First Nations",
+  "description": "indigenous-first-nations — graphic / Subtle Motion tier: Subtle. Display font: Clean system sans.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Clean system sans",
+      "--font-body": "System sans",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.947 0.029 89.6)",
+      "primary": "oklch(0.387 0.072 71.5)",
+      "primary-foreground": "oklch(0.947 0.029 89.6)",
+      "accent": "oklch(0.471 0.112 50.8)",
+      "accent-foreground": "oklch(0.947 0.029 89.6)",
+      "secondary-foreground": "oklch(0.947 0.029 89.6)",
+      "border": "oklch(0.471 0.112 50.8)",
+      "ring": "oklch(0.387 0.072 71.5)"
+    },
+    "dark": {
+      "background": "oklch(0.947 0.029 89.6)",
+      "primary": "oklch(0.387 0.072 71.5)",
+      "primary-foreground": "oklch(0.947 0.029 89.6)",
+      "accent": "oklch(0.471 0.112 50.8)",
+      "accent-foreground": "oklch(0.947 0.029 89.6)",
+      "secondary-foreground": "oklch(0.947 0.029 89.6)",
+      "border": "oklch(0.471 0.112 50.8)",
+      "ring": "oklch(0.387 0.072 71.5)"
+    }
+  }
+}

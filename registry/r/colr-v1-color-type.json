@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "colr-v1-color-type",
+  "type": "registry:style",
+  "title": "Colr V1 Color Type",
+  "description": "colr-v1-color-type — typography / Expressive Motion tier: Expressive. Display font: one of: **Nabla** (variable + color.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "one of: **Nabla** (variable + color",
+      "--font-body": "Inter or Atkinson Hyperlegible",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.973 0.008 91.5)",
+      "foreground": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.973 0.008 91.5)",
+      "accent-foreground": "oklch(0.973 0.008 91.5)",
+      "secondary-foreground": "oklch(0.973 0.008 91.5)",
+      "muted-foreground": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.973 0.008 91.5)",
+      "foreground": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.973 0.008 91.5)",
+      "accent-foreground": "oklch(0.973 0.008 91.5)",
+      "secondary-foreground": "oklch(0.973 0.008 91.5)",
+      "muted-foreground": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

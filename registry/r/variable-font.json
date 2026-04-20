@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "variable-font",
+  "type": "registry:style",
+  "title": "Variable Font",
+  "description": "variable-font — typography / Expressive Motion tier: Expressive. Display font: Fraunces (variable: opsz.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Fraunces (variable: opsz",
+      "--font-body": "Inter (variable: wght",
+      "--radius": "6px"
+    },
+    "light": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.541 0.247 293.0)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.541 0.247 293.0)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.541 0.247 293.0)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.541 0.247 293.0)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

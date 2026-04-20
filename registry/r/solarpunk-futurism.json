@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "solarpunk-futurism",
+  "type": "registry:style",
+  "title": "Solarpunk Futurism",
+  "description": "solarpunk-futurism — graphic / Expressive Motion tier: Expressive. Display font: Nunito.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito",
+      "--font-body": "Nunito",
+      "--radius": "12px"
+    },
+    "light": {
+      "background": "oklch(0.966 0.024 125.2)",
+      "primary": "oklch(0.541 0.077 152.7)",
+      "primary-foreground": "oklch(0.966 0.024 125.2)",
+      "accent": "oklch(0.806 0.136 84.7)",
+      "accent-foreground": "oklch(0.966 0.024 125.2)",
+      "secondary-foreground": "oklch(0.966 0.024 125.2)",
+      "border": "oklch(0.806 0.136 84.7)",
+      "ring": "oklch(0.541 0.077 152.7)"
+    },
+    "dark": {
+      "background": "oklch(0.966 0.024 125.2)",
+      "primary": "oklch(0.541 0.077 152.7)",
+      "primary-foreground": "oklch(0.966 0.024 125.2)",
+      "accent": "oklch(0.806 0.136 84.7)",
+      "accent-foreground": "oklch(0.966 0.024 125.2)",
+      "secondary-foreground": "oklch(0.966 0.024 125.2)",
+      "border": "oklch(0.806 0.136 84.7)",
+      "ring": "oklch(0.541 0.077 152.7)"
+    }
+  }
+}

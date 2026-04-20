@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "claymorphism — morphisms / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F5E6FF",
+      "$type": "color",
+      "$description": "— lavender pastel that reads as \"soft plastic\""
+    },
+    "primary": {
+      "$value": "#7C3AED",
+      "$type": "color",
+      "$description": "— saturated violet with white text"
+    },
+    "accent": {
+      "$value": "#FB923C",
+      "$type": "color",
+      "$description": "— warm orange for contrast without aggression"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito 700",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "24px",
+      "$type": "dimension"
+    }
+  }
+}

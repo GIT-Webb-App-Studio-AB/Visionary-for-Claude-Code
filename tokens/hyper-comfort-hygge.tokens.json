@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "hyper-comfort-hygge — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F7F0E6",
+      "$type": "color",
+      "$description": "warm oat"
+    },
+    "primary": {
+      "$value": "#C4896F",
+      "$type": "color",
+      "$description": "clay"
+    },
+    "accent": {
+      "$value": "#7FAF8B",
+      "$type": "color",
+      "$description": "sage"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito (or Quicksand)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.005em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":30}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "24px",
+      "$type": "dimension"
+    }
+  }
+}

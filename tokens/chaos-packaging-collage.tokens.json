@@ -1,0 +1,48 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "chaos-packaging-collage — hybrid / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F4EDE0",
+      "$type": "color",
+      "$description": "`` (off-white packaging card) or photography backdrop"
+    },
+    "palette": {
+      "$value": "#FF0000",
+      "$type": "color",
+      "$description": "**4–6 colors, all non-digital** — avoid pure web hex (``,"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**rotating mix per view**",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Neue Haas Unica 16px",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.005em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.35,\"visualDuration\":0.4}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

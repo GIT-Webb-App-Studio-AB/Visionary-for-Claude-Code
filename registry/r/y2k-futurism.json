@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "y2k-futurism",
+  "type": "registry:style",
+  "title": "Y2k Futurism",
+  "description": "y2k-futurism — internet / Kinetic Motion tier: Kinetic. Display font: Syncopate 700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syncopate 700",
+      "--font-body": "Rajdhani or Exo 2 for body",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.144 0.024 260.2)",
+      "primary": "oklch(0.808 0.000 89.9)",
+      "primary-foreground": "oklch(0.144 0.024 260.2)",
+      "accent": "oklch(0.882 0.150 200.1)",
+      "accent-foreground": "oklch(0.144 0.024 260.2)",
+      "secondary-foreground": "oklch(0.144 0.024 260.2)",
+      "border": "oklch(0.882 0.150 200.1)",
+      "ring": "oklch(0.808 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.144 0.024 260.2)",
+      "primary": "oklch(0.808 0.000 89.9)",
+      "primary-foreground": "oklch(0.144 0.024 260.2)",
+      "accent": "oklch(0.882 0.150 200.1)",
+      "accent-foreground": "oklch(0.144 0.024 260.2)",
+      "secondary-foreground": "oklch(0.144 0.024 260.2)",
+      "border": "oklch(0.882 0.150 200.1)",
+      "ring": "oklch(0.808 0.000 89.9)"
+    }
+  }
+}

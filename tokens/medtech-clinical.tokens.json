@@ -1,0 +1,60 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "medtech-clinical — industry / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F8F9FA",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#007AFF",
+      "$type": "color",
+      "$description": "clinical blue — unambiguous, universally recognized"
+    },
+    "accent": {
+      "$value": "#34C759",
+      "$type": "color",
+      "$description": "positive status green"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "IBM Plex Sans 500–600",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IBM Plex Sans 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.5,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":500,\"damping\":40,\"mass\":0.7}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

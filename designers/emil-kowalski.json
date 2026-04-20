@@ -1,0 +1,50 @@
+{
+  "$schema": "https://visionary-claude.dev/schema/designer-pack.json",
+  "name": "Emil Kowalski",
+  "era": "2022–present, motion-UI tutorials + Linear-era product motion",
+  "description": "Emil Kowalski's motion tutorials (emilkowal.ski) defined the 2023–2026 product-motion vocabulary: springy but never bouncy, micro-interactions as information, CSS-first when possible, reduced-motion as a first-class branch. His influence reaches every serious product site from Linear to Vercel to Arc. This pack biases toward motion-forward styles while keeping the restraint that makes his motion feel designed, not animated.",
+  "biases": {
+    "style_weight_multipliers": {
+      "ambient-copilot": 3.0,
+      "kinetic-typography-v2": 2.8,
+      "white-futurism": 2.5,
+      "liquid-glass-ios26": 2.3,
+      "responsive-editorial": 2.0,
+      "variable-font": 2.0,
+      "light-mode-sanctuary": 1.8,
+      "dark-mode-first": 1.5,
+      "neobrutalism-softened": 1.5,
+      "active-living-grid": 1.5,
+      "aurora-mesh": 1.4
+    },
+    "style_blocklist": [
+      "brutalist-honesty",
+      "brutalist-web",
+      "zine-diy",
+      "chaos-packaging-collage",
+      "post-internet-maximalism",
+      "early-web-geocities"
+    ],
+    "palette_tags_preferred": ["light", "editorial"],
+    "motion_tier_cap": "Kinetic",
+    "motion_tier_preferred": "Expressive",
+    "density_preferred": "balanced",
+    "touch_target_min": 44,
+    "typography_preferred": ["Geist", "Inter Tight", "Bricolage Grotesque", "Instrument Serif"]
+  },
+  "rules": [
+    "Springs not durations — every transition uses { bounce: 0.2, visualDuration: 0.3 } or similar Motion v12 two-parameter form.",
+    "CSS-first when the animation doesn't need state: @starting-style, animation-timeline: view(), scroll-timeline. JS motion only for interactive states.",
+    "Micro-interactions are information — a 2px lift + 50ms delay on hover is a signal, not decoration.",
+    "Reduced-motion is a first-class branch with its own thought-through states. Don't just zero the duration.",
+    "Single-accent palette. Motion carries the distinctiveness; color doesn't need to.",
+    "Typography is calm and confident. Geist or Bricolage Grotesque — never ornamental.",
+    "Motion never exceeds 600ms for UI; 400ms is the default. Over-long animations feel sluggish.",
+    "Page transitions via View Transitions API, not JS-driven route animation."
+  ],
+  "references": [
+    "emilkowal.ski — motion tutorials (2022–present)",
+    "Linear Motion Principles (Kowalski's work at Linear)",
+    "Vercel product-page motion (2023–2024)"
+  ]
+}

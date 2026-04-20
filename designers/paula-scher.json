@@ -1,0 +1,52 @@
+{
+  "$schema": "https://visionary-claude.dev/schema/designer-pack.json",
+  "name": "Paula Scher",
+  "era": "1970s–present, CBS Records → Pentagram",
+  "description": "Paula Scher ran CBS Records in the 70s (200+ album covers), joined Pentagram in 1991, and built the Public Theater's enduring identity. Her work is typographic maximalism with structure — big type, broken grids, collage sensibility without chaos. The anti-Vignelli within the modernist tradition: same rigor, more play. Her work hangs in MoMA and covers NYC.",
+  "biases": {
+    "style_weight_multipliers": {
+      "big-bold-type": 5.0,
+      "type-collage": 4.0,
+      "deconstructed-type": 3.5,
+      "chaos-packaging-collage": 3.0,
+      "condensed-editorial": 2.8,
+      "new-wave-swiss-punk": 2.5,
+      "kinetic-typography-v2": 2.2,
+      "dada": 2.0,
+      "postmodern": 2.0,
+      "music-album-art": 2.0,
+      "constructivism": 1.8,
+      "editorial-serif-revival": 1.5
+    },
+    "style_blocklist": [
+      "zen-void",
+      "light-mode-sanctuary",
+      "dieter-rams",
+      "clinical-cold",
+      "corpcore-quiet-luxury",
+      "fintech-trust"
+    ],
+    "palette_tags_preferred": ["light", "editorial"],
+    "motion_tier_cap": "Expressive",
+    "motion_tier_preferred": "Expressive",
+    "density_preferred": "dense",
+    "touch_target_min": 44,
+    "typography_preferred": ["Bureau Grotesque", "Knockout", "HTF Champion Gothic", "Titling Gothic", "GT America Condensed"]
+  },
+  "rules": [
+    "Type is architecture. A single word can occupy 60% of a poster.",
+    "Overlap is expressive — type layered on type, words touching, negative and positive space fighting.",
+    "Break the grid for a reason. Scher's work isn't random — every off-grid choice has a visual argument.",
+    "Condensed display typefaces are the native voice (Knockout, Titling Gothic, Bureau Grotesque).",
+    "Two-color printing discipline — Scher's CBS era worked with extreme budget constraints; the limitation shaped the voice.",
+    "Rotation is a tool — headlines set at 8°, 15°, 22° rotation, used like a spatial emphasis.",
+    "Motion: headline-driven entry, letters stagger-reveal, never bouncy or soft.",
+    "Typography scale is massive — display at 10vw minimum, body shrinks to stay out of the way."
+  ],
+  "references": [
+    "Make It Bigger (Paula Scher, 2002)",
+    "Type Is Image (Paula Scher + Pentagram)",
+    "Twenty Over Eighty (Aileen Kwun, 2016) — interview",
+    "Paula Scher: Works (Rizzoli, 2017)"
+  ]
+}

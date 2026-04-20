@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "medievalcore — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#1C1208",
+      "$type": "color",
+      "$description": "parchment void"
+    },
+    "primary": {
+      "$value": "#8B3A2A",
+      "$type": "color",
+      "$description": "crimson"
+    },
+    "accent": {
+      "$value": "#C9A84C",
+      "$type": "color",
+      "$description": "gold illumination"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cinzel",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IM Fell English",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":160,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

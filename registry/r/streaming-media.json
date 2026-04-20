@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "streaming-media",
+  "type": "registry:style",
+  "title": "Streaming Media",
+  "description": "streaming-media — industry / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque 700 (distinct from streaming incumbents).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bricolage Grotesque 700 (distinct from streaming incumbents)",
+      "--font-body": "DM Sans 400",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.191 0.000 89.9)",
+      "primary": "oklch(0.581 0.235 28.0)",
+      "primary-foreground": "oklch(0.191 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.191 0.000 89.9)",
+      "secondary-foreground": "oklch(0.191 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.581 0.235 28.0)"
+    },
+    "dark": {
+      "background": "oklch(0.191 0.000 89.9)",
+      "primary": "oklch(0.581 0.235 28.0)",
+      "primary-foreground": "oklch(0.191 0.000 89.9)",
+      "accent": "oklch(1.000 0.000 89.9)",
+      "accent-foreground": "oklch(0.191 0.000 89.9)",
+      "secondary-foreground": "oklch(0.191 0.000 89.9)",
+      "border": "oklch(1.000 0.000 89.9)",
+      "ring": "oklch(0.581 0.235 28.0)"
+    }
+  }
+}

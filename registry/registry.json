@@ -1,0 +1,1219 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "visionary",
+  "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+  "items": [
+    {
+      "name": "active-living-grid",
+      "type": "registry:style",
+      "title": "Active Living Grid",
+      "description": "active-living-grid — modern / Expressive Motion tier: Expressive. Display font: Geist."
+    },
+    {
+      "name": "african-design",
+      "type": "registry:style",
+      "title": "African Design",
+      "description": "african-design — graphic / Expressive Motion tier: Expressive. Display font: Nunito ExtraBold."
+    },
+    {
+      "name": "agricultural-seed-catalog",
+      "type": "registry:style",
+      "title": "Agricultural Seed Catalog",
+      "description": "agricultural-seed-catalog — extended / Subtle Motion tier: Subtle. Display font: Clarendon (or Rockwell)."
+    },
+    {
+      "name": "agritech",
+      "type": "registry:style",
+      "title": "Agritech",
+      "description": "agritech — industry / Subtle Motion tier: Subtle. Display font: Chillax 600 (approachable for farmer."
+    },
+    {
+      "name": "alien-nonhuman",
+      "type": "registry:style",
+      "title": "Alien Nonhuman",
+      "description": "alien-nonhuman — graphic / Expressive Motion tier: Expressive. Display font: Custom glyph font or Josefin Sans with heavy modification."
+    },
+    {
+      "name": "ambient-copilot",
+      "type": "registry:style",
+      "title": "Ambient Copilot",
+      "description": "ambient-copilot — modern / Subtle Motion tier: Subtle. Display font: Geist or SF Pro Display."
+    },
+    {
+      "name": "anxiety-urgency",
+      "type": "registry:style",
+      "title": "Anxiety Urgency",
+      "description": "anxiety-urgency — emotional / Kinetic Motion tier: Kinetic. Display font: Helvetica Neue 700 or Inter 700 (familiar."
+    },
+    {
+      "name": "apca-native-contrast",
+      "type": "registry:style",
+      "title": "Apca Native Contrast",
+      "description": "apca-native-contrast — modern / Subtle Motion tier: Subtle. Display font: **Atkinson Hyperlegible** or **Literata**."
+    },
+    {
+      "name": "arabic-calligraphic",
+      "type": "registry:style",
+      "title": "Arabic Calligraphic",
+      "description": "arabic-calligraphic — graphic / Expressive Motion tier: Expressive. Display font: Amiri."
+    },
+    {
+      "name": "architectural-brutalism",
+      "type": "registry:style",
+      "title": "Architectural Brutalism",
+      "description": "architectural-brutalism — historical / Subtle Motion tier: Subtle. Display font: Syne."
+    },
+    {
+      "name": "architecture-inspired",
+      "type": "registry:style",
+      "title": "Architecture Inspired",
+      "description": "architecture-inspired — hybrid / Subtle Motion tier: Subtle. Display font: Helvetica Neue (or Neue Haas Grotesk)."
+    },
+    {
+      "name": "art-deco",
+      "type": "registry:style",
+      "title": "Art Deco",
+      "description": "art-deco — historical / Expressive Motion tier: Expressive. Display font: Cormorant Garamond."
+    },
+    {
+      "name": "art-nouveau",
+      "type": "registry:style",
+      "title": "Art Nouveau",
+      "description": "art-nouveau — historical / Expressive Motion tier: Expressive. Display font: Libre Baskerville."
+    },
+    {
+      "name": "aurora-mesh",
+      "type": "registry:style",
+      "title": "Aurora Mesh",
+      "description": "aurora-mesh — morphisms / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque."
+    },
+    {
+      "name": "awe-sublime",
+      "type": "registry:style",
+      "title": "Awe Sublime",
+      "description": "awe-sublime — extended / Expressive Motion tier: Expressive. Display font: EB Garamond."
+    },
+    {
+      "name": "bauhaus-dessau",
+      "type": "registry:style",
+      "title": "Bauhaus Dessau",
+      "description": "bauhaus-dessau — historical / Expressive Motion tier: Expressive. Display font: **Universal** (Bayer 1925."
+    },
+    {
+      "name": "bauhaus-weimar",
+      "type": "registry:style",
+      "title": "Bauhaus Weimar",
+      "description": "bauhaus-weimar — extended / Expressive Motion tier: Expressive. Display font: **IM Fell** (hand."
+    },
+    {
+      "name": "bauhaus",
+      "type": "registry:style",
+      "title": "Bauhaus",
+      "description": "bauhaus — historical / Subtle Motion tier: Subtle. Display font: Bebas Neue."
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:style",
+      "title": "Bento Grid",
+      "description": "bento-grid — modern / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque."
+    },
+    {
+      "name": "big-bold-type",
+      "type": "registry:style",
+      "title": "Big Bold Type",
+      "description": "big-bold-type — typography / Expressive Motion tier: Expressive. Display font: Cabinet Grotesk 900."
+    },
+    {
+      "name": "biomorphic-futurism",
+      "type": "registry:style",
+      "title": "Biomorphic Futurism",
+      "description": "biomorphic-futurism — graphic / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque."
+    },
+    {
+      "name": "blob-world",
+      "type": "registry:style",
+      "title": "Blob World",
+      "description": "blob-world — extended / Kinetic Motion tier: Kinetic. Display font: Nunito 700 (or Fredoka 700)."
+    },
+    {
+      "name": "bloomberg-terminal",
+      "type": "registry:style",
+      "title": "Bloomberg Terminal",
+      "description": "bloomberg-terminal — industry / Subtle Motion tier: Subtle. Display font: JetBrains Mono 700."
+    },
+    {
+      "name": "bloomcore-botanical",
+      "type": "registry:style",
+      "title": "Bloomcore Botanical",
+      "description": "bloomcore-botanical — extended / Subtle Motion tier: Subtle. Display font: Playfair Display."
+    },
+    {
+      "name": "brutalist-honesty",
+      "type": "registry:style",
+      "title": "Brutalist Honesty",
+      "description": "brutalist-honesty — emotional / Subtle Motion tier: Subtle. Display font: Helvetica Neue."
+    },
+    {
+      "name": "brutalist-web",
+      "type": "registry:style",
+      "title": "Brutalist Web",
+      "description": "brutalist-web — modern / Subtle Motion tier: Subtle. Display font: Times New Roman (intentional."
+    },
+    {
+      "name": "bubblegum-bling",
+      "type": "registry:style",
+      "title": "Bubblegum Bling",
+      "description": "bubblegum-bling — extended / Kinetic Motion tier: Kinetic. Display font: Fredoka One."
+    },
+    {
+      "name": "calm-focus-mode",
+      "type": "registry:style",
+      "title": "Calm Focus Mode",
+      "description": "calm-focus-mode — emotional / Subtle Motion tier: Subtle. Display font: Atkinson Hyperlegible."
+    },
+    {
+      "name": "cassette-futurism",
+      "type": "registry:style",
+      "title": "Cassette Futurism",
+      "description": "cassette-futurism — extended / Subtle Motion tier: Subtle. Display font: **Futura PT."
+    },
+    {
+      "name": "catalog-archive",
+      "type": "registry:style",
+      "title": "Catalog Archive",
+      "description": "catalog-archive — hybrid / Subtle Motion tier: Subtle. Display font: Neue Haas Grotesk (or Aktiv Grotesk)."
+    },
+    {
+      "name": "chaos-packaging-collage",
+      "type": "registry:style",
+      "title": "Chaos Packaging Collage",
+      "description": "chaos-packaging-collage — hybrid / Expressive Motion tier: Expressive. Display font: **rotating mix per view**."
+    },
+    {
+      "name": "chinese-guochao",
+      "type": "registry:style",
+      "title": "Chinese Guochao",
+      "description": "chinese-guochao — graphic / Expressive Motion tier: Expressive. Display font: Noto Serif SC."
+    },
+    {
+      "name": "claymorphism",
+      "type": "registry:style",
+      "title": "Claymorphism",
+      "description": "claymorphism — morphisms / Expressive Motion tier: Expressive. Display font: Nunito 700."
+    },
+    {
+      "name": "clinical-cold",
+      "type": "registry:style",
+      "title": "Clinical Cold",
+      "description": "clinical-cold — emotional / Subtle Motion tier: Subtle. Display font: IBM Plex Sans 400–500."
+    },
+    {
+      "name": "coastal-grandmother",
+      "type": "registry:style",
+      "title": "Coastal Grandmother",
+      "description": "coastal-grandmother — extended / Subtle Motion tier: Subtle. Display font: Lora."
+    },
+    {
+      "name": "colr-v1-color-type",
+      "type": "registry:style",
+      "title": "Colr V1 Color Type",
+      "description": "colr-v1-color-type — typography / Expressive Motion tier: Expressive. Display font: one of: **Nabla** (variable + color."
+    },
+    {
+      "name": "concrete-brutalist-material",
+      "type": "registry:style",
+      "title": "Concrete Brutalist Material",
+      "description": "concrete-brutalist-material — graphic / Subtle Motion tier: Subtle. Display font: **Space Grotesk."
+    },
+    {
+      "name": "condensed-editorial",
+      "type": "registry:style",
+      "title": "Condensed Editorial",
+      "description": "condensed-editorial — typography / Subtle Motion tier: Subtle. Display font: Barlow Condensed 700–900."
+    },
+    {
+      "name": "constructivism",
+      "type": "registry:style",
+      "title": "Constructivism",
+      "description": "constructivism — historical / Expressive Motion tier: Expressive. Display font: Syne."
+    },
+    {
+      "name": "corpcore-quiet-luxury",
+      "type": "registry:style",
+      "title": "Corpcore Quiet Luxury",
+      "description": "corpcore-quiet-luxury — extended / Subtle Motion tier: Subtle. Display font: Cormorant weight 300/400."
+    },
+    {
+      "name": "corporate-grunge",
+      "type": "registry:style",
+      "title": "Corporate Grunge",
+      "description": "corporate-grunge — graphic / Subtle Motion tier: Subtle. Display font: Arial."
+    },
+    {
+      "name": "cosmic-astronomical",
+      "type": "registry:style",
+      "title": "Cosmic Astronomical",
+      "description": "cosmic-astronomical — graphic / Kinetic Motion tier: Kinetic. Display font: Space Grotesk."
+    },
+    {
+      "name": "cottagecore-tech",
+      "type": "registry:style",
+      "title": "Cottagecore Tech",
+      "description": "cottagecore-tech — internet / Expressive Motion tier: Expressive. Display font: Lora 600."
+    },
+    {
+      "name": "cottagecore",
+      "type": "registry:style",
+      "title": "Cottagecore",
+      "description": "cottagecore — internet / Expressive Motion tier: Expressive. Display font: Playfair Display."
+    },
+    {
+      "name": "cyberpunk-neon",
+      "type": "registry:style",
+      "title": "Cyberpunk Neon",
+      "description": "cyberpunk-neon — internet / Kinetic Motion tier: Kinetic. Display font: Orbitron 700."
+    },
+    {
+      "name": "dada",
+      "type": "registry:style",
+      "title": "Dada",
+      "description": "dada — historical / Kinetic Motion tier: Kinetic. Display font: Mixed."
+    },
+    {
+      "name": "dark-academia",
+      "type": "registry:style",
+      "title": "Dark Academia",
+      "description": "dark-academia — internet / Subtle Motion tier: Subtle. Display font: EB Garamond."
+    },
+    {
+      "name": "dark-mode-first",
+      "type": "registry:style",
+      "title": "Dark Mode First",
+      "description": "dark-mode-first — modern / Expressive Motion tier: Expressive. Display font: Geist (or Inter)."
+    },
+    {
+      "name": "data-center",
+      "type": "registry:style",
+      "title": "Data Center",
+      "description": "data-center — graphic / Subtle Motion tier: Subtle. Display font: JetBrains Mono."
+    },
+    {
+      "name": "data-physicalization",
+      "type": "registry:style",
+      "title": "Data Physicalization",
+      "description": "data-physicalization — extended / Expressive Motion tier: Expressive. Display font: IBM Plex Mono."
+    },
+    {
+      "name": "data-visualization",
+      "type": "registry:style",
+      "title": "Data Visualization",
+      "description": "data-visualization — modern / Subtle Motion tier: Subtle. Display font: DM Sans."
+    },
+    {
+      "name": "de-stijl",
+      "type": "registry:style",
+      "title": "De Stijl",
+      "description": "de-stijl — historical / Subtle Motion tier: Subtle. Display font: Futura."
+    },
+    {
+      "name": "deconstructed-type",
+      "type": "registry:style",
+      "title": "Deconstructed Type",
+      "description": "deconstructed-type — typography / Kinetic Motion tier: Kinetic. Display font: Helvetica Neue (fragments scattered) + Neue Haas Grotesk Display."
+    },
+    {
+      "name": "default-computing-native",
+      "type": "registry:style",
+      "title": "Default Computing Native",
+      "description": "default-computing-native — extended / Subtle Motion tier: Subtle. Display font: platform system stack."
+    },
+    {
+      "name": "developer-tools",
+      "type": "registry:style",
+      "title": "Developer Tools",
+      "description": "developer-tools — industry / Subtle Motion tier: Subtle. Display font: Space Grotesk 600 or Geist 600."
+    },
+    {
+      "name": "dieter-rams",
+      "type": "registry:style",
+      "title": "Dieter Rams",
+      "description": "dieter-rams — historical / Subtle Motion tier: Subtle. Display font: Aktiv Grotesk."
+    },
+    {
+      "name": "disco-op-art",
+      "type": "registry:style",
+      "title": "Disco Op Art",
+      "description": "disco-op-art — extended / Kinetic Motion tier: Kinetic. Display font: Syne or Bebas Neue."
+    },
+    {
+      "name": "dopamine-calm",
+      "type": "registry:style",
+      "title": "Dopamine Calm",
+      "description": "dopamine-calm — extended / Subtle Motion tier: Subtle. Display font: **Nunito** (warm geometric."
+    },
+    {
+      "name": "dopamine-design",
+      "type": "registry:style",
+      "title": "Dopamine Design",
+      "description": "dopamine-design — emotional / Kinetic Motion tier: Kinetic. Display font: Cabinet Grotesk 800–900."
+    },
+    {
+      "name": "dreamcore",
+      "type": "registry:style",
+      "title": "Dreamcore",
+      "description": "dreamcore — internet / Subtle Motion tier: Subtle. Display font: EB Garamond."
+    },
+    {
+      "name": "dyslexia-friendly",
+      "type": "registry:style",
+      "title": "Dyslexia Friendly",
+      "description": "dyslexia-friendly — modern / Subtle Motion tier: Subtle. Display font: **Atkinson Hyperlegible** (Braille Institute."
+    },
+    {
+      "name": "e-girl",
+      "type": "registry:style",
+      "title": "E Girl",
+      "description": "e-girl — internet / Expressive Motion tier: Expressive. Display font: Bebas Neue or."
+    },
+    {
+      "name": "early-web-geocities",
+      "type": "registry:style",
+      "title": "Early Web Geocities",
+      "description": "early-web-geocities — graphic / Kinetic Motion tier: Kinetic. Display font: Comic Sans MS (intentional) or Impact."
+    },
+    {
+      "name": "eastern-european-brutalist",
+      "type": "registry:style",
+      "title": "Eastern European Brutalist",
+      "description": "eastern-european-brutalist — graphic / Subtle Motion tier: Subtle. Display font: Oswald Condensed."
+    },
+    {
+      "name": "ecommerce-retail",
+      "type": "registry:style",
+      "title": "Ecommerce Retail",
+      "description": "ecommerce-retail — industry / Expressive Motion tier: Expressive. Display font: Cabinet Grotesk 700 (premium retail) or Bricolage Grotesque 700 (editorial retail)."
+    },
+    {
+      "name": "editorial-serif-revival",
+      "type": "registry:style",
+      "title": "Editorial Serif Revival",
+      "description": "editorial-serif-revival — typography / Subtle Motion tier: Subtle. Display font: **Vela Serif** (variable."
+    },
+    {
+      "name": "edtech",
+      "type": "registry:style",
+      "title": "Edtech",
+      "description": "edtech — industry / Expressive Motion tier: Expressive. Display font: Nunito 700–800."
+    },
+    {
+      "name": "energetic-athletic",
+      "type": "registry:style",
+      "title": "Energetic Athletic",
+      "description": "energetic-athletic — emotional / Kinetic Motion tier: Kinetic. Display font: Barlow Condensed 800–900."
+    },
+    {
+      "name": "fabric-textile",
+      "type": "registry:style",
+      "title": "Fabric Textile",
+      "description": "fabric-textile — graphic / Subtle Motion tier: Subtle. Display font: **Lora**."
+    },
+    {
+      "name": "fashion-editorial",
+      "type": "registry:style",
+      "title": "Fashion Editorial",
+      "description": "fashion-editorial — graphic / Expressive Motion tier: Expressive. Display font: Cormorant Garamond."
+    },
+    {
+      "name": "fintech-trust",
+      "type": "registry:style",
+      "title": "Fintech Trust",
+      "description": "fintech-trust — industry / Subtle Motion tier: Subtle. Display font: DM Serif Display."
+    },
+    {
+      "name": "flat",
+      "type": "registry:style",
+      "title": "Flat",
+      "description": "flat — morphisms / Subtle Motion tier: Subtle. Display font: Helvetica Neue or system."
+    },
+    {
+      "name": "flow-field-vector",
+      "type": "registry:style",
+      "title": "Flow Field Vector",
+      "description": "flow-field-vector — extended / Kinetic Motion tier: Kinetic. Display font: Syne Mono."
+    },
+    {
+      "name": "fluent-design",
+      "type": "registry:style",
+      "title": "Fluent Design",
+      "description": "fluent-design — morphisms / Subtle Motion tier: Subtle. Display font: Segoe UI Variable (fallback: Segoe UI."
+    },
+    {
+      "name": "frutiger-aero-kinetic",
+      "type": "registry:style",
+      "title": "Frutiger Aero Kinetic",
+      "description": "frutiger-aero-kinetic — extended / Kinetic Motion tier: Kinetic. Display font: Frutiger 95."
+    },
+    {
+      "name": "frutiger-aero",
+      "type": "registry:style",
+      "title": "Frutiger Aero",
+      "description": "frutiger-aero — morphisms / Expressive Motion tier: Expressive. Display font: Frutiger (or Myriad Pro as fallback)."
+    },
+    {
+      "name": "future-medieval",
+      "type": "registry:style",
+      "title": "Future Medieval",
+      "description": "future-medieval — graphic / Expressive Motion tier: Expressive. Display font: MedievalSharp (or UnifrakturMaguntia)."
+    },
+    {
+      "name": "futurism",
+      "type": "registry:style",
+      "title": "Futurism",
+      "description": "futurism — historical / Expressive Motion tier: Expressive. Display font: Syne."
+    },
+    {
+      "name": "gamification",
+      "type": "registry:style",
+      "title": "Gamification",
+      "description": "gamification — modern / Kinetic Motion tier: Kinetic. Display font: Nunito ExtraBold."
+    },
+    {
+      "name": "gaming",
+      "type": "registry:style",
+      "title": "Gaming",
+      "description": "gaming — industry / Kinetic Motion tier: Kinetic. Display font: Orbitron 700–900 (sci."
+    },
+    {
+      "name": "generative-algorithmic",
+      "type": "registry:style",
+      "title": "Generative Algorithmic",
+      "description": "generative-algorithmic — graphic / Kinetic Motion tier: Kinetic. Display font: Space Mono."
+    },
+    {
+      "name": "glass-crystal",
+      "type": "registry:style",
+      "title": "Glass Crystal",
+      "description": "glass-crystal — graphic / Expressive Motion tier: Expressive. Display font: Space Grotesk."
+    },
+    {
+      "name": "glass-dashboard",
+      "type": "registry:style",
+      "title": "Glass Dashboard",
+      "description": "glass-dashboard — modern / Expressive Motion tier: Expressive. Display font: Syne."
+    },
+    {
+      "name": "glassmorphism",
+      "type": "registry:style",
+      "title": "Glassmorphism",
+      "description": "glassmorphism — morphisms / Expressive Motion tier: Expressive. Display font: Space Grotesk."
+    },
+    {
+      "name": "glitchcore",
+      "type": "registry:style",
+      "title": "Glitchcore",
+      "description": "glitchcore — internet / Kinetic Motion tier: Kinetic. Display font: IBM Plex Mono 700."
+    },
+    {
+      "name": "goblincore-pixel",
+      "type": "registry:style",
+      "title": "Goblincore Pixel",
+      "description": "goblincore-pixel — extended / Expressive Motion tier: Expressive. Display font: VT323 (or Press Start 2P)."
+    },
+    {
+      "name": "goblincore",
+      "type": "registry:style",
+      "title": "Goblincore",
+      "description": "goblincore — internet / Expressive Motion tier: Expressive. Display font: IM Fell English."
+    },
+    {
+      "name": "govtech-civic",
+      "type": "registry:style",
+      "title": "Govtech Civic",
+      "description": "govtech-civic — industry / Subtle Motion tier: Subtle. Display font: Source Serif 4 600."
+    },
+    {
+      "name": "grainy-blur",
+      "type": "registry:style",
+      "title": "Grainy Blur",
+      "description": "grainy-blur — extended / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque."
+    },
+    {
+      "name": "guochao-new-chinese",
+      "type": "registry:style",
+      "title": "Guochao New Chinese",
+      "description": "guochao-new-chinese — graphic / Expressive Motion tier: Expressive. Display font: Noto Serif SC (or Source Han Serif)."
+    },
+    {
+      "name": "handwritten-gestural",
+      "type": "registry:style",
+      "title": "Handwritten Gestural",
+      "description": "handwritten-gestural — typography / Expressive Motion tier: Expressive. Display font: Caveat 700 (casual) or Reenie Beanie (loose gestural)."
+    },
+    {
+      "name": "healthcare-wellness",
+      "type": "registry:style",
+      "title": "Healthcare Wellness",
+      "description": "healthcare-wellness — industry / Expressive Motion tier: Expressive. Display font: Chillax 600–700."
+    },
+    {
+      "name": "hero-character-sculpture",
+      "type": "registry:style",
+      "title": "Hero Character Sculpture",
+      "description": "hero-character-sculpture — graphic / Kinetic Motion tier: Kinetic. Display font: Syne 800."
+    },
+    {
+      "name": "high-contrast-a11y",
+      "type": "registry:style",
+      "title": "High Contrast A11y",
+      "description": "high-contrast-a11y — modern / Subtle Motion tier: Subtle. Display font: Atkinson Hyperlegible."
+    },
+    {
+      "name": "holographic",
+      "type": "registry:style",
+      "title": "Holographic",
+      "description": "holographic — morphisms / Kinetic Motion tier: Kinetic. Display font: Cabinet Grotesk 800."
+    },
+    {
+      "name": "hyper-comfort-hygge",
+      "type": "registry:style",
+      "title": "Hyper Comfort Hygge",
+      "description": "hyper-comfort-hygge — extended / Subtle Motion tier: Subtle. Display font: Nunito (or Quicksand)."
+    },
+    {
+      "name": "indigenous-first-nations",
+      "type": "registry:style",
+      "title": "Indigenous First Nations",
+      "description": "indigenous-first-nations — graphic / Subtle Motion tier: Subtle. Display font: Clean system sans."
+    },
+    {
+      "name": "japanese-minimalism",
+      "type": "registry:style",
+      "title": "Japanese Minimalism",
+      "description": "japanese-minimalism — graphic / Subtle Motion tier: Subtle. Display font: Noto Serif JP."
+    },
+    {
+      "name": "kinetic-type",
+      "type": "registry:style",
+      "title": "Kinetic Type",
+      "description": "kinetic-type — typography / Kinetic Motion tier: Kinetic. Display font: Syne Mono."
+    },
+    {
+      "name": "kinetic-typography-v2",
+      "type": "registry:style",
+      "title": "Kinetic Typography V2",
+      "description": "kinetic-typography-v2 — typography / Kinetic Motion tier: Kinetic. Display font: **variable font required**."
+    },
+    {
+      "name": "korean-k-design",
+      "type": "registry:style",
+      "title": "Korean K Design",
+      "description": "korean-k-design — graphic / Expressive Motion tier: Expressive. Display font: Pretendard."
+    },
+    {
+      "name": "latin-fiesta",
+      "type": "registry:style",
+      "title": "Latin Fiesta",
+      "description": "latin-fiesta — graphic / Expressive Motion tier: Expressive. Display font: Lato ExtraBold."
+    },
+    {
+      "name": "layered-type",
+      "type": "registry:style",
+      "title": "Layered Type",
+      "description": "layered-type — typography / Expressive Motion tier: Expressive. Display font: Syne 800 (foreground) + Syne 200 (background layer)."
+    },
+    {
+      "name": "leather-craft",
+      "type": "registry:style",
+      "title": "Leather Craft",
+      "description": "leather-craft — graphic / Subtle Motion tier: Subtle. Display font: **Libre Baskerville**."
+    },
+    {
+      "name": "legal-editorial",
+      "type": "registry:style",
+      "title": "Legal Editorial",
+      "description": "legal-editorial — extended / Subtle Motion tier: Subtle. Display font: Times New Roman (or Libre Baskerville)."
+    },
+    {
+      "name": "legaltech",
+      "type": "registry:style",
+      "title": "Legaltech",
+      "description": "legaltech — industry / Subtle Motion tier: Subtle. Display font: Libre Baskerville 700."
+    },
+    {
+      "name": "letterpress-emboss",
+      "type": "registry:style",
+      "title": "Letterpress Emboss",
+      "description": "letterpress-emboss — extended / Subtle Motion tier: Subtle. Display font: Playfair Display."
+    },
+    {
+      "name": "light-mode-sanctuary",
+      "type": "registry:style",
+      "title": "Light Mode Sanctuary",
+      "description": "light-mode-sanctuary — modern / Subtle Motion tier: Subtle. Display font: Inter (or system."
+    },
+    {
+      "name": "liminal-space",
+      "type": "registry:style",
+      "title": "Liminal Space",
+      "description": "liminal-space — internet / Subtle Motion tier: Subtle. Display font: Arial or Helvetica."
+    },
+    {
+      "name": "liquid-glass-ios26",
+      "type": "registry:style",
+      "title": "Liquid Glass Ios26",
+      "description": "liquid-glass-ios26 — morphisms / Expressive Motion tier: Expressive. Display font: SF Pro Display (iOS native) or Geist as system fallback."
+    },
+    {
+      "name": "liquid-glass",
+      "type": "registry:style",
+      "title": "Liquid Glass",
+      "description": "liquid-glass — morphisms / Subtle Motion tier: Subtle. Display font: system."
+    },
+    {
+      "name": "lofi-analog",
+      "type": "registry:style",
+      "title": "Lofi Analog",
+      "description": "lofi-analog — internet / Subtle Motion tier: Subtle. Display font: Special Elite."
+    },
+    {
+      "name": "luxury-aspirational",
+      "type": "registry:style",
+      "title": "Luxury Aspirational",
+      "description": "luxury-aspirational — emotional / Expressive Motion tier: Expressive. Display font: Cormorant Garamond 400–600."
+    },
+    {
+      "name": "map-cartographic",
+      "type": "registry:style",
+      "title": "Map Cartographic",
+      "description": "map-cartographic — hybrid / Subtle Motion tier: Subtle. Display font: Playfair Display."
+    },
+    {
+      "name": "marine-nautical-chart",
+      "type": "registry:style",
+      "title": "Marine Nautical Chart",
+      "description": "marine-nautical-chart — extended / Subtle Motion tier: Subtle. Display font: Gill Sans (or Futura)."
+    },
+    {
+      "name": "material-design",
+      "type": "registry:style",
+      "title": "Material Design",
+      "description": "material-design — morphisms / Expressive Motion tier: Expressive. Display font: Roboto."
+    },
+    {
+      "name": "medievalcore",
+      "type": "registry:style",
+      "title": "Medievalcore",
+      "description": "medievalcore — graphic / Expressive Motion tier: Expressive. Display font: Cinzel."
+    },
+    {
+      "name": "medtech-clinical",
+      "type": "registry:style",
+      "title": "Medtech Clinical",
+      "description": "medtech-clinical — industry / Subtle Motion tier: Subtle. Display font: IBM Plex Sans 500–600."
+    },
+    {
+      "name": "melancholic",
+      "type": "registry:style",
+      "title": "Melancholic",
+      "description": "melancholic — emotional / Subtle Motion tier: Subtle. Display font: Libre Baskerville 400 (weight restrained."
+    },
+    {
+      "name": "memphis",
+      "type": "registry:style",
+      "title": "Memphis",
+      "description": "memphis — historical / Kinetic Motion tier: Kinetic. Display font: Futura Heavy."
+    },
+    {
+      "name": "metal-chrome",
+      "type": "registry:style",
+      "title": "Metal Chrome",
+      "description": "metal-chrome — graphic / Expressive Motion tier: Expressive. Display font: Syncopate."
+    },
+    {
+      "name": "microfilm-archive",
+      "type": "registry:style",
+      "title": "Microfilm Archive",
+      "description": "microfilm-archive — extended / Subtle Motion tier: Subtle. Display font: Courier Prime."
+    },
+    {
+      "name": "mono-aesthetic",
+      "type": "registry:style",
+      "title": "Mono Aesthetic",
+      "description": "mono-aesthetic — typography / Subtle Motion tier: Subtle. Display font: JetBrains Mono."
+    },
+    {
+      "name": "monochrome",
+      "type": "registry:style",
+      "title": "Monochrome",
+      "description": "monochrome — modern / Expressive Motion tier: Expressive. Display font: Syne."
+    },
+    {
+      "name": "moodboard-collage",
+      "type": "registry:style",
+      "title": "Moodboard Collage",
+      "description": "moodboard-collage — internet / Expressive Motion tier: Expressive. Display font: Multiple display fonts coexist."
+    },
+    {
+      "name": "music-album-art",
+      "type": "registry:style",
+      "title": "Music Album Art",
+      "description": "music-album-art — hybrid / Kinetic Motion tier: Kinetic. Display font: Art."
+    },
+    {
+      "name": "mycelium-fungal",
+      "type": "registry:style",
+      "title": "Mycelium Fungal",
+      "description": "mycelium-fungal — extended / Subtle Motion tier: Subtle. Display font: Crimson Pro."
+    },
+    {
+      "name": "naive-outsider-art",
+      "type": "registry:style",
+      "title": "Naive Outsider Art",
+      "description": "naive-outsider-art — extended / Expressive Motion tier: Expressive. Display font: Caveat (or Patrick Hand)."
+    },
+    {
+      "name": "neobank-consumer",
+      "type": "registry:style",
+      "title": "Neobank Consumer",
+      "description": "neobank-consumer — industry / Expressive Motion tier: Expressive. Display font: Cabinet Grotesk 700–800."
+    },
+    {
+      "name": "neobrutalism-softened",
+      "type": "registry:style",
+      "title": "Neobrutalism Softened",
+      "description": "neobrutalism-softened — morphisms / Expressive Motion tier: Expressive. Display font: **Satoshi** or **Cabinet Grotesk**."
+    },
+    {
+      "name": "neon-dystopia",
+      "type": "registry:style",
+      "title": "Neon Dystopia",
+      "description": "neon-dystopia — graphic / Kinetic Motion tier: Kinetic. Display font: Syne."
+    },
+    {
+      "name": "neon-signage",
+      "type": "registry:style",
+      "title": "Neon Signage",
+      "description": "neon-signage — graphic / Kinetic Motion tier: Kinetic. Display font: Bungee."
+    },
+    {
+      "name": "neubrutalism",
+      "type": "registry:style",
+      "title": "Neubrutalism",
+      "description": "neubrutalism — morphisms / Kinetic Motion tier: Kinetic. Display font: Space Grotesk 700 or higher."
+    },
+    {
+      "name": "neumorphism",
+      "type": "registry:style",
+      "title": "Neumorphism",
+      "description": "neumorphism — morphisms / Subtle Motion tier: Subtle. Display font: Manrope."
+    },
+    {
+      "name": "neural-network-ai",
+      "type": "registry:style",
+      "title": "Neural Network Ai",
+      "description": "neural-network-ai — graphic / Kinetic Motion tier: Kinetic. Display font: Space Mono."
+    },
+    {
+      "name": "new-wave-swiss-punk",
+      "type": "registry:style",
+      "title": "New Wave Swiss Punk",
+      "description": "new-wave-swiss-punk — historical / Kinetic Motion tier: Kinetic. Display font: Helvetica Neue (deconstructed."
+    },
+    {
+      "name": "newspaper-broadsheet",
+      "type": "registry:style",
+      "title": "Newspaper Broadsheet",
+      "description": "newspaper-broadsheet — graphic / Subtle Motion tier: Subtle. Display font: Libre Baskerville."
+    },
+    {
+      "name": "op-art",
+      "type": "registry:style",
+      "title": "Op Art",
+      "description": "op-art — historical / Subtle Motion tier: Subtle. Display font: Space Grotesk."
+    },
+    {
+      "name": "paper-cut",
+      "type": "registry:style",
+      "title": "Paper Cut",
+      "description": "paper-cut — extended / Expressive Motion tier: Expressive. Display font: Nunito ExtraBold."
+    },
+    {
+      "name": "paper-editorial",
+      "type": "registry:style",
+      "title": "Paper Editorial",
+      "description": "paper-editorial — graphic / Subtle Motion tier: Subtle. Display font: Playfair Display."
+    },
+    {
+      "name": "pharmaceutical-clean",
+      "type": "registry:style",
+      "title": "Pharmaceutical Clean",
+      "description": "pharmaceutical-clean — extended / Subtle Motion tier: Subtle. Display font: Helvetica Neue (or Inter)."
+    },
+    {
+      "name": "photography-portfolio",
+      "type": "registry:style",
+      "title": "Photography Portfolio",
+      "description": "photography-portfolio — hybrid / Expressive Motion tier: Expressive. Display font: Playfair Display."
+    },
+    {
+      "name": "playful-joyful",
+      "type": "registry:style",
+      "title": "Playful Joyful",
+      "description": "playful-joyful — emotional / Expressive Motion tier: Expressive. Display font: Nunito 800 (rounded letterforms reinforce play)."
+    },
+    {
+      "name": "pop-art",
+      "type": "registry:style",
+      "title": "Pop Art",
+      "description": "pop-art — historical / Kinetic Motion tier: Kinetic. Display font: Futura."
+    },
+    {
+      "name": "post-apocalyptic",
+      "type": "registry:style",
+      "title": "Post Apocalyptic",
+      "description": "post-apocalyptic — graphic / Subtle Motion tier: Subtle. Display font: Oswald."
+    },
+    {
+      "name": "post-internet-maximalism",
+      "type": "registry:style",
+      "title": "Post Internet Maximalism",
+      "description": "post-internet-maximalism — internet / Kinetic Motion tier: Kinetic. Display font: Deliberately mixed."
+    },
+    {
+      "name": "postmodern",
+      "type": "registry:style",
+      "title": "Postmodern",
+      "description": "postmodern — historical / Expressive Motion tier: Expressive. Display font: Playfair Display."
+    },
+    {
+      "name": "print-to-web-editorial",
+      "type": "registry:style",
+      "title": "Print To Web Editorial",
+      "description": "print-to-web-editorial — graphic / Subtle Motion tier: Subtle. Display font: Playfair Display."
+    },
+    {
+      "name": "proptech",
+      "type": "registry:style",
+      "title": "Proptech",
+      "description": "proptech — industry / Expressive Motion tier: Expressive. Display font: Canela 400–700 (editorial real estate feel)."
+    },
+    {
+      "name": "psychedelic",
+      "type": "registry:style",
+      "title": "Psychedelic",
+      "description": "psychedelic — historical / Kinetic Motion tier: Kinetic. Display font: Boogaloo (or any flowing display face with rounded strokes)."
+    },
+    {
+      "name": "quantum-particle",
+      "type": "registry:style",
+      "title": "Quantum Particle",
+      "description": "quantum-particle — graphic / Kinetic Motion tier: Kinetic. Display font: Space Grotesk."
+    },
+    {
+      "name": "reaction-diffusion",
+      "type": "registry:style",
+      "title": "Reaction Diffusion",
+      "description": "reaction-diffusion — extended / Kinetic Motion tier: Kinetic. Display font: Space Mono."
+    },
+    {
+      "name": "recombinant-hybrid",
+      "type": "registry:style",
+      "title": "Recombinant Hybrid",
+      "description": "recombinant-hybrid — hybrid / Expressive Motion tier: Expressive. Display font: TWO faces."
+    },
+    {
+      "name": "responsive-editorial",
+      "type": "registry:style",
+      "title": "Responsive Editorial",
+      "description": "responsive-editorial — modern / Expressive Motion tier: Expressive. Display font: Source Serif 4."
+    },
+    {
+      "name": "retrofuturism",
+      "type": "registry:style",
+      "title": "Retrofuturism",
+      "description": "retrofuturism — graphic / Expressive Motion tier: Expressive. Display font: Orbitron."
+    },
+    {
+      "name": "risograph-screen-print",
+      "type": "registry:style",
+      "title": "Risograph Screen Print",
+      "description": "risograph-screen-print — hybrid / Subtle Motion tier: Subtle. Display font: Space Mono or Courier New."
+    },
+    {
+      "name": "romantic-soft",
+      "type": "registry:style",
+      "title": "Romantic Soft",
+      "description": "romantic-soft — emotional / Expressive Motion tier: Expressive. Display font: Cormorant Garamond 400."
+    },
+    {
+      "name": "saas-b2b-dashboard",
+      "type": "registry:style",
+      "title": "Saas B2b Dashboard",
+      "description": "saas-b2b-dashboard — industry / Subtle Motion tier: Subtle. Display font: Space Grotesk 600–700."
+    },
+    {
+      "name": "scandinavian-nordic",
+      "type": "registry:style",
+      "title": "Scandinavian Nordic",
+      "description": "scandinavian-nordic — graphic / Subtle Motion tier: Subtle. Display font: Söhne (or Aktiv Grotesk as alternative)."
+    },
+    {
+      "name": "sci-fi-hud",
+      "type": "registry:style",
+      "title": "Sci Fi Hud",
+      "description": "sci-fi-hud — graphic / Kinetic Motion tier: Kinetic. Display font: Orbitron."
+    },
+    {
+      "name": "scientific-journal",
+      "type": "registry:style",
+      "title": "Scientific Journal",
+      "description": "scientific-journal — graphic / Subtle Motion tier: Subtle. Display font: STIX Two Text (or Computer Modern via web)."
+    },
+    {
+      "name": "seapunk",
+      "type": "registry:style",
+      "title": "Seapunk",
+      "description": "seapunk — internet / Expressive Motion tier: Expressive. Display font: Courier New."
+    },
+    {
+      "name": "serif-revival",
+      "type": "registry:style",
+      "title": "Serif Revival",
+      "description": "serif-revival — typography / Subtle Motion tier: Subtle. Display font: Cormorant Garamond 600–700."
+    },
+    {
+      "name": "skeuomorphism",
+      "type": "registry:style",
+      "title": "Skeuomorphism",
+      "description": "skeuomorphism — morphisms / Subtle Motion tier: Subtle. Display font: Georgia."
+    },
+    {
+      "name": "smoked-glass-chrome",
+      "type": "registry:style",
+      "title": "Smoked Glass Chrome",
+      "description": "smoked-glass-chrome — extended / Expressive Motion tier: Expressive. Display font: Inter (or Geist)."
+    },
+    {
+      "name": "social-media-native",
+      "type": "registry:style",
+      "title": "Social Media Native",
+      "description": "social-media-native — industry / Kinetic Motion tier: Kinetic. Display font: Bricolage Grotesque 700–800 (native."
+    },
+    {
+      "name": "soft-apocalypse",
+      "type": "registry:style",
+      "title": "Soft Apocalypse",
+      "description": "soft-apocalypse — extended / Subtle Motion tier: Subtle. Display font: Space Grotesk."
+    },
+    {
+      "name": "solarpunk-dark",
+      "type": "registry:style",
+      "title": "Solarpunk Dark",
+      "description": "solarpunk-dark — graphic / Expressive Motion tier: Expressive. Display font: Nunito (or Quicksand)."
+    },
+    {
+      "name": "solarpunk-futurism",
+      "type": "registry:style",
+      "title": "Solarpunk Futurism",
+      "description": "solarpunk-futurism — graphic / Expressive Motion tier: Expressive. Display font: Nunito."
+    },
+    {
+      "name": "solarpunk",
+      "type": "registry:style",
+      "title": "Solarpunk",
+      "description": "solarpunk — internet / Expressive Motion tier: Expressive. Display font: Nunito 600."
+    },
+    {
+      "name": "south-asian-bollywood",
+      "type": "registry:style",
+      "title": "South Asian Bollywood",
+      "description": "south-asian-bollywood — graphic / Expressive Motion tier: Expressive. Display font: Noto Sans Devanagari."
+    },
+    {
+      "name": "spatial-ar",
+      "type": "registry:style",
+      "title": "Spatial Ar",
+      "description": "spatial-ar — modern / Expressive Motion tier: Expressive. Display font: SF Pro Display (system."
+    },
+    {
+      "name": "sports-analytics",
+      "type": "registry:style",
+      "title": "Sports Analytics",
+      "description": "sports-analytics — hybrid / Expressive Motion tier: Expressive. Display font: Bebas Neue."
+    },
+    {
+      "name": "stone-geological",
+      "type": "registry:style",
+      "title": "Stone Geological",
+      "description": "stone-geological — graphic / Subtle Motion tier: Subtle. Display font: Rockwell (or Arvo as web fallback)."
+    },
+    {
+      "name": "stone-mineral",
+      "type": "registry:style",
+      "title": "Stone Mineral",
+      "description": "stone-mineral — extended / Subtle Motion tier: Subtle. Display font: EB Garamond."
+    },
+    {
+      "name": "streaming-media",
+      "type": "registry:style",
+      "title": "Streaming Media",
+      "description": "streaming-media — industry / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque 700 (distinct from streaming incumbents)."
+    },
+    {
+      "name": "surveillance-panopticon",
+      "type": "registry:style",
+      "title": "Surveillance Panopticon",
+      "description": "surveillance-panopticon — graphic / Subtle Motion tier: Subtle. Display font: IBM Plex Mono."
+    },
+    {
+      "name": "swiss-crouwel-gridnik",
+      "type": "registry:style",
+      "title": "Swiss Crouwel Gridnik",
+      "description": "swiss-crouwel-gridnik — historical / Subtle Motion tier: Subtle. Display font: **Gridnik** (the 1974."
+    },
+    {
+      "name": "swiss-gerstner",
+      "type": "registry:style",
+      "title": "Swiss Gerstner",
+      "description": "swiss-gerstner — historical / Subtle Motion tier: Subtle. Display font: **Akzidenz."
+    },
+    {
+      "name": "swiss-muller-brockmann",
+      "type": "registry:style",
+      "title": "Swiss Muller Brockmann",
+      "description": "swiss-muller-brockmann — historical / Subtle Motion tier: Subtle. Display font: **Helvetica** (Müller."
+    },
+    {
+      "name": "swiss-rationalism",
+      "type": "registry:style",
+      "title": "Swiss Rationalism",
+      "description": "swiss-rationalism — historical / Subtle Motion tier: Subtle. Display font: Neue Haas Grotesk (fallback: Helvetica Neue)."
+    },
+    {
+      "name": "synthwave",
+      "type": "registry:style",
+      "title": "Synthwave",
+      "description": "synthwave — internet / Kinetic Motion tier: Kinetic. Display font: Azonix (first priority)."
+    },
+    {
+      "name": "technical-mono",
+      "type": "registry:style",
+      "title": "Technical Mono",
+      "description": "technical-mono — graphic / Subtle Motion tier: Subtle. Display font: JetBrains Mono."
+    },
+    {
+      "name": "terminal-cli",
+      "type": "registry:style",
+      "title": "Terminal Cli",
+      "description": "terminal-cli — modern / Subtle Motion tier: Subtle. Display font: JetBrains Mono."
+    },
+    {
+      "name": "terrazzo-digital",
+      "type": "registry:style",
+      "title": "Terrazzo Digital",
+      "description": "terrazzo-digital — extended / Subtle Motion tier: Subtle. Display font: Neue Haas Grotesk."
+    },
+    {
+      "name": "trust-safety",
+      "type": "registry:style",
+      "title": "Trust Safety",
+      "description": "trust-safety — emotional / Subtle Motion tier: Subtle. Display font: Source Serif 4 600."
+    },
+    {
+      "name": "type-collage",
+      "type": "registry:style",
+      "title": "Type Collage",
+      "description": "type-collage — graphic / Expressive Motion tier: Expressive. Display font: Mixed variable."
+    },
+    {
+      "name": "uncanny-valley",
+      "type": "registry:style",
+      "title": "Uncanny Valley",
+      "description": "uncanny-valley — extended / Expressive Motion tier: Expressive. Display font: System."
+    },
+    {
+      "name": "underwater-aquatic",
+      "type": "registry:style",
+      "title": "Underwater Aquatic",
+      "description": "underwater-aquatic — graphic / Expressive Motion tier: Expressive. Display font: Raleway."
+    },
+    {
+      "name": "vaporwave",
+      "type": "registry:style",
+      "title": "Vaporwave",
+      "description": "vaporwave — internet / Kinetic Motion tier: Kinetic. Display font: VCR OSD Mono."
+    },
+    {
+      "name": "variable-font",
+      "type": "registry:style",
+      "title": "Variable Font",
+      "description": "variable-font — typography / Expressive Motion tier: Expressive. Display font: Fraunces (variable: opsz."
+    },
+    {
+      "name": "vertical-cjk",
+      "type": "registry:style",
+      "title": "Vertical Cjk",
+      "description": "vertical-cjk — typography / Subtle Motion tier: Subtle. Display font: Noto Serif CJK SC (Simplified) / JP (Japanese)."
+    },
+    {
+      "name": "webcore",
+      "type": "registry:style",
+      "title": "Webcore",
+      "description": "webcore — internet / Expressive Motion tier: Expressive. Display font: Times New Roman."
+    },
+    {
+      "name": "whimsical-storybook",
+      "type": "registry:style",
+      "title": "Whimsical Storybook",
+      "description": "whimsical-storybook — emotional / Expressive Motion tier: Expressive. Display font: Playfair Display 700 (fairy."
+    },
+    {
+      "name": "white-futurism",
+      "type": "registry:style",
+      "title": "White Futurism",
+      "description": "white-futurism — graphic / Subtle Motion tier: Subtle. Display font: **Geist** (Vercel."
+    },
+    {
+      "name": "wireframe-aesthetic",
+      "type": "registry:style",
+      "title": "Wireframe Aesthetic",
+      "description": "wireframe-aesthetic — modern / Subtle Motion tier: Subtle. Display font: Courier New."
+    },
+    {
+      "name": "witchcore-ui",
+      "type": "registry:style",
+      "title": "Witchcore Ui",
+      "description": "witchcore-ui — graphic / Expressive Motion tier: Expressive. Display font: Cinzel Decorative."
+    },
+    {
+      "name": "wood-natural",
+      "type": "registry:style",
+      "title": "Wood Natural",
+      "description": "wood-natural — graphic / Subtle Motion tier: Subtle. Display font: Bitter."
+    },
+    {
+      "name": "y2k-futurism",
+      "type": "registry:style",
+      "title": "Y2k Futurism",
+      "description": "y2k-futurism — internet / Kinetic Motion tier: Kinetic. Display font: Syncopate 700."
+    },
+    {
+      "name": "zen-void",
+      "type": "registry:style",
+      "title": "Zen Void",
+      "description": "zen-void — emotional / Subtle Motion tier: Subtle. Display font: Libre Baskerville 300–400 (light weight signals restraint)."
+    },
+    {
+      "name": "zine-diy",
+      "type": "registry:style",
+      "title": "Zine Diy",
+      "description": "zine-diy — hybrid / Static Motion tier: Static. Display font: deliberately mixed."
+    },
+    {
+      "name": "zoetrope-early-cinema",
+      "type": "registry:style",
+      "title": "Zoetrope Early Cinema",
+      "description": "zoetrope-early-cinema — extended / Kinetic Motion tier: Kinetic. Display font: Playfair Display."
+    }
+  ]
+}

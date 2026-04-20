@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "map-cartographic — hybrid / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#E8DCC8",
+      "$type": "color",
+      "$description": "aged parchment"
+    },
+    "primary": {
+      "$value": "#2B2B2B",
+      "$type": "color",
+      "$description": "ink"
+    },
+    "accent": {
+      "$value": "#8B6914",
+      "$type": "color",
+      "$description": "sepia/aged gold"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Playfair Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Crimson Pro",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

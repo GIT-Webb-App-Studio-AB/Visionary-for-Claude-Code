@@ -1,0 +1,54 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "art-nouveau — historical / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F5F0E8",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#4A6741",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#8B4513",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Libre Baskerville",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Libre Baskerville",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":120,\"damping\":15}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "40%",
+      "$type": "dimension"
+    }
+  }
+}

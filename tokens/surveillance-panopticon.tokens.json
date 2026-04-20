@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "surveillance-panopticon — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#050505",
+      "$type": "color",
+      "$description": "CCTV black"
+    },
+    "primary": {
+      "$value": "#FF8C00",
+      "$type": "color",
+      "$description": "warning amber — under observation"
+    },
+    "accent": {
+      "$value": "#CC3300",
+      "$type": "color",
+      "$description": "alert red — breach detected"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "IBM Plex Mono",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IBM Plex Mono",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400,\"damping\":40}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

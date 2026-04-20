@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "zoetrope-early-cinema",
+  "type": "registry:style",
+  "title": "Zoetrope Early Cinema",
+  "description": "zoetrope-early-cinema — extended / Kinetic Motion tier: Kinetic. Display font: Playfair Display.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Playfair Display",
+      "--font-body": "Playfair Display",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.826 0.042 81.7)",
+      "primary": "oklch(0.184 0.023 59.8)",
+      "primary-foreground": "oklch(0.826 0.042 81.7)",
+      "accent": "oklch(0.533 0.072 61.5)",
+      "accent-foreground": "oklch(0.826 0.042 81.7)",
+      "secondary-foreground": "oklch(0.826 0.042 81.7)",
+      "border": "oklch(0.533 0.072 61.5)",
+      "ring": "oklch(0.184 0.023 59.8)"
+    },
+    "dark": {
+      "background": "oklch(0.826 0.042 81.7)",
+      "primary": "oklch(0.184 0.023 59.8)",
+      "primary-foreground": "oklch(0.826 0.042 81.7)",
+      "accent": "oklch(0.533 0.072 61.5)",
+      "accent-foreground": "oklch(0.826 0.042 81.7)",
+      "secondary-foreground": "oklch(0.826 0.042 81.7)",
+      "border": "oklch(0.533 0.072 61.5)",
+      "ring": "oklch(0.184 0.023 59.8)"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "variable-font — typography / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F5F0E8",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#1A1A1A",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#7C3AED",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Fraunces (variable: opsz",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Inter (variable: wght",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.1,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":30,\"mass\":1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "6px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wood-natural",
+  "type": "registry:style",
+  "title": "Wood Natural",
+  "description": "wood-natural — graphic / Subtle Motion tier: Subtle. Display font: Bitter.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bitter",
+      "--font-body": "Source Serif 4",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.522 0.076 57.2)",
+      "primary": "oklch(0.929 0.043 84.6)",
+      "primary-foreground": "oklch(0.522 0.076 57.2)",
+      "accent": "oklch(0.324 0.064 64.7)",
+      "accent-foreground": "oklch(0.522 0.076 57.2)",
+      "secondary-foreground": "oklch(0.522 0.076 57.2)",
+      "border": "oklch(0.324 0.064 64.7)",
+      "ring": "oklch(0.929 0.043 84.6)"
+    },
+    "dark": {
+      "background": "oklch(0.522 0.076 57.2)",
+      "primary": "oklch(0.929 0.043 84.6)",
+      "primary-foreground": "oklch(0.522 0.076 57.2)",
+      "accent": "oklch(0.324 0.064 64.7)",
+      "accent-foreground": "oklch(0.522 0.076 57.2)",
+      "secondary-foreground": "oklch(0.522 0.076 57.2)",
+      "border": "oklch(0.324 0.064 64.7)",
+      "ring": "oklch(0.929 0.043 84.6)"
+    }
+  }
+}

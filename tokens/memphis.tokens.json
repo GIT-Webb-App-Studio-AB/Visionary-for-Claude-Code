@@ -1,0 +1,54 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "memphis — historical / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#FF0080",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#FFFF00",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Futura Heavy",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Futura",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":12,\"mass\":0.8}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

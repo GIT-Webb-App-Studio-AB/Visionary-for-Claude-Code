@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dreamcore",
+  "type": "registry:style",
+  "title": "Dreamcore",
+  "description": "dreamcore — internet / Subtle Motion tier: Subtle. Display font: EB Garamond.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "EB Garamond",
+      "--font-body": "EB Garamond 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.959 0.058 107.5)",
+      "primary": "oklch(0.685 0.044 190.4)",
+      "primary-foreground": "oklch(0.959 0.058 107.5)",
+      "accent": "oklch(0.805 0.043 310.8)",
+      "accent-foreground": "oklch(0.959 0.058 107.5)",
+      "secondary-foreground": "oklch(0.959 0.058 107.5)",
+      "border": "oklch(0.805 0.043 310.8)",
+      "ring": "oklch(0.685 0.044 190.4)"
+    },
+    "dark": {
+      "background": "oklch(0.959 0.058 107.5)",
+      "primary": "oklch(0.685 0.044 190.4)",
+      "primary-foreground": "oklch(0.959 0.058 107.5)",
+      "accent": "oklch(0.805 0.043 310.8)",
+      "accent-foreground": "oklch(0.959 0.058 107.5)",
+      "secondary-foreground": "oklch(0.959 0.058 107.5)",
+      "border": "oklch(0.805 0.043 310.8)",
+      "ring": "oklch(0.685 0.044 190.4)"
+    }
+  }
+}

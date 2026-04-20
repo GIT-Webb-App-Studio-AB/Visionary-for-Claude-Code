@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "paper-editorial — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F5F0E8",
+      "$type": "color",
+      "$description": "newsprint"
+    },
+    "primary": {
+      "$value": "#1A1008",
+      "$type": "color",
+      "$description": "ink black"
+    },
+    "accent": {
+      "$value": "#8B1A1A",
+      "$type": "color",
+      "$description": "editorial red"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Playfair Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Source Serif 4",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

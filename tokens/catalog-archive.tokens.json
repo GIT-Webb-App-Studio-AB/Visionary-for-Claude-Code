@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "catalog-archive — hybrid / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FAF7F2",
+      "$type": "color",
+      "$description": "cream"
+    },
+    "primary": {
+      "$value": "#1C1C1C",
+      "$type": "color",
+      "$description": "archive black"
+    },
+    "accent": {
+      "$value": "#7A2030",
+      "$type": "color",
+      "$description": "burgundy — library binding reference"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Neue Haas Grotesk (or Aktiv Grotesk)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Adobe Caslon (or EB Garamond as web fallback)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":200,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cottagecore-tech",
+  "type": "registry:style",
+  "title": "Cottagecore Tech",
+  "description": "cottagecore-tech — internet / Expressive Motion tier: Expressive. Display font: Lora 600.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Lora 600",
+      "--font-body": "Source Sans 3 or DM Sans",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.968 0.009 84.6)",
+      "primary": "oklch(0.541 0.077 152.7)",
+      "primary-foreground": "oklch(0.968 0.009 84.6)",
+      "accent": "oklch(0.560 0.063 73.7)",
+      "accent-foreground": "oklch(0.968 0.009 84.6)",
+      "secondary-foreground": "oklch(0.968 0.009 84.6)",
+      "border": "oklch(0.560 0.063 73.7)",
+      "ring": "oklch(0.541 0.077 152.7)"
+    },
+    "dark": {
+      "background": "oklch(0.968 0.009 84.6)",
+      "primary": "oklch(0.541 0.077 152.7)",
+      "primary-foreground": "oklch(0.968 0.009 84.6)",
+      "accent": "oklch(0.560 0.063 73.7)",
+      "accent-foreground": "oklch(0.968 0.009 84.6)",
+      "secondary-foreground": "oklch(0.968 0.009 84.6)",
+      "border": "oklch(0.560 0.063 73.7)",
+      "ring": "oklch(0.541 0.077 152.7)"
+    }
+  }
+}

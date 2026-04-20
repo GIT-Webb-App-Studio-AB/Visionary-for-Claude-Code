@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "witchcore-ui",
+  "type": "registry:style",
+  "title": "Witchcore Ui",
+  "description": "witchcore-ui — graphic / Expressive Motion tier: Expressive. Display font: Cinzel Decorative.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cinzel Decorative",
+      "--font-body": "Cinzel",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.193 0.069 300.4)",
+      "primary": "oklch(0.490 0.209 303.5)",
+      "primary-foreground": "oklch(0.193 0.069 300.4)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.193 0.069 300.4)",
+      "secondary-foreground": "oklch(0.193 0.069 300.4)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.490 0.209 303.5)"
+    },
+    "dark": {
+      "background": "oklch(0.193 0.069 300.4)",
+      "primary": "oklch(0.490 0.209 303.5)",
+      "primary-foreground": "oklch(0.193 0.069 300.4)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.193 0.069 300.4)",
+      "secondary-foreground": "oklch(0.193 0.069 300.4)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.490 0.209 303.5)"
+    }
+  }
+}

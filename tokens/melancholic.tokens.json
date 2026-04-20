@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "melancholic — emotional / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#1C1C1E",
+      "$type": "color",
+      "$description": "deep grey, not black — melancholy has texture"
+    },
+    "primary": {
+      "$value": "#7A8A9A",
+      "$type": "color",
+      "$description": "muted blue-grey — faded, not vibrant"
+    },
+    "accent": {
+      "$value": "#4A5568",
+      "$type": "color",
+      "$description": "deeper grey for secondary elements"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Libre Baskerville 400 (weight restrained",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Libre Baskerville 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.03em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.8,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":80,\"damping\":30,\"mass\":2}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

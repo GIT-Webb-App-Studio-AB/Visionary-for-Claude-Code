@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "deconstructed-type — typography / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#F0EEE8",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#0A0A0A",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#FF2D20",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Helvetica Neue (fragments scattered) + Neue Haas Grotesk Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Helvetica Neue 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.05em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 0.8,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":600,\"damping\":15,\"mass\":0.6}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

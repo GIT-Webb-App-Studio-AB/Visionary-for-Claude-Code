@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "guochao-new-chinese",
+  "type": "registry:style",
+  "title": "Guochao New Chinese",
+  "description": "guochao-new-chinese — graphic / Expressive Motion tier: Expressive. Display font: Noto Serif SC (or Source Han Serif).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Noto Serif SC (or Source Han Serif)",
+      "--font-body": "Noto Sans SC",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.960 0.017 67.6)",
+      "primary": "oklch(0.524 0.192 24.7)",
+      "primary-foreground": "oklch(0.960 0.017 67.6)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.960 0.017 67.6)",
+      "secondary-foreground": "oklch(0.960 0.017 67.6)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.524 0.192 24.7)"
+    },
+    "dark": {
+      "background": "oklch(0.960 0.017 67.6)",
+      "primary": "oklch(0.524 0.192 24.7)",
+      "primary-foreground": "oklch(0.960 0.017 67.6)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.960 0.017 67.6)",
+      "secondary-foreground": "oklch(0.960 0.017 67.6)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.524 0.192 24.7)"
+    }
+  }
+}

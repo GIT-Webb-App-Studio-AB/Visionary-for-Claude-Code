@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dark-mode-first",
+  "type": "registry:style",
+  "title": "Dark Mode First",
+  "description": "dark-mode-first — modern / Expressive Motion tier: Expressive. Display font: Geist (or Inter).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Geist (or Inter)",
+      "--font-body": "Geist",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.141 0.004 285.8)",
+      "primary": "oklch(0.985 0.000 89.9)",
+      "primary-foreground": "oklch(0.141 0.004 285.8)",
+      "accent": "oklch(0.623 0.188 259.8)",
+      "accent-foreground": "oklch(0.141 0.004 285.8)",
+      "secondary-foreground": "oklch(0.141 0.004 285.8)",
+      "border": "oklch(0.623 0.188 259.8)",
+      "ring": "oklch(0.985 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.141 0.004 285.8)",
+      "primary": "oklch(0.985 0.000 89.9)",
+      "primary-foreground": "oklch(0.141 0.004 285.8)",
+      "accent": "oklch(0.623 0.188 259.8)",
+      "accent-foreground": "oklch(0.141 0.004 285.8)",
+      "secondary-foreground": "oklch(0.141 0.004 285.8)",
+      "border": "oklch(0.623 0.188 259.8)",
+      "ring": "oklch(0.985 0.000 89.9)"
+    }
+  }
+}

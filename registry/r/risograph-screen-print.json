@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "risograph-screen-print",
+  "type": "registry:style",
+  "title": "Risograph Screen Print",
+  "description": "risograph-screen-print — hybrid / Subtle Motion tier: Subtle. Display font: Space Mono or Courier New.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Mono or Courier New",
+      "--font-body": "Space Mono",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.666 0.225 36.6)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.666 0.225 36.6)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.666 0.225 36.6)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.666 0.225 36.6)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

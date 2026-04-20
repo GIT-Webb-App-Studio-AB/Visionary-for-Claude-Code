@@ -1,0 +1,55 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "light-mode-sanctuary — modern / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FAFAF8",
+      "$type": "color",
+      "$description": "warm white — not pure white"
+    },
+    "primary": {
+      "$value": "#18181B",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#6366F1",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Inter (or system",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Inter",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":300,\"damping\":28}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

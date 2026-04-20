@@ -1,0 +1,56 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "monochrome — modern / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#888888",
+      "$type": "color",
+      "$description": "single hue midpoint"
+    },
+    "elevation-model": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "grey scale layers —  → #141414 → #1E1E1E → #2A2A2A"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syne",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":20}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

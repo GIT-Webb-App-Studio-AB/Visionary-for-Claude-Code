@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blob-world",
+  "type": "registry:style",
+  "title": "Blob World",
+  "description": "blob-world — extended / Kinetic Motion tier: Kinetic. Display font: Nunito 700 (or Fredoka 700).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito 700 (or Fredoka 700)",
+      "--font-body": "Nunito",
+      "--radius": "60%"
+    },
+    "light": {
+      "background": "oklch(0.940 0.035 303.8)",
+      "primary": "oklch(0.606 0.219 292.7)",
+      "primary-foreground": "oklch(0.940 0.035 303.8)",
+      "accent": "oklch(0.725 0.175 349.8)",
+      "accent-foreground": "oklch(0.940 0.035 303.8)",
+      "secondary-foreground": "oklch(0.940 0.035 303.8)",
+      "border": "oklch(0.725 0.175 349.8)",
+      "ring": "oklch(0.606 0.219 292.7)"
+    },
+    "dark": {
+      "background": "oklch(0.940 0.035 303.8)",
+      "primary": "oklch(0.606 0.219 292.7)",
+      "primary-foreground": "oklch(0.940 0.035 303.8)",
+      "accent": "oklch(0.725 0.175 349.8)",
+      "accent-foreground": "oklch(0.940 0.035 303.8)",
+      "secondary-foreground": "oklch(0.940 0.035 303.8)",
+      "border": "oklch(0.725 0.175 349.8)",
+      "ring": "oklch(0.606 0.219 292.7)"
+    }
+  }
+}

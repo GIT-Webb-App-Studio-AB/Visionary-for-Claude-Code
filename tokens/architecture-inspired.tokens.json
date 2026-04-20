@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "architecture-inspired — hybrid / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "white"
+    },
+    "primary": {
+      "$value": "#3A3A3A",
+      "$type": "color",
+      "$description": "steel"
+    },
+    "accent": {
+      "$value": "#888888",
+      "$type": "color",
+      "$description": "concrete"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Helvetica Neue (or Neue Haas Grotesk)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":280,\"damping\":30}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

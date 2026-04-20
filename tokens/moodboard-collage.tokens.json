@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "moodboard-collage — internet / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "dark canvas — collage elements pop against gallery-wall darkness) or #FAFAFA (white mount board variant — both are valid; the background is support surface, not content"
+    },
+    "accent": {
+      "$value": "#F5E642",
+      "$type": "color",
+      "$description": "tape yellow — semi-transparent) used only for the physical tape metaphor element; not a brand color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Multiple display fonts coexist",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Libre Franklin or DM Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.05em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":18,\"mass\":1.2}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

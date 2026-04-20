@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dark-academia",
+  "type": "registry:style",
+  "title": "Dark Academia",
+  "description": "dark-academia — internet / Subtle Motion tier: Subtle. Display font: EB Garamond.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "EB Garamond",
+      "--font-body": "EB Garamond 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.200 0.013 67.0)",
+      "primary": "oklch(0.743 0.117 89.5)",
+      "primary-foreground": "oklch(0.200 0.013 67.0)",
+      "accent": "oklch(0.571 0.053 72.7)",
+      "accent-foreground": "oklch(0.200 0.013 67.0)",
+      "secondary-foreground": "oklch(0.200 0.013 67.0)",
+      "border": "oklch(0.571 0.053 72.7)",
+      "ring": "oklch(0.743 0.117 89.5)"
+    },
+    "dark": {
+      "background": "oklch(0.200 0.013 67.0)",
+      "primary": "oklch(0.743 0.117 89.5)",
+      "primary-foreground": "oklch(0.200 0.013 67.0)",
+      "accent": "oklch(0.571 0.053 72.7)",
+      "accent-foreground": "oklch(0.200 0.013 67.0)",
+      "secondary-foreground": "oklch(0.200 0.013 67.0)",
+      "border": "oklch(0.571 0.053 72.7)",
+      "ring": "oklch(0.743 0.117 89.5)"
+    }
+  }
+}

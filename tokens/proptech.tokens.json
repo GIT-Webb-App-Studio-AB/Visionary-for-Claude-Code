@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "proptech — industry / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F9F7F4",
+      "$type": "color",
+      "$description": "warm off-white — property photography friendly"
+    },
+    "primary": {
+      "$value": "#1A3A2A",
+      "$type": "color",
+      "$description": "deep forest green — premium property"
+    },
+    "accent": {
+      "$value": "#C8A96E",
+      "$type": "color",
+      "$description": "warm gold — aspirational"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Canela 400–700 (editorial real estate feel)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.2,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":240,\"damping\":28,\"mass\":1}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

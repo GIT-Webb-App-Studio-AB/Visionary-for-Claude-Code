@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "neobrutalism-softened — morphisms / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FDF6E3",
+      "$type": "color",
+      "$description": "one of: `` (apricot-cream), `#E8F0DC` (sage mist),"
+    },
+    "primary-text-/-border": {
+      "$value": "#1F1B16",
+      "$type": "color",
+      "$description": "`` (charcoal with warmth, NOT `#000000`"
+    },
+    "primary": {
+      "$value": "#F5A524",
+      "$type": "color",
+      "$description": "saturated but not neon: `` (apricot-saturated),"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Satoshi** or **Cabinet Grotesk**",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Satoshi",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.5,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0.3,\"visualDuration\":0.35}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "arabic-calligraphic",
+  "type": "registry:style",
+  "title": "Arabic Calligraphic",
+  "description": "arabic-calligraphic — graphic / Expressive Motion tier: Expressive. Display font: Amiri.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Amiri",
+      "--font-body": "Noto Naskh Arabic",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.994 0.008 91.5)",
+      "primary": "oklch(0.358 0.071 152.7)",
+      "primary-foreground": "oklch(0.994 0.008 91.5)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.994 0.008 91.5)",
+      "secondary-foreground": "oklch(0.994 0.008 91.5)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.358 0.071 152.7)"
+    },
+    "dark": {
+      "background": "oklch(0.994 0.008 91.5)",
+      "primary": "oklch(0.358 0.071 152.7)",
+      "primary-foreground": "oklch(0.994 0.008 91.5)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent-foreground": "oklch(0.994 0.008 91.5)",
+      "secondary-foreground": "oklch(0.994 0.008 91.5)",
+      "border": "oklch(0.743 0.117 89.5)",
+      "ring": "oklch(0.358 0.071 152.7)"
+    }
+  }
+}

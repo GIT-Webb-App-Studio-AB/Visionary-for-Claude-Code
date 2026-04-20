@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bloomberg-terminal",
+  "type": "registry:style",
+  "title": "Bloomberg Terminal",
+  "description": "bloomberg-terminal — industry / Subtle Motion tier: Subtle. Display font: JetBrains Mono 700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "JetBrains Mono 700",
+      "--font-body": "JetBrains Mono 400",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(0.818 0.171 77.9)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.321 0.000 89.9)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.321 0.000 89.9)",
+      "ring": "oklch(0.818 0.171 77.9)"
+    },
+    "dark": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(0.818 0.171 77.9)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.321 0.000 89.9)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.321 0.000 89.9)",
+      "ring": "oklch(0.818 0.171 77.9)"
+    }
+  }
+}

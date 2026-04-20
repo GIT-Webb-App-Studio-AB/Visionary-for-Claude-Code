@@ -1,0 +1,62 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "calm-focus-mode — emotional / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F7F5F0",
+      "$type": "color",
+      "$description": "`` (warm cream — stark white at high contrast triggers"
+    },
+    "text": {
+      "$value": "#2A2A2A",
+      "$type": "color",
+      "$description": "`` (not black — pure black on cream creates the same"
+    },
+    "primary": {
+      "$value": "#5B6F4C",
+      "$type": "color",
+      "$description": "`` (muted sage — avoids saturated blue/red/green"
+    },
+    "accent": {
+      "$value": "#8C7A5C",
+      "$type": "color",
+      "$description": "`` (warm taupe) — used sparingly, one accent per view"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Atkinson Hyperlegible",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Atkinson Hyperlegible",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.25}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "6px",
+      "$type": "dimension"
+    }
+  }
+}

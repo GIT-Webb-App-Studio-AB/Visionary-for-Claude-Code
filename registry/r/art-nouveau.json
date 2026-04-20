@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "art-nouveau",
+  "type": "registry:style",
+  "title": "Art Nouveau",
+  "description": "art-nouveau — historical / Expressive Motion tier: Expressive. Display font: Libre Baskerville.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Libre Baskerville",
+      "--font-body": "Libre Baskerville",
+      "--radius": "40%"
+    },
+    "light": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.480 0.068 138.5)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.471 0.112 50.8)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.471 0.112 50.8)",
+      "ring": "oklch(0.480 0.068 138.5)"
+    },
+    "dark": {
+      "background": "oklch(0.957 0.012 79.8)",
+      "primary": "oklch(0.480 0.068 138.5)",
+      "primary-foreground": "oklch(0.957 0.012 79.8)",
+      "accent": "oklch(0.471 0.112 50.8)",
+      "accent-foreground": "oklch(0.957 0.012 79.8)",
+      "secondary-foreground": "oklch(0.957 0.012 79.8)",
+      "border": "oklch(0.471 0.112 50.8)",
+      "ring": "oklch(0.480 0.068 138.5)"
+    }
+  }
+}

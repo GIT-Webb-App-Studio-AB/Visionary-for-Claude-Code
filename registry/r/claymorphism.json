@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "claymorphism",
+  "type": "registry:style",
+  "title": "Claymorphism",
+  "description": "claymorphism — morphisms / Expressive Motion tier: Expressive. Display font: Nunito 700.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito 700",
+      "--font-body": "Nunito 400",
+      "--radius": "24px"
+    },
+    "light": {
+      "background": "oklch(0.944 0.037 312.1)",
+      "primary": "oklch(0.541 0.247 293.0)",
+      "primary-foreground": "oklch(0.944 0.037 312.1)",
+      "accent": "oklch(0.758 0.159 55.9)",
+      "accent-foreground": "oklch(0.944 0.037 312.1)",
+      "secondary-foreground": "oklch(0.944 0.037 312.1)",
+      "border": "oklch(0.758 0.159 55.9)",
+      "ring": "oklch(0.541 0.247 293.0)"
+    },
+    "dark": {
+      "background": "oklch(0.944 0.037 312.1)",
+      "primary": "oklch(0.541 0.247 293.0)",
+      "primary-foreground": "oklch(0.944 0.037 312.1)",
+      "accent": "oklch(0.758 0.159 55.9)",
+      "accent-foreground": "oklch(0.944 0.037 312.1)",
+      "secondary-foreground": "oklch(0.944 0.037 312.1)",
+      "border": "oklch(0.758 0.159 55.9)",
+      "ring": "oklch(0.541 0.247 293.0)"
+    }
+  }
+}

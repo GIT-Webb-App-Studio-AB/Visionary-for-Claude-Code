@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-physicalization",
+  "type": "registry:style",
+  "title": "Data Physicalization",
+  "description": "data-physicalization — extended / Expressive Motion tier: Expressive. Display font: IBM Plex Mono.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "IBM Plex Mono",
+      "--font-body": "IBM Plex Sans",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.979 0.000 89.9)",
+      "primary-foreground": "oklch(0.979 0.000 89.9)",
+      "accent-foreground": "oklch(0.979 0.000 89.9)",
+      "secondary-foreground": "oklch(0.979 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.979 0.000 89.9)",
+      "primary-foreground": "oklch(0.979 0.000 89.9)",
+      "accent-foreground": "oklch(0.979 0.000 89.9)",
+      "secondary-foreground": "oklch(0.979 0.000 89.9)"
+    }
+  }
+}

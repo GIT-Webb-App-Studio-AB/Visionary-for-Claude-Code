@@ -1,13 +1,13 @@
 ---
 name: generating-visual-designs
 description: >
-  Generates distinctive, motion-first UI components with 186 design styles.
+  Generates distinctive, motion-first UI components with 183 design styles.
   Auto-infers style from context signals (product type, audience, archetype, tone, density).
-  Runs Playwright visual critique loop with 8-dimension aesthetic scoring.
+  Runs Playwright visual critique loop with 8-dimension aesthetic scoring (axe-core-instrumented).
   Learns from user rejection via negative taste calibration in system.md.
   Beats frontend-design and UI/UX Pro Max through design craft + feedback loop.
-  Works across 15 stacks: Next.js 15, React 19, Vue 3, Nuxt.js, Svelte 5, Angular, Astro, SolidJS, Lit, Laravel, Flutter, SwiftUI, Jetpack Compose, React Native, Vanilla JS.
-  All generated code is WCAG 2.2 AA compliant (EU Accessibility Act — in force June 28 2025).
+  Works across 15 stacks: Next.js 16, React 19 (compiler stable), Vue 3, Nuxt 3, Svelte 5, Angular, Astro, SolidJS, Lit, Laravel, Flutter, SwiftUI, Jetpack Compose, React Native, Vanilla JS.
+  All generated code is WCAG 2.2 AA compliant with APCA Lc floors (EAA in force since 28 June 2025; ADA Title II deadline for US state/local gov 24 April 2026).
 ---
 
 # Visionary: Visual Design Generation
@@ -35,9 +35,9 @@ Every design generation follows this five-stage pipeline:
 Load `skills/visionary/context-inference.md` and score the request against five signals:
 - **Product archetype**: SaaS / consumer / editorial / developer / luxury / playful
 - **Audience density**: Power user (information-dense) vs. casual (spacious)
-- **Motion appetite**: Static / subtle / expressive / cinematic
+- **Motion appetite**: Static / Subtle / Expressive / Kinetic (enum used across style files)
 - **Brand tone**: Corporate / neutral / warm / bold / irreverent
-- **Framework constraint**: Detected by `detect-framework.sh` at session start
+- **Framework constraint**: Detected by `hooks/scripts/detect-framework.mjs` at session start
 
 Output: a `StyleBrief` object with `category`, `style_id`, `motion_level`, `density`, `palette_direction`, and `locale`.
 
@@ -56,26 +56,36 @@ This brief is shown to the user before code generation if the request is ambiguo
 
 Generate the component with motion as a first-class concern, not an afterthought:
 - Start with the animation/transition model, then build structure around it
-- Use `motion/react` (Motion for React v11+) — NEVER `framer-motion` (deprecated package name)
+- Use `motion/react` v12+ — NEVER `framer-motion` (deprecated package name)
+- Prefer v12 two-parameter springs: `{ bounce: 0.25, visualDuration: 0.4 }` over raw stiffness/damping/mass
 - Apply motion tokens from `motion-tokens.ts` — never hardcode `duration: 300ms` or `ease: linear`
-- Ensure reduced-motion safety: all animations respect `prefers-reduced-motion` (WCAG 2.3.3)
+- Animate oklch()/color-mix directly — Motion v12 handles wide-gamut interpolation natively
+- Prefer CSS-native where possible: `@starting-style` (Baseline 2024), `animation-timeline: view()` / `scroll()`, cross-document `@view-transition { navigation: auto }` for MPA stacks (Astro, Laravel, Nuxt)
+- Use `linear()` easing for complex curves when CSS suffices over JS animation
+- Ensure reduced-motion safety: all animations respect `prefers-reduced-motion` (WCAG 2.3.3) AND provide pause/stop controls for anything > 5s (WCAG 2.2.2)
 - Output: complete, runnable component file — no placeholders, no TODOs
 
 ### Stage 4 — Visual Critique Loop
-After writing the component file, `capture-and-critique.sh` fires automatically via the `PostToolUse` hook:
-1. Playwright renders the component in headless Chromium
-2. Screenshot is captured and passed to the visual-critic agent (`agents/visual-critic.md`)
-3. The critic scores on 8 dimensions: Hierarchy / Contrast / Motion-Coherence / Density / Brand-Fit / Originality / Accessibility / Polish
-4. If any dimension scores below 7/10, the agent generates specific revision instructions
-5. Claude applies revisions and the loop runs again (max 3 iterations)
+After writing the component file, `hooks/scripts/capture-and-critique.mjs` fires automatically via the `PostToolUse` hook:
+1. The hook emits an `additionalContext` instructing Claude (on the next turn) to:
+   - Navigate the dev server via `mcp__playwright__browser_navigate` (respecting `VISIONARY_PREVIEW_URL` override)
+   - Wait for `document.fonts.ready` AND `document.getAnimations().length === 0` (NOT networkidle — Playwright itself advises against it)
+   - Capture the component at default 1200×800; add a 375×812 shot if source contains `md:` or `@media (max-width:`
+   - Inject `axe-core` via `browser_evaluate` so the Accessibility dimension is deterministic, not LLM-guessed
+   - Resize any PNG longest-side > 1568px (Claude vision optimum ≈1.15 megapixel; avoids issue #27611 infinite-retry)
+2. The visual-critic subagent (`agents/visual-critic.md`) receives the screenshot(s) + brief and scores on 8 dimensions: Hierarchy / Contrast / Motion-Coherence / Density / Brand-Fit / Originality / Accessibility (axe-core-weighted) / Polish
+3. Each round starts with a fresh context containing only brief + previous critique (SELF-REFINE pattern — avoids context-bleeding)
+4. If any dimension scores below 7/10, the agent returns `top_3_fixes`; Claude applies them and the loop runs again (max 3 rounds)
+5. Convergence abort: if round N score < round N-1 by >0.3, set `convergence_signal:true` and stop
 6. Final scores are shown to the user as a design quality receipt
 
 ### Stage 5 — Taste Update
 If the user rejects the output or requests significant changes:
-1. `update-taste.sh` is called to record the rejection pattern
+1. `hooks/scripts/update-taste.mjs` fires on `UserPromptSubmit` to detect rejection/approval phrases
 2. The pattern is written to `system.md` as a negative taste calibration entry
 3. Future generations in this session and project automatically avoid the rejected pattern
 4. Example entry: `AVOID: glassmorphism with dark backgrounds for this project — user rejected 2025-04-12`
+5. After 3+ rejections of the same direction, that direction is **permanently flagged** and excluded from the candidate set unless re-requested explicitly
 
 ---
 
@@ -121,22 +131,64 @@ Every generation must deliver:
 
 ### Motion Library
 ```
-ALWAYS: import { motion, AnimatePresence } from 'motion/react'
-NEVER:  import { motion } from 'framer-motion'
+ALWAYS: import { motion, AnimatePresence } from 'motion/react'  // v12+
+NEVER:  import { motion } from 'framer-motion'                   // deprecated
 ```
 
-Framer Motion was rebranded to Motion in 2025. The package name is now `motion/react`.
+Framer Motion was rebranded to Motion in 2025. v12 (2026-baseline) introduces two-parameter springs (`bounce` + `visualDuration`) and native oklch/color-mix animation — prefer those over stiffness/damping/mass for new code.
 
 ### Spring Tokens (use these — never hardcode durations)
 ```typescript
+// Motion v12 — two-parameter springs (preferred)
 const spring = {
+  micro:   { type: "spring", bounce: 0.0,  visualDuration: 0.15 }, // crisp
+  snappy:  { type: "spring", bounce: 0.15, visualDuration: 0.25 }, // subtle bounce
+  ui:      { type: "spring", bounce: 0.2,  visualDuration: 0.35 }, // default
+  gentle:  { type: "spring", bounce: 0.1,  visualDuration: 0.6  }, // slow settle
+  bounce:  { type: "spring", bounce: 0.55, visualDuration: 0.5  }, // playful
+}
+
+// Motion v11 / legacy — keep for projects not yet upgraded
+const springLegacy = {
   micro:   { type: "spring", stiffness: 500, damping: 35, mass: 0.5 },
   snappy:  { type: "spring", stiffness: 400, damping: 28, mass: 0.8 },
-  ui:      { type: "spring", stiffness: 300, damping: 25, mass: 1 },
-  gentle:  { type: "spring", stiffness: 180, damping: 22, mass: 1 },
+  ui:      { type: "spring", stiffness: 300, damping: 25, mass: 1   },
+  gentle:  { type: "spring", stiffness: 180, damping: 22, mass: 1   },
   bounce:  { type: "spring", stiffness: 400, damping: 10, mass: 0.8 },
 }
 ```
+
+### Color (default oklch, not hex)
+Generate palettes in `oklch()` so interpolation is perceptually uniform and wide-gamut displays (Apple display-p3 etc.) render correctly. Keep hex only as a fallback comment.
+
+```css
+:root {
+  --accent: oklch(0.72 0.19 258);                   /* primary */
+  --accent-hover: color-mix(in oklch, var(--accent), white 8%);
+  --accent-focus: color-mix(in oklch, var(--accent), black 12%);
+}
+```
+
+### Tailwind (v4 default)
+Use `@theme` in CSS — `tailwind.config.js` is the v3 pattern. Automatic content detection means no `content:` array. Oxide engine (~5× faster builds). Detection: `detect-framework.mjs` reports v3 vs v4 in `.visionary-cache/detected-framework.json`.
+
+```css
+/* app.css — Tailwind v4 */
+@import "tailwindcss";
+@theme {
+  --color-accent: oklch(0.72 0.19 258);
+  --font-display: "Grotesk New", system-ui;
+}
+```
+
+### Next.js (16 default)
+Cache Components and PPR are on by default. React Compiler is stable — rely on it, don't over-memoize. Use `<Form>` for progressive-enhancement form submissions. Turbopack is default.
+
+### shadcn (v4 default)
+`shadcn apply --preset` pulls curated registries. Base UI primitive layer (`@base-ui-components/react`) is a newer, more ergonomic alternative to Radix — prefer for new code. Detection result in `component_primitives.base_ui`.
+
+### Design Tokens (DTCG)
+If `*.tokens.json` is detected, prefer token references over hardcoded values. The DTCG 1.0 spec stabilized October 2025 and is supported by Style Dictionary v4 and Figma Variables native import/export.
 
 ### Component Base Preference
 
@@ -153,30 +205,37 @@ When using shadcn/ui: import from `@/components/ui/*`, do not re-implement primi
 
 ## WCAG 2.2 AA — Mandatory Accessibility Patterns
 
-**EU Accessibility Act context:** As of June 28, 2025, WCAG 2.2 AA is legally required for products in EU markets. ALL generated code must include the following patterns.
+### Jurisdictional context (2026)
+
+| Jurisdiction | Requirement | Status |
+|---|---|---|
+| EU (27 states) | European Accessibility Act — WCAG 2.2 AA | **In force since 28 June 2025.** Enforcement active: France (DGCCRF), Germany (fines up to €500k), Netherlands (up to €900k / 10 % turnover). Extraterritorial: non-EU SaaS targeting EU customers is covered. |
+| USA — state/local gov | ADA Title II final rule — WCAG 2.1 AA | **Deadline 24 April 2026** for pop. ≥ 50 000. |
+| USA — federal | Section 508 — WCAG 2.0 AA | Existing. |
+| UK | PSBAR 2018 — WCAG 2.2 AA | Existing. |
+| Canada — federal | ACA / ACR 2025 — WCAG 2.1 AA | Existing. |
+| Canada — Ontario | AODA — WCAG 2.0 AA | Existing. |
+| Japan | JIS X 8341-3:2016 — WCAG 2.0 AA | Existing. |
+
+**Rule of thumb:** every generated component must pass WCAG 2.2 AA AND include APCA Lc floors for dark-mode contrast math. If a project ships to the EU, assume EAA applies regardless of company HQ.
 
 ### Focus Management (WCAG 2.4.11)
 
-Include this block in every CSS output:
-
 ```css
 /* ─── Focus Management (WCAG 2.4.11) ─── */
-:focus:not(:focus-visible) { outline: none; }
 :focus-visible {
   outline: 3px solid currentColor;
   outline-offset: 3px;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 5px #005FCC;
+  box-shadow: 0 0 0 2px Canvas, 0 0 0 5px AccentColor;
 }
 ```
 
-**Why:** `:focus:not(:focus-visible)` removes the default ring for mouse/touch users. `:focus-visible` provides a high-contrast ring only for keyboard users. The double box-shadow creates a white gap + blue halo that passes 3:1 against any background.
+**Do NOT generate** `:focus:not(:focus-visible) { outline: none }` — that fallback is obsolete. Chrome 90 / Firefox 85 / Safari 15.4 (all March 2022) suppress the default mouse-focus ring in their user-agent stylesheets; the explicit reset only risks stripping focus from users who actually need it. `Canvas`/`AccentColor` system colors auto-adapt to Windows High Contrast and forced-colors mode; a fixed `#005FCC` halo does not.
 
-### Motion Safety (WCAG 2.3.3)
-
-Every `transition` or `animation` must be wrapped:
+### Motion Safety (WCAG 2.3.3 + 2.2.2)
 
 ```css
-/* ─── Motion Safety (WCAG 2.3.3) ─── */
+/* ─── WCAG 2.3.3 — user-preference based ─── */
 @media (prefers-reduced-motion: no-preference) {
   .animated { transition: transform 300ms ease, opacity 200ms ease; }
 }
@@ -185,40 +244,74 @@ Every `transition` or `animation` must be wrapped:
 }
 ```
 
-**Rule:** Transform/scale animations are vestibular triggers. Always provide a `reduce` counterpart that keeps opacity transitions (safe) but removes movement.
+Transform/scale animations are vestibular triggers. The `reduce` branch must keep the state change legible (usually opacity) while removing movement.
 
-### Minimum Target Size (WCAG 2.5.8)
+**WCAG 2.2.2 (Level A) — pause/stop/hide:** any auto-playing motion that runs **> 5 s** AND is presented alongside other content MUST expose a user-visible pause/stop/hide control. `prefers-reduced-motion` is the OS preference, not a substitute for the interaction requirement. Styles affected: `kinetic-type`, `flow-field-vector`, `reaction-diffusion`, `quantum-particle`, `aurora-mesh`, and anything in the Kinetic tier. Generate a pause button bound to `animation-play-state` or the JS equivalent.
+
+### Minimum Target Size (WCAG 2.5.8 — 2.2 AA)
 
 ```css
-/* WCAG 2.5.8 — minimum 24×24px touch target */
-.btn, a, [role="button"] {
-  min-width: 24px;
-  min-height: 24px;
-}
-
-.btn-primary {
-  min-height: 44px;
-  padding-inline: 1.25rem;
+/* 24×24 is the WCAG 2.5.8 floor for AA conformance.         */
+/* Our default is 44×44 — matches Apple HIG (44pt), Material */
+/* (48dp), and has ~3× lower mis-tap rate than 24 in studies.*/
+.btn, a.button, [role="button"] {
+  min-inline-size: 44px;
+  min-block-size: 44px;
 }
 ```
+
+**Drop to 24 only for** deliberately dense UI: `bloomberg-terminal`, `terminal-cli`, `data-visualization` row cells, `saas-b2b-dashboard` table rows, inline text links in flowing prose (AA exception 1), user-agent-controlled elements (AA exception 4). Document the choice in the design brief so the critic doesn't flag it.
+
+### RTL + Logical Properties (affects ~500M users)
+
+**Default to CSS logical properties** everywhere, not physical ones. Arabic, Hebrew, Persian, Urdu layouts mirror; without logical props the component is broken in those locales.
+
+```css
+/* ✗ Wrong — physical */
+.card { margin-left: 1rem; padding-right: 0.5rem; border-left: 2px solid; }
+
+/* ✓ Correct — logical, RTL-safe */
+.card { margin-inline-start: 1rem; padding-inline-end: 0.5rem; border-inline-start: 2px solid; }
+```
+
+All box-offset, margin, padding, border, inset, and text-align values must use the logical variant. `arabic-calligraphic` declares `dir="rtl"` on its root — the rest of the system relies on logical props for correct flip behavior.
+
+### ARIA 1.3 support
+
+Use the newer ARIA 1.3 primitives where appropriate:
+
+- `role="suggestion"` / `role="comment"` / `role="mark"` for inline annotation UIs
+- `aria-description` for supplementary text (richer than `aria-describedby` for AT reading)
+- `aria-braillelabel` / `aria-brailleroledescription` for refreshable-Braille output
+- `aria-actions` (editor toolbars) where supported
 
 ### ARIA Labels (WCAG 4.1.2)
 
 ```
 WCAG 4.1.2 — ARIA labels:
 - Every icon-only button must include aria-label="[action description]"
-- Radix UI primitives: pass the aria-label prop, do not rely on implicit labelling
+- Radix / Base UI primitives: pass the aria-label prop, do not rely on implicit labelling
 - Never generate <div role="button"> — use <button> instead
 - Never generate <span role="link"> — use <a href="..."> instead
+- Prefer aria-description over aria-describedby when the description is inline and short
 ```
 
-### Contrast Requirements (WCAG 1.4.3)
+### Contrast Requirements (WCAG 1.4.3 + APCA)
 
-- Normal text (< 18pt / < 14pt bold): minimum 4.5:1 contrast ratio
-- Large text (≥ 18pt / ≥ 14pt bold): minimum 3:1 contrast ratio
-- UI components (borders, icons): minimum 3:1 contrast ratio
-- Never use `#999` on `#fff` (2.85:1 — FAILS)
-- Never use low-contrast placeholder text without `::placeholder` override
+**Dual floors — include both values in design briefs:**
+
+| Text role | WCAG 2.x (legal minimum) | APCA Lc (perceptual floor) |
+|---|---|---|
+| Body text (< 24 px or < 18 px bold) | 4.5:1 | Lc ≥ 75 |
+| Large text / UI label (≥ 24 px or ≥ 18 px bold) | 3:1 | Lc ≥ 60 |
+| UI borders, icons, non-text | 3:1 | Lc ≥ 45 |
+| High-contrast-a11y style (WCAG AAA) | 7:1 | Lc ≥ 90 |
+
+Why both: WCAG 2.x contrast math breaks in dark mode (a passing 4.5:1 can still feel murky at ~#1a1a1a + ~#888). APCA Lc is the perceptually-uniform successor Apple/Adobe ship today and that drives the 73 styles running dark backgrounds. Run the APCA check via `axe-core`'s experimental apca rule or `apca-w3`.
+
+- Never `#999` on `#fff` (2.85:1 — FAILS both).
+- Never rely on transparency-only contrast (rgba text over image) without a solid fallback.
+- `::placeholder` text must meet 3:1 or be explicitly overridden.
 
 ### No Flashing (WCAG 2.3.1)
 
@@ -226,7 +319,7 @@ WCAG 4.1.2 — ARIA labels:
 WCAG 2.3.1 — Zero elements may flash > 3× per second.
 Forbidden keyframe patterns:
 - visibility toggle at > 3 Hz
-- opacity 0↔1 toggle at > 3 Hz  
+- opacity 0↔1 toggle at > 3 Hz
 - background-color flash at > 3 Hz
 Allowed: neon-flicker.css animations MUST use irregular timing ≥ 3s cycles
 ```
@@ -241,6 +334,10 @@ Use native HTML elements:
 ✓ <h1>–<h6> in correct heading hierarchy
 ✗ Never: <div role="button">, <span role="link">, <div role="navigation">
 ```
+
+### Automated verification in the critique loop
+
+`axe-core` is injected into the Playwright screenshot flow via `browser_evaluate`. The subagent MUST consume the axe JSON and weight the Accessibility dimension score against real violations — not an LLM guess. axe-core covers 30–50 % of WCAG violations deterministically; the remainder (cognitive, context-dependent) stays with the subagent.
 
 ---
 

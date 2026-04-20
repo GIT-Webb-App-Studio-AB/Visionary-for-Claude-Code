@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sports-analytics",
+  "type": "registry:style",
+  "title": "Sports Analytics",
+  "description": "sports-analytics — hybrid / Expressive Motion tier: Expressive. Display font: Bebas Neue.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bebas Neue",
+      "--font-body": "DM Sans (tabular",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.150 0.021 283.5)",
+      "primary-foreground": "oklch(0.150 0.021 283.5)",
+      "accent": "oklch(0.844 0.146 209.3)",
+      "accent-foreground": "oklch(0.150 0.021 283.5)",
+      "secondary-foreground": "oklch(0.150 0.021 283.5)",
+      "border": "oklch(0.844 0.146 209.3)"
+    },
+    "dark": {
+      "background": "oklch(0.150 0.021 283.5)",
+      "primary-foreground": "oklch(0.150 0.021 283.5)",
+      "accent": "oklch(0.844 0.146 209.3)",
+      "accent-foreground": "oklch(0.150 0.021 283.5)",
+      "secondary-foreground": "oklch(0.150 0.021 283.5)",
+      "border": "oklch(0.844 0.146 209.3)"
+    }
+  }
+}

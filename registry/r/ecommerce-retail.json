@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ecommerce-retail",
+  "type": "registry:style",
+  "title": "Ecommerce Retail",
+  "description": "ecommerce-retail — industry / Expressive Motion tier: Expressive. Display font: Cabinet Grotesk 700 (premium retail) or Bricolage Grotesque 700 (editorial retail).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Cabinet Grotesk 700 (premium retail) or Bricolage Grotesque 700 (editorial retail)",
+      "--font-body": "DM Sans 400",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.668 0.224 37.0)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.668 0.224 37.0)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.668 0.224 37.0)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.668 0.224 37.0)"
+    }
+  }
+}

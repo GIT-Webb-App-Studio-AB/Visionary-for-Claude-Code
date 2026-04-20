@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "alien-nonhuman — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#080012",
+      "$type": "color",
+      "$description": "xenobiological dark"
+    },
+    "primary": {
+      "$value": "#BFFF00",
+      "$type": "color",
+      "$description": "chartreuse alien"
+    },
+    "accent": {
+      "$value": "#FF00B8",
+      "$type": "color",
+      "$description": "bioluminescent magenta"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Custom glyph font or Josefin Sans with heavy modification",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Josefin Sans (intentionally awkward for the register)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.2em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":90,\"damping\":6}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "7px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "40%",
+      "$type": "dimension"
+    }
+  }
+}

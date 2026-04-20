@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "african-design",
+  "type": "registry:style",
+  "title": "African Design",
+  "description": "african-design — graphic / Expressive Motion tier: Expressive. Display font: Nunito ExtraBold.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Nunito ExtraBold",
+      "--font-body": "Nunito",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.166 0.038 61.8)",
+      "primary": "oklch(0.656 0.183 43.5)",
+      "primary-foreground": "oklch(0.166 0.038 61.8)",
+      "accent": "oklch(0.850 0.153 89.6)",
+      "accent-foreground": "oklch(0.166 0.038 61.8)",
+      "secondary-foreground": "oklch(0.166 0.038 61.8)",
+      "border": "oklch(0.850 0.153 89.6)",
+      "ring": "oklch(0.656 0.183 43.5)"
+    },
+    "dark": {
+      "background": "oklch(0.166 0.038 61.8)",
+      "primary": "oklch(0.656 0.183 43.5)",
+      "primary-foreground": "oklch(0.166 0.038 61.8)",
+      "accent": "oklch(0.850 0.153 89.6)",
+      "accent-foreground": "oklch(0.166 0.038 61.8)",
+      "secondary-foreground": "oklch(0.166 0.038 61.8)",
+      "border": "oklch(0.850 0.153 89.6)",
+      "ring": "oklch(0.656 0.183 43.5)"
+    }
+  }
+}

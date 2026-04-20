@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "disco-op-art",
+  "type": "registry:style",
+  "title": "Disco Op Art",
+  "description": "disco-op-art — extended / Kinetic Motion tier: Kinetic. Display font: Syne or Bebas Neue.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne or Bebas Neue",
+      "--font-body": "DM Sans",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(0.641 0.257 8.1)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.844 0.146 209.3)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.844 0.146 209.3)",
+      "ring": "oklch(0.641 0.257 8.1)"
+    },
+    "dark": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(0.641 0.257 8.1)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.844 0.146 209.3)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.844 0.146 209.3)",
+      "ring": "oklch(0.641 0.257 8.1)"
+    }
+  }
+}

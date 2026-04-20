@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marine-nautical-chart",
+  "type": "registry:style",
+  "title": "Marine Nautical Chart",
+  "description": "marine-nautical-chart — extended / Subtle Motion tier: Subtle. Display font: Gill Sans (or Futura).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Gill Sans (or Futura)",
+      "--font-body": "Gill Sans",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.965 0.007 247.9)",
+      "primary": "oklch(0.303 0.087 266.3)",
+      "primary-foreground": "oklch(0.965 0.007 247.9)",
+      "accent": "oklch(0.559 0.073 239.9)",
+      "accent-foreground": "oklch(0.965 0.007 247.9)",
+      "secondary-foreground": "oklch(0.965 0.007 247.9)",
+      "border": "oklch(0.559 0.073 239.9)",
+      "ring": "oklch(0.303 0.087 266.3)"
+    },
+    "dark": {
+      "background": "oklch(0.965 0.007 247.9)",
+      "primary": "oklch(0.303 0.087 266.3)",
+      "primary-foreground": "oklch(0.965 0.007 247.9)",
+      "accent": "oklch(0.559 0.073 239.9)",
+      "accent-foreground": "oklch(0.965 0.007 247.9)",
+      "secondary-foreground": "oklch(0.965 0.007 247.9)",
+      "border": "oklch(0.559 0.073 239.9)",
+      "ring": "oklch(0.303 0.087 266.3)"
+    }
+  }
+}

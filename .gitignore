@@ -1,35 +1,41 @@
-# Per-user taste calibration (generated per-project, never commit)
+# ─── Per-user / runtime state (never commit) ─────────────────────────────
 .visionary-cache/
 system.md
 
-# Node
+# ─── Internal working docs (do not ship to public remotes) ───────────────
+# Maintainer-only analysis briefs and scratch files. Commit-deny by pattern.
+Future implementation and fixes.md
+*.stackdump
+bash.exe.stackdump
+
+# ─── Node / package managers ─────────────────────────────────────────────
 node_modules/
 *.log
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 
-# OS
+# ─── OS ──────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 Desktop.ini
 
-# Build artifacts
+# ─── Build artifacts ─────────────────────────────────────────────────────
 dist/
 .cache/
 *.tmp
 
-# Environment
+# ─── Environment ─────────────────────────────────────────────────────────
 .env
 .env.local
 .env.*.local
 
-# IDE
+# ─── IDE ─────────────────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# Claude Code local state (per-user, not plugin code)
+# ─── Claude Code local state (per-user, not plugin code) ─────────────────
 .claude/

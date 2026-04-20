@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stone-geological",
+  "type": "registry:style",
+  "title": "Stone Geological",
+  "description": "stone-geological — graphic / Subtle Motion tier: Subtle. Display font: Rockwell (or Arvo as web fallback).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Rockwell (or Arvo as web fallback)",
+      "--font-body": "Arvo",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.409 0.000 89.9)",
+      "primary": "oklch(0.910 0.017 76.1)",
+      "primary-foreground": "oklch(0.409 0.000 89.9)",
+      "accent": "oklch(0.571 0.053 72.7)",
+      "accent-foreground": "oklch(0.409 0.000 89.9)",
+      "secondary-foreground": "oklch(0.409 0.000 89.9)",
+      "border": "oklch(0.571 0.053 72.7)",
+      "ring": "oklch(0.910 0.017 76.1)"
+    },
+    "dark": {
+      "background": "oklch(0.409 0.000 89.9)",
+      "primary": "oklch(0.910 0.017 76.1)",
+      "primary-foreground": "oklch(0.409 0.000 89.9)",
+      "accent": "oklch(0.571 0.053 72.7)",
+      "accent-foreground": "oklch(0.409 0.000 89.9)",
+      "secondary-foreground": "oklch(0.409 0.000 89.9)",
+      "border": "oklch(0.571 0.053 72.7)",
+      "ring": "oklch(0.910 0.017 76.1)"
+    }
+  }
+}

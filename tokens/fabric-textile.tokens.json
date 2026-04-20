@@ -1,0 +1,70 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "fabric-textile — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F2EBE0",
+      "$type": "color",
+      "$description": "`` (unbleached linen) — specifically avoid pure"
+    },
+    "text": {
+      "$value": "#3A2F22",
+      "$type": "color",
+      "$description": "`` (walnut-stain brown, not black — pure black is"
+    },
+    "primary": {
+      "$value": "#7A5C44",
+      "$type": "color",
+      "$description": "`` (woven umber — takes the natural-fiber palette"
+    },
+    "accent": {
+      "$value": "#C4956A",
+      "$type": "color",
+      "$description": "`` (natural-dye terracotta — the color that madder root"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Lora**",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Lora",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.005em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.7,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.3}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

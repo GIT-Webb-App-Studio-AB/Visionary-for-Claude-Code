@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-glass",
+  "type": "registry:style",
+  "title": "Liquid Glass",
+  "description": "liquid-glass — morphisms / Subtle Motion tier: Subtle. Display font: system.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "system",
+      "--radius": "16px"
+    },
+    "light": {
+      "primary": "oklch(0.603 0.218 257.4)",
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)",
+      "ring": "oklch(0.603 0.218 257.4)"
+    },
+    "dark": {
+      "primary": "oklch(0.603 0.218 257.4)",
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)",
+      "ring": "oklch(0.603 0.218 257.4)"
+    }
+  }
+}

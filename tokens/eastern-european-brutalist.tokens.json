@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "eastern-european-brutalist — graphic / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#2A2A2A",
+      "$type": "color",
+      "$description": "concrete panel grey"
+    },
+    "primary": {
+      "$value": "#CC0000",
+      "$type": "color",
+      "$description": "Soviet red — used structurally, not decoratively"
+    },
+    "accent": {
+      "$value": "#E8E0D0",
+      "$type": "color",
+      "$description": "brutalist off-white"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Oswald Condensed",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Roboto (the irony is intentional",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.06em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":600,\"damping\":60}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

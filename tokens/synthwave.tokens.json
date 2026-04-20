@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "synthwave — internet / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0D0221",
+      "$type": "color",
+      "$description": "— THE canonical synthwave purple-black; not pure black (#000000, too flat), not dark purple (#1A0033, too saturated); this specific hex sits at the exact point where purple-black reads as night sky with atmosphere rather than void or grape"
+    },
+    "primary": {
+      "$value": "#FF00A0",
+      "$type": "color",
+      "$description": "hot pink  — pure magenta-shifted pink; the color of neon bar signs on wet asphalt; not coral (too warm), not rose (too soft), not magenta (#FF00FF, too pure/RGB-synthetic); #FF00A0 has the slight warm-shift that makes it feel like neon gas rather than screen pixel"
+    },
+    "accent": {
+      "$value": "#00F0FF",
+      "$type": "color",
+      "$description": "— electric cyan; near-pure cyan shifted slightly warm to prevent pure RGB feeling; pairs with hot pink on the complementary axis; reads as CRT phosphor glow"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Azonix (first priority)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Share Tech Mono",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.12em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

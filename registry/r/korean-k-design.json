@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "korean-k-design",
+  "type": "registry:style",
+  "title": "Korean K Design",
+  "description": "korean-k-design — graphic / Expressive Motion tier: Expressive. Display font: Pretendard.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Pretendard",
+      "--font-body": "Noto Sans KR (fallback when Pretendard unavailable)",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.657 0.241 6.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.555 0.243 268.8)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.555 0.243 268.8)",
+      "ring": "oklch(0.657 0.241 6.9)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.657 0.241 6.9)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.555 0.243 268.8)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.555 0.243 268.8)",
+      "ring": "oklch(0.657 0.241 6.9)"
+    }
+  }
+}

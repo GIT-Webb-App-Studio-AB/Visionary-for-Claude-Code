@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pharmaceutical-clean",
+  "type": "registry:style",
+  "title": "Pharmaceutical Clean",
+  "description": "pharmaceutical-clean — extended / Subtle Motion tier: Subtle. Display font: Helvetica Neue (or Inter).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Helvetica Neue (or Inter)",
+      "--font-body": "Inter",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.990 0.005 258.3)",
+      "primary": "oklch(0.485 0.164 255.8)",
+      "primary-foreground": "oklch(0.990 0.005 258.3)",
+      "accent": "oklch(0.951 0.014 248.0)",
+      "accent-foreground": "oklch(0.990 0.005 258.3)",
+      "secondary-foreground": "oklch(0.990 0.005 258.3)",
+      "border": "oklch(0.951 0.014 248.0)",
+      "ring": "oklch(0.485 0.164 255.8)"
+    },
+    "dark": {
+      "background": "oklch(0.990 0.005 258.3)",
+      "primary": "oklch(0.485 0.164 255.8)",
+      "primary-foreground": "oklch(0.990 0.005 258.3)",
+      "accent": "oklch(0.951 0.014 248.0)",
+      "accent-foreground": "oklch(0.990 0.005 258.3)",
+      "secondary-foreground": "oklch(0.990 0.005 258.3)",
+      "border": "oklch(0.951 0.014 248.0)",
+      "ring": "oklch(0.485 0.164 255.8)"
+    }
+  }
+}

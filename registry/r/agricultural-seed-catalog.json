@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agricultural-seed-catalog",
+  "type": "registry:style",
+  "title": "Agricultural Seed Catalog",
+  "description": "agricultural-seed-catalog — extended / Subtle Motion tier: Subtle. Display font: Clarendon (or Rockwell).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Clarendon (or Rockwell)",
+      "--font-body": "Rockwell",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.947 0.029 89.6)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.947 0.029 89.6)",
+      "accent": "oklch(0.667 0.134 74.4)",
+      "accent-foreground": "oklch(0.947 0.029 89.6)",
+      "secondary-foreground": "oklch(0.947 0.029 89.6)",
+      "border": "oklch(0.667 0.134 74.4)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.947 0.029 89.6)",
+      "primary": "oklch(0.226 0.000 89.9)",
+      "primary-foreground": "oklch(0.947 0.029 89.6)",
+      "accent": "oklch(0.667 0.134 74.4)",
+      "accent-foreground": "oklch(0.947 0.029 89.6)",
+      "secondary-foreground": "oklch(0.947 0.029 89.6)",
+      "border": "oklch(0.667 0.134 74.4)",
+      "ring": "oklch(0.226 0.000 89.9)"
+    }
+  }
+}

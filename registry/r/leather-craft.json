@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "leather-craft",
+  "type": "registry:style",
+  "title": "Leather Craft",
+  "description": "leather-craft — graphic / Subtle Motion tier: Subtle. Display font: **Libre Baskerville**.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Libre Baskerville**",
+      "--font-body": "Libre Baskerville",
+      "--radius": "2px"
+    },
+    "light": {
+      "background": "oklch(0.273 0.052 50.4)",
+      "foreground": "oklch(0.881 0.045 79.3)",
+      "primary-foreground": "oklch(0.273 0.052 50.4)",
+      "accent-foreground": "oklch(0.273 0.052 50.4)",
+      "secondary": "oklch(0.435 0.132 30.8)",
+      "secondary-foreground": "oklch(0.273 0.052 50.4)",
+      "muted": "oklch(0.435 0.132 30.8)",
+      "muted-foreground": "oklch(0.881 0.045 79.3)"
+    },
+    "dark": {
+      "background": "oklch(0.273 0.052 50.4)",
+      "foreground": "oklch(0.881 0.045 79.3)",
+      "primary-foreground": "oklch(0.273 0.052 50.4)",
+      "accent-foreground": "oklch(0.273 0.052 50.4)",
+      "secondary": "oklch(0.435 0.132 30.8)",
+      "secondary-foreground": "oklch(0.273 0.052 50.4)",
+      "muted": "oklch(0.435 0.132 30.8)",
+      "muted-foreground": "oklch(0.881 0.045 79.3)"
+    }
+  }
+}

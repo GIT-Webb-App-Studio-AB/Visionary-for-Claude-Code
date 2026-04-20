@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "awe-sublime",
+  "type": "registry:style",
+  "title": "Awe Sublime",
+  "description": "awe-sublime — extended / Expressive Motion tier: Expressive. Display font: EB Garamond.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "EB Garamond",
+      "--font-body": "EB Garamond",
+      "--radius": "999px"
+    },
+    "light": {
+      "background": "oklch(0.117 0.009 284.9)",
+      "primary": "oklch(0.767 0.139 91.1)",
+      "primary-foreground": "oklch(0.117 0.009 284.9)",
+      "accent": "oklch(0.384 0.146 260.3)",
+      "accent-foreground": "oklch(0.117 0.009 284.9)",
+      "secondary-foreground": "oklch(0.117 0.009 284.9)",
+      "border": "oklch(0.384 0.146 260.3)",
+      "ring": "oklch(0.767 0.139 91.1)"
+    },
+    "dark": {
+      "background": "oklch(0.117 0.009 284.9)",
+      "primary": "oklch(0.767 0.139 91.1)",
+      "primary-foreground": "oklch(0.117 0.009 284.9)",
+      "accent": "oklch(0.384 0.146 260.3)",
+      "accent-foreground": "oklch(0.117 0.009 284.9)",
+      "secondary-foreground": "oklch(0.117 0.009 284.9)",
+      "border": "oklch(0.384 0.146 260.3)",
+      "ring": "oklch(0.767 0.139 91.1)"
+    }
+  }
+}

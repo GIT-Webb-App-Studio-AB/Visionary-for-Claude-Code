@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "microfilm-archive — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#0D0D00",
+      "$type": "color",
+      "$description": "phosphor amber variant) or #1A1A0F (phosphor green variant"
+    },
+    "primary": {
+      "$value": "#FFB300",
+      "$type": "color",
+      "$description": "amber phosphor) or #00FF41 (green phosphor"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Courier Prime",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Courier Prime",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":300,\"damping\":32}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

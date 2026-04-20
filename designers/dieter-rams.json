@@ -1,0 +1,56 @@
+{
+  "$schema": "https://visionary-claude.dev/schema/designer-pack.json",
+  "name": "Dieter Rams",
+  "era": "1960s–1980s, Braun",
+  "description": "Ten principles of good design. Functional restraint. Invisible UI. Beige plastic, small display, clear labels, no ornament. Rams influenced an entire generation of product design (Apple in particular) and his principles translate directly to digital UI — each one rejects a specific AI-slop pattern.",
+  "biases": {
+    "style_weight_multipliers": {
+      "dieter-rams": 5.0,
+      "swiss-rationalism": 3.0,
+      "white-futurism": 2.5,
+      "light-mode-sanctuary": 2.0,
+      "bauhaus-dessau": 1.8,
+      "japanese-minimalism": 1.7,
+      "clinical-cold": 1.5,
+      "concrete-brutalist-material": 1.3,
+      "technical-mono": 1.3,
+      "monochrome": 1.5
+    },
+    "style_blocklist": [
+      "neon-dystopia",
+      "cyberpunk-neon",
+      "synthwave",
+      "post-internet-maximalism",
+      "chaos-packaging-collage",
+      "dopamine-design",
+      "bubblegum-bling",
+      "playful-joyful",
+      "whimsical-storybook",
+      "holographic",
+      "aurora-mesh"
+    ],
+    "palette_tags_preferred": ["light", "editorial", "monochrome"],
+    "palette_tags_forbidden": ["neon", "pastel"],
+    "motion_tier_cap": "Subtle",
+    "density_preferred": "balanced",
+    "touch_target_min": 44,
+    "typography_preferred": ["Akzidenz-Grotesk", "Helvetica", "Futura", "Neue Haas Grotesk"],
+    "typography_forbidden": ["Poppins", "Inter", "Comic Sans", "Caveat"]
+  },
+  "rules": [
+    "Good design is unobtrusive — no element may draw attention to itself beyond its function.",
+    "Good design makes a product useful — every UI element must serve a user task. Decorative elements are removed.",
+    "As little design as possible — prefer whitespace over chrome; prefer hairlines over shadows; prefer one accent over a palette.",
+    "Prefer neutral / muted palettes (no saturated accents over 5% of surface area).",
+    "Border-radius 0–4 px only — larger radii suggest plastic injection moulding, which breaks the 'industrial honesty' register.",
+    "Motion budget: opacity fade + 2 px translate is the ceiling. Never bounce, never overshoot, never parallax.",
+    "Typography: Akzidenz-Grotesk or Helvetica. A second typeface must have a demonstrable functional reason.",
+    "Labels are explicit — 'Start' not an arrow-icon. 'Tempo' not a speedometer glyph. Clarity is the aesthetic.",
+    "Color is functional — red reserved for error / stop; green for go / success; otherwise neutral. Decorative color is banned."
+  ],
+  "references": [
+    "Dieter Rams: As Little Design as Possible (Phaidon, 2010)",
+    "Less and More: The Design Ethos of Dieter Rams (Vitra, 2009)",
+    "Rams (Hustwit, 2018 documentary)"
+  ]
+}

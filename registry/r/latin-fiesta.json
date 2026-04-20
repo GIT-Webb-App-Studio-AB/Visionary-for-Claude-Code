@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "latin-fiesta",
+  "type": "registry:style",
+  "title": "Latin Fiesta",
+  "description": "latin-fiesta — graphic / Expressive Motion tier: Expressive. Display font: Lato ExtraBold.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Lato ExtraBold",
+      "--font-body": "Lato",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.982 0.013 71.3)",
+      "primary": "oklch(0.575 0.198 34.4)",
+      "primary-foreground": "oklch(0.982 0.013 71.3)",
+      "accent": "oklch(0.514 0.115 155.9)",
+      "accent-foreground": "oklch(0.982 0.013 71.3)",
+      "secondary-foreground": "oklch(0.982 0.013 71.3)",
+      "border": "oklch(0.514 0.115 155.9)",
+      "ring": "oklch(0.575 0.198 34.4)"
+    },
+    "dark": {
+      "background": "oklch(0.982 0.013 71.3)",
+      "primary": "oklch(0.575 0.198 34.4)",
+      "primary-foreground": "oklch(0.982 0.013 71.3)",
+      "accent": "oklch(0.514 0.115 155.9)",
+      "accent-foreground": "oklch(0.982 0.013 71.3)",
+      "secondary-foreground": "oklch(0.982 0.013 71.3)",
+      "border": "oklch(0.514 0.115 155.9)",
+      "ring": "oklch(0.575 0.198 34.4)"
+    }
+  }
+}

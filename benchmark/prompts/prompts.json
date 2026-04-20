@@ -1,0 +1,156 @@
+{
+  "$schema": "https://visionary-claude.dev/schema/benchmark-prompts.json",
+  "version": "1.0.0",
+  "categories": {
+    "saas_dashboard": {
+      "description": "Data-dense SaaS surfaces. Stresses density handling, information hierarchy, and enterprise restraint.",
+      "prompts": [
+        { "id": "saas-01", "prompt": "Build a usage analytics dashboard for a serverless platform — showing requests per second, latency p50/p95/p99, cold-start counts, and error rate across 4 regions", "constraints": { "density": "dense", "motion_appetite": 1 } },
+        { "id": "saas-02", "prompt": "Design a team admin panel for inviting members, assigning roles, and reviewing audit log entries", "constraints": { "density": "balanced" } },
+        { "id": "saas-03", "prompt": "Build a billing overview page with current plan, usage vs quota, upcoming invoice preview, and payment method management" },
+        { "id": "saas-04", "prompt": "Design a CI/CD deploy history page with branch, commit, status, duration, and the ability to rerun or roll back" },
+        { "id": "saas-05", "prompt": "Build an API key management interface: create, rotate, scope, revoke. Show last-used, rate-limit, and expiration per key" },
+        { "id": "saas-06", "prompt": "Design a data pipeline observability view: DAG visualization of tasks, success/failure per node, retry counts, owner-per-task" },
+        { "id": "saas-07", "prompt": "Build a feature-flag management console with environments (dev/staging/prod), rollout percentages, targeting rules" },
+        { "id": "saas-08", "prompt": "Design a log-search interface with time-range picker, structured query builder, and result table with expand-for-full-context" },
+        { "id": "saas-09", "prompt": "Build a customer health score dashboard for a B2B SaaS CSM team — NPS, usage trajectory, support tickets, renewal date" },
+        { "id": "saas-10", "prompt": "Design a multi-tenant settings page with organization, workspace, and user-level preferences clearly separated" }
+      ]
+    },
+    "consumer_mobile": {
+      "description": "Mobile consumer apps. Stresses delight, dopamine calibration, and motion appropriateness.",
+      "prompts": [
+        { "id": "cons-01", "prompt": "Build a recipe discovery feed for a home-cooking app with save, share, and 'cook now' walkthrough mode" },
+        { "id": "cons-02", "prompt": "Design a habit-tracker mobile app's daily check-in screen — 3 habits to log, streak indicator, gentle celebration" },
+        { "id": "cons-03", "prompt": "Build a meditation app's library screen — tracks by mood, duration, instructor; downloadable for offline" },
+        { "id": "cons-04", "prompt": "Design a language-learning lesson interface with prompt, answer input, streak counter, and correct/incorrect feedback" },
+        { "id": "cons-05", "prompt": "Build a fitness app workout player — current exercise, set/rep counter, rest timer, and the next 3 exercises preview" },
+        { "id": "cons-06", "prompt": "Design a plant-care mobile app detail page — plant photo, watering schedule, care notes, and 'log watered' action" },
+        { "id": "cons-07", "prompt": "Build a budgeting app's month overview — income, fixed expenses, variable expenses, and remaining-to-spend" },
+        { "id": "cons-08", "prompt": "Design a gratitude journaling app's entry-compose screen with optional mood selector and 3-prompt guidance" },
+        { "id": "cons-09", "prompt": "Build a podcast player with queue, playback speed, sleep timer, and transcript toggle" },
+        { "id": "cons-10", "prompt": "Design a sleep-tracker morning recap — last night's stages, HR variability, sleep score, and 3-day trend" }
+      ]
+    },
+    "editorial": {
+      "description": "Long-form reading. Stresses typography, type scale, and reading experience.",
+      "prompts": [
+        { "id": "ed-01", "prompt": "Build a long-read article page for a tech magazine feature — 4000-word investigative piece with pull quotes, footnotes, images" },
+        { "id": "ed-02", "prompt": "Design a book-review page with star rating, multi-paragraph review body, related-reads sidebar" },
+        { "id": "ed-03", "prompt": "Build a personal blog's post template — author bio header, body with code snippets, comments section, related posts" },
+        { "id": "ed-04", "prompt": "Design a newsletter archive landing page — grid of past issues with dates, titles, and preview excerpts" },
+        { "id": "ed-05", "prompt": "Build a research paper viewer — multi-section academic layout with abstract, figures, references, BibTeX export" },
+        { "id": "ed-06", "prompt": "Design a recipe blog post with story intro, jump-to-recipe button, ingredient list, method with step numbers" },
+        { "id": "ed-07", "prompt": "Build a case-study detail page for a design studio's portfolio — problem, approach, outcome, credits" },
+        { "id": "ed-08", "prompt": "Design a lyrics/liner notes page for an album — scrollable lyrics synced to album art, credits below" },
+        { "id": "ed-09", "prompt": "Build a documentation page for a developer tool — ToC sidebar, body with code blocks, language switcher, edit-on-GitHub" },
+        { "id": "ed-10", "prompt": "Design a company 'annual review' one-page scroll-narrative with multiple sections, sparkline stats, and pull quotes" }
+      ]
+    },
+    "fintech_trust": {
+      "description": "Regulated / high-stakes finance. Stresses restraint, typography for legal copy, and anti-default bias (avoid the fintech-trust slop default).",
+      "prompts": [
+        { "id": "fin-01", "prompt": "Build a personal bank account overview with balance, transactions, monthly spending chart, and pay-bill shortcut — NOT the default generic blue/gradient fintech look" },
+        { "id": "fin-02", "prompt": "Design a stock trading position detail page — current price, intraday chart, holdings, and buy/sell action sheet" },
+        { "id": "fin-03", "prompt": "Build a wire transfer confirmation screen with recipient, amount, fees, and explicit risk/warning disclosures" },
+        { "id": "fin-04", "prompt": "Design a crypto wallet backup-phrase generation flow — the 24-word phrase with 'write it down' confirmation steps" },
+        { "id": "fin-05", "prompt": "Build a tax-year summary page for a freelancer — income categories, deductions, estimated tax, export-to-CPA" },
+        { "id": "fin-06", "prompt": "Design an investment portfolio rebalancing recommendation page — current vs. target allocation, suggested trades, expected impact" },
+        { "id": "fin-07", "prompt": "Build a loan application status page — steps completed, underwriter decision timeline, required documents" },
+        { "id": "fin-08", "prompt": "Design a retirement-calculator interactive page with sliders for contributions, expected return, and projected-balance graph" },
+        { "id": "fin-09", "prompt": "Build a fraud alert review screen — flagged transaction details, confirm/reject actions, and contact support path" },
+        { "id": "fin-10", "prompt": "Design a B2B invoicing dashboard — outstanding, paid, overdue; per-client AR aging; send-reminder action" }
+      ]
+    },
+    "creative_portfolio": {
+      "description": "Distinctive POV-driven creative work. The dimension where generic output is penalized hardest.",
+      "prompts": [
+        { "id": "cre-01", "prompt": "Build a personal portfolio site for a motion designer — must feel distinctive, not generic. Include project grid, about, and contact" },
+        { "id": "cre-02", "prompt": "Design a ceramicist's online shop — hero product reel, craft-warm aesthetic, purchase flow" },
+        { "id": "cre-03", "prompt": "Build a photographer's landing page — one hero image, subtle navigation, and a contact-form footer" },
+        { "id": "cre-04", "prompt": "Design a independent music label's site with roster, releases, tour dates, and a distinctive visual identity" },
+        { "id": "cre-05", "prompt": "Build an indie game studio's landing page — teaser video, devlog feed, platform availability, wishlist CTA" },
+        { "id": "cre-06", "prompt": "Design a literary magazine's website — issue archive, essay reader, donate/subscribe" },
+        { "id": "cre-07", "prompt": "Build a small architecture studio's site — projects grid with photography-first card layout, contact form" },
+        { "id": "cre-08", "prompt": "Design a florist's e-commerce catalog — seasonal arrangements, pickup vs. delivery, subscription option" },
+        { "id": "cre-09", "prompt": "Build a tattoo artist's portfolio — work grid, booking flow, studio info — must visually signal their aesthetic" },
+        { "id": "cre-10", "prompt": "Design an experimental poetry webzine's homepage with scrolling verse layout and archive navigation" }
+      ]
+    },
+    "accessibility_first": {
+      "description": "WCAG AAA and cognitive-a11y. Stresses the accessibility dimension at the highest difficulty.",
+      "prompts": [
+        { "id": "a11y-01", "prompt": "Build a local-government benefits portal that must meet WCAG 2.2 AAA — application form, status check, contact" },
+        { "id": "a11y-02", "prompt": "Design a high-contrast calendar scheduler optimized for users with low vision" },
+        { "id": "a11y-03", "prompt": "Build a medication-reminder app interface for older users with large targets and clear typography" },
+        { "id": "a11y-04", "prompt": "Design a dyslexia-friendly news reader — long-form articles with adjusted spacing and font" },
+        { "id": "a11y-05", "prompt": "Build a calm/focus-mode checkout flow for an e-commerce site targeted at neurodivergent users" },
+        { "id": "a11y-06", "prompt": "Design an educational-quiz interface with screen-reader-first semantic structure and keyboard-only completability" },
+        { "id": "a11y-07", "prompt": "Build a crisis-line resource page with large, clear CTAs and zero cognitive-load chrome" },
+        { "id": "a11y-08", "prompt": "Design an accessibility settings panel for a product — font-size, contrast, motion, audio-description toggles" },
+        { "id": "a11y-09", "prompt": "Build an adult-education course player with closed captions, transcript, and speed controls" },
+        { "id": "a11y-10", "prompt": "Design a voter-registration lookup tool meeting Section 508 + ADA Title II" }
+      ]
+    },
+    "multi_locale": {
+      "description": "Non-ASCII correctness, RTL, CJK. Stresses typography + i18n dimensions.",
+      "prompts": [
+        { "id": "loc-01", "prompt": "Bygg en svensk bokföringstjänst-landing med 'bokföring', 'fakturor', 'moms' — korrekta diakritiska tecken, latin-ext font subset", "constraints": { "locale": "sv" } },
+        { "id": "loc-02", "prompt": "Build a Japanese restaurant homepage in 日本語 — vertical-cjk typography option, menu with kanji and romaji", "constraints": { "locale": "ja" } },
+        { "id": "loc-03", "prompt": "Design an Arabic news site header and article page with RTL layout — 'الأخبار' heading, CSS logical properties throughout", "constraints": { "locale": "ar" } },
+        { "id": "loc-04", "prompt": "Build a German fintech onboarding — 'Hauptkonto', 'Überweisung', 'Rückzahlung' with correct diacritics", "constraints": { "locale": "de" } },
+        { "id": "loc-05", "prompt": "Design a Hindi-language e-commerce product page in देवनागरी script — Devanagari font loaded, proper line-height", "constraints": { "locale": "hi" } },
+        { "id": "loc-06", "prompt": "Build a Spanish travel-booking search page — 'búsqueda', 'habitación', 'aeropuerto' with ñ and é preserved", "constraints": { "locale": "es" } },
+        { "id": "loc-07", "prompt": "Design a Korean food-delivery app home — 한국어 menu categories, Hangul-safe font (Pretendard or Spoqa Han Sans)", "constraints": { "locale": "ko" } },
+        { "id": "loc-08", "prompt": "Build a Hebrew news website with RTL layout and 'חדשות' headline", "constraints": { "locale": "he" } },
+        { "id": "loc-09", "prompt": "Design a Finnish outdoor-gear site — 'päällystakki', 'löydä lähin myymälä' with ä/ö preserved", "constraints": { "locale": "fi" } },
+        { "id": "loc-10", "prompt": "Build a Simplified Chinese SaaS pricing page in 简体中文 — Noto Sans SC, correct punctuation (全角)", "constraints": { "locale": "zh-CN" } }
+      ]
+    },
+    "motion_marketing": {
+      "description": "Motion-forward marketing sites. Stresses motion readiness, reduced-motion safety, and WCAG 2.2.2.",
+      "prompts": [
+        { "id": "mot-01", "prompt": "Build a scroll-driven product landing page for a developer tool — hero with kinetic type, three feature sections revealed on scroll" },
+        { "id": "mot-02", "prompt": "Design an AI-startup landing page with motion-forward hero, subtle scroll-linked particle field, and clean CTA section" },
+        { "id": "mot-03", "prompt": "Build a SaaS changelog hero with kinetic timeline — entries reveal as user scrolls, each with its own micro-animation" },
+        { "id": "mot-04", "prompt": "Design a luxury-brand product page with silky scroll-linked reveal of product shots and specs" },
+        { "id": "mot-05", "prompt": "Build a headless-CMS landing with vibrant kinetic hero, 3-up feature cards, and customer logos marquee" },
+        { "id": "mot-06", "prompt": "Design a gaming-studio reveal page with cinematic scroll-timeline pacing and atmospheric background" },
+        { "id": "mot-07", "prompt": "Build a conference site hero with kinetic date/location reveal, speaker grid, and schedule" },
+        { "id": "mot-08", "prompt": "Design an e-commerce campaign landing with scroll-driven product-reveal choreography and checkout CTA" },
+        { "id": "mot-09", "prompt": "Build a design-agency case-study scroll-story with cinematic transitions between sections" },
+        { "id": "mot-10", "prompt": "Design a music festival lineup reveal page with scroll-linked artist-card entries and daily schedule" }
+      ]
+    },
+    "healthcare": {
+      "description": "Calm, clinical, informational. Stresses restraint, trust, and accessibility.",
+      "prompts": [
+        { "id": "hc-01", "prompt": "Build a patient portal dashboard — upcoming appointments, prescriptions, recent results, messages" },
+        { "id": "hc-02", "prompt": "Design a symptom-checker flow with empathetic, non-alarming language and clear next-steps" },
+        { "id": "hc-03", "prompt": "Build a telehealth waiting-room screen — appointment countdown, test audio/video, pre-visit questions" },
+        { "id": "hc-04", "prompt": "Design a mental-health check-in mobile screen with mood scale and follow-up prompts" },
+        { "id": "hc-05", "prompt": "Build a lab-results detail page — test name, value, reference range, visual indicator, doctor's note" },
+        { "id": "hc-06", "prompt": "Design a fertility-tracking app's cycle view — calm, non-judgmental, clear data" },
+        { "id": "hc-07", "prompt": "Build an immunization-record page with past shots, upcoming schedule, and printable certificate" },
+        { "id": "hc-08", "prompt": "Design a physical-therapy exercise routine player — video, rep counter, notes, progress" },
+        { "id": "hc-09", "prompt": "Build a hospice-care family-communication portal with updates from care team and family members" },
+        { "id": "hc-10", "prompt": "Design a pharmacy auto-refill dashboard — medications, refill schedule, pickup vs. delivery" }
+      ]
+    },
+    "transplantation": {
+      "description": "Cross-domain style transplantation. Unique to Visionary's algorithm — no competitor has a direct equivalent.",
+      "prompts": [
+        { "id": "tr-01", "prompt": "Build an accounting dashboard using the visual language of a 1970s newspaper broadsheet" },
+        { "id": "tr-02", "prompt": "Design a biotech startup homepage that looks like an Eames-era Herman Miller brochure" },
+        { "id": "tr-03", "prompt": "Build a warehouse logistics tracker styled like a Swiss Rationalist concert poster" },
+        { "id": "tr-04", "prompt": "Design a developer documentation site that reads like a letterpressed scientific journal" },
+        { "id": "tr-05", "prompt": "Build a wedding planning app with the visual warmth of a cottagecore zine" },
+        { "id": "tr-06", "prompt": "Design an AI dev tool's pricing page in the aesthetic of cassette-futurism (Alien Nostromo UI)" },
+        { "id": "tr-07", "prompt": "Build a HR onboarding flow styled after 1960s Italian Olivetti typewriter documentation" },
+        { "id": "tr-08", "prompt": "Design a children's-education app with the craft aesthetic of cut-paper picture-book illustrations" },
+        { "id": "tr-09", "prompt": "Build a legal-contract review tool visual-inspired by constructivist propaganda posters" },
+        { "id": "tr-10", "prompt": "Design a real-estate listing page with the elegance of a 1930s Art Deco hotel brochure" }
+      ]
+    }
+  }
+}

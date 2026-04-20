@@ -1,0 +1,62 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "e-girl — internet / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "Alternates zones —  (near-black dominant zones) and #FF1493 (deep pink accent zones); these two colors are equal design partners, not background/foreground; the UI switches between them at section boundaries"
+    },
+    "primary": {
+      "$value": "#FF1493",
+      "$type": "color",
+      "$description": "— deep pink is non-negotiable; this is not hot pink, not magenta, not bubblegum; it is specifically the deep electric pink of eyeliner lights and anime aesthetics"
+    },
+    "accent": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "— black functions as an equal accent color to pink; on pink surfaces, black is the contrast; on black surfaces, pink is the contrast; both read as foreground depending on context"
+    },
+    "elevation-model": {
+      "$value": "#FF1493",
+      "$type": "color",
+      "$description": "Hard offsets — on pink surfaces: 1px solid black border + 3px 3px 0 black box-shadow; on black surfaces: 1px solid  border + 3px 3px 0 #FF1493 box-shadow; no blurred shadows anywhere; the hard offset references zine printing and neubrutalism filtered through TikTok punk"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Bebas Neue or",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans 500 or Poppins 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.1em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":320,\"damping\":14,\"mass\":0.8}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

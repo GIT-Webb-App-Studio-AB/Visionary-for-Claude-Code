@@ -1,0 +1,67 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "cassette-futurism — extended / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#C8B998",
+      "$type": "color",
+      "$description": "`` (beige computer casing) OR `#0A1410` (CRT"
+    },
+    "primary": {
+      "$value": "#D4533A",
+      "$type": "color",
+      "$description": "`` (Nostromo warning red/orange) or `#2A8C5A`"
+    },
+    "accent": {
+      "$value": "#F4D17C",
+      "$type": "color",
+      "$description": "`` (masking-tape yellow) — used for \"caution\" labels and"
+    },
+    "text-on-beige": {
+      "$value": "#1A1510",
+      "$type": "color",
+      "$description": "`` (dark oil-brown, not pure black"
+    },
+    "text-on-crt": {
+      "$value": "#B8D89C",
+      "$type": "color",
+      "$description": "`` (phosphor green at 72 % luminance — pure #00FF00"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Futura PT",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IBM Plex Mono or Space Mono",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.05em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.15}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

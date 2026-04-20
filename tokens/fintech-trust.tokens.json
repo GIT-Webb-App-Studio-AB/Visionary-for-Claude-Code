@@ -1,0 +1,59 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "fintech-trust — industry / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#E8FF00",
+      "$type": "color",
+      "$description": "acid yellow — NOT blue; blue is commoditized fintech"
+    },
+    "accent": {
+      "$value": "#1C1C1C",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "DM Serif Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "IBM Plex Sans",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.3,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400,\"damping\":40,\"mass\":0.8}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

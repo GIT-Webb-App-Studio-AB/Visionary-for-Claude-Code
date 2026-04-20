@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "vaporwave — internet / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#2D1B69",
+      "$type": "color",
+      "$description": "— deep purple that unifies the magenta/cyan duality"
+    },
+    "primary": {
+      "$value": "#FF00FF",
+      "$type": "color",
+      "$description": "— magenta, fully saturated"
+    },
+    "accent": {
+      "$value": "#00FFFF",
+      "$type": "color",
+      "$description": "— cyan, fully saturated"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "VCR OSD Mono",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "VCR OSD Mono or Press Start 2P for pixel aesthetic variant",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.1em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

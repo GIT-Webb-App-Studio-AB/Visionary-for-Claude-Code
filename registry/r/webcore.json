@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "webcore",
+  "type": "registry:style",
+  "title": "Webcore",
+  "description": "webcore — internet / Expressive Motion tier: Expressive. Display font: Times New Roman.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Times New Roman",
+      "--font-body": "Arial",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.808 0.000 89.9)",
+      "primary": "oklch(0.271 0.188 264.1)",
+      "primary-foreground": "oklch(0.808 0.000 89.9)",
+      "accent": "oklch(0.421 0.193 328.4)",
+      "accent-foreground": "oklch(0.808 0.000 89.9)",
+      "secondary-foreground": "oklch(0.808 0.000 89.9)",
+      "border": "oklch(0.421 0.193 328.4)",
+      "ring": "oklch(0.271 0.188 264.1)"
+    },
+    "dark": {
+      "background": "oklch(0.808 0.000 89.9)",
+      "primary": "oklch(0.271 0.188 264.1)",
+      "primary-foreground": "oklch(0.808 0.000 89.9)",
+      "accent": "oklch(0.421 0.193 328.4)",
+      "accent-foreground": "oklch(0.808 0.000 89.9)",
+      "secondary-foreground": "oklch(0.808 0.000 89.9)",
+      "border": "oklch(0.421 0.193 328.4)",
+      "ring": "oklch(0.271 0.188 264.1)"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "zine-diy",
+  "type": "registry:style",
+  "title": "Zine Diy",
+  "description": "zine-diy — hybrid / Static Motion tier: Static. Display font: deliberately mixed.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "deliberately mixed",
+      "--font-body": "Courier New at 14 px with ~5 % opacity noise overlay",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.218 0.000 89.9)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.218 0.000 89.9)",
+      "accent-foreground": "oklch(0.218 0.000 89.9)",
+      "secondary-foreground": "oklch(0.218 0.000 89.9)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.218 0.000 89.9)",
+      "primary": "oklch(0.218 0.000 89.9)",
+      "primary-foreground": "oklch(0.218 0.000 89.9)",
+      "accent-foreground": "oklch(0.218 0.000 89.9)",
+      "secondary-foreground": "oklch(0.218 0.000 89.9)",
+      "ring": "oklch(0.218 0.000 89.9)"
+    }
+  }
+}

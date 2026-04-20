@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-media-native",
+  "type": "registry:style",
+  "title": "Social Media Native",
+  "description": "social-media-native — industry / Kinetic Motion tier: Kinetic. Display font: Bricolage Grotesque 700–800 (native.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bricolage Grotesque 700–800 (native",
+      "--font-body": "system",
+      "--radius": "50%"
+    },
+    "light": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.650 0.238 17.9)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.650 0.238 17.9)"
+    },
+    "dark": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.650 0.238 17.9)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.650 0.238 17.9)"
+    }
+  }
+}

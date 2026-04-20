@@ -1,0 +1,62 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "swiss-crouwel-gridnik — historical / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#F0EBDF",
+      "$type": "color",
+      "$description": "`` (warm off-white — the paper stock of 1970s"
+    },
+    "text": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "`` (near-black — pure black looks too-industrial"
+    },
+    "accent": {
+      "$value": "#E2231A",
+      "$type": "color",
+      "$description": "exactly ONE of: `` (Crouwel red from the 1969 Claes"
+    },
+    "grid-lines": {
+      "$value": "#DCD6C8",
+      "$type": "color",
+      "$description": "1 px lines in `` (visible but not loud — the grid"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Gridnik** (the 1974",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Univers 55 (Adrian Frutiger",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.35,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.22}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

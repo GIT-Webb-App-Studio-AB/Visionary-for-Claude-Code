@@ -1,0 +1,59 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "pop-art — historical / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#FFFF00",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#FF0000",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#0000FF",
+      "$type": "color"
+    },
+    "elevation-model": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "hard offset shadows (4px 4px 0 ) — comic book depth"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Futura",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Futura",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":250,\"damping\":15}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

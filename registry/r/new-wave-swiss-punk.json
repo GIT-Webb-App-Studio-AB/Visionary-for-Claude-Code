@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "new-wave-swiss-punk",
+  "type": "registry:style",
+  "title": "New Wave Swiss Punk",
+  "description": "new-wave-swiss-punk — historical / Kinetic Motion tier: Kinetic. Display font: Helvetica Neue (deconstructed.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Helvetica Neue (deconstructed",
+      "--font-body": "Helvetica Neue",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.628 0.258 29.2)",
+      "ring": "oklch(0.000 0.000 0.0)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.000 0.000 0.0)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.628 0.258 29.2)",
+      "ring": "oklch(0.000 0.000 0.0)"
+    }
+  }
+}

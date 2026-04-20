@@ -1,0 +1,72 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "apca-native-contrast — modern / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "``"
+    },
+    "body-text": {
+      "$value": "#F5F5F5",
+      "$type": "color",
+      "$description": "`` (Lc ≈ -96 against bg — AAA+"
+    },
+    "large-text": {
+      "$value": "#D1D1D1",
+      "$type": "color",
+      "$description": "`` (Lc ≈ -78"
+    },
+    "muted-text": {
+      "$value": "#555555",
+      "$type": "color",
+      "$description": "`` (Lc ≈ 60 — UI label only, never body"
+    },
+    "primary": {
+      "$value": "#4D9AFF",
+      "$type": "color",
+      "$description": "`` (Lc ≈ -72 for body-text-on-primary"
+    },
+    "accent": {
+      "$value": "#FFB366",
+      "$type": "color",
+      "$description": "`` (Lc ≈ -75"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "**Atkinson Hyperlegible** or **Literata**",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "same family",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.7,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"bounce\":0,\"visualDuration\":0.2}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    }
+  }
+}

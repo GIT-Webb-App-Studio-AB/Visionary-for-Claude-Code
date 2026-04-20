@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fabric-textile",
+  "type": "registry:style",
+  "title": "Fabric Textile",
+  "description": "fabric-textile — graphic / Subtle Motion tier: Subtle. Display font: **Lora**.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "**Lora**",
+      "--font-body": "Lora",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(0.943 0.017 79.4)",
+      "foreground": "oklch(0.313 0.027 71.2)",
+      "primary": "oklch(0.499 0.053 59.8)",
+      "primary-foreground": "oklch(0.943 0.017 79.4)",
+      "accent": "oklch(0.704 0.081 63.4)",
+      "accent-foreground": "oklch(0.943 0.017 79.4)",
+      "secondary-foreground": "oklch(0.943 0.017 79.4)",
+      "border": "oklch(0.704 0.081 63.4)",
+      "ring": "oklch(0.499 0.053 59.8)",
+      "muted-foreground": "oklch(0.313 0.027 71.2)"
+    },
+    "dark": {
+      "background": "oklch(0.943 0.017 79.4)",
+      "foreground": "oklch(0.313 0.027 71.2)",
+      "primary": "oklch(0.499 0.053 59.8)",
+      "primary-foreground": "oklch(0.943 0.017 79.4)",
+      "accent": "oklch(0.704 0.081 63.4)",
+      "accent-foreground": "oklch(0.943 0.017 79.4)",
+      "secondary-foreground": "oklch(0.943 0.017 79.4)",
+      "border": "oklch(0.704 0.081 63.4)",
+      "ring": "oklch(0.499 0.053 59.8)",
+      "muted-foreground": "oklch(0.313 0.027 71.2)"
+    }
+  }
+}

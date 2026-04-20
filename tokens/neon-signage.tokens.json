@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "neon-signage — graphic / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color",
+      "$description": "night street"
+    },
+    "primary": {
+      "$value": "#FF2D78",
+      "$type": "color",
+      "$description": "neon pink"
+    },
+    "accent": {
+      "$value": "#00E5FF",
+      "$type": "color",
+      "$description": "neon cyan"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Bungee",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Bungee Inline (for secondary) or system sans for readable body copy",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.04em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":120,\"damping\":10}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "999px",
+      "$type": "dimension"
+    }
+  }
+}

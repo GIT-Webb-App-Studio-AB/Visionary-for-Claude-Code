@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "surveillance-panopticon",
+  "type": "registry:style",
+  "title": "Surveillance Panopticon",
+  "description": "surveillance-panopticon — graphic / Subtle Motion tier: Subtle. Display font: IBM Plex Mono.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "IBM Plex Mono",
+      "--font-body": "IBM Plex Mono",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.115 0.000 89.9)",
+      "primary": "oklch(0.751 0.179 58.3)",
+      "primary-foreground": "oklch(0.115 0.000 89.9)",
+      "accent": "oklch(0.556 0.195 34.9)",
+      "accent-foreground": "oklch(0.115 0.000 89.9)",
+      "secondary-foreground": "oklch(0.115 0.000 89.9)",
+      "border": "oklch(0.556 0.195 34.9)",
+      "ring": "oklch(0.751 0.179 58.3)"
+    },
+    "dark": {
+      "background": "oklch(0.115 0.000 89.9)",
+      "primary": "oklch(0.751 0.179 58.3)",
+      "primary-foreground": "oklch(0.115 0.000 89.9)",
+      "accent": "oklch(0.556 0.195 34.9)",
+      "accent-foreground": "oklch(0.115 0.000 89.9)",
+      "secondary-foreground": "oklch(0.115 0.000 89.9)",
+      "border": "oklch(0.556 0.195 34.9)",
+      "ring": "oklch(0.751 0.179 58.3)"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "quantum-particle — graphic / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#05050F",
+      "$type": "color",
+      "$description": "void black"
+    },
+    "primary": {
+      "$value": "#7B2FFF",
+      "$type": "color",
+      "$description": "quantum violet"
+    },
+    "accent": {
+      "$value": "#00BFFF",
+      "$type": "color",
+      "$description": "particle blue"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.02em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":80,\"damping\":8}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "999px",
+      "$type": "dimension"
+    }
+  }
+}

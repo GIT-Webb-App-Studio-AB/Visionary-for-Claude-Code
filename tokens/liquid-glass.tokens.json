@@ -1,0 +1,38 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "liquid-glass — morphisms / Subtle",
+  "color": {
+    "primary": {
+      "$value": "#007AFF",
+      "$type": "color",
+      "$description": "color-mix(in oklch,  85%, transparent) — system blue with adaptive tint"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "system",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "16px",
+      "$type": "dimension"
+    }
+  }
+}

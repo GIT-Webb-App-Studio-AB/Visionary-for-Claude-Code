@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "anxiety-urgency",
+  "type": "registry:style",
+  "title": "Anxiety Urgency",
+  "description": "anxiety-urgency — emotional / Kinetic Motion tier: Kinetic. Display font: Helvetica Neue 700 or Inter 700 (familiar.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Helvetica Neue 700 or Inter 700 (familiar",
+      "--font-body": "Inter 400",
+      "--radius": "4px"
+    },
+    "light": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.637 0.208 25.3)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.705 0.187 47.6)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.705 0.187 47.6)",
+      "ring": "oklch(0.637 0.208 25.3)"
+    },
+    "dark": {
+      "background": "oklch(1.000 0.000 89.9)",
+      "primary": "oklch(0.637 0.208 25.3)",
+      "primary-foreground": "oklch(1.000 0.000 89.9)",
+      "accent": "oklch(0.705 0.187 47.6)",
+      "accent-foreground": "oklch(1.000 0.000 89.9)",
+      "secondary-foreground": "oklch(1.000 0.000 89.9)",
+      "border": "oklch(0.705 0.187 47.6)",
+      "ring": "oklch(0.637 0.208 25.3)"
+    }
+  }
+}

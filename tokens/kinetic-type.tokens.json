@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "kinetic-type — typography / Kinetic",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0A",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#FF3366",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syne Mono",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Syne",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Kinetic",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400,\"damping\":20,\"mass\":0.8}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

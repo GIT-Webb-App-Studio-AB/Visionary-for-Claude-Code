@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "paper-cut — extended / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#F7F3ED",
+      "$type": "color",
+      "$description": "cream base layer"
+    },
+    "primary": {
+      "$value": "#E84545",
+      "$type": "color",
+      "$description": "cut red layer"
+    },
+    "accent": {
+      "$value": "#2D6A4F",
+      "$type": "color",
+      "$description": "forest green layer"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Nunito ExtraBold",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Nunito",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":220,\"damping\":18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

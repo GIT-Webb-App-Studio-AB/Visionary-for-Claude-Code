@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "biomorphic-futurism",
+  "type": "registry:style",
+  "title": "Biomorphic Futurism",
+  "description": "biomorphic-futurism — graphic / Expressive Motion tier: Expressive. Display font: Bricolage Grotesque.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Bricolage Grotesque",
+      "--font-body": "Bricolage Grotesque",
+      "--radius": "8px"
+    },
+    "light": {
+      "background": "oklch(0.199 0.033 150.6)",
+      "primary": "oklch(0.871 0.286 141.5)",
+      "primary-foreground": "oklch(0.199 0.033 150.6)",
+      "accent": "oklch(0.890 0.265 136.0)",
+      "accent-foreground": "oklch(0.199 0.033 150.6)",
+      "secondary-foreground": "oklch(0.199 0.033 150.6)",
+      "border": "oklch(0.890 0.265 136.0)",
+      "ring": "oklch(0.871 0.286 141.5)"
+    },
+    "dark": {
+      "background": "oklch(0.199 0.033 150.6)",
+      "primary": "oklch(0.871 0.286 141.5)",
+      "primary-foreground": "oklch(0.199 0.033 150.6)",
+      "accent": "oklch(0.890 0.265 136.0)",
+      "accent-foreground": "oklch(0.199 0.033 150.6)",
+      "secondary-foreground": "oklch(0.199 0.033 150.6)",
+      "border": "oklch(0.890 0.265 136.0)",
+      "ring": "oklch(0.871 0.286 141.5)"
+    }
+  }
+}

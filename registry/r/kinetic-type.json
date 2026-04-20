@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kinetic-type",
+  "type": "registry:style",
+  "title": "Kinetic Type",
+  "description": "kinetic-type — typography / Kinetic Motion tier: Kinetic. Display font: Syne Mono.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syne Mono",
+      "--font-body": "Syne",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.656 0.235 13.3)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.656 0.235 13.3)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.145 0.000 89.9)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.145 0.000 89.9)",
+      "accent": "oklch(0.656 0.235 13.3)",
+      "accent-foreground": "oklch(0.145 0.000 89.9)",
+      "secondary-foreground": "oklch(0.145 0.000 89.9)",
+      "border": "oklch(0.656 0.235 13.3)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

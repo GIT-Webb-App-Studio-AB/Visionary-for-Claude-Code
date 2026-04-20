@@ -1,0 +1,59 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "wireframe-aesthetic — modern / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#000000",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#767676",
+      "$type": "color"
+    },
+    "elevation-model": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "1px solid  borders only — sketch-on-paper aesthetic"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Courier New",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Courier New",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":400,\"damping\":40}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

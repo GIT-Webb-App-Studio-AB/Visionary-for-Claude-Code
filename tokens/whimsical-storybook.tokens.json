@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "whimsical-storybook — emotional / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FFF8F0",
+      "$type": "color",
+      "$description": "warm parchment"
+    },
+    "primary": {
+      "$value": "#6B4CA0",
+      "$type": "color",
+      "$description": "storybook purple"
+    },
+    "accent": {
+      "$value": "#E8B84B",
+      "$type": "color",
+      "$description": "fairy-tale gold"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Playfair Display 700 (fairy",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Lora 400 (italic body for narrative sections)",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.2,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":180,\"damping\":22,\"mass\":1.2}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "12px",
+      "$type": "dimension"
+    }
+  }
+}

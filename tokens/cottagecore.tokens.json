@@ -1,0 +1,52 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "cottagecore — internet / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#FDFAF5",
+      "$type": "color",
+      "$description": "— warm near-white like aged paper or cream linen"
+    },
+    "primary": {
+      "$value": "#5C8A5A",
+      "$type": "color",
+      "$description": "— sage green, muted and natural"
+    },
+    "accent": {
+      "$value": "#C17D8A",
+      "$type": "color",
+      "$description": "— dusty rose, the cottagecore signature"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Playfair Display",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Lora 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.01em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "8px",
+      "$type": "dimension"
+    }
+  }
+}

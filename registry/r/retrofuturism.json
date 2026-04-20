@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "retrofuturism",
+  "type": "registry:style",
+  "title": "Retrofuturism",
+  "description": "retrofuturism — graphic / Expressive Motion tier: Expressive. Display font: Orbitron.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Orbitron",
+      "--font-body": "Audiowide",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.955 0.022 92.5)",
+      "primary": "oklch(0.702 0.200 45.1)",
+      "primary-foreground": "oklch(0.955 0.022 92.5)",
+      "accent": "oklch(0.689 0.122 184.4)",
+      "accent-foreground": "oklch(0.955 0.022 92.5)",
+      "secondary-foreground": "oklch(0.955 0.022 92.5)",
+      "border": "oklch(0.689 0.122 184.4)",
+      "ring": "oklch(0.702 0.200 45.1)"
+    },
+    "dark": {
+      "background": "oklch(0.955 0.022 92.5)",
+      "primary": "oklch(0.702 0.200 45.1)",
+      "primary-foreground": "oklch(0.955 0.022 92.5)",
+      "accent": "oklch(0.689 0.122 184.4)",
+      "accent-foreground": "oklch(0.955 0.022 92.5)",
+      "secondary-foreground": "oklch(0.955 0.022 92.5)",
+      "border": "oklch(0.689 0.122 184.4)",
+      "ring": "oklch(0.702 0.200 45.1)"
+    }
+  }
+}

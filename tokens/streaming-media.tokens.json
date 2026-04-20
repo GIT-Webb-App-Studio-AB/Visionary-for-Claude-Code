@@ -1,0 +1,60 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "streaming-media — industry / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#141414",
+      "$type": "color",
+      "$description": "Netflix-dark — content-first darkness"
+    },
+    "primary": {
+      "$value": "#E50914",
+      "$type": "color",
+      "$description": "streaming red) or brand-specific"
+    },
+    "accent": {
+      "$value": "#FFFFFF",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Bricolage Grotesque 700 (distinct from streaming incumbents)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "DM Sans 400",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "-0.01em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.1,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":260,\"damping\":26,\"mass\":0.9}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "4px",
+      "$type": "dimension"
+    }
+  }
+}

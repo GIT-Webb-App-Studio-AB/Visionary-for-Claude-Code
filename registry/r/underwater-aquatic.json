@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "underwater-aquatic",
+  "type": "registry:style",
+  "title": "Underwater Aquatic",
+  "description": "underwater-aquatic — graphic / Expressive Motion tier: Expressive. Display font: Raleway.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Raleway",
+      "--font-body": "Raleway",
+      "--radius": "20px"
+    },
+    "light": {
+      "background": "oklch(0.238 0.071 252.0)",
+      "primary": "oklch(0.711 0.129 219.0)",
+      "primary-foreground": "oklch(0.238 0.071 252.0)",
+      "accent": "oklch(0.860 0.081 210.7)",
+      "accent-foreground": "oklch(0.238 0.071 252.0)",
+      "secondary-foreground": "oklch(0.238 0.071 252.0)",
+      "border": "oklch(0.860 0.081 210.7)",
+      "ring": "oklch(0.711 0.129 219.0)"
+    },
+    "dark": {
+      "background": "oklch(0.238 0.071 252.0)",
+      "primary": "oklch(0.711 0.129 219.0)",
+      "primary-foreground": "oklch(0.238 0.071 252.0)",
+      "accent": "oklch(0.860 0.081 210.7)",
+      "accent-foreground": "oklch(0.238 0.071 252.0)",
+      "secondary-foreground": "oklch(0.238 0.071 252.0)",
+      "border": "oklch(0.860 0.081 210.7)",
+      "ring": "oklch(0.711 0.129 219.0)"
+    }
+  }
+}

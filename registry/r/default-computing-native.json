@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "default-computing-native",
+  "type": "registry:style",
+  "title": "Default Computing Native",
+  "description": "default-computing-native — extended / Subtle Motion tier: Subtle. Display font: platform system stack.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "platform system stack",
+      "--font-body": "same",
+      "--radius": "8px"
+    },
+    "light": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    },
+    "dark": {
+      "primary-foreground": "oklch(1 0 0)",
+      "accent-foreground": "oklch(0 0 0)",
+      "secondary-foreground": "oklch(1 0 0)"
+    }
+  }
+}

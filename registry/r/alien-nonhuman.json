@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alien-nonhuman",
+  "type": "registry:style",
+  "title": "Alien Nonhuman",
+  "description": "alien-nonhuman — graphic / Expressive Motion tier: Expressive. Display font: Custom glyph font or Josefin Sans with heavy modification.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Custom glyph font or Josefin Sans with heavy modification",
+      "--font-body": "Josefin Sans (intentionally awkward for the register)",
+      "--radius": "40%"
+    },
+    "light": {
+      "background": "oklch(0.106 0.054 307.0)",
+      "primary": "oklch(0.922 0.234 125.9)",
+      "primary-foreground": "oklch(0.106 0.054 307.0)",
+      "accent": "oklch(0.665 0.282 345.7)",
+      "accent-foreground": "oklch(0.106 0.054 307.0)",
+      "secondary-foreground": "oklch(0.106 0.054 307.0)",
+      "border": "oklch(0.665 0.282 345.7)",
+      "ring": "oklch(0.922 0.234 125.9)"
+    },
+    "dark": {
+      "background": "oklch(0.106 0.054 307.0)",
+      "primary": "oklch(0.922 0.234 125.9)",
+      "primary-foreground": "oklch(0.106 0.054 307.0)",
+      "accent": "oklch(0.665 0.282 345.7)",
+      "accent-foreground": "oklch(0.106 0.054 307.0)",
+      "secondary-foreground": "oklch(0.106 0.054 307.0)",
+      "border": "oklch(0.665 0.282 345.7)",
+      "ring": "oklch(0.922 0.234 125.9)"
+    }
+  }
+}

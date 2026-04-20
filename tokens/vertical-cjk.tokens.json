@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "vertical-cjk — typography / Subtle",
+  "color": {
+    "bg": {
+      "$value": "#FAFAF6",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#1A1208",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#C0392B",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Noto Serif CJK SC (Simplified) / JP (Japanese)",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Noto Sans CJK SC / JP",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.05em",
+      "$type": "dimension"
+    },
+    "leading": {
+      "$value": 1.8,
+      "$type": "number"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Subtle",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":280,\"damping\":35,\"mass\":0.9}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  }
+}

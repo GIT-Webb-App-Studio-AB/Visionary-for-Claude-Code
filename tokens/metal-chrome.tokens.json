@@ -1,0 +1,61 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "metal-chrome — graphic / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#1A1A1A",
+      "$type": "color",
+      "$description": "blackened steel"
+    },
+    "primary": {
+      "$value": "#E8E8E8",
+      "$type": "color",
+      "$description": "polished chrome"
+    },
+    "accent": {
+      "$value": "#6AABFF",
+      "$type": "color",
+      "$description": "specular blue highlight"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Syncopate",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Audiowide",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.08em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":280,\"damping\":22}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius-min": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "radius-max": {
+      "$value": "3px",
+      "$type": "dimension"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://design-tokens.github.io/spec/draft/schema.json",
+  "$description": "art-deco — historical / Expressive",
+  "color": {
+    "bg": {
+      "$value": "#0A0A0F",
+      "$type": "color"
+    },
+    "primary": {
+      "$value": "#C9A84C",
+      "$type": "color"
+    },
+    "accent": {
+      "$value": "#F5F0E8",
+      "$type": "color"
+    }
+  },
+  "typography": {
+    "display": {
+      "$value": "Cormorant Garamond",
+      "$type": "fontFamily"
+    },
+    "body": {
+      "$value": "Cormorant Garamond",
+      "$type": "fontFamily"
+    },
+    "tracking": {
+      "$value": "0.1em",
+      "$type": "dimension"
+    }
+  },
+  "motion": {
+    "tier": {
+      "$value": "Expressive",
+      "$type": "other"
+    },
+    "spring": {
+      "$value": "{\"stiffness\":150,\"damping\":18}",
+      "$type": "other",
+      "$description": "Motion v12 two-parameter spring (bounce/visualDuration) or v11 legacy (stiffness/damping/mass)."
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit (all spacing is a multiple of this)."
+    },
+    "radius": {
+      "$value": "0px",
+      "$type": "dimension"
+    }
+  }
+}

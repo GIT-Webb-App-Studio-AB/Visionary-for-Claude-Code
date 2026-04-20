@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reaction-diffusion",
+  "type": "registry:style",
+  "title": "Reaction Diffusion",
+  "description": "reaction-diffusion — extended / Kinetic Motion tier: Kinetic. Display font: Space Mono.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Space Mono",
+      "--font-body": "Space Mono",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.000 0.000 0.0)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.000 0.000 0.0)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.000 0.000 0.0)",
+      "primary": "oklch(1.000 0.000 89.9)",
+      "primary-foreground": "oklch(0.000 0.000 0.0)",
+      "accent": "oklch(0.000 0.000 0.0)",
+      "accent-foreground": "oklch(0.000 0.000 0.0)",
+      "secondary-foreground": "oklch(0.000 0.000 0.0)",
+      "border": "oklch(0.000 0.000 0.0)",
+      "ring": "oklch(1.000 0.000 89.9)"
+    }
+  }
+}

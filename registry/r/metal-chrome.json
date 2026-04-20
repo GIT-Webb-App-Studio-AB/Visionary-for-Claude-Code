@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metal-chrome",
+  "type": "registry:style",
+  "title": "Metal Chrome",
+  "description": "metal-chrome — graphic / Expressive Motion tier: Expressive. Display font: Syncopate.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "theme": {
+      "--font-display": "Syncopate",
+      "--font-body": "Audiowide",
+      "--radius": "0px"
+    },
+    "light": {
+      "background": "oklch(0.218 0.000 89.9)",
+      "primary": "oklch(0.931 0.000 89.9)",
+      "primary-foreground": "oklch(0.218 0.000 89.9)",
+      "accent": "oklch(0.734 0.140 255.5)",
+      "accent-foreground": "oklch(0.218 0.000 89.9)",
+      "secondary-foreground": "oklch(0.218 0.000 89.9)",
+      "border": "oklch(0.734 0.140 255.5)",
+      "ring": "oklch(0.931 0.000 89.9)"
+    },
+    "dark": {
+      "background": "oklch(0.218 0.000 89.9)",
+      "primary": "oklch(0.931 0.000 89.9)",
+      "primary-foreground": "oklch(0.218 0.000 89.9)",
+      "accent": "oklch(0.734 0.140 255.5)",
+      "accent-foreground": "oklch(0.218 0.000 89.9)",
+      "secondary-foreground": "oklch(0.218 0.000 89.9)",
+      "border": "oklch(0.734 0.140 255.5)",
+      "ring": "oklch(0.931 0.000 89.9)"
+    }
+  }
+}
