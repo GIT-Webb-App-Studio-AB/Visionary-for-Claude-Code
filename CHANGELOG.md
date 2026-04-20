@@ -7,6 +7,26 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.3.1] — 2026-04-21
+
+Patch release. Fixes the auto-update hook so the second CLI step actually
+succeeds — without this fix, `marketplace update` ran fine but the follow-up
+`plugin update` silently errored out, meaning downloaded versions would have
+failed to activate on restart.
+
+### Fixed
+
+- **Auto-update hook plugin identifier** (`hooks/scripts/check-for-updates.mjs`) —
+  `claude plugin update` requires the fully qualified `<plugin>@<marketplace>`
+  form when the plugin is installed from a named marketplace. The hook was
+  passing the bare `visionary-claude` name, which triggered
+  `Failed to update plugin "visionary-claude": Plugin "visionary-claude" not found`.
+  Now passes `visionary-claude@visionary-marketplace`. Verified end-to-end
+  with a fresh stamp file → parent emits `{}` in 115ms → child logs
+  `marketplace exit=0` + `update exit=0 :: already at the latest version`.
+
+---
+
 ## [1.3.0] — 2026-04-21
 
 Major release. Takes the plugin from "design intelligence" to "verifiable,

@@ -2,7 +2,7 @@
 // check-for-updates.mjs — SessionStart hook
 // Rate-limited background check for visionary-claude plugin updates.
 // Parent emits `{}` immediately and spawns a detached child that runs
-// `claude plugin marketplace update` + `claude plugin update visionary-claude`.
+// `claude plugin marketplace update` + `claude plugin update <plugin>@<marketplace>`.
 // A downloaded update activates on the next Claude Code restart.
 //
 // Rate limit: 24h (stamp in CLAUDE_PLUGIN_DATA).
@@ -15,6 +15,7 @@ import { tmpdir } from 'node:os';
 
 const MARKETPLACE = 'visionary-marketplace';
 const PLUGIN = 'visionary-claude';
+const PLUGIN_QUALIFIED = `${PLUGIN}@${MARKETPLACE}`;
 const INTERVAL_MS = 24 * 60 * 60 * 1000;
 
 const emit = () => { process.stdout.write('{}'); process.exit(0); };
@@ -66,7 +67,7 @@ const tail = (s) => (s || '').split('\n').filter(Boolean).pop() || '';
   log('check-start');
   const m = await run('claude', ['plugin', 'marketplace', 'update', MARKETPLACE]);
   log(`marketplace exit=${m.code} :: ${tail(m.out) || tail(m.err)}`);
-  const u = await run('claude', ['plugin', 'update', PLUGIN]);
+  const u = await run('claude', ['plugin', 'update', PLUGIN_QUALIFIED]);
   log(`update exit=${u.code} :: ${tail(u.out) || tail(u.err)}`);
   log('check-end');
   process.exit(0);
