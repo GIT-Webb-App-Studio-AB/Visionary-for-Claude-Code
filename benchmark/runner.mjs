@@ -105,7 +105,7 @@ async function scorePrompt(prompt, generated) {
   const slop = scanSlop(src);
   const distinctiveness = Math.max(1, 5 - Math.min(4, Math.floor(slop.count / 2.5)));
   const a11y = await scoreA11y(src, generated.files);
-  const motion = scoreMotion(src);
+  const motion = scoreMotion(src, { category: prompt.category, constraints: prompt.constraints });
   const coherence = await scoreCoherence(src, generated.files);
 
   const scores = { distinctiveness, coherence, accessibility: a11y, motion_readiness: motion };

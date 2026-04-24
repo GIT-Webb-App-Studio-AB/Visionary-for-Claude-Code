@@ -12,6 +12,16 @@ import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  isBonEnabled,
+  buildCandidateArtefactPaths,
+  buildFanOutInstructions,
+  computeVerifierPromptHash,
+  concurrencyLimit,
+  CANDIDATE_TIMEOUT_MS,
+  BON_ROUND2_EXIT_CRAFT,
+} from './lib/fork-candidate.mjs';
 
 const MAX_ROUNDS = 3;
 const CONTEXT_CAP = 10_000;
@@ -105,8 +115,104 @@ if (round > MAX_ROUNDS) {
   silent();
 }
 
-// Screenshot path (Claude will create it via MCP on next turn)
-const screenshotPath = join(tmpdir(), `visionary-screenshot-${fileHash}-${round}.png`);
+// Artefact paths — Claude writes the screenshot via MCP and the DOM / axe
+// snapshots via browser_evaluate before invoking the numeric scorer CLI.
+const screenshotPath  = join(tmpdir(), `visionary-screenshot-${fileHash}-${round}.png`);
+const domSnapshotPath = join(tmpdir(), `visionary-dom-${fileHash}-${round}.json`);
+const axeSnapshotPath = join(tmpdir(), `visionary-axe-${fileHash}-${round}.json`);
+const numericOutPath  = join(tmpdir(), `visionary-numeric-${fileHash}-${round}.json`);
+
+// Repo root — resolves the scorer CLI, schema, and calibration paths absolutely
+// so the hook works regardless of Claude Code's cwd.
+const hookDir  = fileURLToPath(new URL('.', import.meta.url));
+const repoRoot = join(hookDir, '..', '..');
+const scorerCli        = join(repoRoot, 'benchmark', 'scorers', 'numeric-aesthetic-scorer.mjs');
+const criticAgentPath  = join(repoRoot, 'agents', 'visual-critic.md');
+const verifierAgentPath = join(repoRoot, 'agents', 'visual-verifier.md');
+const critiqueSchemaPath = join(repoRoot, 'skills', 'visionary', 'schemas', 'critique-output.schema.json');
+const calibrationPath  = join(repoRoot, 'skills', 'visionary', 'calibration.json');
+
+// Sprint 07 Task 21.5 — content-resilience: three-render paths for p50 / p95 /
+// empty DOM snapshots. Only used when visionary-kit.json is present in the
+// project — otherwise the critic emits null for content_resilience.
+const domP50Path    = join(tmpdir(), `visionary-dom-p50-${fileHash}-${round}.json`);
+const domP95Path    = join(tmpdir(), `visionary-dom-p95-${fileHash}-${round}.json`);
+const domEmptyPath  = join(tmpdir(), `visionary-dom-empty-${fileHash}-${round}.json`);
+const resilienceOutPath = join(tmpdir(), `visionary-resilience-${fileHash}-${round}.json`);
+const kitPath = join(cwd, 'visionary-kit.json');
+const hasKit = existsSync(kitPath);
+const resilienceScorerCli = join(repoRoot, 'benchmark', 'scorers', 'content-resilience-scorer.mjs');
+
+// Per-file cache of the previous round's parsed critique JSON. The visual-
+// critic writes it here at the end of each round so the NEXT round's hook
+// invocation can decide whether to fan out (BoN requires top_3_fixes to
+// re-implement; convergence_signal or empty fixes mean no fan-out).
+const lastCritiquePath = join(cacheDir, `last-critique-${fileHash}.json`);
+
+// Version-lock hash (Sprint 3 Task 9.4): hash of the critic system prompt +
+// schema bytes. Emitted into additionalContext so the subagent echoes it back
+// in the critique output; runtime calibration compares against the committed
+// calibration.json to decide whether kalibrated scores can be applied.
+function computePromptHash() {
+  try {
+    const criticBody = readFileSync(criticAgentPath, 'utf8');
+    const schemaBody = readFileSync(critiqueSchemaPath, 'utf8');
+    const h = createHash('sha256');
+    h.update(criticBody);
+    h.update('\n---schema---\n');
+    h.update(schemaBody);
+    return 'sha256:' + h.digest('hex').slice(0, 16);
+  } catch {
+    return 'sha256:unknown';
+  }
+}
+const promptHash = computePromptHash();
+
+// Load calibration.json if present and its prompt_hash matches ours. Anything
+// else (missing, stale, corrupt) → run uncalibrated with a visible warning.
+function loadCalibration() {
+  if (!existsSync(calibrationPath)) {
+    return { status: 'absent', data: null };
+  }
+  try {
+    const data = JSON.parse(readFileSync(calibrationPath, 'utf8'));
+    if (data.critic_prompt_hash && data.critic_prompt_hash !== promptHash) {
+      return { status: 'stale', data };
+    }
+    return { status: 'fresh', data };
+  } catch {
+    return { status: 'corrupt', data: null };
+  }
+}
+const calibration = loadCalibration();
+
+// Sprint 4: verifier prompt-hash (separate from critic's — the verifier is
+// selection, not scoring, so its hash doesn't invalidate calibration).
+let verifierPromptHash = 'sha256:unknown';
+try {
+  verifierPromptHash = computeVerifierPromptHash(readFileSync(verifierAgentPath, 'utf8'));
+} catch { /* verifier not on disk yet → BoN degrades to single-best-effort */ }
+
+// Load the previous round's critique so Best-of-N can decide whether to
+// fan out. Missing / corrupt → treat as absent (BoN remains off for round 1
+// anyway, and round 2+ without a prior critique is a cache eviction we
+// handle by falling back to sequential refine.)
+function loadPreviousCritique() {
+  if (!existsSync(lastCritiquePath)) return null;
+  try {
+    return JSON.parse(readFileSync(lastCritiquePath, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+const previousCritique = loadPreviousCritique();
+const bonDecision = isBonEnabled({ env: process.env, round, previousCritique });
+
+// Build per-candidate artefact paths ahead of time so both the fan-out
+// instructions and the post-fanout metrics can reference the same set.
+const candidatePaths = bonDecision.enabled
+  ? buildCandidateArtefactPaths({ fileHash, round })
+  : null;
 
 // ── Deterministic slop pattern detection (patterns 1-20) ─────────────────────
 let source = '';
@@ -198,6 +304,20 @@ const axisPad = (clean.match(/\b(px|py)-\d/g) || []).length;
 push('Symmetric padding everywhere (no horizontal/vertical rhythm) detected',
   symPad >= 3 && axisPad === 0);
 
+// Sprint 07 pattern #32 — placeholder names when a content kit is declared.
+// A component that renders "Jane Doe" / "John Smith" / "Acme Corp" when the
+// project has a visionary-kit.json is almost certainly using hard-coded
+// strings instead of kit-derived props. The kit is there specifically so we
+// don't have to ship "example.com" to production.
+if (hasKit) {
+  const placeholderRe = /\b(Jane Doe|John Doe|John Smith|Jane Smith|Acme\s+(Inc|Corp|LLC|Co)|Lorem ipsum)\b/i;
+  push('Placeholder name detected in source despite visionary-kit.json present',
+    placeholderRe.test(clean));
+  const placeholderEmailRe = /\b[\w.-]+@(example\.com|test\.com|acme\.com)\b/i;
+  push('Placeholder email domain detected in source despite visionary-kit.json present',
+    placeholderEmailRe.test(clean));
+}
+
 // ── Increment round counter ──────────────────────────────────────────────────
 try { writeFileSync(roundFile, String(round + 1)); } catch { /* ignore */ }
 
@@ -218,23 +338,104 @@ const mobileLine = needsMobileShot
   ? `   b. 375×812 (mobile) — source uses responsive breakpoints${needsTabletShot ? '\n   c. 768×1024 (tablet) — source uses md: breakpoint' : ''}`
   : '   (no responsive breakpoints detected — skip mobile/tablet shots)';
 
+// Sprint 02: point the subagent at the structured-output schema + the
+// loop-control predicates. The schema is the canonical contract; the existing
+// rubric prose in agents/visual-critic.md is informational until the full
+// 0-10 migration lands. When that migration is in place, the subagent should
+// emit JSON matching skills/visionary/schemas/critique-output.schema.json
+// directly, and this hook can stop including the 1-5 fallback instructions.
+const useDiff = round >= 2;
+const regenMode = useDiff
+  ? `Round ${round} regen mode: UNIFIED DIFF (skills/visionary/diff-refine.md). Emit only hunks that address top_3_fixes; preserve unchanged lines. The hook will feed the diff through hooks/scripts/lib/apply-diff.mjs with ±3-line fuzz and fall back to full regen if the patch fails to apply.`
+  : `Round ${round} regen mode: FULL component. Round 1 allows holistic redesign.`;
+
+// Sprint 4 Task 10.2 — BoN fan-out instructions. Empty string when BoN is
+// disabled or inapplicable; the hook always emits the standard critique
+// flow first, then appends this block so Claude knows how to proceed.
+const fanOutSection = (bonDecision.enabled && candidatePaths)
+  ? buildFanOutInstructions({
+      topFixes: Array.isArray(previousCritique?.top_3_fixes) ? previousCritique.top_3_fixes : [],
+      filePath,
+      artefactPaths: candidatePaths,
+      scorerCli,
+      calibrationPath,
+      verifierAgentPath,
+      promptHash,
+    })
+  : '';
+
+const bonSummaryLine = bonDecision.enabled
+  ? `Best-of-N: ENABLED — round ${round} will fan out to 3 candidates (timeout ${CANDIDATE_TIMEOUT_MS / 1000}s each, concurrency ${concurrencyLimit()}). Round 2 auto-exit threshold: winner calibrated craft_measurable >= ${BON_ROUND2_EXIT_CRAFT}.`
+  : `Best-of-N: OFF (${bonDecision.reason}).`;
+
+const resilienceSummaryLine = hasKit
+  ? `Content resilience: ENABLED — visionary-kit.json found at ${kitPath}. Critic must render the component 3 times against kit-derived data (p50 / p95 / empty) and call the resilience scorer.`
+  : `Content resilience: OFF — no visionary-kit.json in project. Emit scores.content_resilience = null and confidence.content_resilience = 3.`;
+
+// The resilience block is only inserted into NEXT-TURN ACTIONS when a kit is
+// present; otherwise it's empty and the pipeline is identical to pre-Sprint 07.
+const resilienceStep = hasKit ? `
+7b. CONTENT-RESILIENCE RENDERS (Sprint 07 Task 21.5):
+    a. Load kit: \`const kit = JSON.parse(await fs.readFile('${kitPath}', 'utf8'))\`.
+    b. For each state in ['p50','p95','empty']:
+       - Pick the first entity from kit.entities that the component appears to render (match by prop name or heuristic). For p50: use entity.sample[0]. For p95: synthesize the worst-case row using entity.constraints[*].p95_length + diacritics. For empty: pass an empty array.
+       - Expose data via \`mcp__playwright__browser_evaluate\` before navigation, e.g.: \`window.__visionary_kit__ = { state: 'p95', data: <row> }\`. Components that support kit injection will read this; components that don't will fall back to their hard-coded defaults (which is what we want to detect).
+       - Capture the DOM snapshot using the same browser_evaluate payload as step 5, writing to ${domP50Path} / ${domP95Path} / ${domEmptyPath} respectively.
+    c. Run the resilience scorer:
+       \`node ${resilienceScorerCli} --p50 ${domP50Path} --p95 ${domP95Path} --empty ${domEmptyPath} --kit ${kitPath} --out ${resilienceOutPath}\`
+       The scorer returns \`{ score, breakdown, notes, missing_states }\`. If \`score\` is null (fewer than 2 snapshots available), emit scores.content_resilience = null and add a note to \`top_3_fixes\` recommending the component accept props for kit injection.
+    d. Feed score + breakdown into critic-craft as the 10th dimension; top_3_fixes entries citing content_resilience MUST use \`evidence.type: "metric"\` with values drawn from the scorer's breakdown.`
+  : '';
+
+// Serialised calibration summary for the critique context — one line per
+// dimension so the critic can see whether scores get tilted at runtime.
+function calibrationSummary() {
+  if (calibration.status === 'absent') return 'Calibration: none committed yet (identity).';
+  if (calibration.status === 'corrupt') return 'Calibration: file corrupt — identity fallback.';
+  if (calibration.status === 'stale') {
+    return `Calibration: STALE (critic prompt changed — hash ${calibration.data?.critic_prompt_hash || 'unknown'} vs ${promptHash}). Identity fallback, nightly CI will refit.`;
+  }
+  const d = calibration.data?.per_dimension || {};
+  const rows = Object.entries(d).slice(0, 9).map(([dim, { slope, intercept, spearman_rho }]) => {
+    const rho = spearman_rho?.toFixed?.(2) ?? '?';
+    return `  ${dim.padEnd(18)} slope=${slope?.toFixed?.(2)}, intercept=${intercept?.toFixed?.(2)}, ρ=${rho}`;
+  }).join('\n');
+  return `Calibration: FRESH (prompt_hash matches). Per-dimension linear fit:\n${rows}`;
+}
+
 const context = [
   `VISUAL CRITIQUE REQUESTED — Round ${round}/${MAX_ROUNDS}`,
   '',
   `File written: ${filePath}`,
   `Screenshot target: ${screenshotPath}`,
+  `DOM snapshot target: ${domSnapshotPath}`,
+  `axe-core snapshot target: ${axeSnapshotPath}`,
+  `Numeric scorer output: ${numericOutPath}`,
   `Preview URL: ${previewUrl}${previewFallback}`,
+  `Prompt hash: ${promptHash}`,
+  `Verifier prompt hash: ${verifierPromptHash}`,
+  bonSummaryLine,
+  resilienceSummaryLine,
+  calibrationSummary(),
   '',
   'NEXT-TURN ACTIONS (perform these now):',
   `1. Navigate via mcp__playwright__browser_navigate to ${previewUrl}. If that errors, try http://localhost:5173 (Vite default). If neither responds within 2 s, spin up a component-isolated Vite harness or instruct the user to set VISIONARY_PREVIEW_URL.`,
-  `2. Wait via mcp__playwright__browser_evaluate for BOTH \`document.fonts.ready\` AND \`document.getAnimations().length === 0\`. Do NOT use networkidle — Playwright itself advises against it (sites with ads/analytics never settle).`,
-  `3. Inject axe-core via mcp__playwright__browser_evaluate — pass the BODY of skills/visionary/axe-runtime.js as the \`function\` argument. It loads axe-core from jsdelivr (override via window.__VISIONARY_AXE_CDN__), runs WCAG 2.2 AA + APCA rules, and returns a structured summary the subagent consumes (see schema in axe-runtime.js).`,
+  `2. Wait via mcp__playwright__browser_evaluate for BOTH \`document.fonts.ready\` AND \`document.getAnimations().length === 0\`. Do NOT use networkidle — Playwright itself advises against it.`,
+  `3. Inject axe-core via mcp__playwright__browser_evaluate — use skills/visionary/axe-runtime.js. Persist the full axe result JSON with Bash (Write tool OR \`node -e "require('fs').writeFileSync(process.argv[1], process.argv[2])" ${axeSnapshotPath} '<json>'\`).`,
   `4. Call mcp__playwright__browser_take_screenshot:\n   a. 1200×800 (desktop — always)${needsMobileShot ? '\n' + mobileLine : ''}`,
-  `5. If any PNG's longest side > 1568 px, resize it (Claude vision optimum ≈ 1.15 megapixel; avoids GitHub issue #27611 infinite-retry on >5 MB inputs).`,
-  `6. Invoke the visual-critic subagent (agents/visual-critic.md) with FRESH CONTEXT: brief + screenshots + axe-core JSON + slop flags + round ${round} + previous-round score. Do NOT include full chat history — SELF-REFINE pattern requires clean context per round.`,
-  `7. Expect the 8-dimension critique JSON per skills/visionary/critique-schema.md.`,
-  `8. If overall_score < 4.0 AND round < ${MAX_ROUNDS}, apply top_3_fixes to ${filePath} and let this hook re-trigger.`,
-  `9. If round N score < round N-1 score by > 0.3, treat as convergence: stop iterating and return the previous round's output.`,
+  `5. Capture a DOM snapshot via browser_evaluate: \`Array.from(document.querySelectorAll('body *')).slice(0,400).map(el => { const r=el.getBoundingClientRect(); const s=getComputedStyle(el); return { selector: el.tagName.toLowerCase()+(el.id?'#'+el.id:'')+(typeof el.className==='string'&&el.className?'.'+el.className.trim().split(/\\\\s+/).slice(0,3).join('.'):''), bbox:{x:r.x,y:r.y,width:r.width,height:r.height}, style:{fontSize:s.fontSize, lineHeight:s.lineHeight, letterSpacing:s.letterSpacing, color:s.color, backgroundColor:s.backgroundColor} }; }).filter(e=>e.bbox.width>0&&e.bbox.height>0)\`. Wrap as \`{elements:[...]}\` and write to ${domSnapshotPath}.`,
+  `6. If any PNG's longest side > 1568 px, resize it (Claude vision optimum ≈ 1.15 megapixel).`,
+  `7. Run the deterministic numeric scorer via Bash:\n   node ${scorerCli} --screenshot ${screenshotPath} --dom ${domSnapshotPath} --axe ${axeSnapshotPath} --out ${numericOutPath}\n   The scorer never throws: missing sharp → null-sub-scores, not a crash.${resilienceStep}`,
+  `8. Invoke the visual-critic subagent (agents/visual-critic.md) with FRESH CONTEXT: brief + screenshots + axe-core JSON + slop flags + numeric_scores from ${numericOutPath} + round ${round} + previous-round score + prompt_hash=${promptHash}. Do NOT include full chat history — SELF-REFINE pattern requires clean context per round.`,
+  `9. Output contract: JSON matching skills/visionary/schemas/critique-output.schema.json. REQUIRED: scores.* on 0-10 (include craft_measurable = numeric_scores.composite × 10 or null), confidence 1-5, numeric_scores block, prompt_hash=${promptHash}, and EVERY entry in top_3_fixes must have an evidence object { type: axe|selector|metric|coord, value }. Sub-scores below 0.7 from numeric_scores MUST be addressed in top_3_fixes with evidence.type='metric'.`,
+  `10. Apply calibration before gating: \`node ${join(repoRoot, 'hooks', 'scripts', 'lib', 'apply-calibration.mjs')} --critique <critique.json> --calibration ${calibrationPath} --out <calibrated.json>\`. The resulting object has raw_scores preserved and scores replaced by slope×raw+intercept (identity fallback when calibration.status is identity_fallback or the prompt_hash mismatches).`,
+  `11. Loop control: hooks/scripts/lib/loop-control.mjs. shouldEarlyExit requires min(scores)≥8.0 AND min(confidence)≥4 AND axe_violations_count===0 AND no blocker-severity slop (null craft_measurable is tolerated). shouldEscalateToReroll fires on round 1 when ≥3 dimensions score <4. If neither fires and round<${MAX_ROUNDS}, apply top_3_fixes to ${filePath} and let this hook re-trigger.`,
+  `12. Evidence validation: after critique, use hooks/scripts/lib/validate-evidence.mjs to extract every top_3_fixes[].evidence with type=selector and run validateSelectorsInBrowser via mcp__playwright__browser_evaluate. Feed the results back through applyValidation. Invalid selectors mark the fix with evidence_invalid:true and emit a warning into the next round's prompt. Two or more invalid citations → critique retry with alternate model.`,
+  `13. If round N score regresses vs N-1 by > 0.3, set convergence_signal=true. Caller reverts to the previous round's output.`,
+  `14. PERSIST critique for the next round: after Step 10 (calibration), write the calibrated critique JSON to \`${lastCritiquePath}\`. The NEXT hook invocation reads this file to decide whether Best-of-N fan-out applies. If you skip this step, round N+1 will always fall back to sequential refine.`,
+  '',
+  regenMode,
+  fanOutSection,
   '',
   `additionalContext cap: ${CONTEXT_CAP} chars — keep critique JSON concise.${slopSection}`,
 ].join('\n');

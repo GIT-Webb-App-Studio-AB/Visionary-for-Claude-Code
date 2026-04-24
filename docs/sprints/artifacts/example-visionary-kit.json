@@ -1,0 +1,61 @@
+{
+  "$schema": "https://visionary-claude.dev/schemas/visionary-kit.schema.json",
+  "schema_version": "1.0.0",
+  "locale": "sv",
+  "inferred_from": "manual",
+  "entities": {
+    "User": {
+      "sample": [
+        { "id": "u_1", "name": "Kirsti Hagberg", "email": "kirsti.hagberg@example.se", "avatar_url": null, "role": "admin" },
+        { "id": "u_2", "name": "Åke Sköld-Östergren", "email": "ake.skold.ostergren@example.se", "avatar_url": "https://cdn.example.se/av/2.jpg", "role": "member" },
+        { "id": "u_3", "name": "Mohammed Larsson", "email": "mohammed.larsson@example.se", "avatar_url": null, "role": "member" }
+      ],
+      "constraints": {
+        "name": {
+          "p50_length": 14,
+          "p95_length": 28,
+          "may_contain_diacritics": true,
+          "may_contain_apostrophe": true
+        },
+        "email": { "format": "email", "p95_length": 48 },
+        "avatar_url": { "nullable": true, "null_rate": 0.22, "format": "url" },
+        "role": { "enum": ["admin", "member", "viewer"] }
+      }
+    },
+    "Invoice": {
+      "sample": [
+        { "id": "inv_2024_0001", "amount": 1299.00, "currency": "SEK", "issued_at": "2026-04-01T09:00:00Z", "paid": true, "customer_id": "u_1" },
+        { "id": "inv_2024_0002", "amount": 89450.50, "currency": "SEK", "issued_at": "2026-04-03T14:22:00Z", "paid": false, "customer_id": "u_2" }
+      ],
+      "constraints": {
+        "amount": { "min": 0, "p95": 1000000, "currency_suffix": "SEK" },
+        "paid": { "nullable": false },
+        "issued_at": { "format": "datetime" }
+      },
+      "relations": {
+        "customer_id": { "target": "User", "cardinality": "one" }
+      }
+    },
+    "Product": {
+      "sample": [
+        { "id": "sku_001", "name": "Örtkudde — Lavender & Kamomill, 40×25 cm", "price": 349, "in_stock": 42 },
+        { "id": "sku_002", "name": "Ullplädd, naturfärgad", "price": 899, "in_stock": 0 }
+      ],
+      "constraints": {
+        "name": {
+          "p50_length": 28,
+          "p95_length": 64,
+          "may_contain_diacritics": true
+        },
+        "price": { "min": 0, "p95": 5000, "currency_suffix": "SEK" },
+        "in_stock": { "min": 0, "max": 9999 }
+      }
+    }
+  },
+  "component_constraints": {
+    "table": { "min_rows": 0, "p50_rows": 12, "p95_rows": 47, "max_rows": 500 },
+    "list": { "empty_rate": 0.18, "p95_rows": 30 },
+    "card_grid": { "p95_cols": 4, "p95_rows": 60 }
+  },
+  "required_states": ["loading", "empty", "error", "populated"]
+}

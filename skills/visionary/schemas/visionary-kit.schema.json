@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/visionary-kit.schema.json",
+  "title": "Visionary content kit",
+  "description": "Describes the shape and realistic constraints of the content a component will render. Used at generation time to make components resilient to real data (long names, diacritics, empty lists, nullable fields) instead of hard-coded 'Jane Doe' fixtures.",
+  "type": "object",
+  "required": ["entities"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "SemVer. Current: 1.0.0"
+    },
+    "locale": {
+      "type": "string",
+      "description": "BCP-47 language tag (sv, de, ja, en). Biases sample generators toward locale-appropriate strings (names, addresses, diacritics).",
+      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+    },
+    "entities": {
+      "type": "object",
+      "description": "Map of entity name → { sample, constraints }. Entity names should match domain concepts (User, Invoice, Product), not component names.",
+      "additionalProperties": { "$ref": "#/$defs/entity" },
+      "minProperties": 1
+    },
+    "component_constraints": {
+      "type": "object",
+      "description": "Per-component-type realism. E.g. the median table has 47 rows, the empty-state rate for a list is ~18%.",
+      "additionalProperties": { "$ref": "#/$defs/componentConstraint" }
+    },
+    "required_states": {
+      "type": "array",
+      "description": "Rendering states every component must handle. Used by the content-resilience scorer (Task 21.5).",
+      "items": { "enum": ["loading", "empty", "error", "populated", "partial"] },
+      "uniqueItems": true,
+      "default": ["loading", "empty", "error", "populated"]
+    },
+    "inferred_from": {
+      "type": "string",
+      "description": "Provenance tag: where the kit was auto-inferred from. One of 'ts', 'prisma', 'openapi', 'manual'.",
+      "enum": ["ts", "prisma", "openapi", "manual", "ts+manual", "prisma+manual", "openapi+manual"]
+    }
+  },
+  "$defs": {
+    "entity": {
+      "type": "object",
+      "required": ["sample"],
+      "additionalProperties": false,
+      "properties": {
+        "sample": {
+          "type": "array",
+          "description": "At least one realistic instance. More samples = better empty/p95/error state generation at critique time.",
+          "items": { "type": "object" },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "constraints": {
+          "type": "object",
+          "description": "Per-field realism constraints.",
+          "additionalProperties": { "$ref": "#/$defs/fieldConstraint" }
+        },
+        "relations": {
+          "type": "object",
+          "description": "Relations to other entities. Key = field name on this entity, value = target entity name with cardinality.",
+          "additionalProperties": { "$ref": "#/$defs/relation" }
+        }
+      }
+    },
+    "fieldConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "p50_length": { "type": "integer", "minimum": 0, "description": "Median string length — biases layout toward typical case." },
+        "p95_length": { "type": "integer", "minimum": 0, "description": "Worst-case-still-normal string length — components must not overflow at this." },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "p95": { "type": "number" },
+        "nullable": { "type": "boolean" },
+        "null_rate": { "type": "number", "minimum": 0, "maximum": 1, "description": "Fraction of real rows where this field is null." },
+        "may_contain_diacritics": { "type": "boolean" },
+        "may_contain_apostrophe": { "type": "boolean" },
+        "may_contain_emoji": { "type": "boolean" },
+        "currency_suffix": { "type": "string", "description": "e.g. 'SEK', 'USD' — drives formatter selection." },
+        "enum": { "type": "array", "items": { "type": "string" } },
+        "format": {
+          "type": "string",
+          "description": "Semantic hint: 'email', 'url', 'phone', 'uuid', 'date', 'datetime', 'percent', 'handle'."
+        }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "required": ["target", "cardinality"],
+      "additionalProperties": false,
+      "properties": {
+        "target": { "type": "string", "description": "Entity name on the other side of the relation." },
+        "cardinality": { "enum": ["one", "many", "zero-or-one"] },
+        "sample_size_p95": { "type": "integer", "minimum": 0, "description": "For 'many': realistic item count at p95." }
+      }
+    },
+    "componentConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "min_rows": { "type": "integer", "minimum": 0 },
+        "p50_rows": { "type": "integer", "minimum": 0 },
+        "p95_rows": { "type": "integer", "minimum": 0 },
+        "max_rows": { "type": "integer", "minimum": 0 },
+        "p95_cols": { "type": "integer", "minimum": 0 },
+        "empty_rate": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

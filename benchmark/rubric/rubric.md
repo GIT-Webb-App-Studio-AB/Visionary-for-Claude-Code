@@ -77,7 +77,23 @@ APCA fully measure it.
 
 ## Dimension 4 — Motion Readiness (1–5)
 
-Is motion a first-class concern, tokenized, and safely implemented?
+Is motion a first-class concern, tokenized, safely implemented, **and
+appropriate for the surface**?
+
+**Context-aware scoring** (new in 1.3.1). The appropriate amount of motion
+depends on category and the prompt's declared `motion_appetite`:
+
+| Category | Implied appetite | Correct motion |
+|---|---:|---|
+| `editorial` (long-form reading) | 0 | Stillness. Motion triggers a penalty. |
+| `fintech_trust`, `healthcare`, `accessibility_first`, `saas_dashboard` | 1 | Subtle transitions, spring tokens, reduced-motion gate. No kinetic. |
+| `multi_locale`, `transplantation` | 2 | Expressive but restrained. |
+| `creative_portfolio`, `consumer_mobile`, `motion_marketing` | 3 | Kinetic. CSS-first escapes (`@starting-style`, `animation-timeline`) expected. |
+
+If a prompt declares `constraints.motion_appetite`, that overrides the
+category default.
+
+### Scoring matrix (appetite ≥ 1)
 
 **Measurement**: AST scan of the output for spring / easing tokens, guarded
 animations, and WCAG 2.2.2 pause controls.
@@ -90,9 +106,18 @@ animations, and WCAG 2.2.2 pause controls.
 | 2 | Static component with placeholder comments OR motion without reduced-motion safety. |
 | 1 | No animation primitives. OR animation without any safety; would fail vestibular tests. |
 
+### Scoring matrix (appetite 0 — static surfaces)
+
+| Score | Signal |
+|---|---|
+| 5 | No motion at all. Reading flow is not interrupted. |
+| 4 | Some motion, but gated behind `prefers-reduced-motion` so users who opt out see the static version. |
+| 3 | Motion without safety gating on a surface where motion was not asked for. |
+
 **Deterministic**: regex scan of the source for `spring.*`, `transition:`
 with hardcoded durations, `@media (prefers-reduced-motion`, and
-`animation-play-state` bound to a pause control.
+`animation-play-state` bound to a pause control. Category-aware appetite
+lookup lives in `benchmark/scorers/motion-scorer.mjs`.
 
 ---
 

@@ -1,0 +1,81 @@
+schema_version = "1.0.0"
+author        = "Pawel K."
+handle        = "pawelk-2026-04"
+inherits_from = []
+description   = "Editorial-forward, Bauhaus-adjacent, motion-restrained. Built over 47 generations in April 2026."
+
+[metadata]
+created_at              = "2026-04-22T10:00:00Z"
+generations_represented = 47
+components_kept_in_git  = 38
+rejection_signals       = 12
+
+# ── Preferences ─────────────────────────────────────────────────────────────
+# Confidence in [0,1]. Imported facts are scaled by IMPORT_MULTIPLIER=0.6
+# before hitting facts.jsonl, so 0.85 here → 0.51 stored locally.
+[preferences]
+
+prefer_styles = [
+  { id = "swiss-muller-brockmann",  confidence = 0.85, reason = "Grid as truth, type as voice." },
+  { id = "bauhaus-dessau",          confidence = 0.78 },
+  { id = "editorial-serif-revival", confidence = 0.72, reason = "Works for long-form without posturing." },
+  { id = "japanese-minimalism",     confidence = 0.68, reason = "Restraint without coldness." },
+]
+
+avoid_styles = [
+  { id = "fintech-trust",    confidence = 0.95, reason = "too generic" },
+  { id = "glassmorphism",    confidence = 0.88, reason = "optical noise pretending to be depth" },
+  { id = "claymorphism",     confidence = 0.82 },
+  { id = "neumorphism",      confidence = 0.80, reason = "everything looks like a soap bar" },
+  { id = "synthwave",        confidence = 0.75, reason = "pastiche" },
+]
+
+prefer_palette_tags = ["neutral", "accent-saturated", "warm-paper", "monochrome"]
+avoid_palette_tags  = ["dark-gradient", "neon", "bubblegum-pastel"]
+
+prefer_motion_tiers = ["Subtle", "Expressive"]
+avoid_motion_tiers  = ["Kinetic"]
+
+# ── Typography ──────────────────────────────────────────────────────────────
+[typography]
+preferred_families     = ["editorial-serif", "grotesk-modern", "mono-code"]
+avoided_families       = ["Poppins", "Comic Sans", "Inter"]
+preferred_scale_ratio  = 1.25
+max_font_weight_count  = 2
+
+# ── Pairs: FSPO demonstrations ─────────────────────────────────────────────
+# Few-shot anchors. Each pair is a choice the author made in a real brief,
+# showing what was picked over what.
+[pairs]
+examples = [
+  { chosen = "bauhaus-dessau",          rejected = ["fintech-trust", "saas-b2b-dashboard"], context = "fintech landing" },
+  { chosen = "editorial-serif-revival", rejected = ["glassmorphism", "claymorphism"],       context = "long-form blog" },
+  { chosen = "swiss-muller-brockmann",  rejected = ["dopamine-design", "playful-joyful"],   context = "dashboard" },
+  { chosen = "japanese-minimalism",     rejected = ["maximalism", "brutalism-raw"],         context = "meditation app onboarding" },
+  { chosen = "editorial-serif-revival", rejected = ["modern-serif-luxury"],                 context = "author portfolio" },
+]
+
+# ── Constitution: free-text principles ─────────────────────────────────────
+[constitution]
+principles = """
+Negative space is typography's punctuation. Never fill a margin because
+it's empty.
+
+A 2-column grid is more sophisticated than a 3-column grid unless you
+have 300+ data points.
+
+If the interface speaks, it speaks in one voice. Two typefaces is a
+dialogue; three is a riot.
+
+Motion must justify itself. A fade that reveals hierarchy earns its
+frames; a bounce that announces the button does not.
+
+If you can't tell a button from a link at 200 % zoom, neither can a
+screen reader.
+"""
+
+# ── Privacy: what export must scrub ────────────────────────────────────────
+[privacy]
+scrub_fields    = ["brief_summary", "project_names", "screenshots"]
+redact_evidence = true
+strip_urls      = true

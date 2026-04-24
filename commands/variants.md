@@ -25,14 +25,30 @@ rather than starting the critique loop on one.
 ## Behavior
 
 1. Run Stage 1 (Context Inference) as normal to produce a `StyleBrief`.
-2. Instead of weighted-random-picking ONE winner from the top 3 post-scoring
-   list, pick THREE with these distinctness rules:
-   - Variant A: the top-scored style (the "safe" take)
-   - Variant B: the highest-scoring style from a DIFFERENT top-level category
-     than A (forces cross-domain contrast)
-   - Variant C: the highest-scoring style whose `motion_tier` differs from
-     both A and B — if no such style exists in the top 10, fall back to the
-     first top-10 style whose `palette_tags` share ≤ 1 tag with A
+2. Run the **orthogonal-selection algorithm** (Sprint 4 Item 11) instead of
+   category-based heuristics. Steps:
+
+   a. Execute Stages 1–4 of the normal 8-step algorithm to produce a ranked
+      candidate list.
+   b. Pick **variant A** = rank 1 (the winner).
+   c. Load 8-d style embeddings from
+      `skills/visionary/styles/_embeddings.json#embeddings` — one vector
+      per style, axes: `density, chroma, formality, motion_intensity,
+      historicism, texture, contrast_energy, type_drama`.
+   d. Pick **variant B** = highest-ranked candidate whose cosine distance
+      from A is ≥ **0.6**. If the pool is empty at 0.6, relax to 0.5, then
+      0.4. If still empty after relaxation, pick rank 2 and surface a note
+      `v2_fallback_exhausted` so the user knows distinctiveness collapsed.
+   e. Pick **variant C** = highest-ranked candidate whose cosine distance
+      from BOTH A and B is ≥ the same threshold (with the same relaxation
+      ladder). On exhaustion, fall back to the next top-ranked candidate and
+      surface `v3_threshold_disabled`.
+
+   Reference implementation: `hooks/scripts/lib/orthogonal-variants.mjs`
+   `pickOrthogonalVariants({ ranked, embeddings })`. The algorithm is
+   deterministic given the same ranked list — stochasticity enters only
+   through the weighted-random winner choice upstream.
+
 3. Run Stage 2 (Design Reasoning Brief) for all three in parallel subagents
    so the briefs come back simultaneously.
 4. Run Stage 3 (Code Generation) for all three, writing to:
@@ -68,14 +84,59 @@ Screenshots saved — say `pick A`, `pick B`, `pick C`, or
 `merge [parts of X into Y]` to continue.
 ```
 
+## Writing `last-variants-brief.json` (Sprint 05, Task 15.2)
+
+Immediately after step 4 (code generation, before the 3-up render), write a
+snapshot of the three candidates + brief context to
+`.visionary-cache/last-variants-brief.json` (or `$CLAUDE_PLUGIN_DATA/visionary-cache/last-variants-brief.json`
+if that env is set). The UserPromptSubmit hook `update-taste.mjs` reads this
+file when the user's next turn contains a pick phrase (`pick A`, `go with B`,
+`take #2`, etc.) and emits a taste-pair to `taste/pairs.jsonl`.
+
+Snapshot shape:
+
+```json
+{
+  "brief_summary": "dashboard for a fintech SME, Swedish, balanced density",
+  "product_archetype": "fintech",
+  "component_type": "dashboard",
+  "audience_density": "balanced",
+  "motion_tier": "Subtle",
+  "brand_archetype": "Ruler",
+  "variants": [
+    { "style_id": "swiss-rationalism" },
+    { "style_id": "cassette-futurism" },
+    { "style_id": "ambient-copilot" }
+  ]
+}
+```
+
+Write the file with `JSON.stringify(brief, null, 2)` + trailing newline.
+Overwrite on every `/variants` invocation — there is only ever one "last
+variants brief" per project.
+
+Do NOT gate on `VISIONARY_DISABLE_TASTE`: that env var silences the hook
+side, not the snapshot side. The snapshot is harmless ambient state; if
+taste is disabled, `update-taste.mjs` ignores the snapshot anyway.
+
 ## Rules
 
 - Never generate more than 3 variants. The SELF-REFINE literature shows 3 is
   the sweet spot; 5+ leads to decision fatigue without improving outcomes.
 - Each variant file must be independently runnable — no shared imports that
   don't exist yet, no incomplete JSX, no `// TODO` inside.
-- Taste profile (`system.md`) still applies — any permanently-flagged style is
-  excluded from all three variants, not just the winner.
+- Taste profile applies — permanent + avoid facts from `taste/facts.jsonl`
+  (or legacy `system.md` flags, read via `inject-taste-context.mjs`) exclude
+  that style from all three variants, not just the winner. Filter BEFORE
+  the orthogonal algorithm runs — a banned style cannot be resurrected by
+  being the "most distant from the winner".
+- Orthogonal-selection acceptance bar (Sprint 4 DoD): across 10 `/variants`
+  invocations the mean pairwise cosine distance between variants must
+  clear **0.5**. When the chosen brief concentrates candidates in a narrow
+  slice of embedding space (e.g. "fintech dashboard" → all candidates land
+  in `historicism<0.3 & formality>0.7`), the algorithm will relax the
+  threshold or collapse to fewer variants — and surface the note. Users
+  can re-invoke `/variants` with a wider brief to get a richer three-way.
 - If the user has set `VISIONARY_DISABLE_CRITIQUE=1`, skip step 5 (rendering);
   return the file paths and let the user preview manually.
 - This command does NOT enter the critique loop. It ends at the three-way

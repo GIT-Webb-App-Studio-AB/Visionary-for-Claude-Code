@@ -1,0 +1,175 @@
+# Nightly calibration — Sprint 3 Task 8.4.
+#
+# Runs scripts/calibrate.mjs at 03:00 UTC every night. Two outcomes:
+#
+#   1. Calibration diff > 5% from the committed skills/visionary/calibration.json
+#      → open a PR with the regenerated file (label: calibration).
+#
+#   2. Any dimension's Spearman ρ drops below 0.6 → open an issue flagging the
+#      unreliable dimension (label: calibration, critic-unreliable).
+#
+# The workflow is intentionally dep-free — scripts/calibrate.mjs runs on
+# vanilla Node 20. No package.json, no sharp install, no Playwright boot.
+# Sharp only matters when the scorer is invoked at critique time; calibration
+# fits purely against the cached gold-set critique outputs.
+
+name: nightly-calibrate
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      open_pr:
+        description: 'Open PR even if the diff is below 5%'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  recalibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run calibrate.mjs
+        id: calibrate
+        run: |
+          set -euo pipefail
+          # Keep the existing calibration.json aside so we can diff after the
+          # fresh run overwrites it.
+          if [ -f skills/visionary/calibration.json ]; then
+            cp skills/visionary/calibration.json /tmp/calibration.previous.json
+          else
+            echo '{}' > /tmp/calibration.previous.json
+          fi
+          node scripts/calibrate.mjs --verbose 2>&1 | tee /tmp/calibrate.log
+          cp skills/visionary/calibration.json /tmp/calibration.fresh.json
+
+      - name: Compute drift
+        id: drift
+        run: |
+          set -euo pipefail
+          node - <<'EOF'
+          const fs = require('node:fs');
+          const prev = JSON.parse(fs.readFileSync('/tmp/calibration.previous.json', 'utf8'));
+          const fresh = JSON.parse(fs.readFileSync('/tmp/calibration.fresh.json', 'utf8'));
+          const dims = Object.keys(fresh.per_dimension || {});
+          let maxDelta = 0;
+          let driftLines = [];
+          let lowCorr = [];
+          for (const d of dims) {
+            const p = (prev.per_dimension || {})[d] || { slope: 1, intercept: 0, spearman_rho: null };
+            const f = fresh.per_dimension[d];
+            const dSlope     = Math.abs((f.slope     ?? 0) - (p.slope     ?? 0));
+            const dIntercept = Math.abs((f.intercept ?? 0) - (p.intercept ?? 0));
+            const dRho       = Math.abs((f.spearman_rho ?? 0) - (p.spearman_rho ?? 0));
+            const delta = Math.max(dSlope, dIntercept / 10, dRho);
+            if (delta > maxDelta) maxDelta = delta;
+            driftLines.push(`  ${d.padEnd(18)} Δslope=${dSlope.toFixed(3)} Δintercept=${dIntercept.toFixed(3)} Δρ=${dRho.toFixed(3)}`);
+            if (typeof f.spearman_rho === 'number' && f.spearman_rho < 0.6) lowCorr.push(`${d} (ρ=${f.spearman_rho})`);
+          }
+          const exceedsThreshold = maxDelta > 0.05;
+          fs.writeFileSync(process.env.GITHUB_OUTPUT, [
+            `max_delta=${maxDelta.toFixed(4)}`,
+            `exceeds_threshold=${exceedsThreshold}`,
+            `status=${fresh.status}`,
+            `usable_entries=${fresh.entry_counts.usable}`,
+            `low_correlation_dims=${lowCorr.join('; ')}`,
+          ].join('\n') + '\n', { flag: 'a' });
+          console.log('Drift summary:');
+          driftLines.forEach((l) => console.log(l));
+          console.log(`Max delta: ${maxDelta.toFixed(4)} (threshold 0.05)`);
+          if (lowCorr.length) console.log(`Low correlation: ${lowCorr.join('; ')}`);
+          EOF
+
+      - name: Open PR when calibration drifted
+        if: steps.drift.outputs.exceeds_threshold == 'true' || github.event.inputs.open_pr == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: |
+            chore(calibration): nightly refit — max delta ${{ steps.drift.outputs.max_delta }}
+
+            Automated recalibration from benchmark/gold-set/ (${{ steps.drift.outputs.usable_entries }} usable entries, status=${{ steps.drift.outputs.status }}).
+          title: 'calibration: nightly refit (Δ=${{ steps.drift.outputs.max_delta }})'
+          body: |
+            Automated run of `scripts/calibrate.mjs` at 03:00 UTC detected a
+            calibration drift of `${{ steps.drift.outputs.max_delta }}` (threshold 0.05)
+            across the 9 critique dimensions.
+
+            - status: `${{ steps.drift.outputs.status }}`
+            - usable gold-set entries: `${{ steps.drift.outputs.usable_entries }}`
+
+            Review the per-dimension slope/intercept/ρ shift before merging. Merging
+            this PR makes runtime critiques apply the new calibration immediately.
+          branch: automation/nightly-calibrate
+          labels: calibration, automated
+          add-paths: skills/visionary/calibration.json
+
+      - name: Open issue when Spearman ρ drops below 0.6
+        if: steps.drift.outputs.low_correlation_dims != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const dims = `${{ steps.drift.outputs.low_correlation_dims }}`;
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'calibration,critic-unreliable',
+              state: 'open',
+              per_page: 10,
+            });
+            const title = `critic unreliable: Spearman ρ < 0.6 on ${dims}`;
+            if (existing.data.some((i) => i.title === title)) {
+              core.info('Identical issue already open, skipping.');
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              labels: ['calibration', 'critic-unreliable'],
+              body: [
+                'Nightly calibration flagged one or more dimensions whose Spearman ρ',
+                'against the gold-set consensus dropped below 0.6:',
+                '',
+                dims.split('; ').map((d) => `- ${d}`).join('\n'),
+                '',
+                'Action items:',
+                '1. Inspect recent changes to `agents/visual-critic.md` and',
+                '   `skills/visionary/schemas/critique-output.schema.json` — if the',
+                '   prompt changed, this is expected and calibration will refit.',
+                '2. If the prompt is unchanged, audit the gold-set entries backing',
+                '   the failing dimension — inter-rater spread may have widened.',
+                '3. If the dimension is structurally ambiguous, discuss lowering its',
+                '   weight in the composite or reworking the rubric.',
+              ].join('\n'),
+            });
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo '### Nightly calibration run'
+            echo ''
+            echo '- status: `${{ steps.drift.outputs.status }}`'
+            echo '- usable entries: `${{ steps.drift.outputs.usable_entries }}`'
+            echo '- max delta: `${{ steps.drift.outputs.max_delta }}` (threshold 0.05)'
+            if [ -n '${{ steps.drift.outputs.low_correlation_dims }}' ]; then
+              echo '- low-correlation dimensions: `${{ steps.drift.outputs.low_correlation_dims }}`'
+            fi
+            echo ''
+            echo '#### Calibrate log (tail)'
+            echo '```'
+            tail -30 /tmp/calibrate.log || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

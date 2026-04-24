@@ -1,0 +1,64 @@
+# Migrated from designers/massimo-vignelli.json on 2026-04-23T11:15:01.094Z.
+# See docs/taste-dotfile-spec.md for the .taste schema.
+
+schema_version = "1.0.0"
+handle = "massimo-vignelli"
+author = "Massimo Vignelli"
+description = "The most uncompromising designer of the Modernist era — New York Subway graphics (1972), American Airlines identity, Knoll catalogs. Vignelli used only six typefaces his entire career (Bodoni, Garamond, Helvetica, Futura, Univers, Times Rom"
+
+[metadata]
+created_at = "2026-04-23T11:15:01.094Z"
+era = "1960s–2014, Unimark International, Vignelli Associates"
+migrated_from_json = true
+
+[preferences]
+prefer_styles = [
+  { id = "swiss-rationalism", confidence = 0.95 },
+  { id = "swiss-muller-brockmann", confidence = 0.8 },
+  { id = "swiss-gerstner", confidence = 0.7 },
+  { id = "bauhaus-dessau", confidence = 0.5 },
+  { id = "dieter-rams", confidence = 0.4 },
+  { id = "newspaper-broadsheet", confidence = 0.4 },
+  { id = "editorial-serif-revival", confidence = 0.36 },
+  { id = "bauhaus", confidence = 0.3 },
+  { id = "white-futurism", confidence = 0.3 },
+  { id = "architectural-brutalism", confidence = 0.26 }
+]
+avoid_styles = [
+  { id = "dopamine-design", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "bubblegum-bling", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "playful-joyful", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "chaos-packaging-collage", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "post-internet-maximalism", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "holographic", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "cyberpunk-neon", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "synthwave", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "y2k-futurism", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "seapunk", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "glitchcore", confidence = 0.9, reason = "blocked by designer pack" }
+]
+prefer_palette_tags = ["light", "editorial"]
+avoid_palette_tags = ["neon", "pastel"]
+avoid_motion_tiers = ["Expressive", "Kinetic"]
+
+[typography]
+preferred_families = ["Helvetica", "Bodoni", "Garamond"]
+
+[constitution]
+principles = """
+Six typefaces are enough for a lifetime — Bodoni, Garamond, Helvetica, Futura, Univers, Times. No others. Period.
+
+Two-color palette per project — red + black + white, or navy + white + cream, or yellow + black. Never a palette of five.
+
+The grid is sacred. Every element aligns. No exceptions, no 'expressive' off-grid moments.
+
+Typography is not decoration — size, weight, and spacing ARE the design.
+
+No drop shadows. No gradients. No rounded corners. No 'decorative' illustrations. The grid, the color, and the type are the whole toolkit.
+
+Density is honest — a dense Vignelli layout IS the New York Subway map; clarity emerges from hierarchy, not whitespace.
+
+One call-to-action per view. Red for the primary. Black for everything else.
+
+Motion is suspicious — Vignelli designed for print. Use opacity fade only. No translate, no scale, no physics.
+"""

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/annotate-edit.schema.json",
+  "title": "Annotate edit",
+  "description": "Structured output contract for /annotate — translates a browser-side pin (user marked up a rendered preview) into a concrete code edit instruction for Claude. Each record describes ONE pin and its requested transformation.",
+  "type": "object",
+  "required": ["pin_id", "viewport", "selector", "instruction"],
+  "additionalProperties": false,
+  "properties": {
+    "pin_id": {
+      "type": "string",
+      "description": "Stable id for the annotation so the same pin survives multiple critique rounds.",
+      "minLength": 1
+    },
+    "viewport": {
+      "type": "object",
+      "description": "Viewport the pin was placed on. Required so the mapping from visual coordinates to CSS selector stays correct when the pin was made at mobile vs desktop.",
+      "required": ["width", "height"],
+      "additionalProperties": false,
+      "properties": {
+        "width":  { "type": "integer", "minimum": 320, "maximum": 3840 },
+        "height": { "type": "integer", "minimum": 320, "maximum": 3840 }
+      }
+    },
+    "selector": {
+      "type": "string",
+      "description": "CSS selector that locates the pinned element in the source. Preferred form: data-testid or semantic tag. Free-form selector is accepted but less stable.",
+      "minLength": 1
+    },
+    "bounding_box": {
+      "type": "object",
+      "description": "Pixel-space location of the pin at capture time. Populated by the browser-side annotator; used for visual diffing and as a fallback when selector matching fails.",
+      "required": ["x", "y", "width", "height"],
+      "additionalProperties": false,
+      "properties": {
+        "x":      { "type": "number", "minimum": 0 },
+        "y":      { "type": "number", "minimum": 0 },
+        "width":  { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "instruction": {
+      "type": "string",
+      "description": "One-sentence edit request in the user's own words. Short enough to fit into a subsequent critique round without bloating the prompt.",
+      "minLength": 3,
+      "maxLength": 240
+    },
+    "intent": {
+      "description": "Coarse classification of the edit to help the code-edit agent choose the right strategy.",
+      "enum": ["resize", "recolor", "reposition", "retype", "remove", "replace", "add", "other"]
+    },
+    "evidence_screenshot": {
+      "type": "string",
+      "description": "Path to the screenshot that was annotated. Round-trippable back into Playwright for visual diffing after the fix lands."
+    }
+  }
+}

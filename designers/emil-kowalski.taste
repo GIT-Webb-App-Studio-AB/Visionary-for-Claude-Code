@@ -1,0 +1,58 @@
+# Migrated from designers/emil-kowalski.json on 2026-04-23T11:15:01.092Z.
+# See docs/taste-dotfile-spec.md for the .taste schema.
+
+schema_version = "1.0.0"
+handle = "emil-kowalski"
+author = "Emil Kowalski"
+description = "Emil Kowalski's motion tutorials (emilkowal.ski) defined the 2023–2026 product-motion vocabulary: springy but never bouncy, micro-interactions as information, CSS-first when possible, reduced-motion as a first-class branch. His influence re"
+
+[metadata]
+created_at = "2026-04-23T11:15:01.092Z"
+era = "2022–present, motion-UI tutorials + Linear-era product motion"
+migrated_from_json = true
+
+[preferences]
+prefer_styles = [
+  { id = "ambient-copilot", confidence = 0.6 },
+  { id = "kinetic-typography-v2", confidence = 0.56 },
+  { id = "white-futurism", confidence = 0.5 },
+  { id = "liquid-glass-ios26", confidence = 0.46 },
+  { id = "responsive-editorial", confidence = 0.4 },
+  { id = "variable-font", confidence = 0.4 },
+  { id = "light-mode-sanctuary", confidence = 0.36 },
+  { id = "dark-mode-first", confidence = 0.3 },
+  { id = "neobrutalism-softened", confidence = 0.3 },
+  { id = "active-living-grid", confidence = 0.3 },
+  { id = "aurora-mesh", confidence = 0.28 }
+]
+avoid_styles = [
+  { id = "brutalist-honesty", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "brutalist-web", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "zine-diy", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "chaos-packaging-collage", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "post-internet-maximalism", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "early-web-geocities", confidence = 0.9, reason = "blocked by designer pack" }
+]
+prefer_palette_tags = ["light", "editorial"]
+
+[typography]
+preferred_families = ["Geist", "Inter Tight", "Bricolage Grotesque", "Instrument Serif"]
+
+[constitution]
+principles = """
+Springs not durations — every transition uses { bounce: 0.2, visualDuration: 0.3 } or similar Motion v12 two-parameter form.
+
+CSS-first when the animation doesn't need state: @starting-style, animation-timeline: view(), scroll-timeline. JS motion only for interactive states.
+
+Micro-interactions are information — a 2px lift + 50ms delay on hover is a signal, not decoration.
+
+Reduced-motion is a first-class branch with its own thought-through states. Don't just zero the duration.
+
+Single-accent palette. Motion carries the distinctiveness; color doesn't need to.
+
+Typography is calm and confident. Geist or Bricolage Grotesque — never ornamental.
+
+Motion never exceeds 600ms for UI; 400ms is the default. Over-long animations feel sluggish.
+
+Page transitions via View Transitions API, not JS-driven route animation.
+"""

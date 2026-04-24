@@ -1,0 +1,8 @@
+schema_version = "1.0.0"
+handle         = "example-minimal"
+description    = "Smallest legal .taste. Good for quick tests of the importer and as a boilerplate when starting a new profile."
+
+[preferences]
+prefer_styles = [
+  { id = "swiss-muller-brockmann", confidence = 0.7 },
+]

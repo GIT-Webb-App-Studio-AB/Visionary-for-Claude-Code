@@ -1,0 +1,71 @@
+schema_version = "1.0.0"
+author        = "Aurora Capital — Design Team"
+handle        = "aurora-team-2026-04"
+inherits_from = ["dieter-rams", "swiss-muller-brockmann"]
+description   = "Team-level baseline for a European fintech. Layered on top of Rams + Swiss for built-in restraint; the team itself only adds fintech-specific adjustments."
+
+[metadata]
+created_at              = "2026-04-15T09:30:00Z"
+generations_represented = 112
+components_kept_in_git  = 89
+rejection_signals       = 27
+
+# ── Preferences ─────────────────────────────────────────────────────────────
+# Parents already prefer swiss-muller-brockmann / rams-functionalism and
+# avoid glassmorphism/neon. The team layer only adds deltas — don't repeat
+# what inheritance already covers.
+[preferences]
+
+prefer_styles = [
+  { id = "fintech-trust-refined", confidence = 0.9,  reason = "Our variant — trusted without being generic. Not to be confused with fintech-trust (banned by inheritance)." },
+  { id = "data-dense-minimal",    confidence = 0.82, reason = "For traders' interior pages only — never the marketing site." },
+]
+
+avoid_styles = [
+  { id = "crypto-gambling",   confidence = 0.98, reason = "compliance" },
+  { id = "dopamine-design",   confidence = 0.95, reason = "compliance — bordering on dark patterns" },
+]
+
+prefer_palette_tags = ["trust-blue", "neutral"]
+avoid_palette_tags  = ["neon", "bubblegum-pastel"]
+
+# Motion inherited from Rams (Subtle cap). Team doesn't override.
+
+# ── Typography ──────────────────────────────────────────────────────────────
+[typography]
+preferred_families = ["IBM Plex Sans", "IBM Plex Mono"]
+# Inter is avoided by inheritance; we don't need to repeat it.
+preferred_scale_ratio = 1.2   # tighter than pawelk because dashboards need density
+
+# ── Pairs ───────────────────────────────────────────────────────────────────
+[pairs]
+examples = [
+  { chosen = "fintech-trust-refined", rejected = ["fintech-trust", "saas-b2b-dashboard"], context = "investor-facing marketing site" },
+  { chosen = "data-dense-minimal",    rejected = ["dashboard-playful", "glassmorphism"],  context = "trader portal" },
+  { chosen = "swiss-muller-brockmann", rejected = ["modern-serif-luxury"],                context = "compliance policy page" },
+]
+
+# ── Constitution ────────────────────────────────────────────────────────────
+# Will be appended to the Rams + Swiss constitutions at import time.
+[constitution]
+principles = """
+Team principle — Compliance is the aesthetic. Any visual element that
+implies yield, guarantee, or urgency MUST pass legal review before it
+reaches a comp. This is not a stylistic choice; it is why we have a
+design team at all.
+
+Team principle — Numbers are never decorative. A balance, a rate, a P&L
+figure gets its own tabular-lining digit treatment; it does not share a
+typeface with display text.
+
+Team principle — Dark patterns are forbidden, including the ones that
+inherit from 'good design'. Defaults that opt users in, urgency timers
+on irreversible actions, pre-selected upsells — all banned regardless
+of how tasteful they look.
+"""
+
+# ── Privacy ─────────────────────────────────────────────────────────────────
+[privacy]
+scrub_fields    = ["brief_summary", "project_names", "screenshots", "customer_data"]
+redact_evidence = true
+strip_urls      = true

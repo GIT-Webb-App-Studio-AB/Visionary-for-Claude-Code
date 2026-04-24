@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/trace-entry.schema.json",
+  "title": "Visionary trace entry",
+  "description": "Single event emitted by a hook or script into .visionary/traces/<session_id>.jsonl. One JSON object per line. The `event` enum covers every moment in a generation worth replaying for post-mortem debugging, recurring-fix mining, and future GEPA-style critic evolution. `payload` is free-form so each event type can attach its own facts without a schema bump — validators treat unknown payload keys as opaque.",
+  "type": "object",
+  "required": ["session_id", "generation_id", "round", "ts", "event"],
+  "additionalProperties": false,
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "ULID or similar time-sortable id that groups all events from one Claude Code session."
+    },
+    "generation_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "ULID scoped to one component generation (typically one edited file). Multiple rounds share the same generation_id."
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Round number within the generation. 0 is reserved for pre-round events like style_selected or brief_embedded. 1..3 are the critique rounds. Values above 3 are tolerated for future diff-refine loops."
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp at emission. Used for latency analysis and retention-based rotation."
+    },
+    "event": {
+      "description": "What happened. The enum is closed — unknown events should be added here before emission so stats tooling can reason about them.",
+      "enum": [
+        "style_selected",
+        "brief_embedded",
+        "rag_retrieval",
+        "critic_craft_output",
+        "critic_aesthetic_output",
+        "critic_output",
+        "numeric_scorer_output",
+        "axe_output",
+        "slop_scan_output",
+        "fix_candidate_generated",
+        "verifier_picked",
+        "patch_applied",
+        "patch_fallback",
+        "early_exit",
+        "escalate_reroll",
+        "accepted",
+        "rejected",
+        "api_call",
+        "arbitration",
+        "error"
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event-specific facts. Free-form; documented shape per event lives in docs/trace-schema.md. Kept opaque here so adding a new field to an event's payload never requires a schema migration."
+    },
+    "emitter": {
+      "type": "string",
+      "maxLength": 128,
+      "description": "Name of the script or hook that emitted the event. Useful when multiple emitters can produce the same event type (e.g. critic_output from critic-craft and critic-aesthetic both have their own emitter tag)."
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Wall-clock duration of the operation that produced this event, when available. Consumed by `visionary-stats --latency`."
+    }
+  }
+}

@@ -1,0 +1,66 @@
+# Migrated from designers/paula-scher.json on 2026-04-23T11:15:01.097Z.
+# See docs/taste-dotfile-spec.md for the .taste schema.
+
+schema_version = "1.0.0"
+handle = "paula-scher"
+author = "Paula Scher"
+description = "Paula Scher ran CBS Records in the 70s (200+ album covers), joined Pentagram in 1991, and built the Public Theater's enduring identity. Her work is typographic maximalism with structure — big type, broken grids, collage sensibility without "
+
+[metadata]
+created_at = "2026-04-23T11:15:01.097Z"
+era = "1970s–present, CBS Records → Pentagram"
+migrated_from_json = true
+
+[preferences]
+prefer_styles = [
+  { id = "big-bold-type", confidence = 0.95 },
+  { id = "type-collage", confidence = 0.8 },
+  { id = "deconstructed-type", confidence = 0.7 },
+  { id = "chaos-packaging-collage", confidence = 0.6 },
+  { id = "condensed-editorial", confidence = 0.56 },
+  { id = "new-wave-swiss-punk", confidence = 0.5 },
+  { id = "kinetic-typography-v2", confidence = 0.44 },
+  { id = "dada", confidence = 0.4 },
+  { id = "postmodern", confidence = 0.4 },
+  { id = "music-album-art", confidence = 0.4 },
+  { id = "constructivism", confidence = 0.36 },
+  { id = "editorial-serif-revival", confidence = 0.3 }
+]
+avoid_styles = [
+  { id = "zen-void", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "light-mode-sanctuary", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "dieter-rams", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "clinical-cold", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "corpcore-quiet-luxury", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "fintech-trust", confidence = 0.9, reason = "blocked by designer pack" }
+]
+prefer_palette_tags = ["light", "editorial"]
+avoid_motion_tiers = ["Kinetic"]
+
+[typography]
+preferred_families = [
+  "Bureau Grotesque",
+  "Knockout",
+  "HTF Champion Gothic",
+  "Titling Gothic",
+  "GT America Condensed",
+]
+
+[constitution]
+principles = """
+Type is architecture. A single word can occupy 60% of a poster.
+
+Overlap is expressive — type layered on type, words touching, negative and positive space fighting.
+
+Break the grid for a reason. Scher's work isn't random — every off-grid choice has a visual argument.
+
+Condensed display typefaces are the native voice (Knockout, Titling Gothic, Bureau Grotesque).
+
+Two-color printing discipline — Scher's CBS era worked with extreme budget constraints; the limitation shaped the voice.
+
+Rotation is a tool — headlines set at 8°, 15°, 22° rotation, used like a spatial emphasis.
+
+Motion: headline-driven entry, letters stagger-reveal, never bouncy or soft.
+
+Typography scale is massive — display at 10vw minimum, body shrinks to stay out of the way.
+"""

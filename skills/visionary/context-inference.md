@@ -101,6 +101,41 @@ WRONG:   <html lang="en"> (when content is Swedish)
 WRONG:   <html> (missing lang attribute)
 ```
 
+## Content Kit Override (Stage 0.3 — Sprint 07 Task 21.6)
+
+Before language/locale detection, check if `visionary-kit.json` exists in
+the project root. When present, the UserPromptSubmit hook
+(`hooks/scripts/inject-taste-context.mjs`) injects a compact excerpt into
+`additionalContext` as a section titled `## Content kit (visionary-kit.json
+— required data shapes)`.
+
+When that section appears in your context:
+
+1. **Do NOT invent placeholder data.** No "Jane Doe", "John Smith", "Acme
+   Corp", or `name@example.com`. Use the sample shapes verbatim for your
+   first render. The critic's slop scanner (Sprint 07 pattern #32) flags
+   placeholder names when a kit is present.
+2. **Respect constraints.** If the kit says `name.p95_length=28`, design
+   for 28-char names — test truncation / wrapping, never shrink font size
+   to fit.
+3. **Respect diacritics.** If any constraint has `may_contain_diacritics`,
+   the locale + font stack must render å ä ö ü é etc. correctly.
+4. **Render every required_state.** The kit's `required_states` list is
+   the contract: `loading`, `empty`, `error`, `populated` each must render
+   without layout collapse. The content-resilience scorer (Sprint 07 Task
+   21.5) grades this.
+5. **Honour component density hints.** `component_constraints.table.p95_rows
+   = 47` means your design must survive 47-row tables (scrolling, pagination,
+   virtualisation — pick one; don't assume always-10).
+6. **Plumb kit data as props.** Expose a kit-injection seam
+   (`window.__visionary_kit__` or a kit-prop) so the Playwright render step
+   can swap in p50/p95/empty states during critique. Components that hard-
+   code their fixtures score low on `content_resilience`.
+
+Kit guidance **does not override** taste signals or the Style Brief — it
+constrains the *content shape* the component renders, not the *aesthetic*
+it renders with.
+
 ## Design System Override (Stage 0.5)
 
 Before running the 8-step algorithm, check if a persistent design system exists:
@@ -117,9 +152,57 @@ Before running the 8-step algorithm, check if a persistent design system exists:
 
 ---
 
+## Styles Index (`_index.json`)
+
+The 200+-style catalogue is too large to evaluate manually — and far too large to load into every LLM call. `skills/visionary/styles/_index.json` is a compact structured index of every style's metadata, produced by `scripts/build-styles-index.mjs`. It is the canonical input for Steps 1–3 of the selection algorithm below (pure filters: no LLM reasoning needed).
+
+**Index entry schema** (fields are omitted when absent — keeps size under 500 B/entry):
+
+```json
+{
+  "id": "bauhaus",
+  "category": "historical",
+  "path": "skills/visionary/styles/historical/bauhaus.md",
+  "motion_tier": "Subtle",
+  "density": "balanced",
+  "locale_fit": ["all"],
+  "palette_tags": ["dark", "light", "neon"],
+  "keywords": ["bauhaus", "historical"],
+  "accessibility": {
+    "contrast_floor": 4.5,
+    "touch_target_px": 44,
+    "reduced_motion": "opacity-only"
+  },
+  "scoring_hints": {
+    "product_archetypes": ["editorial", "developer"],
+    "audience_density": ["balanced", "power"],
+    "brand_tones": ["neutral", "corporate"]
+  }
+}
+```
+
+**How selection uses it:**
+
+- **Steps 1–3** (category filter → motion tier → density / locale / blocked defaults): deterministic set operations over `_index.json`. No style bodies are read. No LLM call.
+- **Step 4** (rubric scoring): operates on the **top-15 index entries** (≈ 6 KB) rather than the 200+ full style markdowns (≈ 1.6 MB). The scorer sees `category`, `motion_tier`, `density`, `keywords`, `scoring_hints` — enough signal to rank, not enough to bloat the prompt.
+- **Step 7 → Code generation**: only after a winner is picked does the pipeline read the single winning style's full `.md` body. Runners-up are discarded.
+
+**Rebuilding the index:**
+
+```bash
+node scripts/build-styles-index.mjs          # rebuild
+node scripts/build-styles-index.mjs --check  # CI / pre-commit drift guard
+```
+
+The index is idempotent and deterministic — two sequential runs produce byte-identical output. Commit the regenerated `_index.json` together with any style file you add, rename, or re-tag.
+
+**Runtime note:** The deterministic filter logic for Steps 1–3 lives today in the skill's prompt instructions rather than in a Node pre-processing layer. A runtime adapter (Sprint 02) will move these filters out of the LLM call entirely — at which point the skill loses the filter-specific tokens from every prompt.
+
+---
+
 ## Style Selection Algorithm (v2)
 
-The 186-style catalogue is too large to evaluate manually. This 8-step funnel narrows the field systematically, with controlled randomness to ensure no two users get identical output for the same prompt.
+The 200+-style catalogue is too large to evaluate manually. This 8-step funnel narrows the field systematically, with controlled randomness to ensure no two users get identical output for the same prompt.
 
 ```
 186 styles
@@ -263,31 +346,78 @@ Score each remaining candidate on 5 signals. Use this rubric — do not "score m
 
 Score on paper. Show the per-signal scores in the Design Reasoning Brief so the user can see the logic.
 
-### Step 4.5 — Taste Profile Adjustment (NEW)
+#### Few-shot taste anchors (FSPO, Sprint 05)
 
-Read `system.md` (if it exists in the project root or `.visionary-cache/`). Apply adjustments to the Step 4 composite score:
+When prior `/variants`-picks exist for this project, the UserPromptSubmit hook `inject-taste-context.mjs` injects up to 8 **taste pairs** into `additionalContext` under the heading `## Prior variant picks`. Each pair records:
 
-| Taste signal in system.md | Score adjustment |
-|---|---|
-| **Rejected style** (exact match) | -100 (remove from candidates entirely) |
-| **Rejected category** (style is in a rejected category) | -25 |
-| **Rejected typography** (style uses a rejected font) | -15 |
-| **Rejected color** (style's palette overlaps a rejected color) | -10 |
-| **Positive signal** (style matches an approved direction) | +15 |
-| **PERMANENTLY FLAGGED** (3+ rejections) | -100 (treat as blocked default) |
-
-If `system.md` does not exist, skip this step entirely — do not create it.
-
-**Reading system.md:**
 ```
-Look for these sections:
-  ### Rejected styles        → exact style name matches
-  ### Rejected typography    → font name matches
-  ### Rejected colors        → hex or color name matches
-  ### Rejected motion        → motion pattern matches
-  ### Positive signals       → direction/style matches
-  ### Design DNA (confirmed) → strong positive matches (+20)
+User previously picked <chosen style> when shown <chosen + rejected alternatives>
+under context: "<brief summary>"
 ```
+
+These pairs are selected by the diversity sampler (`hooks/scripts/lib/pair-sampler.mjs`, Task 15.4) using cosine distance over the 8-dimensional style embeddings in `skills/visionary/styles/_embeddings.json`. The sampler:
+
+1. Computes each pair's signal vector as `embedding(chosen) − mean(embedding(rejected))`.
+2. Picks the anchor pair with highest cosine similarity to the current brief vector.
+3. Greedily adds pairs that maximise the minimum cosine distance to already-chosen pairs.
+4. Stops at 8 or when the pool runs out. Mean pairwise distance on real data sits around 1.0 on the -1..1 cosine range — plenty of diversity for 8 slots.
+
+**How to use the pairs in scoring:**
+
+- Treat them as weak prior preference, not hard rules. A pair that picked `swiss-muller-brockmann` over `glassmorphism` in a fintech context should add ~5 points to `swiss-muller-brockmann`-adjacent candidates and subtract ~3 from `glassmorphism`-adjacent candidates when the current brief's context matches.
+- Stack adjustments from multiple matching pairs — three pairs picking Swiss styles over glass styles is a stronger signal than one.
+- Do not exceed ±15 cumulative adjustment from FSPO alone. The explicit facts in Step 4.5 carry more authoritative signal; FSPO is the soft prior that fills in gaps between facts.
+- If a pair's context clearly does not match (different product archetype, different component type), ignore it — the sampler already biased toward relevant pairs but it does not guarantee fit.
+
+FSPO pairs are written to `taste/pairs.jsonl` by `update-taste.mjs` when the user picks from a `/variants` output (phrases: "pick A", "go with B", "take #2", "variant C"). The `/variants` command writes a `last-variants-brief.json` snapshot that the pair-capture reads to identify chosen / rejected styles and context.
+
+### Step 4.5 — Taste Profile Adjustment (Sprint 05 rewrite)
+
+Read the active taste profile and apply structured score adjustments to each Step 4 candidate.
+
+**Data source (current):** `taste/facts.jsonl` at the project root. One JSON object per line, conforming to `skills/visionary/schemas/taste-fact.schema.json`. A line = one `(scope, signal)` fact with evidence and a lifecycle flag (`active` / `permanent` / `decayed`).
+
+**Data source (legacy, runtime-fallback only):** `system.md` at the project root. If `taste/facts.jsonl` does NOT exist but `system.md` does, an auto-migration runs on the next UserPromptSubmit hook tick — see `scripts/migrate-system-md-to-facts.mjs`. A migrated `system.md` starts with `<!-- MIGRATED ...` and is ignored at runtime.
+
+The UserPromptSubmit hook `inject-taste-context.mjs` surfaces the filtered, scoped, ranked top-12 facts into the current prompt's `additionalContext` so you can consume them inline — you do not need to file-read `facts.jsonl` yourself. Match the injected entries to each candidate style by:
+
+- `target_type == "style_id"` — exact match to the candidate's id
+- `target_type == "category"` — the candidate's category equals the target value
+- `target_type == "palette_tag"` — the candidate's frontmatter `palette_tags` array contains the target
+- `target_type == "motion_tier"` — the candidate's motion tier equals the target
+- `target_type == "typography_family"` — the candidate's declared display font family matches (case-insensitive substring)
+- `target_type == "density_level"` — the candidate's density equals the target (`sparse` / `balanced` / `dense`)
+- `target_type == "color"` — the candidate's palette contains the color (hex or name)
+- `target_type == "pattern"` — soft match only (keyword overlap between candidate body / keywords and the target phrase)
+
+**Adjustment table** (multiply the displayed base by `fact.confidence` except for the hard-block):
+
+| Fact flag | Direction | Target match | Base adjustment |
+|---|---|---|---|
+| `permanent` | `avoid` | Exact (style_id / category) | **Remove from candidates entirely** (hard-block) |
+| `permanent` | `avoid` | Axis match (palette / motion / typography / density) | -30 × confidence |
+| `permanent` | `prefer` | Any match | +25 × confidence |
+| `active` | `avoid` | Exact (style_id) | -25 × confidence |
+| `active` | `avoid` | Axis match | -15 × confidence |
+| `active` | `avoid` | `pattern` (keyword soft-match) | -10 × confidence |
+| `active` | `prefer` | Exact / axis match | +15 × confidence |
+| `active` | `prefer` | `pattern` | +8 × confidence |
+| `decayed` | any | any | **Skip** (hidden from scoring until reactivated) |
+
+Confidence is a number in `[0, 1]` stored on the fact. A brand-new heuristic signal starts at ~0.55–0.85; repeated evidence bumps it toward 1.0; decay halves it.
+
+**Worked mini-example** — candidate `swiss-rationalism` in a project where the injected profile contains:
+
+```
+- avoid style_id::fintech-trust (conf 0.90, 2 evidence [permanent])
+- prefer typography_family::grotesque (conf 0.75, 3 evidence)
+```
+
+`swiss-rationalism` is not `fintech-trust` → hard-block does not apply. Its display font is Grotesque → the prefer-typography_family fact matches → adjustment = +15 × 0.75 = **+11.25** added to the composite score.
+
+**Scope filtering:** the hook only injects facts whose scope matches the current context (`level == "global"` OR `level == "project"` with the matching project key). Facts stored for other projects never leak. If you want to force-inject facts from a different scope for debugging, use `/visionary-taste show <scope>`.
+
+**Why this replaced the 3-rejection binary flag:** the old system collapsed "disliked once" and "disliked three times" into the same downstream effect (nothing, then suddenly PERMANENTLY FLAGGED). The structured model lets confidence rise gradually, lets multiple evidence kinds count independently (git deletes + explicit rejections + pairwise passes accumulate), and lets positive signals boost scores with the same mechanism they suppress others — so the pipeline learns preferences, not just aversions.
 
 ### Step 5 — Context-Aware Transplantation Bonus (IMPROVED)
 

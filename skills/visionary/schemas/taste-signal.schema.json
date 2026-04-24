@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/taste-signal.schema.json",
+  "title": "Taste signal",
+  "description": "Structured output contract for hooks/scripts/update-taste.mjs. Describes a single signal (reject/approve/neutral/mixed) extracted from a user prompt, plus the scope it applies to. Used by the skill's style-selection stage to bias the candidate pool for future generations.",
+  "type": "object",
+  "required": ["signal", "scope"],
+  "additionalProperties": false,
+  "properties": {
+    "signal": {
+      "description": "Classification of the user's response. 'mixed' = both reject and approve cues detected in the same prompt; 'neutral' = no cues found (the hook should not persist a neutral signal).",
+      "enum": ["reject", "approve", "neutral", "mixed"]
+    },
+    "scope": {
+      "description": "Which dimension of the taste profile the signal applies to. 'global' = applies to the entire generation (not a single axis).",
+      "enum": ["style", "palette", "typography", "motion", "component_type", "global"]
+    },
+    "evidence_quote": {
+      "type": "string",
+      "description": "Short verbatim quote from the user prompt that triggered the classification. Quote is normalised (whitespace collapsed, markdown structural chars stripped) to keep system.md readable.",
+      "maxLength": 160
+    },
+    "target_id": {
+      "type": "string",
+      "description": "Style id (when scope='style'), palette id, or other identifier the signal pins to. Optional — not every signal has a named target.",
+      "minLength": 1
+    },
+    "detected_at": {
+      "type": "string",
+      "description": "ISO-8601 date (YYYY-MM-DD) for when the signal was recorded. Used to timestamp the entry in system.md.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    }
+  }
+}

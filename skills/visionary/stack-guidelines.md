@@ -18,6 +18,94 @@ bounce:  { stiffness: 400, damping: 10, mass: 0.8 }
 
 ---
 
+## Canonical CSS Cascade (Sprint 4 — Baseline-2026 primitives)
+
+**Every generated stylesheet MUST declare the cascade layers up-front and
+scope component styles to prevent leak.** The loop's slop-scanner flags
+patterns #27 (missing `@layer`) and #30 (non-scoped modal) as blockers.
+
+```css
+/* First line of every top-level stylesheet the generator emits. */
+@layer reset, tokens, base, components, variants, utilities, overrides;
+
+/* Component styles land inside @scope blocks so they cannot leak into
+   nested user content or sibling components. */
+@scope (.vn-card) to (.vn-card-nested) {
+  h1 { font-size: var(--vn-step-5); }
+  .meta { color: var(--vn-ink-muted); }
+}
+```
+
+Why it matters:
+
+- **`@layer`** gives us an explicit precedence order that overrides specificity.
+  We lose unpredictable specificity wars between `@import`ed shadcn/ui primitives,
+  Tailwind utilities, and bespoke component styles. Without layers, adding one
+  utility class in the wrong place silently undoes three rules four imports up.
+- **`@scope`** is the CSS-native replacement for BEM/CSS-Modules scoping. It
+  isolates a component's internal styles from nested user content (e.g. a
+  card rendering a third-party markdown block) without naming-convention
+  discipline. The `to (...)` boundary names the inner-scope root.
+- **Progressive enhancement**: `@scope` has uneven Chromium/Firefox/Safari
+  support; gate any critical scoping with `@supports (selector(:scope))`.
+  `@layer` is Baseline-2024 (universally supported) — no guard needed.
+
+This cascade is MANDATORY for every stack below. Framework-specific notes
+cover only the plumbing (where the stylesheet lives, how Vite/Next/Nuxt
+inline it, etc.) — the cascade layers and scope boundaries themselves are
+identical across React, Vue, Svelte, Angular, Astro, Laravel, Flutter-web,
+SwiftUI-web-preview, HTML/CSS, Lit, Solid, Qwik.
+
+---
+
+## Canonical Form Controls (Sprint 4 — `field-sizing`)
+
+Every `<textarea>` and growable `<select>` the generator emits MUST use
+`field-sizing: content` with an `@supports` fallback so pre-Baseline
+browsers get a sensible default:
+
+```css
+.vn-textarea {
+  field-sizing: content;
+  min-block-size: 3lh;           /* prevents collapse to 1 line */
+  max-block-size: 30lh;          /* caps runaway growth */
+}
+
+@supports not (field-sizing: content) {
+  .vn-textarea { min-block-size: 6rem; }
+}
+```
+
+Rationale: `field-sizing: content` replaces the `rows={N}` + manual
+auto-resize hook pattern. A zero-JS baseline that grows with content,
+respects reading order, and doesn't require measuring-DOM shenanigans.
+Slop-scanner pattern #29 flags `<textarea rows={...}>` without
+field-sizing.
+
+---
+
+## Canonical Colour Contrast (Sprint 4 — `contrast-color()`)
+
+When the generator needs a foreground that guarantees contrast against a
+token-driven background, use the native `contrast-color()` with a fallback:
+
+```css
+.vn-button {
+  background: var(--vn-bg-primary);
+  color: contrast-color(var(--vn-bg-primary));
+}
+
+@supports not (color: contrast-color(black)) {
+  .vn-button { color: var(--vn-fg-on-primary); }
+}
+```
+
+Slop-scanner pattern #28 (`@floating-ui/react` import) and #31 (`useRef`
+for dropdown position) flag places where the new native primitives should
+be used instead — see `commands/apply.md` for the migration mapping.
+
+---
+
 ## Web Frameworks
 
 ### 1. React

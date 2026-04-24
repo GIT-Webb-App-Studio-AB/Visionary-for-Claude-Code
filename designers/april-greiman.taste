@@ -1,0 +1,66 @@
+# Migrated from designers/april-greiman.json on 2026-04-23T11:15:01.087Z.
+# See docs/taste-dotfile-spec.md for the .taste schema.
+
+schema_version = "1.0.0"
+handle = "april-greiman"
+author = "April Greiman"
+description = "April Greiman was the first major designer to embrace digital tools (late 1980s Mac) — her *Design Quarterly 133* (1986) was a single life-size fold-out produced entirely on MacPaint and is still in design canon. Greiman fuses Swiss rigor w"
+
+[metadata]
+created_at = "2026-04-23T11:15:01.085Z"
+era = "1970s–present, Made in Space studio, Los Angeles"
+migrated_from_json = true
+
+[preferences]
+prefer_styles = [
+  { id = "new-wave-swiss-punk", confidence = 0.95 },
+  { id = "swiss-rationalism", confidence = 0.6 },
+  { id = "postmodern", confidence = 0.56 },
+  { id = "layered-type", confidence = 0.5 },
+  { id = "deconstructed-type", confidence = 0.5 },
+  { id = "holographic", confidence = 0.46 },
+  { id = "y2k-futurism", confidence = 0.4 },
+  { id = "type-collage", confidence = 0.4 },
+  { id = "recombinant-hybrid", confidence = 0.36 },
+  { id = "variable-font", confidence = 0.3 },
+  { id = "colr-v1-color-type", confidence = 0.3 },
+  { id = "synthwave", confidence = 0.26 }
+]
+avoid_styles = [
+  { id = "dieter-rams", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "fintech-trust", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "corpcore-quiet-luxury", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "brutalist-web", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "concrete-brutalist-material", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "dark-mode-first", confidence = 0.9, reason = "blocked by designer pack" }
+]
+prefer_palette_tags = ["light", "pastel", "neon"]
+
+[typography]
+preferred_families = [
+  "OCR-A",
+  "OCR-B",
+  "Univers",
+  "Frutiger",
+  "Eurostile",
+  "Cabinet Grotesk",
+]
+
+[constitution]
+principles = """
+Layer transparency is the signature — overlapping elements with mix-blend-mode or opacity 0.6–0.8, echoes early Mac composited imagery.
+
+Digital-native type — OCR-A, OCR-B, and other machine-readable faces are welcome. This is the designer who made computers a typographic instrument.
+
+Hybrid imagery — photography + pure geometry + type, composited in the same composition. The juxtaposition is the voice.
+
+Diagonal composition, but with Swiss underlying grid — looks expressive, measures rigorous.
+
+Color: soft neons and pastels over white or near-white. Never dark-mode (this is a late-1980s aesthetic).
+
+Texture bleed — photocopied imagery, pixel edges, dithered gradients. The early-digital imperfection is wanted, not corrected.
+
+Motion: subtle parallax layers, each at a different speed. Echoes the hybrid-imagery stacking.
+
+Space is elastic — Greiman's layouts breathe on desktop and compress on mobile differently than a Swiss layout would.
+"""

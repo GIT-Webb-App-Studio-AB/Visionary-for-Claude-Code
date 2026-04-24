@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/critique-output.schema.json",
+  "title": "Visual critique output",
+  "description": "Structured output contract for the visual-critic subagent. Since Sprint 07, 10 scoring dimensions use a 0-10 numeric scale (replacing the legacy 1-5 integer scale documented in critique-schema.md). The 10th dimension, content_resilience, measures how well the component survives realistic data (long names, empty states, nullable fields) and is null when no visionary-kit.json is present in the project. The 'confidence' object mirrors each dimension with a 1-5 self-reported certainty used by early-exit gating and pairwise tie-breaking.",
+  "type": "object",
+  "required": ["round", "scores", "top_3_fixes", "confidence", "convergence_signal", "prompt_hash"],
+  "additionalProperties": false,
+  "properties": {
+    "round": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3,
+      "description": "Which critique iteration this output corresponds to."
+    },
+    "scores": {
+      "type": "object",
+      "description": "Per-dimension score on a 0-10 scale. 10 = exemplary, 0 = critical failure. Use decimals where warranted (e.g. 7.5).",
+      "required": [
+        "hierarchy",
+        "layout",
+        "typography",
+        "contrast",
+        "distinctiveness",
+        "brief_conformance",
+        "accessibility",
+        "motion_readiness",
+        "craft_measurable",
+        "content_resilience"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "hierarchy":         { "type": "number", "minimum": 0, "maximum": 10 },
+        "layout":            { "type": "number", "minimum": 0, "maximum": 10 },
+        "typography":        { "type": "number", "minimum": 0, "maximum": 10 },
+        "contrast":          { "type": "number", "minimum": 0, "maximum": 10 },
+        "distinctiveness":   { "type": "number", "minimum": 0, "maximum": 10 },
+        "brief_conformance": { "type": "number", "minimum": 0, "maximum": 10 },
+        "accessibility":     { "type": "number", "minimum": 0, "maximum": 10 },
+        "motion_readiness":  { "type": "number", "minimum": 0, "maximum": 10 },
+        "craft_measurable":  {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Ninth dimension: numeric_scores.composite × 10. MUST be null when numeric_scores.enabled is false or numeric_scores.composite is null (scorer disabled / sharp unavailable / DOM snapshot empty). Required key so the slot is always present; nullable so early-exit gating can tolerate degraded mode."
+        },
+        "content_resilience": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Tenth dimension (Sprint 07): how well the component survives realistic data. Composite of 0.4×layout_holds + 0.4×empty_state_quality + 0.2×typography_robustness, each measured by rendering against p50 / p95 / empty content from visionary-kit.json. MUST be null when no kit is present (no kit = no realism baseline to score against)."
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "description": "1-5 integer certainty per dimension. Consumed by early-exit gating (shouldEarlyExit requires min(confidence) >= 4) and pairwise tie-breaking. Keys SHOULD mirror 'scores' but are not required to — unknown keys are ignored.",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5
+      }
+    },
+    "top_3_fixes": {
+      "type": "array",
+      "description": "Up to 3 highest-impact fixes ordered by impact. Empty array is valid when convergence_signal=true and no fixes are useful.",
+      "minItems": 0,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["dimension", "severity", "proposed_fix", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "dimension": {
+            "description": "Which of the 10 scored dimensions this fix targets.",
+            "enum": [
+              "hierarchy",
+              "layout",
+              "typography",
+              "contrast",
+              "distinctiveness",
+              "brief_conformance",
+              "accessibility",
+              "motion_readiness",
+              "craft_measurable",
+              "content_resilience"
+            ]
+          },
+          "severity": {
+            "description": "blocker = must be fixed before ship; major = should be fixed; minor = nice-to-have.",
+            "enum": ["blocker", "major", "minor"]
+          },
+          "proposed_fix": {
+            "type": "string",
+            "minLength": 10,
+            "description": "One concrete actionable change. No 'improve X' generalities."
+          },
+          "selector_hint": {
+            "type": "string",
+            "description": "CSS selector or DOM hint when the fix targets a specific element. Duplicates evidence.value when evidence.type == 'selector' — kept for backwards compatibility with Sprint 2 consumers."
+          },
+          "evidence": {
+            "type": "object",
+            "description": "Mechanical citation grounding the critique in observable data. Sprint 3 mandate: no evidence, no sub-7 score.",
+            "required": ["type", "value"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "enum": ["axe", "selector", "metric", "coord"],
+                "description": "axe = axe-core rule or node ID; selector = CSS selector present in DOM; metric = numeric_scores key; coord = 'x,y' or computed CSS value."
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The cited identifier. Format depends on `type`: axe rule id ('color-contrast'), CSS selector ('.hero h1'), metric key ('contrast_entropy=0.41'), or coordinate ('x=872,y=142')."
+              }
+            }
+          }
+        }
+      }
+    },
+    "convergence_signal": {
+      "type": "boolean",
+      "description": "True when this round's quality regressed vs the previous round beyond the oscillation threshold (>0.3 delta on overall score). When true, the caller reverts to the previous round's output and stops iterating."
+    },
+    "slop_detections": {
+      "type": "array",
+      "description": "Slop patterns detected in this round. pattern_id references the 26-pattern catalogue in critique-schema.md.",
+      "items": {
+        "type": "object",
+        "required": ["pattern_id", "severity"],
+        "additionalProperties": false,
+        "properties": {
+          "pattern_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 26,
+            "description": "Row number from the 26-pattern catalogue (1-20 deterministic, 21-26 vision-required)."
+          },
+          "severity": {
+            "enum": ["blocker", "major", "minor"]
+          }
+        }
+      }
+    },
+    "axe_violations_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of axe-core violations detected across all impact levels. Consumed by early-exit gating (requires axe_violations_count === 0)."
+    },
+    "numeric_scores": {
+      "type": "object",
+      "description": "Output of the deterministic numeric-aesthetic-scorer (Sprint 3 Item 7). All sub-scores are 0..1 or null when the scorer could not compute them (sharp missing, DOM empty, etc.). The critique MUST address any non-null sub-score below 0.7 in top_3_fixes with evidence.type='metric'.",
+      "required": ["enabled"],
+      "additionalProperties": false,
+      "properties": {
+        "enabled":              { "type": "boolean" },
+        "contrast_entropy":     { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "gestalt_grouping":     { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "typographic_rhythm":   { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "negative_space_ratio": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "color_harmony":        { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "composite":            { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "accessibility_axe_score": { "type": ["number", "null"], "minimum": 0, "maximum": 10 },
+        "notes":                { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "prompt_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{16,64}$",
+      "description": "SHA-256 of the visual-critic system prompt + schema bytes that produced this critique (Sprint 3 Task 9.4). Consumed by runtime calibration to detect when calibration.json was fit against a different prompt version and must not be applied."
+    },
+    "bon_stats": {
+      "type": "object",
+      "description": "Best-of-N fan-out metrics (Sprint 4 Task 10.4). Present only when the round used BoN. Produced by hooks/scripts/lib/fork-candidate.mjs#collectBonStats. Optional block — omit when the round ran sequential refine.",
+      "additionalProperties": false,
+      "required": ["rounds_using_bon"],
+      "properties": {
+        "rounds_using_bon": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of rounds in this generation that fanned out to 3 candidates. Typically 0 (BoN off), 1 (round 2 only), or 2 (rounds 2 and 3)."
+        },
+        "avg_verifier_margin": {
+          "enum": ["decisive", "narrow", "indistinguishable"],
+          "description": "Dominant margin across all fan-out rounds (tiebreak-conservative: narrow wins over decisive)."
+        },
+        "escalations_to_user": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of rounds where the verifier set escalate_to_user: true (all three candidates surfaced)."
+        },
+        "candidate_failures": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total count of candidates that failed to produce a complete artefact set across all BoN rounds."
+        },
+        "winner_score_lift_vs_seq": {
+          "type": ["number", "null"],
+          "description": "Delta between winner's calibrated craft_measurable and the pre-BoN sequential baseline composite. Positive = BoN helped; negative = BoN hurt; null = no baseline available."
+        },
+        "verifier_prompt_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{16,64}$",
+          "description": "SHA-256 of the visual-verifier system prompt bytes. Tracked separately from the critic's prompt_hash — verifier changes do not invalidate calibration."
+        },
+        "margin_histogram": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "decisive":          { "type": "integer", "minimum": 0 },
+            "narrow":            { "type": "integer", "minimum": 0 },
+            "indistinguishable": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    }
+  }
+}

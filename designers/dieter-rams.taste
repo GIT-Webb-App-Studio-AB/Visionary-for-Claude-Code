@@ -1,0 +1,67 @@
+# Migrated from designers/dieter-rams.json on 2026-04-23T11:15:01.090Z.
+# See docs/taste-dotfile-spec.md for the .taste schema.
+
+schema_version = "1.0.0"
+handle = "dieter-rams"
+author = "Dieter Rams"
+description = "Ten principles of good design. Functional restraint. Invisible UI. Beige plastic, small display, clear labels, no ornament. Rams influenced an entire generation of product design (Apple in particular) and his principles translate directly t"
+
+[metadata]
+created_at = "2026-04-23T11:15:01.090Z"
+era = "1960s–1980s, Braun"
+migrated_from_json = true
+
+[preferences]
+prefer_styles = [
+  { id = "dieter-rams", confidence = 0.95 },
+  { id = "swiss-rationalism", confidence = 0.6 },
+  { id = "white-futurism", confidence = 0.5 },
+  { id = "light-mode-sanctuary", confidence = 0.4 },
+  { id = "bauhaus-dessau", confidence = 0.36 },
+  { id = "japanese-minimalism", confidence = 0.34 },
+  { id = "clinical-cold", confidence = 0.3 },
+  { id = "monochrome", confidence = 0.3 },
+  { id = "concrete-brutalist-material", confidence = 0.26 },
+  { id = "technical-mono", confidence = 0.26 }
+]
+avoid_styles = [
+  { id = "neon-dystopia", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "cyberpunk-neon", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "synthwave", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "post-internet-maximalism", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "chaos-packaging-collage", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "dopamine-design", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "bubblegum-bling", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "playful-joyful", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "whimsical-storybook", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "holographic", confidence = 0.9, reason = "blocked by designer pack" },
+  { id = "aurora-mesh", confidence = 0.9, reason = "blocked by designer pack" }
+]
+prefer_palette_tags = ["light", "editorial", "monochrome"]
+avoid_palette_tags = ["neon", "pastel"]
+avoid_motion_tiers = ["Expressive", "Kinetic"]
+
+[typography]
+preferred_families = ["Akzidenz-Grotesk", "Helvetica", "Futura", "Neue Haas Grotesk"]
+avoided_families = ["Poppins", "Inter", "Comic Sans", "Caveat"]
+
+[constitution]
+principles = """
+Good design is unobtrusive — no element may draw attention to itself beyond its function.
+
+Good design makes a product useful — every UI element must serve a user task. Decorative elements are removed.
+
+As little design as possible — prefer whitespace over chrome; prefer hairlines over shadows; prefer one accent over a palette.
+
+Prefer neutral / muted palettes (no saturated accents over 5% of surface area).
+
+Border-radius 0–4 px only — larger radii suggest plastic injection moulding, which breaks the 'industrial honesty' register.
+
+Motion budget: opacity fade + 2 px translate is the ceiling. Never bounce, never overshoot, never parallax.
+
+Typography: Akzidenz-Grotesk or Helvetica. A second typeface must have a demonstrable functional reason.
+
+Labels are explicit — 'Start' not an arrow-icon. 'Tempo' not a speedometer glyph. Clarity is the aesthetic.
+
+Color is functional — red reserved for error / stop; green for go / success; otherwise neutral. Decorative color is banned.
+"""

@@ -11,7 +11,7 @@
 [![Design Styles](https://img.shields.io/badge/DESIGN_STYLES-202-orange?style=flat-square)](#design-catalogue)
 [![Stacks](https://img.shields.io/badge/STACKS-15-purple?style=flat-square)](#frameworks-supported)
 [![Languages](https://img.shields.io/badge/LANGUAGES-20+-teal?style=flat-square)](#language-support)
-[![Benchmark](https://img.shields.io/badge/BENCHMARK-18.35%2F20-brightgreen?style=flat-square)](results/)
+[![Benchmark](https://img.shields.io/badge/BENCHMARK-18.35%2F20_(n%3D10)-yellow?style=flat-square)](results/)
 [![License](https://img.shields.io/badge/LICENSE-Apache_2.0-red?style=flat-square)](LICENSE)
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-black?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48L3N2Zz4=)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code)
@@ -23,13 +23,22 @@
 
 A Claude Code plugin that provides **design intelligence** for building distinctive, motion-first UI across 15 frameworks. Generates, critiques (axe-core-instrumented), and learns from your preferences over time.
 
+> **Current benchmark transparency**: the published 18.35/20 number
+> reflects a partial run (10 of 100 prompts, one sample per prompt) —
+> see [`results/README.md`](results/README.md) for the honest breakdown.
+> A full 100/100 run is the next release target; the infrastructure
+> (adapters, headless runner) landed in v1.3.1 under
+> [`benchmark/adapters/`](benchmark/adapters/). Motion Readiness was the
+> weakest dimension (3.55/5) in that partial run and is explicitly
+> addressed in the v1.3.1 Output Contract motion floor.
+
 ---
 
 <div align="center">
 
 ### Design Intelligence for Claude Code
 
-**202 design styles**, an **8-step selection algorithm**, **motion-first code** (Motion v12 + CSS-first), a **visual feedback loop** (Playwright + axe-core) that learns from your preferences, **DTCG token export** so the output flows into Figma Variables / Style Dictionary / Penpot / Tokens Studio, and a published benchmark that scored Visionary **18.35 / 20** against a generic-slop baseline of **12.60**.
+**202 design styles**, an **8-step selection algorithm**, **motion-first code** (Motion v12 + CSS-first), a **visual feedback loop** (Playwright + axe-core) that learns from your preferences, **DTCG token export** so the output flows into Figma Variables / Style Dictionary / Penpot / Tokens Studio, and a published benchmark that scored Visionary **18.35 / 20 (n=10, 10 categories × 1 prompt)** against a generic-slop baseline of **12.60**. A full n=100 run is the next benchmark target — see [`results/README.md`](results/README.md) for the partial-run caveat.
 
 Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | SolidJS | Lit | Laravel | Flutter | SwiftUI | Jetpack Compose | React Native | Vanilla JS
 
@@ -62,20 +71,40 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 ## What makes it different
 
-| Feature | frontend-design (Anthropic) | UI/UX Pro Max | 21st.dev Magic | **visionary-claude** |
-|---------|------|------|------|------|
-| Design styles | ~15 implicit | 67 named | Component-level only | **189 with auto-inference** |
-| Style selection | Manual / prompt-based | Manual name entry | Multi-variant picker | **8-step algorithm + weighted random + transplantation** |
-| Anti-default bias | None | None | Partial | **Blocks generic AI output, forces cross-domain styles** |
-| Motion system | None | None | None | **Motion v12 spring tokens + CSS-first (`@starting-style`, `animation-timeline`)** |
-| Visual feedback | None | None | None | **Playwright critique + axe-core (deterministic a11y)** |
-| Taste memory | None | None | None | **`system.md` calibration — permanent flag after 3 rejections** |
-| Accessibility | Not enforced | Not enforced | Not enforced | **WCAG 2.2 AA + APCA Lc floors + CSS logical properties + RTL** |
-| i18n typography | ASCII only | ASCII only | ASCII only | **20+ languages with correct diacritics + proper lang/subset** |
-| Multi-variant | No | No | Yes | **`/variants` — 3 mutually-distinct takes before critique** |
-| Consistency lock | No | No | No | **`/apply` — lock a style across the app, emit DTCG tokens** |
-| Token export | None | None | None | **DTCG 1.0 `.tokens.json` per style (Figma / Style Dictionary / Penpot ready)** |
-| Python required | No | **Yes (bugs on Windows)** | No | **No — Node 18+ only** |
+| Feature | frontend-design (Anthropic) | UI/UX Pro Max | 21st.dev Magic | Claude Design (Anthropic) | **visionary-claude** |
+|---------|------|------|------|------|------|
+| Design styles | ~15 implicit | 67 named | Component-level only | Inferred from codebase | **203 with auto-inference** |
+| Style selection | Manual / prompt-based | Manual name entry | Multi-variant picker | Prompt + Figma/code sync | **8-step algorithm + weighted random + transplantation** |
+| Anti-default bias | None | None | Partial | Partial | **Blocks generic AI output, forces cross-domain styles** |
+| Motion system | None | None | None | None (prototype-oriented) | **Motion v12 spring tokens + CSS-first (`@starting-style`, `animation-timeline`)** |
+| Visual feedback | None | None | None | Inline comments in canvas | **Playwright critique + axe-core (deterministic a11y)** |
+| Taste memory | None | None | None | None | **`system.md` calibration — permanent flag after 3 rejections** |
+| Accessibility | Not enforced | Not enforced | Not enforced | Not enforced | **WCAG 2.2 AA + APCA Lc floors + CSS logical properties + RTL** |
+| i18n typography | ASCII only | ASCII only | ASCII only | ASCII only | **20+ languages with correct diacritics + proper lang/subset** |
+| Multi-variant | No | No | Yes | Yes (canvas revisions) | **`/variants` — 3 mutually-distinct takes before critique** |
+| Consistency lock | No | No | No | Figma-driven | **`/apply` — lock a style across the app, emit DTCG tokens** |
+| Token export | None | None | None | Figma variables only | **DTCG 1.0 `.tokens.json` per style (Figma / Style Dictionary / Penpot ready)** |
+| Python required | No | **Yes (bugs on Windows)** | No | Cloud (web app) | **No — Node 18+ only** |
+| Works inside existing repo | Yes | Yes | Yes | Export only (Canva/PDF/HTML) | **Yes — edits files in-place** |
+
+### How is this different from Claude Design?
+
+Anthropic launched **Claude Design** on 17 April 2026 as a web-app
+prompt-to-prototype tool inside Claude.ai. It overlaps with
+`visionary-claude` in goal but not in shape:
+
+- **Claude Design** is best at: prompt → first-draft visual in a web
+  canvas, inline refinement sliders, export to Canva / PDF / PowerPoint /
+  HTML, handoff to Claude Code for implementation.
+- **visionary-claude** is best at: working inside an existing codebase,
+  deterministic accessibility scoring, motion-token discipline, DTCG
+  token export for design-system work, and learning your taste across
+  sessions so the same prompt stops converging on whatever it converged
+  on last week.
+
+They are complementary, not substitutes. A realistic workflow is:
+sketch in Claude Design → export HTML → open the project in Claude Code
+→ re-skin with `/apply <visionary-style>` → iterate.
 
 ---
 
@@ -289,6 +318,9 @@ node scripts/export-dtcg-tokens.mjs
 
 - [Installation guide](docs/installation.md) — GitHub, local, session-only, enterprise/air-gapped
 - [End-to-end tests](docs/e2e-tests.md) — 5 acceptance test scenarios
+- [Content kits](docs/content-kits.md) — `visionary-kit.json` for generations that survive real data (Sprint 07)
+- [Taste dotfile spec](docs/taste-dotfile-spec.md) — `.taste` file format for shareable taste profiles (Sprint 07)
+- [Taste index](docs/taste-index.md) — community-hosted profile registry and the `/visionary-taste browse` + `import` flow
 
 ---
 

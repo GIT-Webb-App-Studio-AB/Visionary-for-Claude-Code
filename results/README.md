@@ -9,10 +9,19 @@ side with `node benchmark/runner.mjs --compare A.json B.json`.
 
 ## Published runs
 
-| File | Skill | Version | Mean total | Prompts |
-|---|---|---|---|---|
-| [`visionary-1.3.0.json`](./visionary-1.3.0.json) | visionary | 1.3.0 | **18.35 / 20** | 10/100 staged |
-| [`baseline-slop.json`](./baseline-slop.json) | baseline-slop | n/a | 12.60 / 20 | 10/100 staged |
+| File | Skill | Version | Mean total | Prompts | Notes |
+|---|---|---|---|---|---|
+| [`visionary-1.3.0.json`](./visionary-1.3.0.json) | visionary | 1.3.0 | **18.35 / 20** | 10/100 | Partial — one prompt per category. Motion Readiness weakest at 3.55 (fixed in 1.3.1). |
+| [`baseline-slop.json`](./baseline-slop.json) | baseline-slop | n/a | 12.60 / 20 | 10/100 | Adversarial control. Deterministic adapter landed in 1.3.1. |
+
+### Planned runs (1.3.1+)
+
+| File (planned) | Target | Prompts | Owner |
+|---|---|---|---|
+| `visionary-1.3.1-full.json` | visionary 1.3.1 | 100/100 × 1 sample | maintainer |
+| `frontend-design-full.json` | frontend-design (Anthropic) | 100/100 × 1 sample | maintainer |
+| `ui-ux-pro-max-full.json` | ui-ux-pro-max | 100/100 × 1 sample | contributor PR welcome |
+| `visionary-1.3.1-n3.json` | visionary 1.3.1, `--samples 3` | 100/100 × 3 samples | maintainer, budget-permitting |
 
 ## Headline comparison (v1.3.0)
 
@@ -67,8 +76,18 @@ node benchmark/runner.mjs --compare \
 ## Important caveats
 
 - **N=10, not 100**: these runs only score 10 of the 100 prompts in
-  `benchmark/prompts/prompts.json`. The remaining 90 are scaffolded
-  prompts with no staged sample. Contributors welcome to stage more.
+  `benchmark/prompts/prompts.json`. The remaining 90 were scaffolded
+  prompts with no staged sample — v1.3.0 shipped before the headless
+  adapter existed. v1.3.1 ships the headless adapter
+  (`benchmark/adapters/claude-headless.mjs`) that removes this gap; a
+  full 100/100 run is the next results-file target.
+- **Motion Readiness weakness was a scorer bug**: v1.3.0's scorer
+  penalised *absence* of motion even on long-form reading surfaces, where
+  stillness is the correct design. The v1.3.1 scorer is category-aware:
+  appetite 0 categories (`editorial`) score 5/5 for no motion, and
+  appetite ≥ 1 categories now require explicit spring tokens or CSS-first
+  escapes to reach ≥ 4. Expect the v1.3.1 headline number to move on
+  Motion Readiness *and* the overall mean.
 - **Source-only scoring**: these runs use the offline scorers
   (regex + source heuristics). They do NOT run Playwright, do NOT run
   `axe-core` against a rendered screenshot. The full pipeline (planned

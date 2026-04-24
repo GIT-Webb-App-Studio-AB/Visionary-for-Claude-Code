@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-04-22T19:30:55.565Z",
+  "status": "identity_fallback",
+  "entry_counts": {
+    "total": 0,
+    "usable": 0,
+    "skipped": []
+  },
+  "critic_prompt_hash": "sha256:cd62f4e420c43642",
+  "warnings": [],
+  "per_dimension": {
+    "hierarchy": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "layout": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "typography": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "contrast": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "distinctiveness": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "brief_conformance": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "accessibility": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "motion_readiness": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    },
+    "craft_measurable": {
+      "slope": 1,
+      "intercept": 0,
+      "spearman_rho": null,
+      "mse": null,
+      "pair_count": 0,
+      "tight_pair_count": 0,
+      "low_correlation": false
+    }
+  }
+}

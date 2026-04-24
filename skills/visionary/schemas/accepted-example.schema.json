@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/accepted-example.schema.json",
+  "title": "Accepted design example (DesignPref RAG)",
+  "description": "One line in taste/accepted-examples.jsonl. Captures a generation the user accepted — either explicitly (/ok, accepted phrase) or implicitly (critique exited with calibrated composite >= 8.0 and no rejection signal within the debounce window). Used by the DesignPref RAG loop: brief_embedding is matched against the current round's brief to surface top-k anchors for the critic prompt. Keep the payload slim enough that 50 entries fit comfortably in one critique context — big blobs (code, full screenshots) live on disk and are referenced by path only.",
+  "type": "object",
+  "required": [
+    "id",
+    "brief_summary",
+    "brief_embedding",
+    "style_id",
+    "final_scores",
+    "screenshot_path",
+    "accepted_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "ULID. Reused as the filename stem for the screenshot: taste/screenshots/<id>.png."
+    },
+    "brief_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Short summary of the user's brief. Full prompt truncated at 500 chars — long briefs are paraphrased by the extractor before embedding."
+    },
+    "brief_embedding": {
+      "type": "array",
+      "minItems": 256,
+      "maxItems": 1024,
+      "items": { "type": "number" },
+      "description": "Dense vector representation of brief_summary. Default dimension is 384 (matches the xenova/transformers all-MiniLM-L6-v2 fallback), but entries produced by a different embedder may vary. Cosine similarity is the matching primitive; readers must tolerate mixed-dimension sets by grouping entries by embedder_id before comparison."
+    },
+    "embedder_id": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Identifier of the embedder that produced brief_embedding. Examples: 'hashed-ngram-v1' (zero-dep fallback), 'minilm-l6-v2' (xenova), 'anthropic-embeddings'. Readers MUST skip entries whose embedder_id differs from the query embedder — cross-embedder cosine is meaningless. Optional for legacy entries; absent => 'hashed-ngram-v1'."
+    },
+    "style_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Canonical style id from skills/visionary/styles/. Used as a secondary filter: when the current brief's preferred style-family matches, examples with the same style_id rank higher regardless of brief_embedding distance."
+    },
+    "final_scores": {
+      "type": "object",
+      "description": "Calibrated scores object at the moment of acceptance. Mirrors critique-output.schema.json#/properties/scores but is intentionally open — future critic splits (Sprint 6 Item 18) will add per-critic composites here without a schema bump.",
+      "additionalProperties": {
+        "type": ["number", "null"],
+        "minimum": 0,
+        "maximum": 10
+      }
+    },
+    "composite": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Overall calibrated composite score at acceptance. Pre-computed for fast ranking without having to average final_scores on read."
+    },
+    "screenshot_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative path (from project root) to the accepted generation's screenshot PNG. Convention: taste/screenshots/<id>.png. Kept as a separate file rather than inlined as base64 so the JSONL stays grep-friendly."
+    },
+    "code_path": {
+      "type": "string",
+      "description": "Optional relative path to the generated component file as of acceptance. Null / absent when the file has since moved or been deleted — the RAG loop only needs the screenshot, code is bonus."
+    },
+    "product_archetype": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Archetype tag from the style-selection algorithm (saas, marketing, dashboard, editorial, landing, …). Used for rotation: when max 50 entries is exceeded, overrepresented archetypes lose the oldest entry first."
+    },
+    "component_type": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Component type tag (pricing, hero, card, nav, …). Secondary rotation filter."
+    },
+    "accepted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of acceptance. Used for rotation (oldest out) and for decay — acceptances older than 180 days score lower in RAG ranking."
+    },
+    "acceptance_kind": {
+      "enum": ["explicit", "implicit", "pairwise_pick"],
+      "description": "How this generation was accepted. 'explicit' = user typed an approval phrase; 'implicit' = critique auto-closed with composite >= 8.0 and no rejection within DEBOUNCE_MS; 'pairwise_pick' = user picked this variant over others via /variants."
+    }
+  }
+}

@@ -10,6 +10,47 @@ weighting so the selected style pool skews toward the designer's known
 vocabulary. A Rams pack pushes toward `dieter-rams`, `swiss-rationalism`,
 `white-futurism`; a Kowalski pack pushes toward motion-heavy modern styles.
 
+## Two formats side-by-side
+
+Since Sprint 07, every pack ships in **two** formats:
+
+| File | Consumer |
+|------|----------|
+| `<handle>.json` | `/designer <name>` (legacy) — biases the Stage 1 style pool |
+| `<handle>.taste` | `/visionary-taste import <handle>` — merges into the flywheel |
+
+The `.json` version drives the original `/designer` override path (one-off
+style bias). The `.taste` version is the *shareable* platform format — it
+can be `inherits_from`ed by user-authored `.taste` files and imported into
+any project's flywheel. See `docs/taste-dotfile-spec.md` for the schema.
+
+Regenerate the `.taste` files after editing JSON:
+
+```bash
+node scripts/migrate-designers-to-taste.mjs
+```
+
+## Using a pack as a base for your own taste
+
+A designer pack is the intended *starting point* for a team or personal
+`.taste` file:
+
+```toml
+# our-team.taste
+schema_version = "1.0.0"
+handle         = "our-team-2026-04"
+inherits_from  = ["dieter-rams"]     # pulls in all of Rams's prefs + rules
+
+[preferences]
+prefer_styles = [
+  { id = "our-custom-style", confidence = 0.8 },   # team-specific override
+]
+```
+
+Import resolves `inherits_from` left-to-right with cycle detection. The
+child's preferences layer on top; constitutions are concatenated with a
+header identifying each source.
+
 ## Available packs
 
 | Pack | File | Defining work |

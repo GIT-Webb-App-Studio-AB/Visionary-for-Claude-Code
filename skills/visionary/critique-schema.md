@@ -195,13 +195,75 @@ Patterns 1–20 are **deterministic** — detected by the hook's sanitized-sourc
 
 The critique loop stops when **any** of these conditions are true:
 
-1. `meta.overall_score >= 4.0` — quality threshold met
-2. `meta.round == 3` — maximum iterations reached
-3. `meta.convergence_signal == true` — round N score regressed by > 0.3 from N-1 (diverging)
+1. **Early exit** — `shouldEarlyExit()` in `hooks/scripts/lib/loop-control.mjs` returns
+   `{ exit: true }`. Requires all four gates to pass simultaneously (see below).
+2. **Reroll escalation** — only on round 1. If three or more scoring dimensions land
+   below 4 on the 0-10 scale, the refine loop aborts and signals `reroll` to the
+   variants flow. Rationale: a fundamentally broken draft wastes tokens on refinement.
+3. **Round cap** — `round == 3` reached regardless of score.
+4. **Convergence** — `convergence_signal == true` (round N regressed by > 0.3 vs N-1).
+5. **Best-of-N round-2 exit** (Sprint 4 Task 10.3) — when `round == 2`, BoN fan-out
+   ran, the verifier returned `margin != "indistinguishable"`, AND the winning
+   candidate's calibrated `craft_measurable >= 7.5`. Rationale: BoN replaced the
+   quality lift that round 3 used to contribute in sequential-refine mode; once BoN
+   finds a decisive winner above the craft floor, round 3 is churn. The predicate
+   lives in `hooks/scripts/lib/fork-candidate.mjs#shouldBonRound2Exit`. Round 3 is
+   only entered when BoN verifier returns `"indistinguishable"` — at which point the
+   caller degrades to sequential refine for one final pass.
 
-When condition 3 fires, Claude must **not** apply top_3_fixes. Return the round N-1
+When condition 4 fires, Claude must **not** apply `top_3_fixes`. Return the round N-1
 output to the user unchanged and note: "Critique loop stopped: round N score regressed
 by > 0.3. Delivering round N-1 result."
+
+### Early-exit gates (Sprint 02)
+
+All four must pass for `shouldEarlyExit` to return `{ exit: true, reason: "high_confidence" }`:
+
+| Gate | Rule | Rationale |
+|---|---|---|
+| Min score | `min(scores) >= 8.0` on the 0-10 scale | Any dimension below 8.0 has material headroom worth one more refine round. |
+| Min confidence | `min(confidence) >= 4` on the 1-5 scale | Low-confidence ratings shouldn't trigger exits — they carry too much estimation noise. |
+| Axe clean | `axe_violations_count === 0` | A11y regressions must never slip through a refine shortcut. |
+| No blocker slop | `slop_detections.filter(s => s.severity === 'blocker').length === 0` | Blocker-severity slop is the ship-stopper of the taxonomy. |
+
+**Calibration floor:** the first generation for a new project (empty `system.md`)
+sets `calibrationMode: true`. In that mode, round 1 can never early-exit — the loop
+always runs at least through round 2 so there is taste-calibration data to learn from.
+
+### Reroll escalation rule (Sprint 02)
+
+`shouldEscalateToReroll(critique)` returns `{ escalate: true }` when:
+
+- `round === 1` (later rounds never escalate — refinement is already under way)
+- AND three or more dimensions in `scores` are strictly below 4.0 on the 0-10 scale
+
+When escalation fires, the refine loop aborts. The caller invokes the variants flow
+(`/variants` or the skill's internal reroll) to emit a fresh candidate set instead
+of continuing to refine a fundamentally broken draft.
+
+### Canonical schema (Sprint 02)
+
+The structured-output contract lives at
+`skills/visionary/schemas/critique-output.schema.json`. It is the single source of
+truth for what the visual-critic subagent must emit — the JSON examples above in
+this file are illustrative; the schema is normative.
+
+**Migration note.** The Sprint 02 schema uses a **0-10 numeric score** and a **1-5
+integer confidence** per dimension, with a flat top-level structure (`round`,
+`scores`, `confidence`, `top_3_fixes`, `convergence_signal`, `slop_detections`,
+`axe_violations_count`). Earlier drafts of this doc showed a 1-5 integer scale and
+a `meta`-nested structure with `{ score, rationale }` objects per dimension. The
+benchmark rubric (`benchmark/rubric/rubric.md`) is **not** migrated — rubric scoring
+stays on 1-5 integers. Only the in-loop critique contract moves to 0-10.
+
+Predicates that consume the schema live in `hooks/scripts/lib/loop-control.mjs`:
+
+- `shouldEarlyExit(critique, { calibrationMode })` — see gates above
+- `shouldEscalateToReroll(critique)` — round-1 reroll gate
+- `shouldUseDiffRegen(round, { previousConvergenceSignal })` — diff vs full regen
+
+Diff-based refinement for rounds 2+ is documented separately in
+`skills/visionary/diff-refine.md`.
 
 ---
 
@@ -225,3 +287,85 @@ Motion requirements:
 - `prefers-reduced-motion: reduce` degrades transform → opacity-only
 - Any autoplay > 5 s needs a pause control (WCAG 2.2.2 Level A)
 - No element flashes > 3 Hz (WCAG 2.3.1)
+
+---
+
+## Sprint 3 additions
+
+### The 9th dimension — `craft_measurable`
+
+The Sprint 3 schema adds a ninth scored dimension, `craft_measurable`, driven
+by `benchmark/scorers/numeric-aesthetic-scorer.mjs`. The value is
+`numeric_scores.composite × 10` and **must** be copied verbatim from the
+scorer output rather than guessed. When the numeric scorer is disabled or
+degraded (sharp unavailable, DOM empty), `craft_measurable` is null and the
+loop-control min-score gate tolerates the null — it does not count toward
+early-exit, but it also does not block it.
+
+### Evidence-anchored scoring
+
+Every entry in `top_3_fixes` must carry an `evidence` object referencing
+mechanical proof of the issue:
+
+| type       | value format                        | example                                   |
+|------------|-------------------------------------|-------------------------------------------|
+| `axe`      | axe-core rule ID or node target     | `"color-contrast"` / `"button-name:#cta"` |
+| `selector` | CSS selector present in the DOM     | `".hero h1"` / `"nav a[aria-current]"`    |
+| `metric`   | `<numeric_scores-key>=<value>`      | `"contrast_entropy=0.41"`                 |
+| `coord`    | `x=..,y=..` or `<property>=<value>` | `"x=872,y=142"` / `"line-height=24px"`    |
+
+**The rule of seven.** When a dimension score is below 7 and you cannot cite
+mechanical evidence, the score **must** default to 7. Lowering a score below
+7 without evidence is forbidden. This is the core of the Rulers calibration
+framework — if we cannot point at the failure, we cannot call it a failure.
+
+Selector evidence is verified after the critique — `hooks/scripts/lib/validate-evidence.mjs`
+runs each selector via `document.querySelector`. Selectors that match zero
+elements are flagged `evidence_invalid: true`, and two or more invalid
+citations per round trigger a critique retry with an alternate model.
+
+### Version-locked prompt
+
+Rulers only works when the prompt that produced the gold-set critiques is
+the same prompt the runtime runs against. Rewriting `agents/visual-critic.md`
+or `schemas/critique-output.schema.json` invalidates every committed
+calibration row — the critic is now a different critic.
+
+**Enforcement.** Every critique round computes:
+
+```
+prompt_hash = sha256( visual-critic.md + "\n---schema---\n" + critique-output.schema.json )
+```
+
+…truncated to `sha256:<16-hex>`. The hash is:
+
+- emitted in the hook's `additionalContext` as "Prompt hash: …" so Claude
+  echoes it back in the critique output under `prompt_hash`;
+- embedded in `calibration.json` under `critic_prompt_hash` whenever
+  `scripts/calibrate.mjs` fits;
+- compared at runtime by `hooks/scripts/lib/apply-calibration.mjs`:
+  - **match** → linear calibration applied.
+  - **mismatch** → skip calibration, warn `prompt_hash_mismatch`, run with
+    raw scores. Nightly CI refits against the new prompt.
+
+**Workflow when changing the critic prompt:**
+
+1. Edit `agents/visual-critic.md` and/or the schema.
+2. `node scripts/calibrate.mjs --verbose` — status flips to `identity_fallback`
+   (the existing calibration's hash stops matching).
+3. Capture fresh `.critique.json` files in `benchmark/gold-set/` — the old
+   ones were produced by the old prompt and are stale.
+4. Re-run calibrate and commit the new `calibration.json` with the prompt
+   change. Nightly CI takes over from there.
+
+Every `calibration.json` carries `critic_prompt_hash` as audit trail. A PR
+that updates the critic prompt without bumping the hash is a drift signal.
+
+### Numeric-score surface area
+
+The six deterministic sub-scores from `numeric-aesthetic-scorer.mjs` arrive
+in the critique input as `numeric_scores.*`. The critic must address any
+sub-score below **0.7** in `top_3_fixes` with `evidence.type: "metric"`. Do
+not argue that a low numeric score is a false positive — the scorers are
+deterministic and auditable. If a sub-score is wrong, the scorer itself
+needs fixing, not the critique bypassing it.

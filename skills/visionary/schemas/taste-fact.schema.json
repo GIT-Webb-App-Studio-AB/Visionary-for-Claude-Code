@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/taste-fact.schema.json",
+  "title": "Taste fact",
+  "description": "Structured storage contract for taste/facts.jsonl. One fact = one (scope, signal) pair with supporting evidence. Replaces the binary 3-rejection-flag logic in system.md with a multi-signal taste profile that distinguishes global preferences from project-specific ones and survives decay + reactivation.",
+  "type": "object",
+  "required": ["id", "scope", "signal", "evidence", "confidence", "created_at", "last_seen", "flag"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ULID (Crockford-base32, 26 chars). Time-sortable: the prefix encodes creation millis, so a sorted facts.jsonl is roughly chronological.",
+      "pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "scope": {
+      "type": "object",
+      "description": "Where the fact applies. Reads are filtered by scope before score adjustment — a project-scoped fact never leaks to other projects.",
+      "required": ["level", "key"],
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "enum": ["global", "project", "component_type", "archetype"],
+          "description": "global = applies everywhere. project = only inside the repo where it was captured. component_type = e.g. 'dashboard', 'pricing', 'landing'. archetype = one of the 12 brand archetypes (Ruler, Sage, etc.)."
+        },
+        "key": {
+          "type": "string",
+          "description": "Scope selector. '*' for global. Project key is the project-root directory basename. component_type uses the names from context-inference.md Step 2.5. archetype uses lowercase archetype names.",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      }
+    },
+    "signal": {
+      "type": "object",
+      "description": "What the user prefers or avoids. Read by Step 4.5 of the style-selection algorithm.",
+      "required": ["direction", "target_type", "target_value"],
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "enum": ["avoid", "prefer"],
+          "description": "avoid → negative score adjustment + optional hard-block when permanent. prefer → positive score adjustment."
+        },
+        "target_type": {
+          "enum": ["style_id", "category", "palette_tag", "motion_tier", "typography_family", "density_level", "color", "pattern"],
+          "description": "What dimension of the candidate the signal matches against. style_id is the strongest (exact match). pattern is free-text and only used by the soft score adjustment — never for hard-blocks."
+        },
+        "target_value": {
+          "type": "string",
+          "description": "The value to match. For style_id: the canonical id from _index.json. For motion_tier: one of Static|Subtle|Expressive|Kinetic. For pattern: a short phrase such as 'glassmorphism-on-dashboards'.",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Chronologically-ordered trail of signals that support this fact. Promotion and decay rules (taste-aging.mjs) count kinds and most-recent dates from here.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["kind", "at"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": ["explicit_rejection", "explicit_approval", "git_delete", "git_heavy_edit", "git_kept", "pairwise_pick"],
+            "description": "Source of the signal. explicit_* = user said so in chat. git_* = harvest-git-signal inferred it from repo activity. pairwise_pick = user picked one variant over others via /variants."
+          },
+          "quote_or_diff": {
+            "type": "string",
+            "description": "Short verbatim quote from the user (for explicit_*), truncated diff summary (for git_*), or variant ids (for pairwise_pick). Preserved so future aggregators can re-interpret.",
+            "maxLength": 240
+          },
+          "at": {
+            "type": "string",
+            "description": "ISO-8601 UTC timestamp of the signal.",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "description": "How much weight Step 4.5 applies to this fact. Heuristic signals start at 0.5-0.7, explicit strong language at 0.8-0.9. Decay halves this on each aging run with no new evidence. Facts below 0.2 are deleted.",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO-8601 UTC timestamp when the fact was first created. Immutable.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+    },
+    "last_seen": {
+      "type": "string",
+      "description": "ISO-8601 UTC timestamp of the most recent evidence entry. Aging rules compare this against now() to decide decay.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+    },
+    "flag": {
+      "enum": ["active", "permanent", "decayed"],
+      "description": "Lifecycle state. active = default, counts in scoring with confidence weight. permanent = hard-block when direction=avoid (takes precedence over confidence). decayed = no new evidence for 30+ days, confidence halved, hidden from scoring until reactivated."
+    }
+  }
+}

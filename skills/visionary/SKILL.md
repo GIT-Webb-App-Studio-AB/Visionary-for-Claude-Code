@@ -63,6 +63,9 @@ Generate the component with motion as a first-class concern, not an afterthought
 - Prefer CSS-native where possible: `@starting-style` (Baseline 2024), `animation-timeline: view()` / `scroll()`, cross-document `@view-transition { navigation: auto }` for MPA stacks (Astro, Laravel, Nuxt)
 - Use `linear()` easing for complex curves when CSS suffices over JS animation
 - Ensure reduced-motion safety: all animations respect `prefers-reduced-motion` (WCAG 2.3.3) AND provide pause/stop controls for anything > 5s (WCAG 2.2.2)
+- **Cascade discipline (Sprint 4 — Baseline 2026)**: every generated top-level stylesheet opens with `@layer reset, tokens, base, components, variants, utilities, overrides;`. Component styles sit inside `@scope (.vn-xxx) to (...)` blocks. Form controls default to `field-sizing: content; min-block-size: 3lh;` with an `@supports` fallback. Foreground colours that must hit AA on arbitrary backgrounds use `contrast-color()` with a token-driven fallback. See `stack-guidelines.md` "Canonical CSS Cascade" + "Canonical Form Controls" + "Canonical Colour Contrast" sections.
+- **Popover + anchor primitives (Sprint 4)**: menus, tooltips, and dropdown content use `popover="auto"` + `anchor-name` / `position-anchor` + `commandfor` — zero JavaScript for open/close/position. Reach for `skills/visionary/partials/popover-anchor.css.md` before re-implementing float-positioning in React. Provide an `@supports (position-anchor: --x)` progressive fallback for pre-Baseline browsers.
+- **View transitions (Sprint 4)**: card→detail patterns set `view-transition-name` per morphed element. Navigations run through `document.startViewTransition(() => router.push(...))` when the API exists; straight-fallback to `router.push()` otherwise. Always emit the `@media (prefers-reduced-motion: reduce) { ::view-transition-group(*) { animation: none } }` guard.
 - Output: complete, runnable component file — no placeholders, no TODOs
 
 ### Stage 4 — Visual Critique Loop
@@ -79,13 +82,80 @@ After writing the component file, `hooks/scripts/capture-and-critique.mjs` fires
 5. Convergence abort: if round N score < round N-1 by >0.3, set `convergence_signal:true` and stop
 6. Final scores are shown to the user as a design quality receipt
 
-### Stage 5 — Taste Update
-If the user rejects the output or requests significant changes:
-1. `hooks/scripts/update-taste.mjs` fires on `UserPromptSubmit` to detect rejection/approval phrases
-2. The pattern is written to `system.md` as a negative taste calibration entry
-3. Future generations in this session and project automatically avoid the rejected pattern
-4. Example entry: `AVOID: glassmorphism with dark backgrounds for this project — user rejected 2025-04-12`
-5. After 3+ rejections of the same direction, that direction is **permanently flagged** and excluded from the candidate set unless re-requested explicitly
+### Stage 5 — Taste Update (Sprint 05 rewrite)
+Two parallel signal paths feed the taste profile after generation:
+
+**Active signal:** `hooks/scripts/update-taste.mjs` fires on every `UserPromptSubmit`:
+1. Detects rejection / approval phrases in the turn via `hooks/scripts/lib/taste-extractor.mjs`.
+2. Extracts structured facts matching `skills/visionary/schemas/taste-fact.schema.json`.
+3. Appends new facts to `taste/facts.jsonl` OR upgrades existing fact evidence (dedup via scope + signal key).
+4. Captures `/variants`-picks ("pick A", "go with B", "take #2") as taste-pairs in `taste/pairs.jsonl`.
+5. Legacy `system.md` is auto-migrated to `taste/facts.jsonl` on first hook tick. After migration, `system.md` becomes read-only legacy (ignored by the skill).
+
+**Passive signal:** `hooks/scripts/harvest-git-signal.mjs` runs at `SessionStart` (rate-limited to once per 24h):
+1. Walks files carrying the `.visionary-generated` marker (see below).
+2. For each: classifies git history — `git_kept` (untouched 7+ days → prefer +0.4 conf), `git_heavy_edit` (>50 % churn within 7 days → avoid +0.6 conf), `git_delete` (removed within 7 days → avoid +0.75 conf).
+3. Emits facts through the same dedup path as the active signal.
+
+**Fact lifecycle** — `hooks/scripts/lib/taste-aging.mjs` runs periodically:
+- `active` → `permanent` when `confidence ≥ 0.9 AND evidence.length ≥ 3 AND unique(evidence.kind) ≥ 2`
+- `active` → `decayed` when `last_seen > 30 days` with no new evidence (confidence ×0.5; delete if <0.2)
+- `decayed` → `active` on new matching evidence (reactivation, confidence floored at 0.5)
+
+**Permanent + avoid facts act as hard-blocks** — they remove candidates from Step 4 entirely. Active facts apply graduated score adjustments proportional to confidence (see `context-inference.md` Step 4.5).
+
+**All taste data is project-local** under `./taste/` — nothing leaves the machine. Opt-out: `export VISIONARY_DISABLE_TASTE=1` (see `docs/taste-privacy.md`).
+
+### `.visionary-generated` marker — required in every generated file (Sprint 05 Task 16.2)
+
+Every file you create in Stage 3 MUST begin with a header comment containing the literal token `.visionary-generated` plus five structured fields. Without this marker, `harvest-git-signal.mjs` cannot tell Visionary-authored files from user-authored files and cannot feed the passive signal loop — which cuts the flywheel in half.
+
+**Default form (TSX / JSX / TS / JS / Vue `<script>` / Svelte `<script>`):**
+
+```tsx
+/**
+ * .visionary-generated
+ * style: <style-id from _index.json>
+ * brief: "<brief summary, max 80 chars>"
+ * generated_at: <ISO-8601 UTC timestamp>
+ * generation_id: <ULID or UUID>
+ */
+```
+
+**HTML / Svelte template / Vue template form:**
+
+```html
+<!--
+  .visionary-generated
+  style: <style-id>
+  brief: "<brief summary>"
+  generated_at: <ISO>
+  generation_id: <id>
+-->
+```
+
+**CSS / SCSS form:**
+
+```css
+/*
+ * .visionary-generated
+ * style: <style-id>
+ * brief: "<brief summary>"
+ * generated_at: <ISO>
+ * generation_id: <id>
+ */
+```
+
+**Rules:**
+- The marker must be the very first thing in the file — no blank lines above it. `harvest-git-signal.mjs` only reads the first 1 KB.
+- `style` is the canonical style id from `skills/visionary/styles/_index.json` (lowercase, hyphenated — e.g. `bauhaus-dessau`, not `Bauhaus (Dessau)`).
+- `brief` is a short human-readable summary, not the full prompt.
+- `generated_at` is the moment the file was written. Use `new Date().toISOString()`.
+- `generation_id` is any unique token. A ULID from `hooks/scripts/lib/taste-io.mjs` is ideal; a UUID works too.
+
+**Why the user might strip the marker:** it is a comment block — nothing enforces its presence post-generation. Users who dislike the file will delete it (strongest `git_delete` signal); users who love it will keep it (`git_kept` signal). Users who strip ONLY the marker silently opt out of the passive signal; the rest of the flow still works.
+
+**Applied uniformly across all 15 stacks** — React / Next.js / Vue / Nuxt / Svelte / Angular / Astro / SolidJS / Lit / Laravel / Flutter / SwiftUI / Jetpack Compose / React Native / Vanilla JS. `stack-guidelines.md` references this section; every stack-specific generator uses the marker format declared here.
 
 ---
 
@@ -99,7 +169,10 @@ Load these files on demand — do not load all at once:
 | `design-reasoning.md` | Stage 2: always |
 | `motion-tokens.ts` | Stage 3: motion system needed |
 | `typography-matrix.md` | Stage 2: typography pairing needed |
-| `critique-schema.md` | Stage 4: scoring dimensions reference |
+| `critique-schema.md` | Stage 4: scoring dimensions reference + evidence-anchoring rules |
+| `../../docs/critique-principles.md` | Stage 4: evidence-over-vibes principle (why every score below 7 needs mechanical citation) |
+| `schemas/critique-output.schema.json` | Stage 4: normative output contract for the visual-critic subagent |
+| `calibration.json` | Stage 4: per-dimension linear calibration applied before threshold gating (identity when gold-set is empty) |
 | `styles/_index.md` | Stage 1: style category lookup |
 | `styles/[category]/` | Stage 1: after category is identified |
 | `product-types.md` | Stage 1: after product type detected (read only matched section) |
@@ -114,8 +187,17 @@ Never load all style category directories simultaneously. Load only the identifi
 
 Every generation must deliver:
 - Complete, runnable component (no stubs, no `// TODO`)
-- Motion tokens applied from `motion-tokens.ts`
-- `prefers-reduced-motion` media query included
+- **Motion floor (hard requirement)** — unless the detected product type is
+  long-form reading (editorial, blog post, book review, documentation):
+  - At least one `spring.*` token from `motion-tokens.ts` applied to at
+    least one entry animation or interaction, **OR**
+  - At least one CSS-first escape (`@starting-style`, `animation-timeline`,
+    `@view-transition`) applied to the primary element
+  - AND the `@media (prefers-reduced-motion: reduce)` gate that degrades
+    the chosen animation to opacity-only or no-op.
+  - For long-form reading surfaces, the correct output is **no motion** —
+    stillness is the design choice, not a gap.
+- `prefers-reduced-motion` media query included whenever motion is present
 - WCAG 2.2 AA contrast compliance on all text (≥ 4.5:1 normal, ≥ 3:1 large/UI)
 - Design quality receipt with 8-dimension scores (after critique loop)
 - If taste data exists in `system.md`: confirm avoidance of flagged patterns
@@ -124,6 +206,15 @@ Every generation must deliver:
 - **Native characters** — never transliterate or strip diacritics (å not a, ö not o, ñ not n, ü not u)
 - **Style is NOT a blocked default** unless user explicitly requested it (see Anti-Default Bias in context-inference.md)
 - If 3+ components generated in session: suggest design system export (see `design-system-export.md`)
+
+### Motion floor enforcement in the critique loop
+
+The Motion Readiness dimension in the critique loop (`agents/visual-critic.md`)
+is instructed to fail any output that violates the motion floor above for a
+non-reading surface. A failed Motion Readiness score triggers an automatic
+fix round — the generator re-emits the component with the missing spring
+token or CSS-first escape applied. This removes the historical gap where
+motion regressed below the other dimensions in v1.3.0 benchmark runs.
 
 ---
 

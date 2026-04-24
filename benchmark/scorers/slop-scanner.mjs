@@ -38,5 +38,42 @@ export function scanSlop(source) {
   push('symmetric-padding-no-rhythm', symPad >= 3 && axisPad === 0);
   push('neon-on-dark-untheme', /\bbg-(black|gray-950|zinc-950)\b/.test(clean) && /(shadow-(cyan|violet|fuchsia|pink|emerald)|text-(cyan|violet|fuchsia))/.test(clean));
 
+  // ── Sprint 4 patterns #27–31 ─────────────────────────────────────────────
+  // These flag generations that haven't adopted the 2026 Baseline primitives.
+  // The skill's stack-guidelines.md mandates them; slop-scanner is the
+  // mechanical check.
+
+  // #27 — stylesheet omits @layer cascade declaration.
+  // Fires only when the source clearly contains a stylesheet (@media /
+  // :root / CSS selectors inside curly braces) but no @layer ordering.
+  const hasStylesheet = /@media\b|:root\b|\bclass(Name)?\s*=\s*["']|<style\b/.test(clean);
+  const hasLayerOrder = /@layer\s+[A-Za-z_-]+\s*,\s*[A-Za-z_-]+/.test(clean);
+  const hasInlineCss = /\{\s*[\w-]+\s*:\s*[^;}]+\s*[;}]/.test(clean);
+  push('missing-layer-cascade', hasStylesheet && hasInlineCss && !hasLayerOrder);
+
+  // #28 — floating-ui imports where anchor-positioning should be used.
+  push('floating-ui-import', /from\s+['"]@floating-ui\/(react|dom|vue|core)['"]/.test(clean));
+
+  // #29 — <textarea rows={N}> without field-sizing: content
+  const hasTextarea = /<textarea\b|<\w+\s+[^>]*\basType\s*=\s*["']?textarea/.test(clean);
+  const hasRows = /\brows\s*=\s*{[^}]+}|\brows\s*=\s*["'][0-9]+["']/.test(clean);
+  const hasFieldSizing = /field-sizing\s*:\s*content|fieldSizing\s*:\s*["']content["']/.test(clean);
+  push('textarea-rows-no-field-sizing', hasTextarea && hasRows && !hasFieldSizing);
+
+  // #30 — onClick-based modal state without a commandfor fallback.
+  // Heuristic: a state-setter named after "modal|dialog|drawer|sheet|panel"
+  // in scope AND a useState line that looks like modal state AND no
+  // commandfor/popovertarget anywhere.
+  const hasModalState = /const\s+\[\s*(is[A-Z]\w*(Open|Visible|Shown)|show\w*|open\w*)\s*,/.test(clean);
+  const hasOnClickToggle = /onClick\s*=\s*{\s*\(\)\s*=>\s*set(Open|Show|Visible|Modal|Dialog|Drawer|Sheet)/i.test(clean);
+  const hasInvoker = /\bcommandfor\s*=|\bpopovertarget\s*=/.test(clean);
+  push('modal-onclick-no-invoker', hasModalState && hasOnClickToggle && !hasInvoker);
+
+  // #31 — useRef for dropdown positioning instead of position-anchor.
+  const hasUseRef = /\buseRef\b|\bref\s*=\s*{\s*\w+Ref\s*}/.test(clean);
+  const positionKeywords = /(dropdownRef|menuRef|tooltipRef|popoverRef|\bgetBoundingClientRect\b|computePosition|useFloating)/.test(clean);
+  const hasAnchorCss = /anchor-name\s*:|anchorName\s*:|position-anchor\s*:|positionAnchor\s*:/.test(clean);
+  push('useref-dropdown-position', hasUseRef && positionKeywords && !hasAnchorCss);
+
   return { count: flags.length, flags };
 }

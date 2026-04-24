@@ -1,0 +1,47 @@
+{
+  "id": "gs-NNN",
+  "brief": "<original user prompt used to generate the screenshot>",
+  "style_id": "<winning style id from skills/visionary/styles/_index.json>",
+  "viewport": "1200x800",
+  "human_scores": {
+    "rater_alpha": {
+      "hierarchy": null,
+      "layout": null,
+      "typography": null,
+      "contrast": null,
+      "distinctiveness": null,
+      "brief_conformance": null,
+      "accessibility": null,
+      "motion_readiness": null,
+      "craft_measurable": null
+    },
+    "rater_beta": {
+      "hierarchy": null,
+      "layout": null,
+      "typography": null,
+      "contrast": null,
+      "distinctiveness": null,
+      "brief_conformance": null,
+      "accessibility": null,
+      "motion_readiness": null,
+      "craft_measurable": null
+    },
+    "rater_gamma": {
+      "hierarchy": null,
+      "layout": null,
+      "typography": null,
+      "contrast": null,
+      "distinctiveness": null,
+      "brief_conformance": null,
+      "accessibility": null,
+      "motion_readiness": null,
+      "craft_measurable": null
+    }
+  },
+  "consensus": null,
+  "consensus_confidence": "pending",
+  "dimension_spread": null,
+  "captured_at": null,
+  "captured_by": null,
+  "notes": "Fill human_scores first; compute consensus (median) and dimension_spread (max - min) once all three raters have scored. consensus_confidence = 'tight' when every dimension_spread <= 2, else 'divergent'."
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/taste-pair.schema.json",
+  "title": "Taste pair",
+  "description": "Structured storage contract for taste/pairs.jsonl. One pair = one user-picked variant plus the rejected siblings from a single /variants session. Consumed by FSPO few-shot injection in context-inference.md Step 4 — the retrieval stage selects top-N pairs under similar context and injects them as in-prompt taste anchors.",
+  "type": "object",
+  "required": ["id", "chosen", "rejected", "context", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ULID (Crockford-base32, 26 chars). Time-sortable.",
+      "pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "chosen": {
+      "type": "object",
+      "description": "The variant the user picked. variant_index refers to the position in the /variants output (0 = variant A, 1 = variant B, 2 = variant C).",
+      "required": ["style_id", "variant_index"],
+      "additionalProperties": false,
+      "properties": {
+        "style_id": {
+          "type": "string",
+          "description": "Canonical style id from _index.json.",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "variant_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        }
+      }
+    },
+    "rejected": {
+      "type": "array",
+      "description": "Variants the user saw but did NOT pick in the same round. At least one entry — a pair with no alternatives is not a taste signal, it's a single pick.",
+      "minItems": 1,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["style_id", "variant_index"],
+        "additionalProperties": false,
+        "properties": {
+          "style_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "variant_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "Brief metadata that lets the FSPO retriever find similar contexts. brief_summary is LLM-compressed to ≤ 60 tokens so it stays cheap to include as a few-shot example.",
+      "required": ["brief_summary"],
+      "additionalProperties": false,
+      "properties": {
+        "brief_summary": {
+          "type": "string",
+          "description": "One-line summary of the generation brief. Example: 'dashboard for a fintech, Swedish, power-user density'.",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "product_archetype": {
+          "type": "string",
+          "description": "Detected product type (e.g. 'fintech', 'saas-b2b', 'ecommerce'). From the StyleBrief inference output.",
+          "maxLength": 60
+        },
+        "component_type": {
+          "type": "string",
+          "description": "Primary component requested (e.g. 'dashboard', 'landing', 'pricing'). Matches the keys in context-inference.md Step 2.5.",
+          "maxLength": 60
+        },
+        "audience_density": {
+          "enum": ["sparse", "balanced", "dense"],
+          "description": "The density target from the StyleBrief."
+        },
+        "motion_tier": {
+          "enum": ["Static", "Subtle", "Expressive", "Kinetic"],
+          "description": "The motion tier from the StyleBrief at capture time."
+        },
+        "brand_archetype": {
+          "type": "string",
+          "description": "One of the 12 brand archetypes (Ruler, Sage, Explorer, Creator, Innocent, Hero, Caregiver, Jester, Lover, Outlaw, Magician, Everyman).",
+          "maxLength": 20
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO-8601 UTC timestamp of the pick.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+    }
+  }
+}
