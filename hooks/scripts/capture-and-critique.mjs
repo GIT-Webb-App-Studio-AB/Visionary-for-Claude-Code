@@ -22,6 +22,9 @@ import {
   CANDIDATE_TIMEOUT_MS,
   BON_ROUND2_EXIT_CRAFT,
 } from './lib/fork-candidate.mjs';
+// Sprint 6 Task 17.4 + 18.3 + 19.2: RAG anchors, multi-agent critic, traces.
+import { buildAnchors } from './lib/rag-anchors.mjs';
+import { trace } from './lib/trace.mjs';
 
 const MAX_ROUNDS = 3;
 const CONTEXT_CAP = 10_000;
@@ -32,6 +35,15 @@ const DEBOUNCE_MS = 3_000;
 // Hard opt-out: users can disable the hook entirely via env for noisy refactors
 // or CI runs without editing hooks.json.
 const DISABLE_ENV = process.env.VISIONARY_DISABLE_CRITIQUE;
+// Sprint 6 Task 18.3: multi-critic mode. When enabled, the hook instructs
+// Claude to invoke critic-craft AND critic-aesthetic in parallel and merge
+// via hooks/scripts/lib/critic-merge.mjs instead of running the unified
+// visual-critic. Default OFF during Sprint 6 rollout — behaviour change is
+// material and we want to validate incrementally.
+const MULTI_CRITIC = (() => {
+  const v = process.env.VISIONARY_MULTI_CRITIC;
+  return v === '1' || v === 'true' || v === 'TRUE';
+})();
 
 // ── Read stdin JSON ──────────────────────────────────────────────────────────
 function readStdin() {
@@ -387,6 +399,91 @@ const resilienceStep = hasKit ? `
     d. Feed score + breakdown into critic-craft as the 10th dimension; top_3_fixes entries citing content_resilience MUST use \`evidence.type: "metric"\` with values drawn from the scorer's breakdown.`
   : '';
 
+// ── Sprint 6 Task 17.4: RAG-anchor block ──────────────────────────────────
+// Built from taste/accepted-examples.jsonl + the current brief. On a fresh
+// install the brief cache file is empty and we fall back to a filename-
+// based weak-brief; the anchor builder then enters cold-start mode and
+// returns a designer-pack fallback.
+//
+// Brief inference precedence:
+//   1. .visionary-cache/last-variants-brief.json → .brief
+//   2. .visionary-cache/last-user-prompt.txt
+//   3. filename derivation (snake-case → space-separated words)
+function inferBrief() {
+  const variantsBriefPath = join(cacheDir, 'last-variants-brief.json');
+  if (existsSync(variantsBriefPath)) {
+    try {
+      const j = JSON.parse(readFileSync(variantsBriefPath, 'utf8'));
+      if (typeof j?.brief === 'string' && j.brief.length > 3) return j.brief;
+    } catch { /* corrupt cache — fall through */ }
+  }
+  const promptPath = join(cacheDir, 'last-user-prompt.txt');
+  if (existsSync(promptPath)) {
+    try {
+      const txt = readFileSync(promptPath, 'utf8').trim();
+      if (txt.length > 3) return txt.slice(0, 500);
+    } catch { /* ignore */ }
+  }
+  // Filename fallback: strip extension, decamel, replace separators with spaces.
+  const base = filePath.split(/[\\/]/).pop() || filePath;
+  return base
+    .replace(/\.(tsx?|jsx?|vue|svelte|html)$/, '')
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+}
+
+const inferredBrief = inferBrief();
+
+// Build RAG anchor block. Always safe: cold-start mode returns a designer-
+// pack fallback, opt-out returns empty, so we can splice the output in
+// unconditionally.
+const ragResult = buildAnchors({
+  briefSummary: inferredBrief,
+  projectRoot: cwd,
+  k: 3,
+});
+const ragSection = ragResult.anchor_text
+  ? `\n\n${ragResult.anchor_text}`
+  : '';
+
+// Sprint 6 Task 18.3: when multi-critic mode is on, instruct Claude to
+// invoke critic-craft AND critic-aesthetic in parallel and merge their
+// outputs via critic-merge.mjs. Ownership partition lives in that module;
+// dimensions each critic owns are documented in agents/critic-{craft,aesthetic}.md.
+const criticMergePath = join(repoRoot, 'hooks', 'scripts', 'lib', 'critic-merge.mjs');
+const craftAgentPath = join(repoRoot, 'agents', 'critic-craft.md');
+const aestheticAgentPath = join(repoRoot, 'agents', 'critic-aesthetic.md');
+const multiCriticSection = MULTI_CRITIC
+  ? [
+      '',
+      'MULTI-CRITIC MODE (Sprint 6 Item 18 — VISIONARY_MULTI_CRITIC=1):',
+      `Replace the visual-critic invocation in step 8 with TWO parallel subagent calls:`,
+      `  8a. Invoke critic-craft (${craftAgentPath}) with the full input bundle; it scores hierarchy, layout, typography, contrast, accessibility, craft_measurable, content_resilience and emits null on the three aesthetic dimensions.`,
+      `  8b. Invoke critic-aesthetic (${aestheticAgentPath}) with the same bundle; it scores distinctiveness, brief_conformance, motion_readiness and emits null on the seven craft dimensions.`,
+      `  8c. Call Promise.all-style parallel execution — both critics share the same screenshot + DOM + axe + numeric input. No context leakage between them; each gets FRESH CONTEXT per SELF-REFINE.`,
+      `  8d. Merge via \`node ${criticMergePath}\` with archetype='${ragResult.anchors?.[0]?.product_archetype || 'unknown'}' — the merge resolves any overlapping-write conflicts via skills/visionary/critic-arbitration.json and produces a single critique-output JSON. Arbitration events are logged in merge output for audit.`,
+      `Apply calibration per critic identity when committed: skills/visionary/calibration.craft.json and skills/visionary/calibration.aesthetic.json (produced by \`node scripts/calibrate.mjs --critic-identity craft|aesthetic\`). Missing files → identity passthrough.`,
+    ].join('\n')
+  : '';
+
+// Emit a trace event so visionary-stats can see which round was processed
+// and in which mode. The emission is best-effort — trace is disabled when
+// VISIONARY_NO_TRACES=1.
+try {
+  trace.sync('brief_embedded', {
+    brief_length: inferredBrief.length,
+    rag_mode: ragResult.mode,
+    rag_example_count: ragResult.example_count,
+    multi_critic: MULTI_CRITIC,
+  }, {
+    projectRoot: cwd,
+    generationId: fileHash,
+    round,
+    emitter: 'capture-and-critique',
+  });
+} catch { /* trace is best-effort */ }
+
 // Serialised calibration summary for the critique context — one line per
 // dimension so the critic can see whether scores get tilted at runtime.
 function calibrationSummary() {
@@ -436,6 +533,8 @@ const context = [
   '',
   regenMode,
   fanOutSection,
+  multiCriticSection,
+  ragSection,
   '',
   `additionalContext cap: ${CONTEXT_CAP} chars — keep critique JSON concise.${slopSection}`,
 ].join('\n');

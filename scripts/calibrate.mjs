@@ -47,12 +47,33 @@ const criticAgentPath = join(repoRoot, 'agents', 'visual-critic.md');
 const critiqueSchemaPath = join(repoRoot, 'skills', 'visionary', 'schemas', 'critique-output.schema.json');
 const DEFAULT_OUT = join(repoRoot, 'skills', 'visionary', 'calibration.json');
 
+// ── Sprint 6 Task 18.4: per-critic identity + frontier tracking ─────────────
+// When --critic-identity craft|aesthetic is passed, we fit only the
+// dimensions the specified critic owns, and emit to calibration.<identity>.json
+// by default. The other dimensions are emitted with slope=1/intercept=0
+// (identity passthrough) so apply-calibration.mjs can apply the file
+// uniformly without knowing which critic was active.
+//
+// The ownership partition must stay in sync with critic-merge.mjs — we
+// duplicate it here (rather than import) to keep calibrate.mjs runnable
+// as a standalone node script without needing to parse .mjs imports in
+// a CJS-ish environment.
+const CRAFT_DIMENSIONS = [
+  'hierarchy', 'layout', 'typography', 'contrast',
+  'accessibility', 'craft_measurable', 'content_resilience',
+];
+const AESTHETIC_DIMENSIONS = [
+  'distinctiveness', 'brief_conformance', 'motion_readiness',
+];
+
 // ── Config ──────────────────────────────────────────────────────────────────
-const DIMENSIONS = [
+const DIMENSIONS_UNIFIED = [
   'hierarchy', 'layout', 'typography', 'contrast',
   'distinctiveness', 'brief_conformance', 'accessibility', 'motion_readiness',
-  'craft_measurable',
+  'craft_measurable', 'content_resilience',
 ];
+// Backwards-compat alias: pre-Sprint-6 code referenced DIMENSIONS directly.
+const DIMENSIONS = DIMENSIONS_UNIFIED;
 const FITTED_MIN_ENTRIES = 10;
 const SPEARMAN_WARN_THRESHOLD = 0.6;
 
@@ -62,10 +83,24 @@ function flagValue(n) {
   const i = process.argv.indexOf(`--${n}`);
   return i === -1 ? null : process.argv[i + 1];
 }
-const OUT_PATH = flagValue('out') || DEFAULT_OUT;
+const CRITIC_IDENTITY = (flagValue('critic-identity') || 'unified').toLowerCase();
+if (!['unified', 'craft', 'aesthetic'].includes(CRITIC_IDENTITY)) {
+  console.error(`[calibrate] unknown --critic-identity "${CRITIC_IDENTITY}" (expected unified|craft|aesthetic)`);
+  process.exit(1);
+}
+const OWNED_DIMENSIONS = CRITIC_IDENTITY === 'craft'
+  ? CRAFT_DIMENSIONS
+  : (CRITIC_IDENTITY === 'aesthetic' ? AESTHETIC_DIMENSIONS : DIMENSIONS_UNIFIED);
+const OUT_PATH = flagValue('out') || defaultOutForIdentity(CRITIC_IDENTITY);
 const DRY_RUN = hasFlag('dry-run');
 const CHECK_MODE = hasFlag('check');
 const VERBOSE = hasFlag('verbose');
+const UPDATE_FRONTIER = !hasFlag('no-frontier') && !DRY_RUN && !CHECK_MODE;
+
+function defaultOutForIdentity(id) {
+  if (id === 'unified') return DEFAULT_OUT;
+  return join(repoRoot, 'skills', 'visionary', `calibration.${id}.json`);
+}
 
 // ── Prompt hash — must match the hash the hook emits so runtime can trust the fit ──
 function computePromptHash() {
@@ -232,6 +267,9 @@ function roundTo(v, p) {
 }
 
 // ── Build calibration.json ──────────────────────────────────────────────────
+// When critic-identity != 'unified', non-owned dimensions get identity
+// passthrough (slope=1/intercept=0/ρ=null). This lets apply-calibration.mjs
+// consume the file without caring which critic produced the scores.
 function buildCalibration(entries, promptHash) {
   const usable = entries.filter((e) => !e.skip);
   const status = usable.length === 0
@@ -241,8 +279,9 @@ function buildCalibration(entries, promptHash) {
   const perDimension = {};
   const warnings = [];
 
-  for (const dim of DIMENSIONS) {
-    if (status === 'identity_fallback') {
+  for (const dim of DIMENSIONS_UNIFIED) {
+    const owned = OWNED_DIMENSIONS.includes(dim);
+    if (!owned || status === 'identity_fallback') {
       perDimension[dim] = {
         slope: 1, intercept: 0,
         spearman_rho: null,
@@ -250,6 +289,7 @@ function buildCalibration(entries, promptHash) {
         pair_count: 0,
         tight_pair_count: 0,
         low_correlation: false,
+        ...(owned ? {} : { not_owned_by: CRITIC_IDENTITY }),
       };
       continue;
     }
@@ -267,6 +307,7 @@ function buildCalibration(entries, promptHash) {
     schema_version: '1.0.0',
     generated_at: new Date().toISOString(),
     status,
+    critic_identity: CRITIC_IDENTITY,
     entry_counts: {
       total: entries.length,
       usable: usable.length,
@@ -279,7 +320,7 @@ function buildCalibration(entries, promptHash) {
 }
 
 // ── Main ────────────────────────────────────────────────────────────────────
-function main() {
+async function main() {
   const promptHash = computePromptHash();
   const entries = loadGoldSet();
   const calibration = buildCalibration(entries, promptHash);
@@ -333,6 +374,41 @@ function main() {
 
   writeFileSync(OUT_PATH, serialised, 'utf8');
   console.error(`[calibrate] wrote ${OUT_PATH} (${calibration.status}, ${calibration.entry_counts.usable} usable entries)`);
+
+  // ── Sprint 6 Task 19.4: Pareto frontier update ─────────────────────────
+  // Only propose a frontier update when we have a real fit — identity
+  // fallback tells us nothing about prompt quality. The frontier module
+  // handles its own deduplication and supersession bookkeeping.
+  if (UPDATE_FRONTIER && calibration.status !== 'identity_fallback') {
+    try {
+      // Dynamic import to avoid loading the pareto module when the user
+      // ran --dry-run / --check — those paths shouldn't touch project-
+      // local state.
+      const { proposeFrontierUpdate } = await import(join(repoRoot, 'hooks', 'scripts', 'lib', 'pareto.mjs').replace(/\\/g, '/'));
+      const rhoMap = {};
+      for (const [dim, fit] of Object.entries(calibration.per_dimension)) {
+        if (typeof fit.spearman_rho === 'number') rhoMap[dim] = fit.spearman_rho;
+      }
+      const result = proposeFrontierUpdate({
+        criticIdentity: CRITIC_IDENTITY,
+        promptHash,
+        sampleCount: calibration.entry_counts.usable,
+        spearmanRhoPerDim: rhoMap,
+        calibrationPath: OUT_PATH,
+        notes: calibration.warnings.slice(0, 5),
+      });
+      if (VERBOSE) {
+        if (result.added) {
+          console.error(`[calibrate] pareto: added entry ${result.entry.id} wins on ${result.entry.wins_on_dimensions.join(', ')}`);
+          if (result.superseded.length) console.error(`[calibrate] pareto: superseded ${result.superseded.join(', ')}`);
+        } else {
+          console.error(`[calibrate] pareto: skipped (${result.skipped_reason})`);
+        }
+      }
+    } catch (err) {
+      console.error(`[calibrate] pareto: non-fatal — ${err.message}`);
+    }
+  }
 }
 
 main();

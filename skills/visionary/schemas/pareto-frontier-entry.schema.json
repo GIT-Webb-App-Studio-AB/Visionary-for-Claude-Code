@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/pareto-frontier-entry.schema.json",
+  "title": "Pareto frontier entry (critic-prompt evolution)",
+  "description": "One line in .visionary/pareto/frontier.jsonl. Tracks critic-prompt versions that hold the current best fit on at least one scoring dimension. Future-facing: Sprint 7+ GEPA-style prompt evolution will mutate prompts and select toward the frontier. For Sprint 6 the schema + writer exist so calibration runs can start accumulating entries. A separate entry per critic-identity is the norm — craft and aesthetic frontiers are tracked independently.",
+  "type": "object",
+  "required": ["id", "critic_identity", "prompt_hash", "wins_on_dimensions", "sample_count", "added_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "ULID unique across the frontier file."
+    },
+    "critic_identity": {
+      "enum": ["craft", "aesthetic", "unified"],
+      "description": "Which critic this entry's prompt is for. 'unified' is the pre-Sprint-6 single-critic prompt; 'craft' and 'aesthetic' are the split personas introduced in Sprint 6 Item 18."
+    },
+    "prompt_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{16,64}$",
+      "description": "sha256 of the agent file + schema bytes at calibration time. Must equal the hash echoed by the critic's output and used by runtime calibration matching."
+    },
+    "wins_on_dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "hierarchy", "layout", "typography", "contrast",
+          "distinctiveness", "brief_conformance", "accessibility",
+          "motion_readiness", "craft_measurable", "content_resilience"
+        ]
+      },
+      "description": "Dimensions where this prompt achieves the highest Spearman ρ against gold-set consensus compared to all other entries in the frontier for the same critic_identity. One prompt can win on multiple dimensions; a prompt with an empty wins list is dropped from the frontier."
+    },
+    "sample_count": {
+      "type": "integer",
+      "minimum": 3,
+      "description": "Number of gold-set entries used to fit this prompt's calibration. Must be >= 3 for Spearman to be computable. Sprint 6 treats <10 as 'degraded' — entries are retained but flagged."
+    },
+    "spearman_rho_per_dim": {
+      "type": "object",
+      "description": "Per-dimension Spearman rank correlation between this prompt's raw scores and gold-set human consensus. Null values appear for dimensions where the critic emits null scores by design (e.g. craft_measurable when numeric scorer is disabled, content_resilience when no visionary-kit.json exists).",
+      "additionalProperties": {
+        "type": ["number", "null"],
+        "minimum": -1,
+        "maximum": 1
+      }
+    },
+    "calibration_path": {
+      "type": "string",
+      "description": "Relative path to the calibration JSON that accompanied this prompt at the time of addition. Lets us reproduce the scoring transform later."
+    },
+    "added_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp when this entry was added to the frontier."
+    },
+    "superseded_by": {
+      "type": "string",
+      "description": "ULID of a later frontier entry that now holds the dimensions this entry used to win on. Written by the pareto module when a new prompt beats this one on all of its formerly-winning dimensions; used for audit rather than eviction — entries stay on disk for replay/analysis."
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form annotations from the calibration run (warnings, degraded-mode flags, reviewer comments)."
+    }
+  }
+}
