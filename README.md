@@ -69,6 +69,54 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 ---
 
+## What's new — post-1.3.1 (Sprint 1–4)
+
+The working branch on private adds four quality-lift layers on top of the
+1.3.1 baseline. All are dependency-free, toggleable via env, and backed by
+`node --test`-level unit tests.
+
+- **Styles index + embeddings** — `skills/visionary/styles/_index.json`
+  (202 styles × structured metadata) and `_embeddings.json` (8-axis
+  aesthetic vectors) let Stages 1–3 of the selection algorithm run as
+  deterministic filters over pre-built data instead of loading every
+  style file into the LLM call. `docs/style-embeddings.md` documents the
+  axes and override workflow.
+- **Numeric critique + calibration** — `benchmark/scorers/numeric-aesthetic-scorer.mjs`
+  emits six deterministic 0..1 sub-scores (contrast entropy, gestalt
+  grouping, typographic rhythm, negative-space ratio, color harmony,
+  composite). `scripts/calibrate.mjs` fits a per-dimension linear
+  calibration against a gold-set. Evidence-anchored critique (`agents/visual-critic.md`
+  rule of seven) forbids sub-7 scores without a mechanical citation.
+- **Best-of-N refine** — `agents/visual-verifier.md` picks between three
+  parallel fix candidates (different temperature + instruction profiles)
+  via pairwise voting. `hooks/scripts/lib/fork-candidate.mjs` handles
+  the scaffolding; toggleable via `VISIONARY_DISABLE_BON=1`. Round 2
+  auto-exits when the winner clears calibrated craft_measurable ≥ 7.5.
+- **Orthogonal `/variants`** — three variants are now required to
+  clear a cosine-distance floor of 0.6 in the 8-axis embedding space.
+  `hooks/scripts/lib/orthogonal-variants.mjs` implements the relaxation
+  ladder (0.6 → 0.5 → 0.4 → fallback) so narrow briefs still get usable
+  output instead of three near-duplicates.
+- **Baseline-2026 web primitives in generation** — `@layer` cascade
+  discipline, `@scope` component isolation, popover / anchor / invoker
+  primitives (zero-JS menus + tooltips + dialogs), same-document View
+  Transitions, `field-sizing: content`, `contrast-color()`, `shape()`
+  presets, and scroll-driven animations with dual `@supports` +
+  `prefers-reduced-motion` guards. See `skills/visionary/stack-guidelines.md`
+  canonical sections and `skills/visionary/partials/popover-anchor.css.md`.
+- **Slop catalogue expansion** — patterns #27–#31 in
+  `benchmark/scorers/slop-scanner.mjs` detect missing `@layer`,
+  `@floating-ui/*` imports where anchor-positioning fits, `<textarea
+  rows={N}>` without `field-sizing`, onClick modals without
+  `commandfor`, and `useRef` dropdown positioning.
+
+Migration impact: nothing in the 1.3.1 public behaviour changes
+automatically. BoN is off until `round >= 2` and there are fixes to
+apply. The 2026 primitives are additive — pre-2026 browsers still get
+valid output via the `@supports` fallbacks.
+
+---
+
 ## What makes it different
 
 | Feature | frontend-design (Anthropic) | UI/UX Pro Max | 21st.dev Magic | Claude Design (Anthropic) | **visionary-claude** |
