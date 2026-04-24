@@ -152,7 +152,12 @@ In a Claude Code session, describe any UI task or use one of:
 
 4. **Visual Critique Loop** — Playwright screenshots the rendered output at 1200×800 (+ 375 mobile if responsive), injects `axe-core` for deterministic accessibility scoring, and runs the visual-critic agent on 8 dimensions: Hierarchy, Layout, Typography, Contrast (WCAG + APCA), Distinctiveness, Brief Conformance, Accessibility (60% axe-weighted), Motion Readiness. Detects 26 slop patterns (20 deterministic + 6 vision-based). Runs up to 3 rounds. Fresh-context SELF-REFINE pattern per round. Aborts on > 0.3 regression.
 
-5. **Taste Calibration** — Reject a style and `system.md` records it. Approve a style and it gets reinforced. After 3 rejections of the same direction, the style is **permanently flagged** and excluded from the candidate set.
+5. **Taste Calibration** — Structured taste flywheel under `./taste/`:
+   - **Active signal:** rejection / approval phrasing in your turns is extracted into `taste/facts.jsonl` (one structured fact per line, typed by scope + target + direction + confidence).
+   - **Passive signal:** `harvest-git-signal.mjs` runs at session start, classifies each `.visionary-generated` file as kept / heavy-edit / deleted from git history, and feeds those as facts with graduated confidence.
+   - **Pairwise signal:** when you pick from a `/variants` output, the choice + rejected siblings are stored in `taste/pairs.jsonl` and used as FSPO few-shot anchors in Step 4 of the selection algorithm.
+   - **Lifecycle:** `active` → `permanent` after 3+ evidence across 2+ kinds with confidence ≥ 0.9 → hard-block on match. `active` → `decayed` after 30 days of no new evidence → confidence ×0.5, hidden until reactivated.
+   - **Inspect + export:** `/visionary-taste status | show | forget | reset | age | export | import | browse`. See [`docs/taste-flywheel.md`](docs/taste-flywheel.md) and [`docs/taste-privacy.md`](docs/taste-privacy.md). Full opt-out: `export VISIONARY_DISABLE_TASTE=1`.
 
 ### 8-step selection algorithm
 
@@ -166,8 +171,8 @@ In a Claude Code session, describe any UI task or use one of:
  ~14 styles
   | Step 3: Blocked default removal (fintech-trust, saas-b2b-dashboard, dark+gradient)
  ~10 styles
-  | Step 4: Explicit scoring rubric (5 signals × 1–5)
-  | Step 4.5: Taste profile adjustment (from system.md — permanent-flag respect)
+  | Step 4: Explicit scoring rubric (5 signals × 1–5) + FSPO few-shot from taste/pairs.jsonl
+  | Step 4.5: Structured taste adjustment (taste/facts.jsonl — graduated per flag × confidence)
  Top 5
   | Step 5: Context-aware transplantation bonus (+0% to +35%)
   | Step 6: Variety penalty (session + cross-session with 7-day decay)
@@ -181,8 +186,8 @@ In a Claude Code session, describe any UI task or use one of:
 - Cross-domain transplantation is systematically preferred over obvious matches
 - Generic styles (fintech-trust, saas-b2b-dashboard, dark-mode+gradient) are blocked
 - Recently-used styles decay over 7 days before becoming eligible again
-- User rejections and approvals persist and influence future selections
-- Permanently-flagged styles are excluded from both single-pick and `/variants` outputs
+- Taste signals (active + passive git + pairwise) accumulate with confidence + evidence counts, not a binary flag
+- Permanent-flagged styles are hard-blocked from both single-pick and `/variants` outputs; active facts apply graduated score adjustments proportional to confidence
 
 ---
 
@@ -318,6 +323,10 @@ node scripts/export-dtcg-tokens.mjs
 
 - [Installation guide](docs/installation.md) — GitHub, local, session-only, enterprise/air-gapped
 - [End-to-end tests](docs/e2e-tests.md) — 5 acceptance test scenarios
+- [Taste flywheel](docs/taste-flywheel.md) — active + passive + pairwise signals, aging rules, schema reference (Sprint 05)
+- [Taste privacy](docs/taste-privacy.md) — what's stored, where, and how to opt out (`VISIONARY_DISABLE_TASTE=1`)
+- [Style embeddings](docs/style-embeddings.md) — 8-dim aesthetic embeddings used by `/variants` orthogonal selection and FSPO sampling
+- [Critique principles](docs/critique-principles.md) — 8-dimension scoring rubric and the multi-agent critic layout (Sprint 06)
 - [Content kits](docs/content-kits.md) — `visionary-kit.json` for generations that survive real data (Sprint 07)
 - [Taste dotfile spec](docs/taste-dotfile-spec.md) — `.taste` file format for shareable taste profiles (Sprint 07)
 - [Taste index](docs/taste-index.md) — community-hosted profile registry and the `/visionary-taste browse` + `import` flow
