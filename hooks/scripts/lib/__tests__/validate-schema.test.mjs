@@ -32,12 +32,12 @@ function cleanCritique() {
     scores: {
       hierarchy: 8.5, layout: 8.0, typography: 7.5, contrast: 9.0,
       distinctiveness: 8.2, brief_conformance: 8.8, accessibility: 9.5, motion_readiness: 8.0,
-      craft_measurable: 7.6,
+      craft_measurable: 7.6, content_resilience: null,
     },
     confidence: {
       hierarchy: 4, layout: 4, typography: 5, contrast: 5,
       distinctiveness: 4, brief_conformance: 4, accessibility: 5, motion_readiness: 4,
-      craft_measurable: 4,
+      craft_measurable: 4, content_resilience: 3,
     },
     top_3_fixes: [
       {
@@ -53,6 +53,9 @@ function cleanCritique() {
     prompt_hash: 'sha256:abcd1234abcd1234',
   };
 }
+
+// Helper for tests that need a valid hex prompt_hash beyond the 16-char fixture.
+const FIXTURE_PROMPT_HASH = 'sha256:abcd1234abcd1234';
 
 test('critique schema: clean critique validates', () => {
   const res = validate(cleanCritique(), critiqueSchema);

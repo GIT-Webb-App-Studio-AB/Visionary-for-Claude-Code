@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Sprint 6 Task 18.3 — archetype-to-critic-preference table. When critic-craft and critic-aesthetic disagree on an overlapping concern (rare; their dimensions are orthogonal by design) the merge step in hooks/scripts/lib/critic-merge.mjs consults this table to pick a winner. 'craft' means the conservative, legibility-first critic wins; 'aesthetic' means the taste judge wins.\n\nOrder of resolution:\n  1. Exact archetype match  → its preferred_critic applies.\n  2. Family-level match (archetypes[].matches_any) → that family's preference.\n  3. default preferred_critic applies.\n\nThe table is opinionated but not load-bearing — conflicts are <1 per 10-prompt suite in practice. Treat it as a tiebreaker, not a directive.",
+  "default": {
+    "preferred_critic": "craft",
+    "reason": "When in doubt, legibility and accessibility win over taste. The aesthetic critic can escalate via severity=blocker on a distinctiveness finding if the design is actively generic."
+  },
+  "archetypes": [
+    {
+      "name": "dashboard",
+      "matches_any": ["dashboard", "admin", "admin-panel", "analytics", "monitoring", "ops-tool"],
+      "preferred_critic": "craft",
+      "reason": "Density + affordance clarity trump novelty. Broken typography on a dashboard is worse than boring typography."
+    },
+    {
+      "name": "documentation",
+      "matches_any": ["docs", "documentation", "api-reference", "manual", "wiki", "knowledge-base"],
+      "preferred_critic": "craft",
+      "reason": "Readers come for information, not aesthetic thrills. Hierarchy + typography + contrast are load-bearing."
+    },
+    {
+      "name": "settings-forms",
+      "matches_any": ["settings", "form", "wizard", "checkout", "signup", "onboarding"],
+      "preferred_critic": "craft",
+      "reason": "Task-completion flows must not sacrifice clarity for flair. Focus states, affordances, and layout win."
+    },
+    {
+      "name": "editorial",
+      "matches_any": ["editorial", "magazine", "article", "blog", "longform", "essay"],
+      "preferred_critic": "aesthetic",
+      "reason": "The design IS the product. Generic editorial loses to distinctive editorial every time."
+    },
+    {
+      "name": "marketing",
+      "matches_any": ["marketing", "landing", "hero", "campaign", "product-page", "pricing-page"],
+      "preferred_critic": "aesthetic",
+      "reason": "First-impression media — distinctiveness is a conversion-level concern, not cosmetic."
+    },
+    {
+      "name": "portfolio",
+      "matches_any": ["portfolio", "personal-site", "agency-showcase", "creative"],
+      "preferred_critic": "aesthetic",
+      "reason": "Evidence of taste is the product. Craft issues can be blocker-escalated but aesthetic owns the floor."
+    },
+    {
+      "name": "experimental",
+      "matches_any": ["brutalist", "experimental", "neubrutalism", "anti-design", "bauhaus", "memphis"],
+      "preferred_critic": "aesthetic",
+      "reason": "Deliberate taste choices violate conservative craft norms by design — unless contrast drops below WCAG AA (APCA Lc < 45 body text), in which case the escalation below triggers."
+    }
+  ],
+  "escalation_overrides": [
+    {
+      "rule": "illegibility-wins-regardless",
+      "condition": "When critic-craft's contrast OR accessibility score is below 4 AND severity is blocker, craft wins regardless of archetype. Illegibility is not a taste choice.",
+      "applies_to_all_archetypes": true
+    },
+    {
+      "rule": "no-motion-on-reduced-motion",
+      "condition": "When critic-aesthetic flags missing prefers-reduced-motion with severity=blocker, aesthetic wins even on craft-preferred archetypes. Motion accessibility is an aesthetic-owned dimension AND a WCAG concern.",
+      "applies_to_all_archetypes": true
+    }
+  ]
+}

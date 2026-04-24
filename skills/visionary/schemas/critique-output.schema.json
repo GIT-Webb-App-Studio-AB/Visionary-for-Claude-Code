@@ -167,8 +167,8 @@
     },
     "prompt_hash": {
       "type": "string",
-      "pattern": "^sha256:[0-9a-f]{16,64}$",
-      "description": "SHA-256 of the visual-critic system prompt + schema bytes that produced this critique (Sprint 3 Task 9.4). Consumed by runtime calibration to detect when calibration.json was fit against a different prompt version and must not be applied."
+      "pattern": "^sha256:[0-9a-f]{16,64}(\\|\\|sha256:[0-9a-f]{16,64})*$",
+      "description": "SHA-256 of the visual-critic system prompt + schema bytes that produced this critique (Sprint 3 Task 9.4). Consumed by runtime calibration to detect when calibration.json was fit against a different prompt version and must not be applied. When two critics disagree on their prompt hash (Sprint 06 multi-critic merge), the joined form 'sha256:xxx||sha256:yyy' is permitted."
     },
     "bon_stats": {
       "type": "object",
