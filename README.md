@@ -150,7 +150,7 @@ In a Claude Code session, describe any UI task or use one of:
 
 3. **Motion-First Code** — Every component ships with Motion v12 spring tokens (`bounce` + `visualDuration`) via `motion/react`, plus CSS-first escapes (`@starting-style`, `animation-timeline: view()`, cross-document View Transitions). All motion gated on `prefers-reduced-motion` AND pause-controlled for anything > 5s (WCAG 2.2.2).
 
-4. **Visual Critique Loop** — Playwright screenshots the rendered output at 1200×800 (+ 375 mobile if responsive), injects `axe-core` for deterministic accessibility scoring, and runs the visual-critic agent on 8 dimensions: Hierarchy, Layout, Typography, Contrast (WCAG + APCA), Distinctiveness, Brief Conformance, Accessibility (60% axe-weighted), Motion Readiness. Detects 26 slop patterns (20 deterministic + 6 vision-based). Runs up to 3 rounds. Fresh-context SELF-REFINE pattern per round. Aborts on > 0.3 regression.
+4. **Visual Critique Loop** — Playwright screenshots the rendered output at 1200×800 (+ 375 mobile if responsive), injects `axe-core` for deterministic accessibility scoring, runs `benchmark/scorers/numeric-aesthetic-scorer.mjs` (Shannon entropy on CIELAB L, DBSCAN gestalt grouping, modular-scale typographic rhythm, ΔE2000 colour harmony), and invokes the visual-critic agent on **10 dimensions** (0–10 scale): Hierarchy, Layout, Typography, Contrast (WCAG + APCA), Distinctiveness, Brief Conformance, Accessibility (60 % axe-weighted), Motion Readiness, Craft Measurable (numeric-scorer composite × 10), and Content Resilience (how the component survives p50 / p95 / empty data from `visionary-kit.json`). Detects 26 slop patterns (20 deterministic + 6 vision-based). Runs up to 3 rounds. Fresh-context SELF-REFINE pattern per round. **Evidence-anchored** since Sprint 03: every top_3_fix must cite an axe rule, CSS selector, numeric metric, or coordinate — no unjustified score < 7. Aborts on > 0.3 regression.
 
 5. **Taste Calibration** — Structured taste flywheel under `./taste/`:
    - **Active signal:** rejection / approval phrasing in your turns is extracted into `taste/facts.jsonl` (one structured fact per line, typed by scope + target + direction + confidence).
@@ -326,7 +326,7 @@ node scripts/export-dtcg-tokens.mjs
 - [Taste flywheel](docs/taste-flywheel.md) — active + passive + pairwise signals, aging rules, schema reference (Sprint 05)
 - [Taste privacy](docs/taste-privacy.md) — what's stored, where, and how to opt out (`VISIONARY_DISABLE_TASTE=1`)
 - [Style embeddings](docs/style-embeddings.md) — 8-dim aesthetic embeddings used by `/variants` orthogonal selection and FSPO sampling
-- [Critique principles](docs/critique-principles.md) — 8-dimension scoring rubric and the multi-agent critic layout (Sprint 06)
+- [Critique principles](docs/critique-principles.md) — evidence-over-vibes rubric, 10-dimension scoring, multi-agent critic layout (Sprints 03 + 06)
 - [Content kits](docs/content-kits.md) — `visionary-kit.json` for generations that survive real data (Sprint 07)
 - [Taste dotfile spec](docs/taste-dotfile-spec.md) — `.taste` file format for shareable taste profiles (Sprint 07)
 - [Taste index](docs/taste-index.md) — community-hosted profile registry and the `/visionary-taste browse` + `import` flow

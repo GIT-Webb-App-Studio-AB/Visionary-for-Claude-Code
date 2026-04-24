@@ -7,6 +7,18 @@
 taste/
 system.md
 
+# Playwright MCP runtime dir (browser contexts / screenshots)
+.playwright-mcp/
+
+# Sprint 04 BoN fan-out smoke-test scratch dir — fork-candidate tests
+# occasionally seed this; nothing in it is meant to be persisted.
+benchmark/.bon-test-cache/
+
+# Per-project visionary-kit (user-curated realism data from /visionary-kit).
+# Schema + example ship under skills/visionary/schemas/ and docs/sprints/
+# artifacts/; the project's own kit stays local.
+/visionary-kit.json
+
 # ─── Internal working docs (do not ship to public remotes) ───────────────
 # Maintainer-only analysis briefs and scratch files. Commit-deny by pattern.
 Future implementation and fixes.md
