@@ -1,0 +1,39 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card-1.0.json",
+  "name": "@visionary/mcp-server",
+  "version": "1.0.0-alpha.1",
+  "description": "Design intelligence for AI dev environments. Slop-gate, motion-scoring 2.0, evidence-validation, 202+ styles, taste-summary, traces.",
+  "categories": ["design", "frontend", "code-generation", "quality"],
+  "mcp_protocol_version": "2025-06-18",
+  "tools_changed_notifications": true,
+  "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
+  "license": "Apache-2.0",
+  "vendor": {
+    "name": "GIT Webb & App Studio AB",
+    "url": "https://github.com/GIT-Webb-App-Studio-AB"
+  },
+  "tools": [
+    {
+      "name": "visionary.slop_gate",
+      "description": "Detect slop patterns in HTML/JSX/CSS source"
+    },
+    {
+      "name": "visionary.motion_score",
+      "description": "Run Motion Scoring 2.0 (6 sub-dim weighted) on source"
+    },
+    {
+      "name": "visionary.validate_evidence",
+      "description": "Validate critique-output evidence (axe/selector/metric/coord)"
+    }
+  ],
+  "resources": [
+    { "uri_template": "visionary://styles/_index" },
+    { "uri_template": "visionary://styles/{slug}" },
+    { "uri_template": "visionary://taste/summary" },
+    { "uri_template": "visionary://traces/{session_id}" }
+  ],
+  "prompts": [
+    { "name": "visionary.aesthetic_brief" },
+    { "name": "visionary.slop_explanation" }
+  ]
+}

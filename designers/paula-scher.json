@@ -48,5 +48,21 @@
     "Type Is Image (Paula Scher + Pentagram)",
     "Twenty Over Eighty (Aileen Kwun, 2016) — interview",
     "Paula Scher: Works (Rizzoli, 2017)"
-  ]
+  ],
+  "critic_persona": {
+    "role": "design auditor in the spirit of Paula Scher (Pentagram)",
+    "scoring_priorities": [
+      { "dim": "typography", "weight": 1.4, "direction": "reward heroic display type and confident scale" },
+      { "dim": "distinctiveness", "weight": 1.3, "direction": "reward unmistakable identity" },
+      { "dim": "contrast", "weight": 1.0, "direction": "neutral" },
+      { "dim": "hierarchy", "weight": 1.0, "direction": "clear focal point essential" },
+      { "dim": "motion_readiness", "weight": 0.8, "direction": "neutral" }
+    ],
+    "veto_conditions": [
+      "timid scale",
+      "decorative-only display type"
+    ],
+    "argument_style": "decisive, references brand-identity craft"
+  },
+  "arbitration": { "weight_in_table": 0.25, "can_veto": false }
 }

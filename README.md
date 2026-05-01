@@ -69,11 +69,12 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 ---
 
-## What's new — post-1.3.1 (Sprint 1–8)
+## What's new — post-1.3.1 (Sprint 1–15)
 
-Eight sprints of quality-lift work on top of the 1.3.1 baseline. All
+Fifteen sprints of quality-lift work on top of the 1.3.1 baseline. All
 additions are dependency-free, toggleable via env, and backed by
-`node --test`-level unit tests (261 pass, 0 fail at last count).
+`node --test`-level unit tests (**457 pass, 0 fail** at last count —
+279 pre-Sprint-9 + 178 added by Sprint 9–15).
 
 Roadmap overview: [`docs/sprints/README.md`](docs/sprints/README.md).
 
@@ -185,6 +186,85 @@ the source.
   for trend analysis (which patterns trigger most, which styles use
   their whitelist).
 
+### Fas 5 — Critique signal upgrades (Sprint 9, 11, 12)
+
+Three layers that lift the quality of the signal feeding the critic
+itself, so every other stage benefits.
+
+- **Motion Scoring 2.0 (Sprint 9)** — replaces the legacy single-shot
+  motion heuristic with a 6-sub-dim weighted aggregator + 5-tier
+  Maturity Model (None / Subtle / Expressive / Kinetic / Cinematic).
+  Sub-dims: easing provenance, AARS-pattern (Anticipation → Action →
+  Reaction → Settle), timing consistency, narrative arc, reduced-motion
+  compliance, cinema-grade easing. Wired into `capture-and-critique`
+  via `lib/motion/inject.mjs` so the critic must cite the exact
+  sub-dim that drags `motion_readiness` below 7. Toggle:
+  `VISIONARY_MOTION_SCORER_V2=0`. Calibration: `scripts/calibrate-motion-2.mjs`.
+- **Visual embeddings via DINOv2 ONNX (Sprint 11)** — `hooks/scripts/lib/visual/`
+  computes a DINOv2-small embedding per Playwright screenshot, cosine-
+  similarity vs curated style anchors → `visual_style_match` 0–10,
+  Mahalanobis-distance OOD-detection at 2σ. Lazy-loads `onnxruntime-web`
+  with WebGPU preference; gracefully no-ops when runtime/model is
+  absent. Setup: `node scripts/download-dinov2.mjs` + curate anchors +
+  `node scripts/build-anchors.mjs`. Toggle: `VISIONARY_VISUAL_EMBED=0`.
+- **MLLM Judge tie-breaker (Sprint 12)** — `hooks/scripts/lib/judge/`
+  invokes a multimodal Claude pass when heuristic + numeric + DINOv2
+  stack disagrees on a dimension (composite-diff ≤ 0.3, low-confidence
+  < 0.6, or heuristic↔visual conflict ≥ 1.5). Hard rule: **judge
+  cannot reject solo** — strong heuristic margin (≥ 1.5) overrides
+  judge dissent. Budget caps: 1 invocation per round, 5 per session.
+  Lazy-imports `@anthropic-ai/sdk`; falls back to "tie" when SDK or
+  `ANTHROPIC_API_KEY` is missing. Toggle:
+  `VISIONARY_MLLM_JUDGE=tie-only|on|off` (default off).
+
+### Fas 6 — Distribution beyond Claude Code (Sprint 10)
+
+`packages/mcp-server/` extracts the deterministic core to
+`@visionary/mcp-server` so Cursor / Windsurf / Cline / Zed can install
+via Smithery / npm. Three tools (`visionary.slop_gate`,
+`visionary.motion_score`, `visionary.validate_evidence`), three
+resources (`visionary://styles/...`, `visionary://taste/summary`,
+`visionary://traces/{id}`), two prompts (`aesthetic_brief`,
+`slop_explanation`). Hooks + taste-flywheel writes stay in the
+Claude Code plugin — only read access flows over MCP. Install guides
+per host live in `packages/mcp-server/INSTALL.md`. Server card at
+`.well-known/mcp/server.json` follows MCP spec 2025-06-18.
+
+### Fas 7 — Interactive editing (Sprint 13)
+
+`/visionary-motion "<intent>"` re-tunes motion tokens in place via a
+deterministic NL → adjustments map (12 vibes: energetic, softer,
+faster, slower, bouncier, calmer, kinetic, minimal, cinematic, snappy,
+layered, less-dramatic). Three patch targets: DTCG `tokens.json`,
+inline JSX (`bounce`, `visualDuration`), CSS shorthand. Runs
+`scoreMotion2` before AND after, prints a delta report. `--preview`
+flag shows the diff without writing. CLI: `scripts/visionary-motion-cli.mjs`.
+
+### Fas 8 — Multi-page consistency (Sprint 14)
+
+`scripts/governance-check.mjs` + `.husky/pre-commit` +
+`.github/workflows/visionary-governance.yml` enforce locked DTCG
+tokens at commit + CI. Detects hex / rgb / oklch / Tailwind utility
+drift relative to a `tokens/<style-id>.tokens.json` flagged with
+`$visionary.locked: true`. Three thresholds (`block` / `warn` / `off`),
+`near_match_tolerance` for soft warnings, `allowed_drifts` glob list
+for legacy escapes. Bypass: `git commit --no-verify`,
+`// visionary-governance: ignore` magic comment, or
+`drift_threshold: "warn"` in tokens.
+
+### Fas 9 — Designer-as-subagent (Sprint 15)
+
+The 5 designer packs (Rams, Kowalski, Vignelli, Scher, Greiman) gain
+a `critic_persona` block + `arbitration` block. Instead of just
+biasing the generation prompt, the pack now produces a per-dim
+contribution that joins the arbitration table alongside craft +
+aesthetic critics — Rams's "less but better" actively argues against
+your "expressive" via `hooks/scripts/lib/critics/`. Three conflict-
+resolution strategies in order: (A) designer tie-breaks craft-vs-
+aesthetic ties, (B) MLLM judge from Sprint 12, (C) user escalation.
+Default designer weight in arbitration: 0.25 (vs 1.0 each for craft +
+aesthetic). Vetoes are opt-in (`can_veto: false` for all v1 packs).
+
 ### Env-flag reference
 
 | Flag | Default | Purpose |
@@ -198,12 +278,22 @@ the source.
 | `VISIONARY_RAG_MIN_EXAMPLES` | 5 | Threshold for RAG activation (cold-start below this) |
 | `VISIONARY_DESIGNER_DEFAULT` | `rams` | Cold-start designer pack (`rams` / `kowalski` / `vignelli` / `scher` / `greiman`) |
 | `VISIONARY_SLOP_REJECT_THRESHOLD` | 2 | Slop-gate reject threshold (Sprint 8); ≥ 26 disables |
+| `VISIONARY_MOTION_SCORER_V2` | on | Set `0` to fall back to the v1 single-shot motion scorer (Sprint 9) |
+| `VISIONARY_MOTION_VERBOSE` | off | `1` prints per-dim subscores to stderr during benchmark runs (Sprint 9) |
+| `VISIONARY_VISUAL_EMBED` | on | Set `0` to skip visual_style_match dimension when DINOv2 is unavailable (Sprint 11) |
+| `VISIONARY_VISUAL_VERBOSE` | off | `1` prints ONNX runtime / model load diagnostics to stderr (Sprint 11) |
+| `VISIONARY_MLLM_JUDGE` | off | `tie-only` or `on` to enable MLLM judge tie-breaking (Sprint 12) |
+| `VISIONARY_JUDGE_MODEL` | `claude-sonnet-4-6` | Model for judge invocations (Sprint 12) |
+| `VISIONARY_JUDGE_MAX_PER_ROUND` | 1 | Hard cap on judge invocations per critique round (Sprint 12) |
+| `VISIONARY_JUDGE_MAX_PER_SESSION` | 5 | Hard cap on judge invocations per session (Sprint 12) |
 | `VISIONARY_PREVIEW_URL` | `http://localhost:3000` | Playwright target URL |
 
 Migration impact: nothing in the 1.3.1 public behaviour changes
-automatically. Multi-critic mode is opt-in. Anti-anchors require
-manual image curation; the pipeline degrades gracefully when
-`docs/slop-anchors/` has only manifests.
+automatically. Multi-critic mode, MLLM judge, and DINOv2 visual
+embeddings are opt-in (some opt-out by default). Anti-anchors require
+manual image curation; DINOv2 model + style anchors require manual
+download/curation; the pipeline degrades gracefully when any of those
+are absent.
 
 ---
 

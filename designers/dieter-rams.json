@@ -52,5 +52,21 @@
     "Dieter Rams: As Little Design as Possible (Phaidon, 2010)",
     "Less and More: The Design Ethos of Dieter Rams (Vitra, 2009)",
     "Rams (Hustwit, 2018 documentary)"
-  ]
+  ],
+  "critic_persona": {
+    "role": "design auditor in the spirit of Dieter Rams",
+    "scoring_priorities": [
+      { "dim": "hierarchy", "weight": 1.5, "direction": "demand strict hierarchy" },
+      { "dim": "contrast", "weight": 1.2, "direction": "prefer high APCA Lc" },
+      { "dim": "distinctiveness", "weight": 0.5, "direction": "prefer subtle distinction over loud" },
+      { "dim": "typography", "weight": 1.0, "direction": "neutral grotesque preferred" },
+      { "dim": "motion_readiness", "weight": 0.7, "direction": "subtle ceiling — opacity + 2px translate max" }
+    ],
+    "veto_conditions": [
+      "ornament without function",
+      "decoration that obscures content"
+    ],
+    "argument_style": "concise, evidence-anchored, avoids superlatives"
+  },
+  "arbitration": { "weight_in_table": 0.25, "can_veto": false }
 }

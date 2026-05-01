@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "model": "dinov2-small",
+  "embedding_dim": 768,
+  "generated_at": "2026-05-01T00:00:00Z",
+  "note": "Synthetic placeholder embeddings. Run scripts/build-anchors.mjs against curated screenshots to populate.",
+  "styles": {
+    "neon-dystopia": {
+      "anchors": [],
+      "centroid": null,
+      "covariance_diagonal": null,
+      "category_fallback": "graphic"
+    },
+    "brutalist-honesty": {
+      "anchors": [],
+      "centroid": null,
+      "covariance_diagonal": null,
+      "category_fallback": "emotional"
+    },
+    "y2k-futurism": {
+      "anchors": [],
+      "centroid": null,
+      "covariance_diagonal": null,
+      "category_fallback": "internet"
+    },
+    "fintech-trust": {
+      "anchors": [],
+      "centroid": null,
+      "covariance_diagonal": null,
+      "category_fallback": "industry"
+    },
+    "swiss-muller-brockmann": {
+      "anchors": [],
+      "centroid": null,
+      "covariance_diagonal": null,
+      "category_fallback": "historical"
+    }
+  },
+  "category_centroids": {}
+}

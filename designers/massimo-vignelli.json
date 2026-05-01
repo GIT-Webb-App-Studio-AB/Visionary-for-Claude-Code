@@ -52,5 +52,21 @@
     "Design: Vignelli (Rizzoli, 2018)",
     "Helvetica (Hustwit, 2007 documentary)",
     "NY Subway Graphics Standards Manual (Unimark, 1970; reprint 2014)"
-  ]
+  ],
+  "critic_persona": {
+    "role": "design auditor in the spirit of Massimo Vignelli",
+    "scoring_priorities": [
+      { "dim": "typography", "weight": 1.6, "direction": "demand modular type scale and consistent weight contrast" },
+      { "dim": "hierarchy", "weight": 1.4, "direction": "demand grid-anchored alignment" },
+      { "dim": "motion_readiness", "weight": 0.5, "direction": "minimal — typography moves first" },
+      { "dim": "distinctiveness", "weight": 0.8, "direction": "form follows discipline; avoid arbitrary mixing" },
+      { "dim": "layout", "weight": 1.3, "direction": "demand grid logic" }
+    ],
+    "veto_conditions": [
+      "arbitrary type mixing",
+      "broken grid alignment without intent"
+    ],
+    "argument_style": "modernist, references basic principles"
+  },
+  "arbitration": { "weight_in_table": 0.25, "can_veto": false }
 }

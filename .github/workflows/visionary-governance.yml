@@ -1,0 +1,55 @@
+name: Visionary Governance
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'app/**'
+      - 'components/**'
+      - '**/*.tsx'
+      - '**/*.jsx'
+      - '**/*.vue'
+      - '**/*.svelte'
+      - '**/*.css'
+      - 'tokens/**'
+
+jobs:
+  drift-check:
+    runs-on: ubuntu-latest
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run governance check
+        run: |
+          node scripts/governance-check.mjs --base "$BASE_SHA"
+        continue-on-error: false
+      - name: Post report (on failure)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        with:
+          script: |
+            const { execFileSync } = require('child_process');
+            let report = '';
+            try {
+              report = execFileSync('node', [
+                'scripts/governance-check.mjs',
+                '--base', process.env.BASE_SHA,
+                '--json',
+              ], { encoding: 'utf8' });
+            } catch (e) {
+              report = (e.stdout && e.stdout.toString()) || 'governance check failed without report';
+            }
+            const body = '## Visionary Governance: token drift detected\n\n```\n' + report.slice(0, 50000) + '\n```';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body,
+            });

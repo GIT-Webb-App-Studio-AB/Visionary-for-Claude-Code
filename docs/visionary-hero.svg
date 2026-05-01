@@ -32,7 +32,7 @@
 
   <!-- Title block -->
   <text x="60" y="90" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#FFFFFF" letter-spacing="-2.5">visionary</text>
-  <text x="60" y="118" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280" letter-spacing="0.5">Design intelligence for Claude Code · v1.3.0</text>
+  <text x="60" y="118" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280" letter-spacing="0.5">Design intelligence for Claude Code · v1.4.0-dev · Sprint 1–15</text>
 
   <!-- Gradient divider -->
   <rect x="60" y="134" width="120" height="2" fill="url(#g2)"/>
@@ -86,7 +86,11 @@
     </g>
     <g transform="translate(0, 156)">
       <rect width="6" height="6" fill="#A78BFA" rx="1" y="4"/>
-      <text x="16" y="12" fill="#9CA3AF">shadcn registry + /variants, /apply, /designer, /annotate</text>
+      <text x="16" y="12" fill="#9CA3AF">shadcn registry + /variants /apply /designer /annotate /visionary-motion</text>
+    </g>
+    <g transform="translate(0, 182)">
+      <rect width="6" height="6" fill="#C4B5FD" rx="1" y="4"/>
+      <text x="16" y="12" fill="#9CA3AF">Motion Scoring 2.0 · DINOv2 OOD · MLLM Judge · Active Governance</text>
     </g>
   </g>
 

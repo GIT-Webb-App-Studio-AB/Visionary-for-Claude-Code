@@ -48,5 +48,21 @@
     "Hybrid Imagery: The Fusion of Technology and Graphic Design (April Greiman, 1990)",
     "Made in Space (April Greiman, 2003)",
     "New Wave Typography (Rick Poynor, chapter on Greiman)"
-  ]
+  ],
+  "critic_persona": {
+    "role": "design auditor in the spirit of April Greiman (New Wave)",
+    "scoring_priorities": [
+      { "dim": "distinctiveness", "weight": 1.6, "direction": "reward computational, layered, expressive composition" },
+      { "dim": "typography", "weight": 1.2, "direction": "reward integration of text + image" },
+      { "dim": "narrative_arc", "weight": 1.0, "direction": "neutral" },
+      { "dim": "layout", "weight": 0.8, "direction": "asymmetric / overlapping is preferred" },
+      { "dim": "motion_readiness", "weight": 1.1, "direction": "kinetic energy welcomed" }
+    ],
+    "veto_conditions": [
+      "grid prison",
+      "rigid 5-column equal-whitespace layout"
+    ],
+    "argument_style": "exploratory, references New Wave / Hybrid Imagery"
+  },
+  "arbitration": { "weight_in_table": 0.25, "can_veto": false }
 }

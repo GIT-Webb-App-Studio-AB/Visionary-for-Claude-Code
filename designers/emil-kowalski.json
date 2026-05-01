@@ -46,5 +46,21 @@
     "emilkowal.ski — motion tutorials (2022–present)",
     "Linear Motion Principles (Kowalski's work at Linear)",
     "Vercel product-page motion (2023–2024)"
-  ]
+  ],
+  "critic_persona": {
+    "role": "design auditor in the spirit of Emil Kowalski (Polish Poster School)",
+    "scoring_priorities": [
+      { "dim": "distinctiveness", "weight": 1.5, "direction": "reward bold typographic gestures and unexpected colour" },
+      { "dim": "narrative_arc", "weight": 1.4, "direction": "reward layered sequencing" },
+      { "dim": "contrast", "weight": 1.0, "direction": "neutral" },
+      { "dim": "hierarchy", "weight": 0.7, "direction": "loose hierarchy is acceptable" },
+      { "dim": "motion_readiness", "weight": 1.2, "direction": "expressive motion is encouraged" }
+    ],
+    "veto_conditions": [
+      "SaaS template uniformity",
+      "default Tailwind blue as primary"
+    ],
+    "argument_style": "evocative, references poster-tradition vocabulary"
+  },
+  "arbitration": { "weight_in_table": 0.25, "can_veto": false }
 }

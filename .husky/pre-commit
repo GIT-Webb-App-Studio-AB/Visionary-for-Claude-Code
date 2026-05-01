@@ -1,0 +1,13 @@
+#!/bin/sh
+# Visionary governance — Sprint 14.
+# Blocks commits that introduce token drift relative to locked DTCG tokens.
+
+if [ -z "$SKIP_VISIONARY_GOVERNANCE" ]; then
+  node scripts/governance-check.mjs --staged
+  status=$?
+  if [ $status -ne 0 ]; then
+    exit $status
+  fi
+fi
+
+exit 0
