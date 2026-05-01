@@ -8,7 +8,13 @@ import { extractEmbedding } from './dinov2-embed.mjs';
 import { scoreStyleMatch } from './style-match.mjs';
 import { detectOod } from './ood-detect.mjs';
 
-const ENABLED = process.env.VISIONARY_VISUAL_EMBED !== '0';
+// v1.4.0: opt-in by default. Set VISIONARY_VISUAL_EMBED=1 (or "on") after
+// running scripts/download-dinov2.mjs + curating anchors. The stack
+// no-ops gracefully when off so the rest of the critique is unaffected.
+const ENABLED = (() => {
+  const v = process.env.VISIONARY_VISUAL_EMBED;
+  return v === '1' || v === 'on' || v === 'true' || v === 'TRUE';
+})();
 
 export async function buildVisualContextBlock({ screenshotPath, styleId }) {
   if (!ENABLED) return '';

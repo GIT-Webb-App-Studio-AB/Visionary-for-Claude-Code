@@ -7,7 +7,7 @@
 # visionary-claude
 
 [![Release](https://img.shields.io/badge/RELEASE-stable-blue?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases)
-[![Version](https://img.shields.io/badge/v1.3.0-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code)
+[![Version](https://img.shields.io/badge/v1.4.0-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.4.0)
 [![Design Styles](https://img.shields.io/badge/DESIGN_STYLES-202-orange?style=flat-square)](#design-catalogue)
 [![Stacks](https://img.shields.io/badge/STACKS-15-purple?style=flat-square)](#frameworks-supported)
 [![Languages](https://img.shields.io/badge/LANGUAGES-20+-teal?style=flat-square)](#language-support)
@@ -200,13 +200,16 @@ itself, so every other stage benefits.
   via `lib/motion/inject.mjs` so the critic must cite the exact
   sub-dim that drags `motion_readiness` below 7. Toggle:
   `VISIONARY_MOTION_SCORER_V2=0`. Calibration: `scripts/calibrate-motion-2.mjs`.
-- **Visual embeddings via DINOv2 ONNX (Sprint 11)** — `hooks/scripts/lib/visual/`
-  computes a DINOv2-small embedding per Playwright screenshot, cosine-
-  similarity vs curated style anchors → `visual_style_match` 0–10,
-  Mahalanobis-distance OOD-detection at 2σ. Lazy-loads `onnxruntime-web`
-  with WebGPU preference; gracefully no-ops when runtime/model is
-  absent. Setup: `node scripts/download-dinov2.mjs` + curate anchors +
-  `node scripts/build-anchors.mjs`. Toggle: `VISIONARY_VISUAL_EMBED=0`.
+- **Visual embeddings via DINOv2 ONNX (Sprint 11) — experimental, opt-in** —
+  `hooks/scripts/lib/visual/` computes a DINOv2-small embedding per
+  Playwright screenshot, cosine-similarity vs curated style anchors →
+  `visual_style_match` 0–10, Mahalanobis-distance OOD-detection at 2σ.
+  Lazy-loads `onnxruntime-web` with WebGPU preference; gracefully no-ops
+  when runtime/model is absent. **Default OFF in v1.4.0** because the
+  curated 50-style anchor set is not yet shipped. Enable after setup:
+  `npm install onnxruntime-web sharp`, `node scripts/download-dinov2.mjs`,
+  curate anchors at `models/style-anchors/<id>/*.png`,
+  `node scripts/build-anchors.mjs`, then `VISIONARY_VISUAL_EMBED=1`.
 - **MLLM Judge tie-breaker (Sprint 12)** — `hooks/scripts/lib/judge/`
   invokes a multimodal Claude pass when heuristic + numeric + DINOv2
   stack disagrees on a dimension (composite-diff ≤ 0.3, low-confidence
@@ -280,7 +283,7 @@ aesthetic). Vetoes are opt-in (`can_veto: false` for all v1 packs).
 | `VISIONARY_SLOP_REJECT_THRESHOLD` | 2 | Slop-gate reject threshold (Sprint 8); ≥ 26 disables |
 | `VISIONARY_MOTION_SCORER_V2` | on | Set `0` to fall back to the v1 single-shot motion scorer (Sprint 9) |
 | `VISIONARY_MOTION_VERBOSE` | off | `1` prints per-dim subscores to stderr during benchmark runs (Sprint 9) |
-| `VISIONARY_VISUAL_EMBED` | on | Set `0` to skip visual_style_match dimension when DINOv2 is unavailable (Sprint 11) |
+| `VISIONARY_VISUAL_EMBED` | **off** | Set `1` or `on` to enable DINOv2 visual_style_match dimension (Sprint 11). Requires manual setup — see scripts/download-dinov2.mjs |
 | `VISIONARY_VISUAL_VERBOSE` | off | `1` prints ONNX runtime / model load diagnostics to stderr (Sprint 11) |
 | `VISIONARY_MLLM_JUDGE` | off | `tie-only` or `on` to enable MLLM judge tie-breaking (Sprint 12) |
 | `VISIONARY_JUDGE_MODEL` | `claude-sonnet-4-6` | Model for judge invocations (Sprint 12) |

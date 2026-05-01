@@ -7,6 +7,157 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.4.0] — 2026-05-01
+
+The Sprint 5–15 quality-lift release. Eleven new sprints layered on top of
+the 1.3.1 baseline — Sprint 5–8 were previously on a private branch and
+become public for the first time here, alongside the brand-new Sprint 9–15.
+**453 unit tests pass, 0 fail.** All additions are dependency-free,
+toggleable via env, and graceful when peer-deps are absent.
+
+### Added — Sprint 5–8 (now public)
+
+- **Taste flywheel core** (Sprint 5) — `taste/facts.jsonl` captures every
+  rejection/approval as a typed fact with `scope`, `direction`,
+  `confidence`. `taste/pairs.jsonl` records `/variants` picks as FSPO
+  few-shot anchors. Lifecycle: `active → permanent → decayed` with
+  configurable thresholds. Git-harvest classifies `.visionary-generated`
+  files as kept / heavy-edit / deleted. `/visionary-taste` command for
+  inspect / forget / reset / age / export / import / browse.
+- **DesignPref RAG + multi-agent critic + traces** (Sprint 6) —
+  `taste/accepted-examples.jsonl` with hashed n-gram brief embeddings,
+  top-3 anchors fed to critic. Multi-critic mode (craft + aesthetic in
+  parallel, merged via `critic-merge.mjs` + `critic-arbitration.json`).
+  Trace observability under `.visionary/traces/` with 7-day gzip /
+  90-day delete rotation.
+- **Platform play** (Sprint 7) — `.taste` dotfiles for shareable taste
+  profiles with `inherits_from` chains. `visionary-kit.json` for
+  realistic data shape declaration. `content_resilience` 10th critique
+  dimension scoring how components survive p50 / p95 / empty data.
+  Auto-infer kits from TypeScript, Prisma, OpenAPI.
+- **Distinctiveness gate** (Sprint 8) — hard slop-reject preventive gate
+  blocks generation when ≥ 2 slop patterns detected. 21 curated
+  avoid-directives in `slop-directives.md`. `allows_slop` whitelist for
+  styles whose vocabulary deliberately uses default-tooling ironi
+  (brutalist-honesty, neon-dystopia, y2k-futurism,
+  architectural-brutalism). Negative visual anchors under
+  `docs/slop-anchors/` injected into generation prompts.
+
+### Added — Sprint 9: Motion Scoring 2.0
+
+Replaces the legacy single-shot motion heuristic with a 6-sub-dim
+weighted aggregator + 5-tier Maturity Model (None / Subtle /
+Expressive / Kinetic / Cinematic). Sub-dims:
+`easing_provenance` (0.20), `aars_pattern` (0.20),
+`timing_consistency` (0.15), `narrative_arc` (0.15),
+`reduced_motion` (0.15), `cinema_easing` (0.15). Wired into
+`capture-and-critique` so the critic must cite the exact sub-dim
+that drags `motion_readiness` below 7.
+Toggle: `VISIONARY_MOTION_SCORER_V2=0` for v1 fallback.
+Calibration: `node scripts/calibrate-motion-2.mjs`.
+
+### Added — Sprint 10: `@visionary/mcp-server`
+
+Extracts the deterministic core to an MCP server consumable by
+Cursor / Windsurf / Cline / Zed. Three tools (`visionary.slop_gate`,
+`visionary.motion_score`, `visionary.validate_evidence`), three
+resources, two prompts. Stdio transport, server card at
+`.well-known/mcp/server.json` (MCP spec 2025-06-18). Hooks +
+taste-flywheel writes stay in the Claude Code plugin; only read
+access flows over MCP. Install guides per host live in
+`packages/mcp-server/INSTALL.md`. Not yet published to npm.
+
+### Added — Sprint 11: DINOv2 ONNX visual embeddings (experimental, opt-in)
+
+Per-screenshot embedding, cosine vs curated style anchors → 11th
+critique dimension `visual_style_match` 0–10 + Mahalanobis OOD-
+detection at 2σ. Lazy-loads `onnxruntime-web` with WebGPU preference.
+**Default OFF** because the curated anchor set is not yet shipped;
+set `VISIONARY_VISUAL_EMBED=1` after running
+`scripts/download-dinov2.mjs` + `scripts/build-anchors.mjs`.
+
+### Added — Sprint 12: MLLM Judge tie-breaker
+
+Multimodal Claude pass that resolves cases where heuristic + numeric
++ DINOv2 stack disagree (composite-diff ≤ 0.3, low-confidence < 0.6,
+heuristic↔visual conflict ≥ 1.5). **Hard rule: judge cannot reject
+solo** — strong heuristic margin overrides judge dissent. Budget caps:
+1 invocation per round, 5 per session. Lazy-imports
+`@anthropic-ai/sdk`. Toggle: `VISIONARY_MLLM_JUDGE=tie-only`
+(default off).
+
+### Added — Sprint 13: Vibe Motion Editor
+
+`/visionary-motion "<intent>"` re-tunes motion tokens in place via
+a deterministic NL → adjustments map. 12 vibes (`mer energiskt` /
+`softer` / `faster` / `slower` / `bouncier` / `calmer` / `kinetic` /
+`minimal` / `cinematic` / `snappy` / `layered` / `less-dramatic`).
+Three patch targets: DTCG `tokens.json`, inline JSX
+(`bounce`, `visualDuration`), CSS shorthand. Runs `scoreMotion2`
+before AND after, prints a per-sub-dim delta. `--preview` flag
+emits diff without writing.
+
+### Added — Sprint 14: Active Governance Hook
+
+`scripts/governance-check.mjs` + `.husky/pre-commit` +
+`.github/workflows/visionary-governance.yml`. Detects hex / rgb /
+oklch / Tailwind utility drift relative to a
+`tokens/<style-id>.tokens.json` flagged with `$visionary.locked: true`.
+Three thresholds (`block` / `warn` / `off`),
+`near_match_tolerance` for soft warnings, `allowed_drifts` glob list
+for legacy escapes. Bypass: `git commit --no-verify`,
+`// visionary-governance: ignore` magic comment, or
+`drift_threshold: "warn"` in tokens.
+
+### Added — Sprint 15: Taste Inheritance (designer-as-subagent)
+
+Designer packs (Rams, Kowalski, Vignelli, Scher, Greiman) gain a
+`critic_persona` block + `arbitration` block. Instead of just biasing
+the generation prompt, the pack now produces a per-dim contribution
+that joins the arbitration table alongside craft + aesthetic critics.
+Three conflict-resolution strategies: (A) designer tie-breaks craft-
+vs-aesthetic ties, (B) MLLM judge from Sprint 12, (C) user
+escalation. Default designer weight in arbitration: 0.25 (vs 1.0 each
+for craft + aesthetic). Vetoes are opt-in (`can_veto: false` for all
+v1 packs).
+
+### Changed
+
+- **`.gitignore`** — added `*.onnx`, `models/*.onnx`,
+  `models/style-anchors/*/*.{png,jpg,jpeg}`, `packages/*/node_modules/`,
+  `.husky/_/`. Prevents accidental commits of large model binaries
+  or anchor screenshot stocks.
+- **`docs/visionary-hero.svg`** — version line updated to v1.4.0,
+  Motion Scoring 2.0 / DINOv2 OOD / MLLM Judge / Active Governance
+  feature row added.
+- **`README.md`** — Fas 5–9 sections describing Sprint 9–15, expanded
+  env-flag reference, test count 261 → 453.
+- **`benchmark/runner.mjs`** — uses Motion Scoring v2 by default;
+  `VISIONARY_MOTION_SCORER_V2=0` for v1 fallback.
+
+### Removed
+
+- Internal "DEV build" markers from `marketplace.json` and
+  `plugin.json`. This is the production v1.4.0 release.
+
+### Migration impact
+
+- Nothing in the 1.3.1 public behaviour changes automatically.
+- `VISIONARY_VISUAL_EMBED` default is **off** — set to `1` after
+  manual setup if you want DINOv2 visual style match.
+- `VISIONARY_MULTI_CRITIC` and `VISIONARY_MLLM_JUDGE` remain opt-in.
+- Anti-anchors require manual image curation; DINOv2 model + style
+  anchors require manual download/curation. The pipeline degrades
+  gracefully when any of those are absent.
+
+### Security
+
+- All new code is zero-dep and locally-scoped. The MCP server
+  exposes read-only access to taste summary (aggregated counts only —
+  never raw `facts.jsonl` content over the wire).
+
+---
+
 ## [1.3.1] — 2026-04-21
 
 Patch release. Fixes the auto-update hook so the second CLI step actually
