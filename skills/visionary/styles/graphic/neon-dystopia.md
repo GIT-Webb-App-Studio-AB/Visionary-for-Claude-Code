@@ -10,6 +10,10 @@ accessibility:
   contrast_floor: 4.5
   reduced_motion: pause-required
   touch_target: 44
+allows_slop:
+  - "cyan-on-dark"
+  - "dark background with colored glow shadow"
+allows_slop_reason: "Neon dystopia is cyan-glow-on-dark BY DESIGN. Blocking these patterns would empty the style of its core vocabulary — the gate is for accidental defaults, not for style-authentic choices."
 ---
 
 # Neon Dystopia

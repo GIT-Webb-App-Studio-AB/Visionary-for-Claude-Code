@@ -10,6 +10,11 @@ accessibility:
   contrast_floor: 4.5
   reduced_motion: pause-required
   touch_target: 44
+allows_slop:
+  - "cyan-on-dark"
+  - "gradient text on heading or metric"
+  - "dark background with colored glow shadow"
+allows_slop_reason: "Y2K futurism is chrome + neon + gradient-text period-authentic nostalgia. Blocking these would reduce Y2K to generic 2024 corporate. The whole point is to revive patterns that a modern slop-detector flags as suspect."
 ---
 
 # Y2K Futurism

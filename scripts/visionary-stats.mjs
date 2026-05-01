@@ -36,6 +36,7 @@ function hasFlag(name) { return process.argv.includes(`--${name}`); }
 const sessionId   = flagValue('session');
 const wantAll     = hasFlag('all');
 const wantFixes   = hasFlag('recurring-fixes');
+const wantSlopGate = hasFlag('slop-gate-report');
 const daysWindow  = Number.parseInt(flagValue('days', '30'), 10);
 const minCount    = Number.parseInt(flagValue('min-count', '3'), 10);
 const outPath     = flagValue('out', null);
@@ -54,14 +55,15 @@ function findProjectRoot() {
 
 // ── Entry ────────────────────────────────────────────────────────────────────
 function main() {
-  if (!sessionId && !wantAll && !wantFixes) {
+  if (!sessionId && !wantAll && !wantFixes && !wantSlopGate) {
     printHelp();
     process.exit(0);
   }
   let report;
-  if (sessionId)        report = sessionReport(sessionId);
-  else if (wantFixes)   report = recurringFixesReport({ daysWindow, minCount });
-  else if (wantAll)     report = allSessionsReport();
+  if (sessionId)         report = sessionReport(sessionId);
+  else if (wantFixes)    report = recurringFixesReport({ daysWindow, minCount });
+  else if (wantSlopGate) report = slopGateReport({ daysWindow });
+  else if (wantAll)      report = allSessionsReport();
 
   if (outPath) {
     writeFileSync(outPath, report, 'utf8');
@@ -72,15 +74,16 @@ function main() {
 }
 
 function printHelp() {
-  process.stdout.write(`visionary-stats — Sprint 06 trace analysis
+  process.stdout.write(`visionary-stats — Sprint 06/08 trace analysis
 
 Usage:
   node scripts/visionary-stats.mjs --session <id>           Per-session timeline
   node scripts/visionary-stats.mjs --all                    All-sessions summary
   node scripts/visionary-stats.mjs --recurring-fixes        Recurring-fix mining
+  node scripts/visionary-stats.mjs --slop-gate-report       Sprint 08 slop-gate rejection stats
 
 Options:
-  --days <n>         Window for recurring-fix mining (default 30)
+  --days <n>         Window for mining (default 30, applies to fixes + slop-gate)
   --min-count <n>    Minimum recurrence for a pattern to report (default 3)
   --out <path>       Write to file instead of stdout
   --project <dir>    Override project root (default: auto-discover)
@@ -244,6 +247,84 @@ function recurringFixesReport({ daysWindow, minCount }) {
     lines.push(`**Recommendation:** consider pre-applying this class of fix before round 1, or adding the constraint to the style rubric so the generator stops producing it.`);
     lines.push('');
   }
+  return lines.join('\n');
+}
+
+// ── Sprint 08 — slop-gate report ────────────────────────────────────────────
+// Mines trace events emitted by slop-gate.mjs. Shows how often the gate
+// fires, which patterns most commonly trigger it, which styles are using
+// their whitelists. Useful for calibrating VISIONARY_SLOP_REJECT_THRESHOLD.
+function slopGateReport({ daysWindow }) {
+  const cutoffMs = Date.now() - daysWindow * 24 * 60 * 60 * 1000;
+  const files = listAllTraceFiles(projectRoot);
+  let totalGenerations = 0;
+  let blockedCount = 0;
+  let whitelistedCount = 0;
+  const blockingCounts = new Map();      // pattern → count
+  const whitelistByStyle = new Map();    // style_id → [patterns]
+
+  for (const f of files) {
+    const sid = f.name.replace(/\.jsonl(\.gz)?$/, '').replace(/\.\d+$/, '');
+    const { items } = readSessionTraces(sid, projectRoot);
+    const generationsSeen = new Set();
+    for (const e of items) {
+      const ts = Date.parse(e.ts || '');
+      if (!Number.isFinite(ts) || ts < cutoffMs) continue;
+      if (e.generation_id) generationsSeen.add(e.generation_id);
+      if (e.event === 'slop_blocked') {
+        blockedCount++;
+        const patterns = e.payload?.blocking_patterns || [];
+        for (const p of patterns) {
+          blockingCounts.set(p, (blockingCounts.get(p) || 0) + 1);
+        }
+      } else if (e.event === 'slop_whitelisted') {
+        whitelistedCount++;
+        const style = e.payload?.style_id || '(unknown style)';
+        const patterns = e.payload?.whitelisted_patterns || [];
+        const list = whitelistByStyle.get(style) || [];
+        list.push(...patterns);
+        whitelistByStyle.set(style, list);
+      }
+    }
+    totalGenerations += generationsSeen.size;
+  }
+
+  const pct = totalGenerations ? Math.round((blockedCount / totalGenerations) * 100) : 0;
+  const lines = [
+    `# Slop-gate report — last ${daysWindow} days`,
+    '',
+    `Trace dir: ${resolveTraceDir(projectRoot)}`,
+    `Total generations observed: ${totalGenerations}`,
+    `Blocked by gate: ${blockedCount} (${pct}% of generations)`,
+    `Whitelisted events: ${whitelistedCount}`,
+    '',
+  ];
+
+  if (blockingCounts.size) {
+    lines.push('## Top blocking patterns');
+    lines.push('');
+    const sorted = [...blockingCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
+    for (const [pattern, count] of sorted) {
+      lines.push(`- **${count}** — ${escape(pattern)}`);
+    }
+    lines.push('');
+  } else {
+    lines.push('_No blocking events in window. Either no generations hit the threshold, or traces are missing._');
+    lines.push('');
+  }
+
+  if (whitelistByStyle.size) {
+    lines.push('## Whitelist hits by style');
+    lines.push('');
+    for (const [style, patterns] of whitelistByStyle) {
+      const countMap = new Map();
+      for (const p of patterns) countMap.set(p, (countMap.get(p) || 0) + 1);
+      const parts = [...countMap.entries()].map(([p, c]) => `"${p}" (${c})`).join(', ');
+      lines.push(`- **${escape(style)}**: ${parts}`);
+    }
+    lines.push('');
+  }
+
   return lines.join('\n');
 }
 

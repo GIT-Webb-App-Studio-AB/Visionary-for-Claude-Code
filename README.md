@@ -50,7 +50,7 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 | | | | | | | |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **202** | **8** | **15** | **13** | **26** | **20+** | **3** |
+| **202** | **8** | **15** | **13** | **32** | **20+** | **3** |
 | Design Styles | Algorithm Steps | Frameworks | Categories | Slop Detectors | Languages | Critique Rounds |
 
 </div>
@@ -69,11 +69,15 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 ---
 
-## What's new — post-1.3.1 (Sprint 1–4)
+## What's new — post-1.3.1 (Sprint 1–8)
 
-The working branch on private adds four quality-lift layers on top of the
-1.3.1 baseline. All are dependency-free, toggleable via env, and backed by
-`node --test`-level unit tests.
+Eight sprints of quality-lift work on top of the 1.3.1 baseline. All
+additions are dependency-free, toggleable via env, and backed by
+`node --test`-level unit tests (261 pass, 0 fail at last count).
+
+Roadmap overview: [`docs/sprints/README.md`](docs/sprints/README.md).
+
+### Fas 1 — Cost + loop efficiency (Sprint 1–2)
 
 - **Styles index + embeddings** — `skills/visionary/styles/_index.json`
   (202 styles × structured metadata) and `_embeddings.json` (8-axis
@@ -81,6 +85,12 @@ The working branch on private adds four quality-lift layers on top of the
   deterministic filters over pre-built data instead of loading every
   style file into the LLM call. `docs/style-embeddings.md` documents the
   axes and override workflow.
+- **Early-exit + diff-rounds** — round 2/3 emit unified diffs instead of
+  full regenerations, fed through `hooks/scripts/lib/apply-diff.mjs`
+  with ±3-line fuzz and graceful full-regen fallback.
+
+### Fas 2 — Measurable quality (Sprint 3–4)
+
 - **Numeric critique + calibration** — `benchmark/scorers/numeric-aesthetic-scorer.mjs`
   emits six deterministic 0..1 sub-scores (contrast entropy, gestalt
   grouping, typographic rhythm, negative-space ratio, color harmony,
@@ -88,32 +98,112 @@ The working branch on private adds four quality-lift layers on top of the
   calibration against a gold-set. Evidence-anchored critique (`agents/visual-critic.md`
   rule of seven) forbids sub-7 scores without a mechanical citation.
 - **Best-of-N refine** — `agents/visual-verifier.md` picks between three
-  parallel fix candidates (different temperature + instruction profiles)
-  via pairwise voting. `hooks/scripts/lib/fork-candidate.mjs` handles
-  the scaffolding; toggleable via `VISIONARY_DISABLE_BON=1`. Round 2
-  auto-exits when the winner clears calibrated craft_measurable ≥ 7.5.
-- **Orthogonal `/variants`** — three variants are now required to
-  clear a cosine-distance floor of 0.6 in the 8-axis embedding space.
+  parallel fix candidates via pairwise voting.
+  `hooks/scripts/lib/fork-candidate.mjs` handles the scaffolding;
+  toggleable via `VISIONARY_DISABLE_BON=1`. Round 2 auto-exits when the
+  winner clears calibrated craft_measurable ≥ 7.5.
+- **Orthogonal `/variants`** — three variants must clear a
+  cosine-distance floor of 0.6 in the 8-axis embedding space.
   `hooks/scripts/lib/orthogonal-variants.mjs` implements the relaxation
   ladder (0.6 → 0.5 → 0.4 → fallback) so narrow briefs still get usable
   output instead of three near-duplicates.
-- **Baseline-2026 web primitives in generation** — `@layer` cascade
-  discipline, `@scope` component isolation, popover / anchor / invoker
-  primitives (zero-JS menus + tooltips + dialogs), same-document View
-  Transitions, `field-sizing: content`, `contrast-color()`, `shape()`
-  presets, and scroll-driven animations with dual `@supports` +
-  `prefers-reduced-motion` guards. See `skills/visionary/stack-guidelines.md`
-  canonical sections and `skills/visionary/partials/popover-anchor.css.md`.
-- **Slop catalogue expansion** — patterns #27–#31 in
-  `benchmark/scorers/slop-scanner.mjs` detect missing `@layer`,
-  `@floating-ui/*` imports where anchor-positioning fits, `<textarea
-  rows={N}>` without `field-sizing`, onClick modals without
-  `commandfor`, and `useRef` dropdown positioning.
+- **Baseline-2026 web primitives** — `@layer` cascade discipline,
+  `@scope` component isolation, popover / anchor / invoker primitives,
+  same-document View Transitions, `field-sizing: content`,
+  `contrast-color()`, `shape()` presets, scroll-driven animations with
+  dual `@supports` + `prefers-reduced-motion` guards.
+- **Slop catalogue expansion** — patterns #27–#31 for missing `@layer`,
+  `@floating-ui/*` where anchor-positioning fits, `<textarea rows={N}>`
+  without `field-sizing`, onClick modals without `commandfor`, `useRef`
+  dropdown positioning.
+
+### Fas 3 — Taste flywheel (Sprint 5–7)
+
+- **Structured taste profile** — `taste/facts.jsonl` captures every
+  explicit rejection/approval as a typed fact with `scope`, `direction`,
+  `confidence`, and rolling evidence. `taste/pairs.jsonl` records
+  `/variants` picks as FSPO few-shot anchors. Lifecycle:
+  `active` → `permanent` (hard-block) after 3 + evidence across 2 +
+  kinds with confidence ≥ 0.9; `active` → `decayed` after 30 days of
+  no new evidence.
+- **Git-based passive harvesting** — `hooks/scripts/harvest-git-signal.mjs`
+  runs at SessionStart, classifies each `.visionary-generated` file as
+  kept / heavy-edit / deleted from git history, and emits graduated
+  confidence facts. Reads only files Visionary itself produced.
+- **DesignPref RAG** — `taste/accepted-examples.jsonl` stores accepted
+  generations with brief embeddings (hashed n-gram, zero-dep). The
+  critic prompt gets top-3 historical anchors via
+  `hooks/scripts/lib/rag-anchors.mjs`; cold-start fallback uses
+  designer packs (Rams / Kowalski / Vignelli / Scher / Greiman).
+- **Multi-agent critic (opt-in)** — `agents/critic-craft.md` scores the
+  five measurable dimensions, `agents/critic-aesthetic.md` owns
+  distinctiveness / brief / motion. `hooks/scripts/lib/critic-merge.mjs`
+  stitches outputs with archetype-based arbitration. Enable with
+  `VISIONARY_MULTI_CRITIC=1`.
+- **Trace observability** — `.visionary/traces/<session>.jsonl` captures
+  every significant event (critic output, acceptance, slop-gate hits,
+  API calls). 7-day gzip / 90-day delete rotation via SessionStart hook.
+  Analyse with `scripts/visionary-stats.mjs --session | --all |
+  --recurring-fixes`.
+- **`.taste` dotfiles** — shareable taste profiles via TOML, with
+  `/visionary-taste export` / `import` / `browse`. Supports
+  `inherits_from` chains.
+- **Content kits** — `visionary-kit.json` declares realistic data
+  shapes (locale-aware samples, p95 lengths, nullability). The
+  `content_resilience` dimension (10th critique dim) scores how well
+  components survive empty / p95 / realistic data. Auto-infer from
+  TypeScript, Prisma, or OpenAPI schemas.
+
+### Fas 4 — Distinctiveness (Sprint 8)
+
+The dogfooding problem: output converged with UI/UX Pro Max + Claude
+Design because slop was caught *after* generation, not prevented at
+the source.
+
+- **Hard slop-reject gate** — `hooks/scripts/lib/slop-gate.mjs` counts
+  blocking slop patterns before the critic is called. At `≥ 2`, the
+  generation is rejected and a regen directive with pattern-specific
+  avoid/consider guidance is injected into the next round.
+  `skills/visionary/partials/slop-directives.md` holds 21 curated
+  directives. Toggle with `VISIONARY_SLOP_REJECT_THRESHOLD=<n>` (default
+  2, ≥ 26 disables).
+- **Per-style whitelist** — `allows_slop` in style frontmatter lets
+  deliberate stylistic choices override the gate. Shipped on
+  `brutalist-honesty`, `architectural-brutalism`, `neon-dystopia`,
+  `y2k-futurism` — styles whose aesthetic vocabulary *is* cyan-on-dark
+  or default-tooling ironi.
+- **Negative visual anchors** — `docs/slop-anchors/` holds curated
+  "DO NOT produce this" references organised by family (saas-default-
+  blue, cyberpunk-cyan-glow, glassmorphism-gradient, neumorphism-pillow,
+  generic-feature-3up). `hooks/scripts/lib/anti-anchors.mjs` samples
+  2 anchors per generation based on inferred style family, injected
+  into the generator prompt via `inject-taste-context.mjs`. Image
+  curation is manual — manifests ship, PNG binaries are maintainer-
+  supplied.
+- **Slop-gate observability** — new trace events `slop_blocked` +
+  `slop_whitelisted`, plus `scripts/visionary-stats.mjs --slop-gate-report`
+  for trend analysis (which patterns trigger most, which styles use
+  their whitelist).
+
+### Env-flag reference
+
+| Flag | Default | Purpose |
+|---|---|---|
+| `VISIONARY_DISABLE_CRITIQUE` | off | Full opt-out of the critique loop |
+| `VISIONARY_DISABLE_BON` | off | Disable Best-of-N fan-out (Sprint 4) |
+| `VISIONARY_DISABLE_TASTE` | off | Opt-out of taste flywheel (Sprint 5+6) |
+| `VISIONARY_NO_TRACES` | off | Opt-out of trace logging (Sprint 6) |
+| `VISIONARY_TRACE_RETENTION_DAYS` | 90 | Trace-file auto-delete age |
+| `VISIONARY_MULTI_CRITIC` | off | Enable critic-craft + critic-aesthetic parallel mode (Sprint 6) |
+| `VISIONARY_RAG_MIN_EXAMPLES` | 5 | Threshold for RAG activation (cold-start below this) |
+| `VISIONARY_DESIGNER_DEFAULT` | `rams` | Cold-start designer pack (`rams` / `kowalski` / `vignelli` / `scher` / `greiman`) |
+| `VISIONARY_SLOP_REJECT_THRESHOLD` | 2 | Slop-gate reject threshold (Sprint 8); ≥ 26 disables |
+| `VISIONARY_PREVIEW_URL` | `http://localhost:3000` | Playwright target URL |
 
 Migration impact: nothing in the 1.3.1 public behaviour changes
-automatically. BoN is off until `round >= 2` and there are fixes to
-apply. The 2026 primitives are additive — pre-2026 browsers still get
-valid output via the `@supports` fallbacks.
+automatically. Multi-critic mode is opt-in. Anti-anchors require
+manual image curation; the pipeline degrades gracefully when
+`docs/slop-anchors/` has only manifests.
 
 ---
 
@@ -123,10 +213,10 @@ valid output via the `@supports` fallbacks.
 |---------|------|------|------|------|------|
 | Design styles | ~15 implicit | 67 named | Component-level only | Inferred from codebase | **203 with auto-inference** |
 | Style selection | Manual / prompt-based | Manual name entry | Multi-variant picker | Prompt + Figma/code sync | **8-step algorithm + weighted random + transplantation** |
-| Anti-default bias | None | None | Partial | Partial | **Blocks generic AI output, forces cross-domain styles** |
+| Anti-default bias | None | None | Partial | Partial | **Hard-rejects ≥ 2 slop patterns before critique runs (Sprint 8); 32-pattern catalogue; negative visual anchors injected upstream** |
 | Motion system | None | None | None | None (prototype-oriented) | **Motion v12 spring tokens + CSS-first (`@starting-style`, `animation-timeline`)** |
 | Visual feedback | None | None | None | Inline comments in canvas | **Playwright critique + axe-core (deterministic a11y)** |
-| Taste memory | None | None | None | None | **`system.md` calibration — permanent flag after 3 rejections** |
+| Taste memory | None | None | None | None | **`taste/facts.jsonl` + `taste/pairs.jsonl` + git-harvest + DesignPref RAG (Sprint 5–6); `.taste` dotfiles are shareable** |
 | Accessibility | Not enforced | Not enforced | Not enforced | Not enforced | **WCAG 2.2 AA + APCA Lc floors + CSS logical properties + RTL** |
 | i18n typography | ASCII only | ASCII only | ASCII only | ASCII only | **20+ languages with correct diacritics + proper lang/subset** |
 | Multi-variant | No | No | Yes | Yes (canvas revisions) | **`/variants` — 3 mutually-distinct takes before critique** |

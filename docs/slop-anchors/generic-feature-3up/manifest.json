@@ -1,0 +1,12 @@
+{
+  "category": "generic-feature-3up",
+  "description": "The universal features section: icon + heading + paragraph × 3 in `grid-cols-3`. Present on every SaaS landing page since 2018.",
+  "avoid_reasoning": "`<Icon />` + `<h3>` + `<p>` repeated three times, identical widths, grey-500 body. Indistinguishable between Stripe, Vercel, Linear, Notion, and the 500 AI-generated competitors. Features-section.dx.",
+  "avoid_families": ["saas", "marketing", "landing", "b2b"],
+  "excludes_styles": [],
+  "images": [
+    { "file": "example-1.png", "source": "PLACEHOLDER", "caption": "Icon + heading + 2-line paragraph × 3, equal columns" },
+    { "file": "example-2.png", "source": "PLACEHOLDER", "caption": "Colored-background feature grid with consistent paddings" },
+    { "file": "example-3.png", "source": "PLACEHOLDER", "caption": "Bordered card version of the same 3-up layout" }
+  ]
+}

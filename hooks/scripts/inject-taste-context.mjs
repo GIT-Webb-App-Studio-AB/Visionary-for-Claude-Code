@@ -36,6 +36,8 @@ import {
   readFacts, readPairs, isoDaysAgo, factsPath, pairsPath, factMatchesScope,
 } from './lib/taste-io.mjs';
 import { sampleDiversePairs, loadEmbeddings } from './lib/pair-sampler.mjs';
+// Sprint 8 Task 23.2: negative anchors injection.
+import { buildBlockForStyle as buildAntiAnchorBlock } from './lib/anti-anchors.mjs';
 
 // ── Stdin ──────────────────────────────────────────────────────────────────
 function readStdin() { try { return readFileSync(0, 'utf8'); } catch { return ''; } }
@@ -99,7 +101,17 @@ if (pairs.length > 0) {
 // excerpt (not the full kit) to stay within the prompt budget.
 const kitBlock = buildKitBlock(projectRoot);
 
-if (topFacts.length === 0 && topPairs.length === 0 && !kitBlock) silent();
+// ── Anti-anchor injection (Sprint 08 Task 23.2) ─────────────────────────────
+// Negative visual references the generator must NOT reproduce. Style id
+// isn't known until the LLM picks one, so we infer avoid-families from
+// prompt keywords. Returns '' when no complete categories have been
+// curated yet (graceful bootstrap — categories ship manifest-only).
+const antiAnchorBlock = buildAntiAnchorBlock({
+  styleFamily: inferStyleFamilies(promptText),
+  count: 2,
+});
+
+if (topFacts.length === 0 && topPairs.length === 0 && !kitBlock && !antiAnchorBlock) silent();
 
 // ── Render ──────────────────────────────────────────────────────────────────
 const blocks = [];
@@ -134,6 +146,8 @@ if (topPairs.length > 0) {
 }
 
 if (kitBlock) blocks.push(kitBlock);
+
+if (antiAnchorBlock) blocks.push(antiAnchorBlock);
 
 emit({ additionalContext: blocks.join('\n\n') });
 
@@ -238,4 +252,27 @@ function mostCommonChosenStyleId(pairs) {
   let best = null; let bestCount = 0;
   for (const [id, c] of counts) if (c > bestCount) { best = id; bestCount = c; }
   return best;
+}
+
+// Sprint 8 Task 23.2: cheap keyword-based inference of style families from
+// the user prompt. Used to pick relevant anti-anchors BEFORE the model has
+// actually selected a style. Not a classifier — just a word-bag match that
+// routes "dashboard" → ["dashboard"], "pricing" → ["saas", "marketing"], etc.
+// Unknown prompts return an empty array (loader falls back to picking
+// top-N categories by alphabetical order).
+function inferStyleFamilies(text) {
+  const t = (text || '').toLowerCase();
+  const families = new Set();
+  if (/\b(dashboard|admin|analytics|monitoring)\b/.test(t))     families.add('dashboard');
+  if (/\b(landing|hero|marketing|campaign)\b/.test(t))          families.add('marketing');
+  if (/\b(saas|b2b|enterprise|platform)\b/.test(t))             { families.add('saas'); families.add('b2b'); }
+  if (/\b(pricing|subscribe|plans)\b/.test(t))                  { families.add('saas'); families.add('marketing'); }
+  if (/\b(blog|article|editorial|magazine|post)\b/.test(t))     families.add('editorial');
+  if (/\b(portfolio|agency|showcase)\b/.test(t))                families.add('portfolio');
+  if (/\b(mobile|app|ios|android)\b/.test(t))                   families.add('mobile');
+  if (/\b(form|signup|checkout|onboarding)\b/.test(t))          families.add('forms');
+  if (/\b(developer|dev tool|cli|api|docs)\b/.test(t))          families.add('developer-tools');
+  if (/\b(game|gaming)\b/.test(t))                              families.add('gaming');
+  if (/\b(ecommerce|shop|store|product)\b/.test(t))             families.add('ecommerce');
+  return [...families];
 }

@@ -45,8 +45,16 @@ export const ALL_DIMENSIONS = [
 export const CRITIC_IDENTITIES = ['craft', 'aesthetic', 'unified'];
 
 // ── Paths ────────────────────────────────────────────────────────────────────
+// Preference order (same pattern as capture-and-critique.mjs cacheDir):
+//   1. Explicit projectRoot argument — calibrate scripts pass this.
+//   2. CLAUDE_PLUGIN_DATA env var — Claude Code harness sets this; keeps
+//      pareto data out of the user's repo when running as a plugin.
+//   3. Nearest package.json / .git ancestor of cwd — legacy fallback.
 export function paretoDir(projectRoot) {
-  return join(projectRoot || findProjectRoot(), '.visionary', 'pareto');
+  if (projectRoot) return join(projectRoot, '.visionary', 'pareto');
+  const pluginDataDir = process.env.CLAUDE_PLUGIN_DATA;
+  if (pluginDataDir) return join(pluginDataDir, 'visionary', 'pareto');
+  return join(findProjectRoot(), '.visionary', 'pareto');
 }
 
 export function frontierPath(projectRoot) {

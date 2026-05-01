@@ -10,6 +10,11 @@ accessibility:
   contrast_floor: 4.5
   reduced_motion: opacity-only
   touch_target: 44
+allows_slop:
+  - "uniform border-radius"
+  - "symmetric padding everywhere"
+  - "shadow-md applied uniformly"
+allows_slop_reason: "Architectural brutalism treats raw repeated form as a material language. Uniform radius and padding across blocks is a structural choice, not a default-component-library accident."
 ---
 
 # Architectural Brutalism

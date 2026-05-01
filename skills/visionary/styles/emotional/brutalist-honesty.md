@@ -10,6 +10,11 @@ accessibility:
   contrast_floor: 4.5
   reduced_motion: static
   touch_target: 44
+allows_slop:
+  - "default tailwind blue"
+  - "uniform border-radius"
+  - "symmetric padding everywhere"
+allows_slop_reason: "Brutalism uses default tooling as a deliberate aesthetic statement — raw, unstyled, honestly-what-the-framework-ships-with. Refusing defaults here would violate the style's thesis."
 ---
 
 # Brutalist Honesty

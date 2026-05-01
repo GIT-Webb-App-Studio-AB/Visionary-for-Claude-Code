@@ -88,7 +88,9 @@ if (adapterPath) {
 // ── Scoring: deterministic dimensions ───────────────────────────────────────
 import { scanSlop } from './scorers/slop-scanner.mjs';
 import { scoreA11y } from './scorers/a11y-scorer.mjs';
-import { scoreMotion } from './scorers/motion-scorer.mjs';
+import { scoreMotion as scoreMotionV1 } from './scorers/motion-scorer.mjs';
+import { scoreMotionV2 } from './scorers/motion-scorer-v2.mjs';
+const scoreMotion = process.env.VISIONARY_MOTION_SCORER_V2 === '0' ? scoreMotionV1 : scoreMotionV2;
 import { scoreCoherence } from './scorers/coherence-scorer.mjs';
 
 async function scorePrompt(prompt, generated) {

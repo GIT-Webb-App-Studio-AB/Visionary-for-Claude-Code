@@ -1,0 +1,38 @@
+{
+  "mode": "identity_fallback",
+  "reason": "no gold-set entries found at benchmark/gold-set/*.motion.json",
+  "n": 0,
+  "generated_at": "2026-05-01T13:37:57.300Z",
+  "subscores": {
+    "easing_provenance": {
+      "slope": 1,
+      "intercept": 0,
+      "r2": null
+    },
+    "aars_pattern": {
+      "slope": 1,
+      "intercept": 0,
+      "r2": null
+    },
+    "timing_consistency": {
+      "slope": 1,
+      "intercept": 0,
+      "r2": null
+    },
+    "narrative_arc": {
+      "slope": 1,
+      "intercept": 0,
+      "r2": null
+    },
+    "reduced_motion": {
+      "slope": 1,
+      "intercept": 0,
+      "r2": null
+    },
+    "cinema_easing": {
+      "slope": 1,
+      "intercept": 0,
+      "r2": null
+    }
+  }
+}

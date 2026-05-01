@@ -25,6 +25,17 @@ import {
 // Sprint 6 Task 17.4 + 18.3 + 19.2: RAG anchors, multi-agent critic, traces.
 import { buildAnchors } from './lib/rag-anchors.mjs';
 import { trace } from './lib/trace.mjs';
+// Sprint 8 Task 22.1 + 22.2: preventive slop-reject gate + avoid-directives.
+import {
+  shouldReject,
+  synthesiseRejectCritique,
+  parseStyleAllowsSlop,
+  loadActiveStyleWhitelist,
+} from './lib/slop-gate.mjs';
+import { buildDirectiveBlock } from './lib/slop-directives.mjs';
+// Sprint 9 Task 24.10: Motion Scoring 2.0 — inject 6-sub-dim scores so critic
+// can cite the exact sub-dim that drags motion_readiness down.
+import { buildMotionContextBlock } from './lib/motion/inject.mjs';
 
 const MAX_ROUNDS = 3;
 const CONTEXT_CAP = 10_000;
@@ -333,6 +344,77 @@ if (hasKit) {
 // ── Increment round counter ──────────────────────────────────────────────────
 try { writeFileSync(roundFile, String(round + 1)); } catch { /* ignore */ }
 
+// ── Sprint 8 Task 22.1: pre-critic slop-reject gate ─────────────────────────
+// Count blocking slop-hits BEFORE the critic is invoked. At/above the
+// threshold we emit a regen-directive context instead of running critique,
+// saving an LLM round and forcing the model to diverge with pattern-specific
+// avoid guidance (22.2). Whitelist comes from the active style's
+// allows_slop frontmatter (22.3) when the file carries a `.visionary-generated`
+// marker; otherwise conservative empty whitelist.
+const activeWhitelist = loadActiveStyleWhitelist(filePath, { repoRoot });
+const gateDecision = shouldReject({
+  slopFlags,
+  styleWhitelist: activeWhitelist.patterns,
+});
+
+if (gateDecision.rejected) {
+  // Emit trace events for audit (Task 22.4).
+  try {
+    trace.sync('slop_blocked', {
+      blocking_patterns: gateDecision.blocking_patterns,
+      blocking_count: gateDecision.blocking_count,
+      whitelisted_count: gateDecision.whitelisted_count,
+      threshold_used: gateDecision.threshold_used,
+      style_id: activeWhitelist.styleId,
+    }, {
+      projectRoot: cwd,
+      generationId: fileHash,
+      round,
+      emitter: 'slop-gate',
+    });
+  } catch { /* trace is best-effort */ }
+
+  // Build a regen-directive context that replaces the critic-invocation
+  // instructions with pattern-specific avoid/consider guidance.
+  const directiveBlock = buildDirectiveBlock(gateDecision.blocking_patterns);
+  const rejectContext = [
+    `VISUAL CRITIQUE BLOCKED BY SLOP GATE — Round ${round}/${MAX_ROUNDS}`,
+    '',
+    `File written: ${filePath}`,
+    `Active style: ${activeWhitelist.styleId || '(no .visionary-generated marker — gate used empty whitelist)'}`,
+    `Gate threshold: ${gateDecision.threshold_used}  ·  hits: ${gateDecision.blocking_count} blocking, ${gateDecision.whitelisted_count} whitelisted`,
+    '',
+    'NEXT-TURN ACTIONS:',
+    '1. Skip the normal critic+screenshot flow — this output is not worth scoring yet.',
+    '2. Read the REGEN REQUIRED block below carefully.',
+    '3. Rewrite the component to eliminate the flagged patterns. Do NOT regen a near-duplicate with cosmetic changes.',
+    '4. When you rewrite, the PostToolUse hook will re-trigger automatically for another gate check.',
+    '5. To override this gate (e.g. stylistic choice the whitelist missed): add the pattern to the style frontmatter `allows_slop` list and document why.',
+    directiveBlock,
+    '',
+    'No critic output was produced this round. The round counter advanced as normal; if regens continue to hit the gate for 3 rounds, the loop terminates and user review is expected.',
+  ].join('\n');
+  emit({ additionalContext: rejectContext.slice(0, CONTEXT_CAP) });
+}
+
+// Emit a whitelist event separately when the gate passed BUT patterns were
+// skipped via whitelist — useful for audit (22.4).
+if (!gateDecision.rejected && gateDecision.whitelisted_count > 0) {
+  try {
+    trace.sync('slop_whitelisted', {
+      whitelisted_patterns: gateDecision.whitelisted_patterns,
+      whitelisted_count: gateDecision.whitelisted_count,
+      style_id: activeWhitelist.styleId,
+      reason: activeWhitelist.reason,
+    }, {
+      projectRoot: cwd,
+      generationId: fileHash,
+      round,
+      emitter: 'slop-gate',
+    });
+  } catch { /* trace is best-effort */ }
+}
+
 // ── Build additionalContext ──────────────────────────────────────────────────
 const slopSection = slopFlags.length
   ? `\n\nDeterministic slop patterns pre-detected (include in design_slop_flags):\n${JSON.stringify(slopFlags)}`
@@ -535,6 +617,7 @@ const context = [
   fanOutSection,
   multiCriticSection,
   ragSection,
+  buildMotionContextBlock(clean),
   '',
   `additionalContext cap: ${CONTEXT_CAP} chars — keep critique JSON concise.${slopSection}`,
 ].join('\n');

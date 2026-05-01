@@ -68,6 +68,8 @@ const KNOWN_EVENTS = new Set([
   'numeric_scorer_output',
   'axe_output',
   'slop_scan_output',
+  'slop_blocked',
+  'slop_whitelisted',
   'fix_candidate_generated',
   'verifier_picked',
   'patch_applied',
@@ -129,12 +131,16 @@ export function _resetCachedSessionForTest(id = null) {
 }
 
 // ── Trace directory ──────────────────────────────────────────────────────────
-// Lives under <projectRoot>/.visionary/traces/ per Sprint 06 spec. Matches
-// the capture-and-critique convention of keeping visionary state in
-// project-local directories so it's discoverable and deletable by the user.
+// Preference order (same pattern as capture-and-critique.mjs cacheDir):
+//   1. Explicit projectRoot argument — tests and calibrate scripts pass this.
+//   2. CLAUDE_PLUGIN_DATA env var — Claude Code harness sets this; keeps
+//      traces out of the user's repo when running as a plugin.
+//   3. Nearest package.json / .git ancestor of cwd — legacy fallback.
 export function resolveTraceDir(projectRoot) {
-  const root = projectRoot || findProjectRoot();
-  return join(root, '.visionary', 'traces');
+  if (projectRoot) return join(projectRoot, '.visionary', 'traces');
+  const pluginDataDir = process.env.CLAUDE_PLUGIN_DATA;
+  if (pluginDataDir) return join(pluginDataDir, 'visionary', 'traces');
+  return join(findProjectRoot(), '.visionary', 'traces');
 }
 
 export function ensureTraceDir(projectRoot) {

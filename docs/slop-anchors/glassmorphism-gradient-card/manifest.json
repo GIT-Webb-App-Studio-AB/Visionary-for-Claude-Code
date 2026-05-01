@@ -1,0 +1,12 @@
+{
+  "category": "glassmorphism-gradient-card",
+  "description": "Frosted-glass cards on saturated gradient backdrop. Stripe-2022 influence that saturated the ecosystem 2023–2025.",
+  "avoid_reasoning": "`backdrop-filter: blur(20px)` on `bg-white/10` over `from-purple-500 to-pink-500` is the single most-copied pattern of 2023. Signals 'modern' by imitation, not by design choice.",
+  "avoid_families": ["saas", "marketing", "dashboard", "modern"],
+  "excludes_styles": ["glassmorphism"],
+  "images": [
+    { "file": "example-1.png", "source": "PLACEHOLDER", "caption": "Stripe-inspired landing with gradient backdrop + frosted cards" },
+    { "file": "example-2.png", "source": "PLACEHOLDER", "caption": "Dashboard with glass-effect stat cards over purple gradient" },
+    { "file": "example-3.png", "source": "PLACEHOLDER", "caption": "Pricing page with translucent tier cards on rainbow gradient" }
+  ]
+}

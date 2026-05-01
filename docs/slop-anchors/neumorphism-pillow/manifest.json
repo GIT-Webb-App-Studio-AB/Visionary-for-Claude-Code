@@ -1,0 +1,12 @@
+{
+  "category": "neumorphism-pillow",
+  "description": "Soft inner-shadow + outer-shadow 'pillow' surfaces on neutral backgrounds. 2020 revival that reads dated in 2026 but still appears in AI output.",
+  "avoid_reasoning": "`box-shadow: 12px 12px 24px #b0b0b0, -12px -12px 24px #ffffff` on `#e0e0e0` surface. The aesthetic has aged badly and contrast is typically AA-fail without effort.",
+  "avoid_families": ["dashboard", "saas", "modern"],
+  "excludes_styles": ["neumorphism"],
+  "images": [
+    { "file": "example-1.png", "source": "PLACEHOLDER", "caption": "Settings panel with soft-shadow buttons on light gray" },
+    { "file": "example-2.png", "source": "PLACEHOLDER", "caption": "Dashboard stat card with inset-shadow treatment" },
+    { "file": "example-3.png", "source": "PLACEHOLDER", "caption": "Mobile app UI with pillowy surfaces and no sharp edges" }
+  ]
+}

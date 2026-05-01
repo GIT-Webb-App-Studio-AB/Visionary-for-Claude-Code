@@ -1,0 +1,12 @@
+{
+  "category": "saas-default-blue-hero",
+  "description": "The default AI-generated SaaS landing page: default Tailwind blue CTA, stock-photo hero, 3-column features below. Ships from bolt / v0 / lovable on every 'build me a landing page' prompt with no style direction.",
+  "avoid_reasoning": "Indistinguishable from 40+ other SaaS landing pages generated the same week. Reads as zero-taste default output. Specifically: #3B82F6 primary, #F3F4F6 background, Inter sole typeface, `grid-cols-3` features section.",
+  "avoid_families": ["saas", "marketing", "b2b", "landing"],
+  "excludes_styles": [],
+  "images": [
+    { "file": "example-1.png", "source": "PLACEHOLDER — add bolt.new / v0 / lovable screenshot here",   "caption": "Default-blue CTA hero with 3-column feature section below" },
+    { "file": "example-2.png", "source": "PLACEHOLDER — add canonical 'modern SaaS' template output",     "caption": "Gradient-text headline, stock-person photo, default-blue buttons" },
+    { "file": "example-3.png", "source": "PLACEHOLDER — add generic pricing-page competitor screenshot", "caption": "3-tier pricing card grid with checkmark bullets" }
+  ]
+}

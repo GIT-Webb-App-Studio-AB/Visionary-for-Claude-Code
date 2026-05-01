@@ -1,0 +1,12 @@
+{
+  "category": "cyberpunk-cyan-glow",
+  "description": "Cyan-on-dark with saturated glow shadows. Generic sci-fi HUD aesthetic — frequently produced for 'modern dashboard' or 'AI tool' briefs.",
+  "avoid_reasoning": "Single most recognisable AI-default signature: #06B6D4 text + #111827 background + `shadow-cyan-500/50`. Reads as 'I don't know what aesthetic to use, so cyberpunk'. Valid for actual sci-fi or gaming briefs; always wrong as a default.",
+  "avoid_families": ["dashboard", "saas", "modern", "developer-tools"],
+  "excludes_styles": ["neon-dystopia", "sci-fi-hud", "cyberpunk", "neural-network-ai"],
+  "images": [
+    { "file": "example-1.png", "source": "PLACEHOLDER",   "caption": "Dashboard with cyan accent lines on gray-900 background" },
+    { "file": "example-2.png", "source": "PLACEHOLDER",   "caption": "AI tool landing page with glowing cyan CTA" },
+    { "file": "example-3.png", "source": "PLACEHOLDER",   "caption": "'Modern' analytics page with cyan gradient hero" }
+  ]
+}
