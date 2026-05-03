@@ -50,7 +50,7 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 | | | | | | | |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **202** | **8** | **15** | **13** | **32** | **20+** | **3** |
+| **202** | **8** | **15** | **13** | **26** | **20+** | **3** |
 | Design Styles | Algorithm Steps | Frameworks | Categories | Slop Detectors | Languages | Critique Rounds |
 
 </div>
@@ -69,12 +69,11 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 ---
 
-## What's new — post-1.3.1 (Sprint 1–15)
+## What's new — post-1.3.1 (Sprint 1–15 + v1.5.0)
 
-Fifteen sprints of quality-lift work on top of the 1.3.1 baseline. All
+Fifteen sprints of quality-lift work plus the v1.5.0 structural-integrity gate, all on top of the 1.3.1 baseline. All
 additions are dependency-free, toggleable via env, and backed by
-`node --test`-level unit tests (**457 pass, 0 fail** at last count —
-279 pre-Sprint-9 + 178 added by Sprint 9–15).
+`node --test`-level unit tests (**471 pass, 0 fail** at last count, including 86 new tests for the v1.5.0 structural-integrity gate).
 
 Roadmap overview: [`docs/sprints/README.md`](docs/sprints/README.md).
 
@@ -314,6 +313,8 @@ rather than stylistic ones.
 | `VISIONARY_VISUAL_EMBED` | **off** | Set `1` or `on` to enable DINOv2 visual_style_match dimension (Sprint 11). Requires manual setup — see scripts/download-dinov2.mjs |
 | `VISIONARY_VISUAL_VERBOSE` | off | `1` prints ONNX runtime / model load diagnostics to stderr (Sprint 11) |
 | `VISIONARY_MLLM_JUDGE` | off | `tie-only` or `on` to enable MLLM judge tie-breaking (Sprint 12) |
+| `VISIONARY_DISABLE_BON` | off | Disable Best-of-N fan-out (Sprint 4) |
+| `VISIONARY_NO_AUTOUPDATE` | off | Disable the once-per-24h SessionStart marketplace update (v1.3) |
 | `VISIONARY_ENABLE_STRUCTURAL_GATE` | on | Set `0` to disable the structural-integrity gate (v1.5.0) |
 | `VISIONARY_JUDGE_MODEL` | `claude-sonnet-4-6` | Model for judge invocations (Sprint 12) |
 | `VISIONARY_JUDGE_MAX_PER_ROUND` | 1 | Hard cap on judge invocations per critique round (Sprint 12) |
@@ -333,7 +334,7 @@ are absent.
 
 | Feature | frontend-design (Anthropic) | UI/UX Pro Max | 21st.dev Magic | Claude Design (Anthropic) | **visionary-claude** |
 |---------|------|------|------|------|------|
-| Design styles | ~15 implicit | 67 named | Component-level only | Inferred from codebase | **203 with auto-inference** |
+| Design styles | ~15 implicit | 67 named | Component-level only | Inferred from codebase | **202 with auto-inference** |
 | Style selection | Manual / prompt-based | Manual name entry | Multi-variant picker | Prompt + Figma/code sync | **8-step algorithm + weighted random + transplantation** |
 | Anti-default bias | None | None | Partial | Partial | **Hard-rejects ≥ 2 slop patterns before critique runs (Sprint 8); 32-pattern catalogue; negative visual anchors injected upstream** |
 | Motion system | None | None | None | None (prototype-oriented) | **Motion v12 spring tokens + CSS-first (`@starting-style`, `animation-timeline`)** |
@@ -404,7 +405,7 @@ In a Claude Code session, describe any UI task or use one of:
 
 ### Five-stage pipeline
 
-1. **Context Inference** — Detects language, product type, audience, brand archetype, and tone from your prompt. Runs the 8-step selection algorithm to pick a style from 189 candidates.
+1. **Context Inference** — Detects language, product type, audience, brand archetype, and tone from your prompt. Runs the 8-step selection algorithm to pick a style from 202 candidates.
 
 2. **Design Reasoning Brief** — Shows the selected style, runner-up alternatives with probability weights, and the scoring logic before generating code. You can redirect or say "try #2 instead".
 

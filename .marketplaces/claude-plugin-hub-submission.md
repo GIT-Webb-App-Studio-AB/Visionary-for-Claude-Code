@@ -11,8 +11,8 @@ or open a PR to their catalogue repo — verify current channel before filing).
 {
   "slug": "visionary-claude",
   "name": "Visionary — Design Intelligence",
-  "version": "1.3.0",
-  "published_at": "2026-04-20",
+  "version": "1.5.0",
+  "published_at": "2026-05-03",
   "authors": [
     { "name": "GIT Webb & App Studio AB", "github": "GIT-Webb-App-Studio-AB" }
   ],
@@ -23,8 +23,8 @@ or open a PR to their catalogue repo — verify current channel before filing).
   "verified_benchmark": true,
   "benchmark_score": 18.35,
   "baseline_score": 12.60,
-  "benchmark_path": "results/visionary-1.3.0.json",
-  "short_description": "202 design styles, 8-step selection, motion-first generation, axe-core-grounded critique, DTCG token export. WCAG 2.2 AA + APCA.",
+  "benchmark_path": "results/visionary-1.5.0.json",
+  "short_description": "202 design styles, 8-step selection, motion-first generation, axe-core-grounded critique, DINOv2 visual embeddings, structural-integrity gate, DTCG token export. WCAG 2.2 AA + APCA.",
   "install_command": "claude plugin install visionary-claude",
   "commands": ["visionary", "variants", "apply", "designer", "annotate", "import-artifact"],
   "agents": ["visual-critic"],
@@ -62,6 +62,15 @@ a delta of **+5.75 points**, with motion-readiness (+2.55), accessibility
    code edit.
 6. **Framework breadth** — 15 stacks including Flutter, SwiftUI, Jetpack
    Compose. Not a Next.js/shadcn monoculture.
+7. **DINOv2 ONNX visual embeddings + MLLM judge** (v1.4.0) — cosine-similarity
+   OOD detection catches visually-generic outputs before scoring; MLLM judge
+   breaks critic ties in the arbitration table.
+8. **Structural-integrity gate** (v1.5.0) — six deterministic hard-fail checks
+   (duplicate-heading, exposed-nav-bullets, footer-grid-collapse, etc.) run
+   after Playwright capture and before the LLM-critic. Catches structural
+   defects before they reach the user. Style frontmatter `allows_structural`
+   for opt-out; three trace events for observability; toggle via
+   `VISIONARY_ENABLE_STRUCTURAL_GATE=0`.
 
 ## Tags
 

@@ -1,7 +1,7 @@
 ---
 name: generating-visual-designs
 description: >
-  Generates distinctive, motion-first UI components with 183 design styles.
+  Generates distinctive, motion-first UI components with 202 design styles.
   Auto-infers style from context signals (product type, audience, archetype, tone, density).
   Runs Playwright visual critique loop with 8-dimension aesthetic scoring (axe-core-instrumented).
   Learns from user rejection via negative taste calibration in system.md.

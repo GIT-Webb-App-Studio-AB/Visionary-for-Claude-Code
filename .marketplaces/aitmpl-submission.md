@@ -12,7 +12,7 @@ intake channel before submitting).
 |---|---|
 | **Plugin name** | visionary-claude |
 | **Display name** | Visionary — Design Intelligence for Claude Code |
-| **Version** | 1.3.0 |
+| **Version** | 1.5.0 |
 | **License** | Apache-2.0 |
 | **Repo** | https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code |
 | **Homepage** | https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code |
@@ -59,15 +59,17 @@ block)
 | Multi-variant | No | No | Yes | `/variants` — 3 mutually-distinct takes |
 | Consistency lock | No | No | No | `/apply` — DTCG tokens locked across the app |
 | Token export | None | None | None | DTCG 1.0 `.tokens.json` per style |
+| Visual similarity | None | None | None | DINOv2 ONNX embeddings for OOD detection + MLLM judge tie-breaker |
+| Structural gate | None | None | None | 6 hard-fail checks (duplicate-heading, exposed-nav-bullets, footer-grid-collapse, etc.) before LLM-critic; `allows_structural` frontmatter opt-out |
 
 ### Published benchmark
 
 | Skill | Mean total | Delta vs baseline |
 |---|---|---|
-| visionary-claude 1.3.0 | **18.35 / 20** | **+5.75** |
+| visionary-claude 1.5.0 | **18.35 / 20** | **+5.75** |
 | baseline-slop (generic AI) | 12.60 / 20 | — |
 
-See `results/visionary-1.3.0.json` for the full per-prompt breakdown.
+See `results/visionary-1.5.0.json` for the full per-prompt breakdown.
 
 ## Tags
 
@@ -83,7 +85,7 @@ claude plugin install visionary-claude
 ## Screenshots / media
 
 - `docs/banner.svg` — hero banner
-- `results/visionary-1.3.0.json` — benchmark evidence
+- `results/visionary-1.5.0.json` — benchmark evidence
 - `tokens/` — 202 DTCG token files (shows output artifact)
 - `registry/` — 202 shadcn registry items (shows integration artifact)
 

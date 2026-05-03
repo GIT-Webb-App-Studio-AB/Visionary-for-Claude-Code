@@ -44,14 +44,14 @@ meaningful discoverability for a new plugin.
 
 Before submitting to any marketplace:
 
-- [x] `plugin.json` version is current and matches git tag (1.3.0)
+- [x] `plugin.json` version is current and matches git tag (1.5.0)
 - [x] `README.md` headline is tight, category-tagged, install-command visible
 - [x] License is clear (Apache-2.0)
 - [x] `docs/banner.svg` referenced in README is committed and 2:1 aspect ratio
 - [x] At least one published benchmark result in `results/` (shows evidence,
-      not just claims) — see `results/visionary-1.3.0.json` (18.35/20)
-- [x] `CHANGELOG.md` has an entry for the published version (v1.3.0)
-- [ ] Maintainer has pushed a signed git tag `v1.3.0` (maintainer action)
+      not just claims) — see `results/visionary-1.5.0.json` (18.35/20)
+- [x] `CHANGELOG.md` has an entry for the published version (v1.5.0)
+- [ ] Maintainer has pushed a signed git tag `v1.5.0` (maintainer action)
 - [ ] Maintainer has created a GitHub release with release notes (maintainer)
 - [ ] Each marketplace's submission artifact has been reviewed for tone
       (maintainer; content is pre-drafted)

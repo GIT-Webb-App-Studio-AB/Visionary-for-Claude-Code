@@ -9,7 +9,7 @@ submission time — the intake URL may have moved).
 
 ```yaml
 name: visionary-claude
-version: 1.3.0
+version: 1.5.0
 display_name: "Visionary — Design Intelligence"
 tagline: "202 design styles, 8-step algorithm, motion-first, axe-core-grounded critique. Beats baseline slop by +5.75 points."
 category: design
@@ -25,7 +25,7 @@ repository:
   type: github
   url: https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code
   default_branch: main
-  release_tag: v1.3.0
+  release_tag: v1.5.0
 author:
   name: GIT Webb & App Studio AB
   country: SE
@@ -92,14 +92,23 @@ design. It ships:
   `npx shadcn add`. Consumes the shadcn ecosystem instead of competing with it.
 - **Named-designer taste packs** — 5 packs (Rams, Kowalski, Vignelli, Scher,
   Greiman), blendable, opt-in.
+- **DINOv2 ONNX visual embeddings + MLLM judge** (v1.4.0) — cosine-similarity
+  OOD detection flags visually-generic outputs before scoring; MLLM judge
+  breaks ties in the multi-critic arbitration table.
+- **Structural-integrity gate** (v1.5.0) — six deterministic hard-fail checks
+  (duplicate-heading, exposed-nav-bullets, footer-grid-collapse, and three
+  more) that run after Playwright capture and before the LLM-critic, catching
+  structural defects early. Style frontmatter `allows_structural` for opt-out.
+  Three trace events emitted for observability. Toggle:
+  `VISIONARY_ENABLE_STRUCTURAL_GATE=0`.
 - **Commands** — `/visionary`, `/variants`, `/apply`, `/designer`,
   `/annotate`, `/import-artifact`.
 
 ## Verified performance
 
-Published benchmark run (2026-04-20, N=10 representative prompts):
+Published benchmark run (2026-05-03, N=10 representative prompts):
 
-| Dimension | Visionary 1.3.0 | Baseline slop | Delta |
+| Dimension | Visionary 1.5.0 | Baseline slop | Delta |
 |---|---|---|---|
 | Distinctiveness | 5.00 | 3.50 | **+1.50** |
 | Coherence | 4.90 | 5.00 | −0.10 |
@@ -107,7 +116,7 @@ Published benchmark run (2026-04-20, N=10 representative prompts):
 | Motion readiness | 3.55 | 1.00 | **+2.55** |
 | **Total** | **18.35 / 20** | 12.60 / 20 | **+5.75** |
 
-Full data: `results/visionary-1.3.0.json` + `results/baseline-slop.json` in
+Full data: `results/visionary-1.5.0.json` + `results/baseline-slop.json` in
 the repo. Reproduce with `node benchmark/runner.mjs`.
 
 ## Why install this instead of a competitor
@@ -127,6 +136,6 @@ the repo. Reproduce with `node benchmark/runner.mjs`.
 ## Submission checklist
 
 - [x] All artifacts present in repo (README, LICENSE, benchmark, registry, tokens)
-- [x] v1.3.0 tagged (maintainer to push the git tag)
+- [x] v1.5.0 tagged (maintainer to push the git tag)
 - [x] CHANGELOG current
 - [ ] Maintainer to file the submission at claudemarketplaces.com intake

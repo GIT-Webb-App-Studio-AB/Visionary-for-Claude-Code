@@ -310,7 +310,9 @@ export function loadActiveStyleWhitelist(filePath, { repoRoot } = {}) {
   if (!existsSync(styleFile)) return { ...empty, styleId };
   let body;
   try { body = readFileSync(styleFile, 'utf8'); } catch { return { ...empty, styleId }; }
-  const frontmatterMatch = body.match(/^---\n([\s\S]*?)\n---/);
+  // Accept both LF and CRLF — Windows checkouts with core.autocrlf=true
+  // store style files with CRLF, which the LF-only pattern silently misses.
+  const frontmatterMatch = body.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!frontmatterMatch) return { ...empty, styleId };
   const parsed = parseStyleAllowsSlop(frontmatterMatch[1]);
   const struct = parseStyleAllowsStructural(frontmatterMatch[1]);
