@@ -33,6 +33,11 @@ import {
   loadActiveStyleWhitelist,
 } from './lib/slop-gate.mjs';
 import { buildDirectiveBlock } from './lib/slop-directives.mjs';
+import {
+  evaluate as evaluateStructural,
+  buildStructuralDirectiveBlock,
+  buildStructuralWarningsBlock,
+} from './lib/structural-gate.mjs';
 // Sprint 9 Task 24.10: Motion Scoring 2.0 — inject 6-sub-dim scores so critic
 // can cite the exact sub-dim that drags motion_readiness down.
 import { buildMotionContextBlock } from './lib/motion/inject.mjs';
@@ -415,6 +420,89 @@ if (!gateDecision.rejected && gateDecision.whitelisted_count > 0) {
   } catch { /* trace is best-effort */ }
 }
 
+// ── structural-gate: post-capture structural-integrity gate ─────────────────
+// Reads the prior round's persisted DOM snapshot and runs the dispatcher.
+// Round 1 has no prior snapshot → gate is a no-op and slop-gate + LLM-critic
+// remain the sole defence.
+
+const STRUCTURAL_DISABLED = (() => {
+  const v = process.env.VISIONARY_ENABLE_STRUCTURAL_GATE;
+  if (v === undefined) return false;
+  if (v === '0' || v === 'false' || v.toLowerCase() === 'off') return true;
+  return false;
+})();
+
+let structuralWarningsBlock = '';
+if (!STRUCTURAL_DISABLED && existsSync(domSnapshotPath)) {
+  let priorDom = null;
+  try { priorDom = JSON.parse(readFileSync(domSnapshotPath, 'utf8')); }
+  catch { /* corrupt snapshot — skip gate */ }
+
+  if (priorDom && Array.isArray(priorDom.elements)) {
+    const wlStructural = activeWhitelist?.structural || {
+      hard_fail_skips: new Set(),
+      warning_skips: new Set(),
+    };
+    const sgResult = evaluateStructural(priorDom, { width: 1200, height: 800 }, {
+      styleWhitelist: wlStructural,
+      styleId: activeWhitelist?.styleId,
+    });
+
+    if (sgResult.hard_fails.length > 0) {
+      try {
+        trace.sync('structural_blocked', {
+          blocking_checks: [...new Set(sgResult.hard_fails.map(h => h.check_id))],
+          blocking_count: sgResult.hard_fails.length,
+          skipped_count: sgResult.skipped.length,
+          style_id: activeWhitelist?.styleId || null,
+        }, { projectRoot: cwd, generationId: fileHash, round, emitter: 'structural-gate' });
+      } catch { /* trace is best-effort */ }
+
+      const directive = buildStructuralDirectiveBlock(sgResult.hard_fails);
+      const rejectContext = [
+        `STRUCTURAL GATE BLOCKED REGEN — Round ${round}/${MAX_ROUNDS}`,
+        '',
+        `File written: ${filePath}`,
+        `Active style: ${activeWhitelist?.styleId || '(no .visionary-generated marker — gate used empty whitelist)'}`,
+        `Hard-fails: ${sgResult.hard_fails.length}  ·  warnings (suppressed this round): ${sgResult.warnings.length}  ·  skipped: ${sgResult.skipped.length}`,
+        '',
+        'NEXT-TURN ACTIONS:',
+        '1. Skip the normal critic+screenshot flow — this output has structural defects that must be eliminated before scoring is meaningful.',
+        '2. Read the STRUCTURAL DEFECTS block below carefully.',
+        '3. Rewrite the component to fix every flagged defect. The hook will re-trigger automatically when you save.',
+        '4. To override on a stylistic basis: add the check_id to the active style frontmatter `allows_structural.hard_fail_skips` and document why.',
+        '',
+        directive,
+        '',
+        'No critic output was produced this round. Round counter advances normally; if hard-fails persist for 3 rounds, the loop terminates and user review is expected.',
+      ].join('\n');
+      emit({ additionalContext: rejectContext.slice(0, CONTEXT_CAP) });
+    }
+
+    if (sgResult.warnings.length > 0) {
+      try {
+        trace.sync('structural_warning', {
+          warning_checks: [...new Set(sgResult.warnings.map(w => w.check_id))],
+          warning_count: sgResult.warnings.length,
+          style_id: activeWhitelist?.styleId || null,
+        }, { projectRoot: cwd, generationId: fileHash, round, emitter: 'structural-gate' });
+      } catch { /* trace is best-effort */ }
+      structuralWarningsBlock = buildStructuralWarningsBlock(sgResult.warnings);
+    }
+
+    if (sgResult.skipped.length > 0) {
+      try {
+        trace.sync('structural_whitelisted', {
+          whitelisted_checks: [...new Set(sgResult.skipped.filter(s => s.reason === 'whitelisted').map(s => s.check_id))],
+          whitelisted_count: sgResult.skipped.filter(s => s.reason === 'whitelisted').length,
+          style_id: activeWhitelist?.styleId || null,
+          reason: activeWhitelist?.reason || null,
+        }, { projectRoot: cwd, generationId: fileHash, round, emitter: 'structural-gate' });
+      } catch { /* trace is best-effort */ }
+    }
+  }
+}
+
 // ── Build additionalContext ──────────────────────────────────────────────────
 const slopSection = slopFlags.length
   ? `\n\nDeterministic slop patterns pre-detected (include in design_slop_flags):\n${JSON.stringify(slopFlags)}`
@@ -616,6 +704,7 @@ const context = [
   regenMode,
   fanOutSection,
   multiCriticSection,
+  structuralWarningsBlock,
   ragSection,
   buildMotionContextBlock(clean),
   '',
