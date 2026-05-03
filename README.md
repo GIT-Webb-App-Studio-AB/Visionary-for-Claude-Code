@@ -7,7 +7,7 @@
 # visionary-claude
 
 [![Release](https://img.shields.io/badge/RELEASE-stable-blue?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases)
-[![Version](https://img.shields.io/badge/v1.4.0-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.4.0)
+[![Version](https://img.shields.io/badge/v1.5.0-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.5.0)
 [![Design Styles](https://img.shields.io/badge/DESIGN_STYLES-202-orange?style=flat-square)](#design-catalogue)
 [![Stacks](https://img.shields.io/badge/STACKS-15-purple?style=flat-square)](#frameworks-supported)
 [![Languages](https://img.shields.io/badge/LANGUAGES-20+-teal?style=flat-square)](#language-support)
@@ -268,6 +268,34 @@ aesthetic ties, (B) MLLM judge from Sprint 12, (C) user escalation.
 Default designer weight in arbitration: 0.25 (vs 1.0 each for craft +
 aesthetic). Vetoes are opt-in (`can_veto: false` for all v1 packs).
 
+### Fas 10 — Structural-integrity gate (v1.5.0)
+
+Catches three observed failure modes from real generated output —
+duplicate headings, footer-grid collapse with exposed default
+bullets, and orphan single-word labels — that slipped past slop /
+motion / visual-style checks because they are *structural* defects
+rather than stylistic ones.
+
+- **Six hard-fail checks** — `duplicate-heading`, `exposed-nav-bullets`,
+  `off-viewport-right`, `footer-grid-collapse`, `empty-section`,
+  `heading-hierarchy-skip`. Live in `hooks/scripts/lib/structural-checks/`.
+  Any single hit short-circuits the LLM-critic round and forces regen
+  with a check-specific directive — same pattern as the slop-gate.
+- **One warning check** — `mystery-text-node` flags single-word block
+  elements that look like orphan labels, surfaced to the LLM-critic
+  via a `STRUCTURAL_WARNINGS:` block. `image-brand-mismatch` is
+  reserved as a follow-up sprint (needs brief→image embedding pipeline).
+- **Style opt-out** — `allows_structural` style frontmatter mirrors
+  `allows_slop`, with `hard_fail_skips` and `warning_skips` arrays
+  for stylistic intent (a brutalist style can keep default disc-bullets).
+- **Trace observability** — `structural_blocked`, `structural_warning`,
+  `structural_whitelisted` events feed `visionary-stats.mjs`.
+- **Security** — DOM-text and selectors that flow into the directive
+  context are sanitised against prompt-injection: control bytes
+  stripped to spaces, output capped at 200 chars, UTF-8 (Swedish
+  diacritics, em-dash, curly quotes) preserved.
+- **Toggle:** `VISIONARY_ENABLE_STRUCTURAL_GATE=0` disables.
+
 ### Env-flag reference
 
 | Flag | Default | Purpose |
@@ -286,6 +314,7 @@ aesthetic). Vetoes are opt-in (`can_veto: false` for all v1 packs).
 | `VISIONARY_VISUAL_EMBED` | **off** | Set `1` or `on` to enable DINOv2 visual_style_match dimension (Sprint 11). Requires manual setup — see scripts/download-dinov2.mjs |
 | `VISIONARY_VISUAL_VERBOSE` | off | `1` prints ONNX runtime / model load diagnostics to stderr (Sprint 11) |
 | `VISIONARY_MLLM_JUDGE` | off | `tie-only` or `on` to enable MLLM judge tie-breaking (Sprint 12) |
+| `VISIONARY_ENABLE_STRUCTURAL_GATE` | on | Set `0` to disable the structural-integrity gate (v1.5.0) |
 | `VISIONARY_JUDGE_MODEL` | `claude-sonnet-4-6` | Model for judge invocations (Sprint 12) |
 | `VISIONARY_JUDGE_MAX_PER_ROUND` | 1 | Hard cap on judge invocations per critique round (Sprint 12) |
 | `VISIONARY_JUDGE_MAX_PER_SESSION` | 5 | Hard cap on judge invocations per session (Sprint 12) |

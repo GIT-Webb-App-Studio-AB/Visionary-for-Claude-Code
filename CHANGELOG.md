@@ -7,7 +7,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — 2026-05-03
+## [1.5.0] — 2026-05-03
 
 ### Added — Structural Integrity Gate
 

@@ -7,6 +7,10 @@
 taste/
 system.md
 
+# Claude Code agent worktrees — created by isolated subagent dispatch,
+# locked while the runtime owns them, removed at session end.
+.claude/worktrees/
+
 # Playwright MCP runtime dir (browser contexts / screenshots)
 .playwright-mcp/
 
