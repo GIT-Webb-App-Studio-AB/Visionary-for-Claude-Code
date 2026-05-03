@@ -1,4 +1,5 @@
 <div align="center">
+<img src="logo visionary.png" alt="Visionary for Claude Code Logo" width="50%"/>
 <img src="docs/visionary-hero.svg" alt="Visionary for Claude Code — 202 design styles, 8-step algorithm, motion-first, axe-core critique, 18.35/20 benchmark" width="100%"/>
 </div>
 
