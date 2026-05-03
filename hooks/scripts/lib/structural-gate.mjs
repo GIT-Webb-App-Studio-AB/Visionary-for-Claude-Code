@@ -68,3 +68,25 @@ export function buildStructuralWarningsBlock(warnings) {
   void warnings;
   throw new Error('buildStructuralWarningsBlock not yet implemented (Task 13)');
 }
+
+// ── Trace event shapes (emitted by capture-and-critique integration) ────────
+//
+// The gate module itself does NOT call trace.sync — emission happens in
+// the hook so it can include the hook-level cwd/generationId/round.
+//
+// @typedef {Object} StructuralBlockedEvent
+// @property {string[]} blocking_checks
+// @property {number}   blocking_count
+// @property {number}   skipped_count
+// @property {string|null} style_id
+//
+// @typedef {Object} StructuralWarningEvent
+// @property {string[]} warning_checks
+// @property {number}   warning_count
+// @property {string|null} style_id
+//
+// @typedef {Object} StructuralWhitelistedEvent
+// @property {string[]} whitelisted_checks
+// @property {number}   whitelisted_count
+// @property {string|null} style_id
+// @property {string|null} reason
