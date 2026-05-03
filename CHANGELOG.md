@@ -7,6 +7,40 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased] — 2026-05-03
+
+### Added — Structural Integrity Gate
+
+A new deterministic gate that runs after Playwright capture and before the
+LLM-critic pass. Catches three observed failure modes from a salon-mockup
+pair (Atelier Nord + Studio/Hår): duplicate headings, footer-grid collapse
+with exposed default bullets, and orphan single-word labels — all of which
+slipped past the existing slop, motion, and visual-style checks because
+they are structural rather than stylistic.
+
+- **Pipeline placement** — runs after Playwright capture, before LLM-critic,
+  so structural defects fail fast and never burn a critic round.
+- **Six hard-fail checks** — `duplicate-heading`, `exposed-nav-bullets`,
+  `off-viewport-right`, `footer-grid-collapse`, `empty-section`,
+  `heading-hierarchy-skip`. Any single hit blocks the round.
+- **One warning check** — `mystery-text-node` (orphan single-word labels).
+  `image-brand-mismatch` is reserved as a follow-up once the visual-anchor
+  pipeline lands.
+- **Per-style opt-out** — frontmatter key `allows_structural` lets a style
+  intentionally bypass specific checks (e.g. brutalist styles that
+  deliberately use bare `<ul>` markers).
+- **Trace events** — `structural_blocked`, `structural_warning`,
+  `structural_whitelisted` written to `.visionary/traces/` alongside the
+  existing slop / motion / visual events.
+- **Feature flag** — `VISIONARY_ENABLE_STRUCTURAL_GATE` (default **on**).
+  Set to `0` to fall back to pre-gate behaviour while calibrating
+  whitelists.
+
+Specs: `docs/superpowers/specs/2026-05-03-structural-integrity-gate-design.md`.
+Plan: `docs/superpowers/plans/2026-05-03-structural-integrity-gate.md`.
+
+---
+
 ## [1.4.0] — 2026-05-01
 
 The Sprint 5–15 quality-lift release. Eleven new sprints layered on top of
