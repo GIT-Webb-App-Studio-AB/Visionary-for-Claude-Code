@@ -1,0 +1,60 @@
+{
+  "elements": [
+    {
+      "selector": "h1.brand",
+      "tagName": "h1",
+      "text": "STUDIO/HÅR",
+      "parentTag": "header",
+      "bbox": { "x": 40, "y": 40, "width": 600, "height": 100 },
+      "style": { "fontSize": "96px", "lineHeight": "100px", "letterSpacing": "-0.04em", "color": "rgb(20,20,20)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": null,
+      "childCount": 0,
+      "anchorDescendantCount": 0,
+      "display": null,
+      "gridTemplateColumns": null,
+      "nextElementSiblingText": "Salongen för dig som vill ha klipp som syns",
+      "nextElementSiblingTag": "p"
+    },
+    {
+      "selector": "section.services h2",
+      "tagName": "h2",
+      "text": "Vi gör en sak — håret",
+      "parentTag": "section",
+      "bbox": { "x": 40, "y": 800, "width": 1100, "height": 100 },
+      "style": { "fontSize": "72px", "lineHeight": "80px", "letterSpacing": "-0.02em", "color": "rgb(20,20,20)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": null,
+      "childCount": 0,
+      "anchorDescendantCount": 0,
+      "display": null,
+      "gridTemplateColumns": null,
+      "nextElementSiblingText": "Six service cards",
+      "nextElementSiblingTag": "div"
+    },
+    {
+      "selector": "footer.site-footer",
+      "tagName": "footer",
+      "text": null,
+      "parentTag": "body",
+      "bbox": { "x": 0, "y": 3200, "width": 1200, "height": 200 },
+      "style": { "fontSize": "14px", "lineHeight": "20px", "letterSpacing": "normal", "color": "rgb(255,255,255)", "backgroundColor": "rgb(20,20,20)" },
+      "listStyleType": null,
+      "childCount": 4,
+      "anchorDescendantCount": 8,
+      "display": "grid",
+      "gridTemplateColumns": "repeat(4, 1fr)"
+    },
+    {
+      "selector": "footer ul.nav-studio",
+      "tagName": "ul",
+      "text": null,
+      "parentTag": "footer",
+      "bbox": { "x": 40, "y": 3260, "width": 250, "height": 130 },
+      "style": { "fontSize": "14px", "lineHeight": "24px", "letterSpacing": "normal", "color": "rgb(255,255,255)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": "none",
+      "childCount": 4,
+      "anchorDescendantCount": 4,
+      "display": null,
+      "gridTemplateColumns": null
+    }
+  ]
+}

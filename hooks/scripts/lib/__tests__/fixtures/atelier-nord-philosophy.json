@@ -1,0 +1,34 @@
+{
+  "elements": [
+    {
+      "selector": "section.philosophy h2",
+      "tagName": "h2",
+      "text": "Tjänster & takt",
+      "parentTag": "section",
+      "bbox": { "x": 100, "y": 600, "width": 600, "height": 60 },
+      "style": { "fontSize": "48px", "lineHeight": "56px", "letterSpacing": "-0.02em", "color": "rgb(20,20,20)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": null,
+      "childCount": 0,
+      "anchorDescendantCount": 0,
+      "display": null,
+      "gridTemplateColumns": null,
+      "nextElementSiblingText": "Vi tror på långsamhet, väl avvägda klipp...",
+      "nextElementSiblingTag": "p"
+    },
+    {
+      "selector": "section.prices h2",
+      "tagName": "h2",
+      "text": "Tjänster & takt",
+      "parentTag": "section",
+      "bbox": { "x": 100, "y": 1300, "width": 600, "height": 60 },
+      "style": { "fontSize": "48px", "lineHeight": "56px", "letterSpacing": "-0.02em", "color": "rgb(20,20,20)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": null,
+      "childCount": 0,
+      "anchorDescendantCount": 0,
+      "display": null,
+      "gridTemplateColumns": null,
+      "nextElementSiblingText": "",
+      "nextElementSiblingTag": "ol"
+    }
+  ]
+}

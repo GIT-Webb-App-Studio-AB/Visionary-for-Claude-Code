@@ -1,0 +1,56 @@
+{
+  "elements": [
+    {
+      "selector": "footer.site-footer",
+      "tagName": "footer",
+      "text": null,
+      "parentTag": "body",
+      "bbox": { "x": 0, "y": 1800, "width": 1200, "height": 800 },
+      "style": { "fontSize": "14px", "lineHeight": "20px", "letterSpacing": "normal", "color": "rgb(20,20,20)", "backgroundColor": "rgb(248,242,232)" },
+      "listStyleType": null,
+      "childCount": 12,
+      "anchorDescendantCount": 9,
+      "display": "block",
+      "gridTemplateColumns": "none"
+    },
+    {
+      "selector": "footer ul.nav-services",
+      "tagName": "ul",
+      "text": null,
+      "parentTag": "footer",
+      "bbox": { "x": 80, "y": 2100, "width": 200, "height": 200 },
+      "style": { "fontSize": "14px", "lineHeight": "24px", "letterSpacing": "normal", "color": "rgb(20,20,20)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": "disc",
+      "childCount": 4,
+      "anchorDescendantCount": 4,
+      "display": null,
+      "gridTemplateColumns": null
+    },
+    {
+      "selector": "footer div.atelier-row",
+      "tagName": "div",
+      "text": "Atelier",
+      "parentTag": "footer",
+      "bbox": { "x": 80, "y": 2310, "width": 200, "height": 30 },
+      "style": { "fontSize": "12px", "lineHeight": "20px", "letterSpacing": "0.1em", "color": "rgb(120,120,120)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": null,
+      "childCount": 0,
+      "anchorDescendantCount": 0,
+      "display": "block",
+      "gridTemplateColumns": null
+    },
+    {
+      "selector": "footer div.sociala-row",
+      "tagName": "div",
+      "text": "Sociala",
+      "parentTag": "footer",
+      "bbox": { "x": 80, "y": 2350, "width": 200, "height": 30 },
+      "style": { "fontSize": "12px", "lineHeight": "20px", "letterSpacing": "0.1em", "color": "rgb(120,120,120)", "backgroundColor": "rgba(0,0,0,0)" },
+      "listStyleType": null,
+      "childCount": 0,
+      "anchorDescendantCount": 0,
+      "display": "block",
+      "gridTemplateColumns": null
+    }
+  ]
+}
