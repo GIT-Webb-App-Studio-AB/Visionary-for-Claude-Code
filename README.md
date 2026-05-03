@@ -8,7 +8,7 @@
 # visionary-claude
 
 [![Release](https://img.shields.io/badge/RELEASE-stable-blue?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases)
-[![Version](https://img.shields.io/badge/v1.5.1-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.5.1)
+[![Version](https://img.shields.io/badge/v1.5.2-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.5.2)
 [![Design Styles](https://img.shields.io/badge/DESIGN_STYLES-202-orange?style=flat-square)](#design-catalogue)
 [![Stacks](https://img.shields.io/badge/STACKS-15-purple?style=flat-square)](#frameworks-supported)
 [![Languages](https://img.shields.io/badge/LANGUAGES-20+-teal?style=flat-square)](#language-support)

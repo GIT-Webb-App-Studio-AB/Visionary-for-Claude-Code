@@ -112,7 +112,9 @@ test('integration: trace file has slop_blocked entry', () => {
     CLAUDE_PLUGIN_DATA: join(dir, '.cache'),
   });
 
-  const traceFile = join(dir, '.visionary', 'traces', 'sess-int-trace.jsonl');
+  // v1.5.2+: traces follow CLAUDE_PLUGIN_DATA when set (no '.' prefix on the
+  // 'visionary' segment because the path lives outside the user's project).
+  const traceFile = join(dir, '.cache', 'visionary', 'traces', 'sess-int-trace.jsonl');
   assert.ok(existsSync(traceFile), `trace file should exist at ${traceFile}`);
   const body = readFileSync(traceFile, 'utf8');
   const lines = body.split('\n').filter(Boolean).map((l) => JSON.parse(l));

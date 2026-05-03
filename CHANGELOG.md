@@ -7,6 +7,35 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.5.2] — 2026-05-03
+
+### Fixed — Trace + Pareto directories now honour CLAUDE_PLUGIN_DATA
+
+A precedence bug in `hooks/scripts/lib/trace.mjs::resolveTraceDir()` and
+`hooks/scripts/lib/pareto.mjs::paretoDir()` caused a `.visionary/`
+folder to be created in the user's project root on every session,
+even when `CLAUDE_PLUGIN_DATA` was set. Production hooks (e.g.
+`capture-and-critique.mjs`) pass `projectRoot: cwd` to every `trace()`
+call, which short-circuited the env-var branch.
+
+- **Fix** — both functions now check `CLAUDE_PLUGIN_DATA` first; the
+  explicit `projectRoot` argument is honoured only when the env var is
+  unset (tests, calibrate scripts, dev runs).
+- **Result** — when running as a Claude Code plugin, traces and pareto
+  data live at `${CLAUDE_PLUGIN_DATA}/visionary/{traces,pareto}/`,
+  matching the pattern v1.5.1 introduced for taste data.
+- **Backward compatible** — existing `<project-root>/.visionary/`
+  folders are gitignored and become orphaned (safe to delete locally).
+  Tests run unchanged when `CLAUDE_PLUGIN_DATA` is not set in the env.
+- **Test update** — `slop-gate-integration.test.mjs` resolves the
+  expected trace path against the test's `CLAUDE_PLUGIN_DATA` override.
+
+After v1.5.1 + v1.5.2 the plugin no longer creates ANY folder in the
+user's project root by default (`taste/`, `.visionary/`, and
+`.visionary-cache/` all flow through `CLAUDE_PLUGIN_DATA`).
+
+---
+
 ## [1.5.1] — 2026-05-03
 
 ### Changed — Plugin storage convention compliance
