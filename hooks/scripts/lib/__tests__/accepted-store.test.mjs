@@ -19,6 +19,7 @@ import {
   MAX_ENTRIES,
   IMPLICIT_COMPOSITE_THRESHOLD,
 } from '../accepted-store.mjs';
+import { tasteDir } from '../taste-io.mjs';
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 function mkProject() {
@@ -109,9 +110,10 @@ test('recordAcceptance writes JSONL entry with embedding + copies screenshot', (
   assert.equal(line.product_archetype, 'marketing');
   assert.equal(line.embedder_id, 'hashed-ngram-v1');
   assert.equal(line.brief_embedding.length, 384);
-  assert.ok(line.screenshot_path.includes('taste/screenshots/'));
+  assert.ok(line.screenshot_path.includes('screenshots/'));
+  assert.ok(!line.screenshot_path.startsWith('taste/'), 'screenshot_path should be tasteDir-relative, no leading "taste/"');
   // Screenshot copied to target
-  assert.equal(existsSync(join(root, line.screenshot_path)), true);
+  assert.equal(existsSync(join(tasteDir(root), line.screenshot_path)), true);
 });
 
 test('recordAcceptance skips when VISIONARY_DISABLE_TASTE=1', () => {
@@ -203,6 +205,9 @@ test('listAcceptedExamples filters entries by embedder_id', () => {
     embedder_id: 'legacy-embedder',
     style_id: 'old',
     final_scores: {},
+    // Legacy-format screenshot_path with 'taste/' prefix; resolveScreenshotPath
+    // strips the prefix so rotation can still find/delete the file after the
+    // path stored in the JSONL became tasteDir-relative.
     screenshot_path: 'taste/screenshots/LEGACY.png',
     accepted_at: new Date().toISOString(),
   };

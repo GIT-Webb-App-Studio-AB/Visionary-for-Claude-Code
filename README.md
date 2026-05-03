@@ -8,7 +8,7 @@
 # visionary-claude
 
 [![Release](https://img.shields.io/badge/RELEASE-stable-blue?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases)
-[![Version](https://img.shields.io/badge/v1.5.0-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.5.0)
+[![Version](https://img.shields.io/badge/v1.5.1-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.5.1)
 [![Design Styles](https://img.shields.io/badge/DESIGN_STYLES-202-orange?style=flat-square)](#design-catalogue)
 [![Stacks](https://img.shields.io/badge/STACKS-15-purple?style=flat-square)](#frameworks-supported)
 [![Languages](https://img.shields.io/badge/LANGUAGES-20+-teal?style=flat-square)](#language-support)
@@ -414,11 +414,12 @@ In a Claude Code session, describe any UI task or use one of:
 
 4. **Visual Critique Loop** — Playwright screenshots the rendered output at 1200×800 (+ 375 mobile if responsive), injects `axe-core` for deterministic accessibility scoring, runs `benchmark/scorers/numeric-aesthetic-scorer.mjs` (Shannon entropy on CIELAB L, DBSCAN gestalt grouping, modular-scale typographic rhythm, ΔE2000 colour harmony), and invokes the visual-critic agent on **10 dimensions** (0–10 scale): Hierarchy, Layout, Typography, Contrast (WCAG + APCA), Distinctiveness, Brief Conformance, Accessibility (60 % axe-weighted), Motion Readiness, Craft Measurable (numeric-scorer composite × 10), and Content Resilience (how the component survives p50 / p95 / empty data from `visionary-kit.json`). Detects 26 slop patterns (20 deterministic + 6 vision-based). Runs up to 3 rounds. Fresh-context SELF-REFINE pattern per round. **Evidence-anchored** since Sprint 03: every top_3_fix must cite an axe rule, CSS selector, numeric metric, or coordinate — no unjustified score < 7. Aborts on > 0.3 regression.
 
-5. **Taste Calibration** — Structured taste flywheel under `./taste/`:
-   - **Active signal:** rejection / approval phrasing in your turns is extracted into `taste/facts.jsonl` (one structured fact per line, typed by scope + target + direction + confidence).
+5. **Taste Calibration** — Structured taste flywheel under the taste directory (`facts.jsonl`, `pairs.jsonl`, `accepted-examples.jsonl`):
+   - **Active signal:** rejection / approval phrasing in your turns is extracted into `facts.jsonl` (one structured fact per line, typed by scope + target + direction + confidence).
    - **Passive signal:** `harvest-git-signal.mjs` runs at session start, classifies each `.visionary-generated` file as kept / heavy-edit / deleted from git history, and feeds those as facts with graduated confidence.
-   - **Pairwise signal:** when you pick from a `/variants` output, the choice + rejected siblings are stored in `taste/pairs.jsonl` and used as FSPO few-shot anchors in Step 4 of the selection algorithm.
+   - **Pairwise signal:** when you pick from a `/variants` output, the choice + rejected siblings are stored in `pairs.jsonl` and used as FSPO few-shot anchors in Step 4 of the selection algorithm.
    - **Lifecycle:** `active` → `permanent` after 3+ evidence across 2+ kinds with confidence ≥ 0.9 → hard-block on match. `active` → `decayed` after 30 days of no new evidence → confidence ×0.5, hidden until reactivated.
+   - **Storage location (v1.5.1+):** defaults to `${CLAUDE_PLUGIN_DATA}/taste/<projectKey-slug>/` (under `~/.claude/plugins/data/`) per the official Claude Code plugin convention — out of your repo, persistent across plugin updates. Falls back to `<project-root>/taste/` if `CLAUDE_PLUGIN_DATA` isn't set (tests, dev). Pre-existing `<project-root>/taste/` directories continue to be used. Force in-repo storage with `VISIONARY_TASTE_IN_REPO=1` to share a profile via git.
    - **Inspect + export:** `/visionary-taste status | show | forget | reset | age | export | import | browse`. See [`docs/taste-flywheel.md`](docs/taste-flywheel.md) and [`docs/taste-privacy.md`](docs/taste-privacy.md). Full opt-out: `export VISIONARY_DISABLE_TASTE=1`.
 
 ### 8-step selection algorithm

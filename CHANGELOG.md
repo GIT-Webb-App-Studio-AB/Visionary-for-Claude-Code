@@ -7,6 +7,52 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.5.1] — 2026-05-03
+
+### Changed — Plugin storage convention compliance
+
+The taste flywheel previously created a `taste/` folder in the user's
+project root on every session. That violated the official Claude Code
+plugin convention (https://code.claude.com/docs/en/plugins-reference)
+which directs persistent plugin state to live under
+`${CLAUDE_PLUGIN_DATA}` (`~/.claude/plugins/data/<plugin-id>/`).
+
+- **New default storage location** —
+  `${CLAUDE_PLUGIN_DATA}/taste/<projectKey-slug>/` when running inside
+  Claude Code as a plugin. Out of the user's repo, persistent across
+  plugin updates.
+- **Four-tier resolution policy** in
+  `hooks/scripts/lib/taste-io.mjs::tasteDir()`:
+  1. Existing `<project-root>/taste/` on disk → continue using it
+     (legacy users with committed profiles unaffected).
+  2. `VISIONARY_TASTE_IN_REPO=1` → force in-repo storage (explicit team
+     opt-in, e.g. for design-system repos sharing a profile via git).
+  3. `CLAUDE_PLUGIN_DATA` set → plugin data dir, slugified project key.
+  4. Fallback → `<project-root>/taste/` (tests, dev scripts without
+     plugin harness env).
+- **Screenshot path encoding** in `accepted-store.mjs` switched from
+  project-root-relative (`taste/screenshots/<id>.png`) to
+  taste-dir-relative (`screenshots/<id>.png`). Legacy entries with the
+  old prefix are auto-stripped during rotation via
+  `resolveScreenshotPath()`.
+- **No migration required** — existing setups continue to work
+  unchanged. New users get the clean default.
+- **Other plugin data directories** (`.visionary-cache/`, `.visionary/`)
+  already followed this convention; only `taste/` was the outlier.
+
+### Documentation
+
+- `docs/taste-privacy.md` — new "Where taste data lives" section
+  documenting the four tiers and the `VISIONARY_TASTE_IN_REPO=1`
+  opt-in. Existing privacy guarantees (local-only, no telemetry)
+  unchanged.
+- `README.md` — Taste Calibration section now describes the storage
+  policy and opt-in flag.
+- `.gitignore` — comment refreshed to reflect that `taste/` patterns
+  apply to opt-in / legacy / dev-fallback setups, not the default.
+
+---
+
 ## [1.5.0] — 2026-05-03
 
 ### Added — Structural Integrity Gate

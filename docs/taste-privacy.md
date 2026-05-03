@@ -4,10 +4,18 @@ Sprint 05 introduced a passive + active signal loop that learns your design pref
 
 ## TL;DR
 
-- All taste data lives on your machine under `./taste/` in the project root. Nothing leaves the box — no network calls, no telemetry, no third-party API.
+- All taste data lives on your machine in the taste directory (see *Where taste data lives* below). Nothing leaves the box — no network calls, no telemetry, no third-party API.
 - Set `VISIONARY_DISABLE_TASTE=1` to turn off capture, harvest, and context injection entirely.
 - `git-harvest` only reads files that *you generated via Visionary* (marked with `.visionary-generated` in the header). It never reads user-authored source files.
 - `/visionary-taste reset` wipes everything and starts over.
+
+## Where taste data lives
+
+When running inside Claude Code, the default location is `${CLAUDE_PLUGIN_DATA}/taste/<projectKey-slug>/` — typically resolving to `~/.claude/plugins/data/<plugin-id>/taste/<slug>/`. This keeps the profile out of your repo and persistent across plugin updates, per the Claude Code plugin convention.
+
+If `CLAUDE_PLUGIN_DATA` is not set (test runs, dev scripts), the data falls back to `<project-root>/taste/`. If a `<project-root>/taste/` directory already exists, it continues to be used — existing setups are not migrated automatically.
+
+To force in-repo storage (for example, to commit a shared team profile to git), set `VISIONARY_TASTE_IN_REPO=1`.
 
 ## What gets stored
 
@@ -199,16 +207,16 @@ Whenever you want to see what the profile knows about you:
 /visionary-taste show global     # list all globally-scoped facts
 ```
 
-Or just open `taste/facts.jsonl` in any text editor. It's JSONL — one JSON object per line, human-readable.
+Or just open `facts.jsonl` directly in any text editor — it lives in the taste directory (see *Where taste data lives* above). It's JSONL — one JSON object per line, human-readable.
 
 ## Sharing, exporting, committing
 
-`taste/` is a normal directory. You can:
-- **Commit it** — your team shares the profile. Useful for a design-system repo where consistent taste across authors matters.
-- **Gitignore it** — personal profile. Default-recommended for most projects.
-- **Export / import** — copy `taste/facts.jsonl` between machines to carry your profile with you.
+The taste directory is a normal directory wherever it lives. You can:
+- **Commit it** — your team shares the profile. Useful for a design-system repo where consistent taste across authors matters. This requires in-repo storage; set `VISIONARY_TASTE_IN_REPO=1` (see *Where taste data lives* above).
+- **Gitignore it** — personal profile. With the default `CLAUDE_PLUGIN_DATA` location the data is already outside your repo, so nothing extra is needed. If you've opted into in-repo storage, the stanza below keeps it local.
+- **Export / import** — copy `facts.jsonl` between machines to carry your profile with you.
 
-A `.gitignore` stanza to keep it local:
+A `.gitignore` stanza for in-repo storage setups:
 
 ```
 # Visionary taste profile — personal, not team-shared

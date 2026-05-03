@@ -1,7 +1,9 @@
 # ─── Per-user / runtime state (never commit) ─────────────────────────────
 # Sprint 05 taste profile, Sprint 06 traces, pre-Sprint-05 legacy file.
-# Opt out via VISIONARY_DISABLE_TASTE=1 / VISIONARY_NO_TRACES=1 — see
-# docs/taste-privacy.md.
+# Default storage is ${CLAUDE_PLUGIN_DATA} (v1.5.1+), out of the project
+# tree — these patterns still apply for legacy in-repo setups, opt-in via
+# VISIONARY_TASTE_IN_REPO=1, and dev/test fallbacks. Opt out fully with
+# VISIONARY_DISABLE_TASTE=1 / VISIONARY_NO_TRACES=1 — see docs/taste-privacy.md.
 .visionary-cache/
 .visionary/
 taste/

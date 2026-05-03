@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Visionary marketplace — design intelligence plugin for Claude Code. v1.5.0 adds the Structural-Integrity Gate (catches duplicate headings, collapsed footer grids, orphan labels) on top of Sprint 1-15: motion scoring 2.0, DINOv2 visual embeddings, MLLM judge, active governance, taste inheritance, MCP-server distribution.",
-    "version": "1.5.0"
+    "version": "1.5.1"
   },
   "plugins": [
     {
       "name": "visionary-claude",
       "source": "./",
       "description": "202 design styles, 8-step selection, Motion Scoring 2.0 (6 sub-dim + Maturity Model), MLLM Judge tie-breaker, DINOv2 visual embeddings (opt-in), Active Governance, Taste Inheritance, Structural-Integrity Gate (v1.5.0), @visionary/mcp-server for cross-host distribution. axe-core critique, DTCG tokens, taste flywheel. WCAG 2.2 AA + APCA. 15 frameworks, 20+ languages.",
-      "version": "1.5.0",
+      "version": "1.5.1",
       "author": { "name": "GIT Webb & App Studio AB" },
       "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
       "repository": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",

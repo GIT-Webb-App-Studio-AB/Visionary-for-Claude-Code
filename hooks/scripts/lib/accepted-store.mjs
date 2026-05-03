@@ -129,8 +129,8 @@ export function recordAcceptance({
 
   const id = ulid();
   const shotExt = (screenshotSourcePath || '').toLowerCase().endsWith('.jpg') ? 'jpg' : 'png';
-  const screenshotRelative = join('taste', 'screenshots', `${id}.${shotExt}`);
-  const screenshotTarget = join(root, screenshotRelative);
+  const screenshotRelative = join('screenshots', `${id}.${shotExt}`);
+  const screenshotTarget = join(libTasteDir(root), screenshotRelative);
 
   // Copy the screenshot if the source exists. Missing screenshot is
   // tolerated — the entry still records the brief + scores so the RAG
@@ -234,8 +234,10 @@ export function rotateAcceptedExamples(projectRoot, { max = MAX_ENTRIES } = {}) 
     evicted.push({ id: e.id, reason: `rotation: oldest in overrepresented archetype "${overArchetype}"` });
     // Delete the screenshot file too (best-effort).
     if (typeof e.screenshot_path === 'string') {
-      const shotPath = join(root, e.screenshot_path);
-      try { if (existsSync(shotPath)) unlinkSync(shotPath); } catch { /* ignore */ }
+      const shotPath = resolveScreenshotPath(root, e.screenshot_path);
+      if (shotPath) {
+        try { if (existsSync(shotPath)) unlinkSync(shotPath); } catch { /* ignore */ }
+      }
     }
   }
 
@@ -265,6 +267,18 @@ function appendExampleLine(projectRoot, entry) {
     return true;
   } catch { return false; }
   finally { if (fd !== undefined) { try { closeSync(fd); } catch { /* ignore */ } } }
+}
+
+// Resolve a screenshot_path stored in the JSONL back to an absolute filesystem
+// path. Strips the legacy 'taste/' prefix for entries written before
+// screenshot_path became tasteDir-relative.
+function resolveScreenshotPath(projectRoot, storedPath) {
+  if (typeof storedPath !== 'string') return null;
+  let p = storedPath;
+  if (p.startsWith('taste/') || p.startsWith('taste\\')) {
+    p = p.slice('taste/'.length);
+  }
+  return join(libTasteDir(projectRoot), p);
 }
 
 // ── Atomic rewrite (rotation) ───────────────────────────────────────────────

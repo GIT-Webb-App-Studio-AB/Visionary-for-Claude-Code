@@ -27,9 +27,9 @@ export function isTasteDisabled() {
 
 // ── Project root discovery ───────────────────────────────────────────────────
 // Mirrors update-taste.mjs: walk up until we find package.json or .git. Falls
-// back to the start directory if neither marker is found. Taste data lives
-// under ./taste/ at the discovered root, which keeps it portable with the repo
-// (teams can share a profile) and matches the existing system.md convention.
+// back to the start directory if neither marker is found. The discovered root
+// is used to derive the taste storage location — see tasteDir() below for the
+// four-tier policy (CLAUDE_PLUGIN_DATA default, in-repo opt-in, legacy detection).
 export function findProjectRoot(start) {
   let dir = resolve(start || process.cwd());
   while (true) {
@@ -40,8 +40,27 @@ export function findProjectRoot(start) {
   }
 }
 
+// Four-tier path-resolution policy (in order):
+//   1. Existing ${projectRoot}/taste/  — legacy users with committed profiles
+//   2. VISIONARY_TASTE_IN_REPO=1|true  — explicit team-share opt-in
+//   3. CLAUDE_PLUGIN_DATA env set      — plugin convention default, see
+//      https://code.claude.com/docs/en/plugins-reference (state lives at
+//      ~/.claude/plugins/data/<plugin-id>/), namespaced by project slug
+//   4. Fallback to ${projectRoot}/taste/  — test/dev when no harness env
 export function tasteDir(projectRoot) {
-  return join(projectRoot, 'taste');
+  const inRepo = join(projectRoot, 'taste');
+  if (existsSync(inRepo)) return inRepo;
+  const optIn = process.env.VISIONARY_TASTE_IN_REPO;
+  if (optIn === '1' || optIn === 'true' || optIn === 'TRUE') return inRepo;
+  const pluginData = process.env.CLAUDE_PLUGIN_DATA;
+  if (pluginData && pluginData.length > 0) {
+    return join(pluginData, 'taste', slugifyProjectKey(projectKey(projectRoot)));
+  }
+  return inRepo;
+}
+
+export function slugifyProjectKey(key) {
+  return String(key || 'unknown').toLowerCase().replace(/[^a-z0-9_-]/g, '-');
 }
 
 export function factsPath(projectRoot) {
