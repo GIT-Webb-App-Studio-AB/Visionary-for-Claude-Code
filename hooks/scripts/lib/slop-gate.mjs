@@ -148,6 +148,37 @@ export function parseStyleAllowsSlop(frontmatterText) {
   return out;
 }
 
+// Mirrors parseStyleAllowsSlop. Frontmatter shape:
+//   allows_structural:
+//     hard_fail_skips: [duplicate-heading, footer-grid-collapse]
+//     warning_skips: [mystery-text-node]
+// Returns { hard_fail_skips: string[], warning_skips: string[] }.
+export function parseStyleAllowsStructural(frontmatterText) {
+  const out = { hard_fail_skips: [], warning_skips: [] };
+  if (typeof frontmatterText !== 'string') return out;
+
+  const blockMatch = frontmatterText.match(/^allows_structural:\s*\n((?:[ \t]+.*\n?)+)/m);
+  if (!blockMatch) return out;
+  const body = blockMatch[1];
+
+  for (const subKey of ['hard_fail_skips', 'warning_skips']) {
+    const inline = body.match(new RegExp(`^[ \\t]+${subKey}:\\s*\\[([^\\]]*)\\]`, 'm'));
+    if (inline) {
+      out[subKey] = splitArrayEntries(inline[1]);
+      continue;
+    }
+    const multi = body.match(new RegExp(`^[ \\t]+${subKey}:\\s*\\n((?:[ \\t]+-[ \\t]+.+\\n?)+)`, 'm'));
+    if (multi) {
+      out[subKey] = multi[1]
+        .split('\n')
+        .map((line) => line.replace(/^[ \t]+-[ \t]+/, '').trim())
+        .map(stripQuotes)
+        .filter(Boolean);
+    }
+  }
+  return out;
+}
+
 function splitArrayEntries(inner) {
   // Split on commas that aren't inside quoted strings. Small-enough input
   // that the naive tokeniser is fine — style frontmatter is never massive.
@@ -246,7 +277,12 @@ const __slopGateFilename = fileURLToPath(import.meta.url);
 const __slopGateRepoRoot = resolve(dirname(__slopGateFilename), '..', '..', '..');
 
 export function loadActiveStyleWhitelist(filePath, { repoRoot } = {}) {
-  const empty = { styleId: null, patterns: [], reason: null };
+  const empty = {
+    styleId: null,
+    patterns: [],
+    reason: null,
+    structural: { hard_fail_skips: new Set(), warning_skips: new Set() },
+  };
   if (!filePath || typeof filePath !== 'string' || !existsSync(filePath)) return empty;
   let head;
   try { head = readFileSync(filePath, 'utf8').slice(0, 2048); } catch { return empty; }
@@ -277,7 +313,16 @@ export function loadActiveStyleWhitelist(filePath, { repoRoot } = {}) {
   const frontmatterMatch = body.match(/^---\n([\s\S]*?)\n---/);
   if (!frontmatterMatch) return { ...empty, styleId };
   const parsed = parseStyleAllowsSlop(frontmatterMatch[1]);
-  return { styleId, patterns: parsed.patterns, reason: parsed.reason };
+  const struct = parseStyleAllowsStructural(frontmatterMatch[1]);
+  return {
+    styleId,
+    patterns: parsed.patterns,
+    reason: parsed.reason,
+    structural: {
+      hard_fail_skips: new Set(struct.hard_fail_skips),
+      warning_skips: new Set(struct.warning_skips),
+    },
+  };
 }
 
 // Pattern → dimension mapping. Coarse: each slop pattern points at the

@@ -13,6 +13,7 @@ import {
   shouldReject,
   resolveThreshold,
   parseStyleAllowsSlop,
+  parseStyleAllowsStructural,
   synthesiseRejectCritique,
   DEFAULT_REJECT_THRESHOLD,
 } from '../slop-gate.mjs';
@@ -146,6 +147,27 @@ test('parseStyleAllowsSlop: missing field returns empty', () => {
   const { patterns, reason } = parseStyleAllowsSlop(fm);
   assert.deepEqual(patterns, []);
   assert.equal(reason, null);
+});
+
+// ── parseStyleAllowsStructural ──────────────────────────────────────────────
+test('parseStyleAllowsStructural: empty when frontmatter has no allows_structural', () => {
+  const out = parseStyleAllowsStructural('id: foo\nname: Foo\n');
+  assert.deepEqual(out.hard_fail_skips, []);
+  assert.deepEqual(out.warning_skips, []);
+});
+
+test('parseStyleAllowsStructural: parses inline array under hard_fail_skips', () => {
+  const yaml = `id: brutalist\nallows_structural:\n  hard_fail_skips: [exposed-nav-bullets, footer-grid-collapse]\n`;
+  const out = parseStyleAllowsStructural(yaml);
+  assert.deepEqual(out.hard_fail_skips.sort(), ['exposed-nav-bullets', 'footer-grid-collapse']);
+  assert.deepEqual(out.warning_skips, []);
+});
+
+test('parseStyleAllowsStructural: parses multi-line list with both subkeys', () => {
+  const yaml = `allows_structural:\n  hard_fail_skips:\n    - duplicate-heading\n    - empty-section\n  warning_skips:\n    - mystery-text-node\n`;
+  const out = parseStyleAllowsStructural(yaml);
+  assert.deepEqual(out.hard_fail_skips.sort(), ['duplicate-heading', 'empty-section']);
+  assert.deepEqual(out.warning_skips, ['mystery-text-node']);
 });
 
 // ── synthesiseRejectCritique ────────────────────────────────────────────────
