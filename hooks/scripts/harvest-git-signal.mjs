@@ -27,8 +27,8 @@
 //     git
 //   - Writes only to taste/facts.jsonl; never to the network
 
-import { readFileSync, writeFileSync, existsSync, readdirSync, statSync, mkdirSync, openSync, readSync, closeSync } from 'node:fs';
-import { join, extname, relative, dirname } from 'node:path';
+import { readFileSync, writeFileSync, existsSync, readdirSync, statSync, openSync, readSync, closeSync } from 'node:fs';
+import { join, extname, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 import {
@@ -36,6 +36,7 @@ import {
   appendFact, readFacts, rewriteFacts, nowIso, ulid, factKey,
 } from './lib/taste-io.mjs';
 import { applyUpgrade, CONFIDENCE } from './lib/taste-extractor.mjs';
+import { ensureCacheDir } from './lib/cache-dir.mjs';
 
 // ── Stdin (SessionStart sends empty JSON) ───────────────────────────────────
 function readStdin() { try { return readFileSync(0, 'utf8'); } catch { return ''; } }
@@ -125,10 +126,10 @@ function forceRun() {
 }
 
 function stampPath() {
-  const base = process.env.CLAUDE_PLUGIN_DATA
-    ? join(process.env.CLAUDE_PLUGIN_DATA, 'visionary-cache')
-    : join(projectRoot, '.visionary-cache');
-  return join(base, 'last-git-harvest');
+  // v1.5.3: cacheDir() resolves to ${CLAUDE_PLUGIN_DATA}/visionary-cache when
+  // running inside the harness, falls back to ~/.claude/plugins/data/...
+  // otherwise — never to projectRoot by default.
+  return join(ensureCacheDir(projectRoot), 'last-git-harvest');
 }
 
 function isStampOlderThan(ms) {
@@ -143,8 +144,8 @@ function isStampOlderThan(ms) {
 
 function writeStamp() {
   const p = stampPath();
+  // ensureCacheDir() already created the parent dir; just write the stamp.
   try {
-    mkdirSync(dirname(p), { recursive: true });
     writeFileSync(p, String(Date.now()), 'utf8');
   } catch { /* stamping is best-effort; failing means next session harvests again */ }
 }

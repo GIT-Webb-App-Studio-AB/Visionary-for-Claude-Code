@@ -7,6 +7,119 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.5.4] — 2026-05-04
+
+### Added — Structural check: `text-collision` (warning tier)
+
+A new check in the structural-integrity gate flags two text-bearing elements
+whose bounding boxes overlap by more than 30 % of the smaller element's
+area. Catches layout regressions where text appears in front of or behind
+other text — sticky headers sliding over paragraphs, hero overlays
+covering titles, dropdowns leaking into body copy, negative-margin
+collisions. Both manifestations look identical in flat DOM (overlapping
+AABBs) so a single check catches both.
+
+- **Algorithm** — pairwise AABB intersection test on text-bearing elements
+  in the existing DOM snapshot (no new browser-side code). Industry
+  standard (W3C low-vision WG arrived at the same approach for WCAG
+  2.4.11 "Focus Not Obscured" — the only WCAG 2.2 criterion that can be
+  fully automated).
+- **False-positive mitigation (nesting-AND rule)** — a pair is skipped
+  only when BOTH (a) one text starts/ends with the other (the recursive-
+  textContent fingerprint of legitimate parent-child) AND (b) one bbox
+  geometrically contains the other. Either signal alone would be too
+  lossy: text-only suppresses unrelated siblings sharing prefix words;
+  containment-only suppresses sticky-bar-over-paragraph bugs. Overlay-
+  purpose tags (`<dialog>`, `<menu>`, `[role="tooltip"]`,
+  `[role="dialog"]`, `[aria-modal]`, `[data-portal]`, `[data-tooltip]`)
+  are also skipped before the pair sweep. Tag-name comparison is
+  case-insensitive (real Playwright DOM returns uppercase).
+- **Performance** — O(N²) over text-bearing candidates with
+  MAX_PAIRS=200 000 (≈ 632 candidates worst-case; the DOM extractor caps
+  upstream at 400 elements). Truncation emits a stderr diagnostic so the
+  caller can detect partial coverage. Sub-millisecond on typical input.
+- **Threshold rationale** — COLLISION_RATIO=0.30 measured against the
+  smaller element's area, slightly stricter than Lighthouse's 0.25
+  tap-targets industry consensus to compensate for the lack of paint-
+  order resolution (we don't yet read `elementFromPoint` to confirm
+  visual obstruction). Tracked for v1.5.5 calibration against telemetry.
+- **Warning tier (not hard fail)** — the check is wired as a warning so
+  the visual-critic agent can pick it up as a `top_3_fixes` candidate
+  without blocking regen on an overconfident detection. Will move to
+  hard-fail tier in a follow-up release once telemetry confirms low
+  false-positive rate. Style frontmatter can opt out via
+  `allows_structural.warning_skips: [text-collision]`.
+- **20 new tests** in `text-collision.test.mjs` — clean layouts pass,
+  partial overlaps flag, parent-child nesting skips via the AND rule,
+  overlay roles skip, sub-threshold grazes don't fire, ratio measured
+  against smaller element, sticky-header-over-paragraph and
+  hero-overlay-over-title patterns flag, identical-text siblings flag
+  (regression for an over-broad nesting heuristic caught in code
+  review), uppercase tagName recognised, NaN-bbox handled. 567/567
+  tests pass.
+
+- **Known v1 limitations** (planned for follow-up):
+  1. No paint-order resolution — a modal element fully covering body
+     copy is correctly skipped via `[role="dialog"]` etc, but a custom
+     overlay without those attributes will produce a (warning-tier)
+     false positive. Mitigation in v1.5.5: read `elementFromPoint` at
+     the bbox centre to confirm visual obstruction (matches the W3C
+     reference algorithm for WCAG 2.4.11).
+  2. `clip-path`, `mask`, and `transform: scale` not detected —
+     `getBoundingClientRect()` returns the unclipped rect, so an element
+     visually shrunk by clip-path may over-flag. Mitigation deferred.
+  3. Opacity/`pointer-events: none` not read from the snapshot —
+     decorative gradient overlays may flag. Mitigation: extend the
+     extractor to surface these style fields.
+
+### Fixed — `.visionary-cache/` no longer created in project root in dev mode
+
+Three hooks (`detect-framework.mjs`, `capture-and-critique.mjs`,
+`harvest-git-signal.mjs`) used the inline pattern
+`CLAUDE_PLUGIN_DATA ? plugin-data : <projectRoot>/.visionary-cache`. When
+the env var is unset — which happens whenever the plugin runs from source
+rather than from a marketplace install — the fallback created a
+`.visionary-cache/` folder in the user's repo on every SessionStart. v1.5.2
+fixed the same bug for `.visionary/` (traces + pareto) but `.visionary-cache/`
+slipped through.
+
+- **New shared helper** — `hooks/scripts/lib/cache-dir.mjs` exposes
+  `cacheDir(projectRoot)`, `ensureCacheDir(projectRoot)`, and
+  `legacyCacheDirs(projectRoot)` with a three-tier resolution policy:
+  1. `CLAUDE_PLUGIN_DATA` set → `${CLAUDE_PLUGIN_DATA}/visionary-cache/`
+  2. `VISIONARY_CACHE_IN_REPO=1|true|TRUE` → `${projectRoot}/.visionary-cache/`
+     (explicit opt-in for tests / calibrate scripts that want to inspect
+     cache state in-place)
+  3. Fallback →
+     `${homedir()}/.claude/plugins/data/visionary-claude/visionary-cache/<projectSlug>/`
+     (mirrors the path Claude Code itself uses for an installed plugin, so
+     dev-from-source behaves identically to a marketplace install)
+- **Project slug** — lowercased basename + 8-char md5 prefix of the absolute
+  project path. Multiple checkouts of the same repo get distinct subdirs.
+- **Three hooks migrated** — `detect-framework.mjs`,
+  `capture-and-critique.mjs`, and `harvest-git-signal.mjs` now import and
+  call `ensureCacheDir(projectRoot)` instead of duplicating the inline
+  resolution. Dead `mkdirSync` / `dirname` imports cleaned up.
+- **Reader compatibility** — `update-taste.mjs::readLastVariantsBrief()`
+  now searches `cacheDir(root)` first, then `legacyCacheDirs(root)`, so
+  briefs written by `/variants` under the old in-repo or
+  CLAUDE_PLUGIN_DATA paths keep being picked up across the migration.
+- **Result** — when running as a Claude Code plugin OR from source, the
+  cache lives outside the user's project root by default. Combined with
+  v1.5.1 + v1.5.2 the plugin creates ZERO folders in the user's project
+  root in any execution mode (taste, traces, pareto, cache).
+- **Backward compatible** — existing `<project-root>/.visionary-cache/`
+  folders are gitignored and become orphaned (safe to delete locally).
+  Tests pin the new location via `VISIONARY_CACHE_IN_REPO=1` opt-in or
+  `CLAUDE_PLUGIN_DATA` override.
+
+15 new tests in `hooks/scripts/lib/__tests__/cache-dir.test.mjs` cover all
+three tiers, slug stability, idempotent ensureCacheDir, and a regression
+guard that asserts dev-mode never points at projectRoot. 547/547 tests
+pass.
+
+---
+
 ## [1.5.2] — 2026-05-03
 
 ### Fixed — Trace + Pareto directories now honour CLAUDE_PLUGIN_DATA

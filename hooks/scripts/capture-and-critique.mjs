@@ -8,11 +8,12 @@
 //
 // Cross-platform (no xxd, md5sum, sed): Node 18+ only.
 
-import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ensureCacheDir } from './lib/cache-dir.mjs';
 import {
   isBonEnabled,
   buildCandidateArtefactPaths,
@@ -108,15 +109,11 @@ if (!['tsx', 'jsx', 'vue', 'svelte', 'html'].includes(ext)) silent();
 if (!existsSync(filePath)) silent();
 
 // ── Round tracking (per-project cache) ───────────────────────────────────────
-// Prefer CLAUDE_PLUGIN_DATA (durable across plugin updates, kept out of the
-// user's repo) when Claude Code provides it; fall back to the project root so
-// older harnesses keep working.
+// v1.5.3: cache-dir resolution moved to lib/cache-dir.mjs. Three-tier policy
+// keeps the cache off the user's repo even when CLAUDE_PLUGIN_DATA is absent
+// (dev mode, older harnesses) by falling back to ~/.claude/plugins/data/.
 const cwd = input.cwd || process.cwd();
-const pluginDataDir = process.env.CLAUDE_PLUGIN_DATA;
-const cacheDir = pluginDataDir
-  ? join(pluginDataDir, 'visionary-cache')
-  : join(cwd, '.visionary-cache');
-try { mkdirSync(cacheDir, { recursive: true }); } catch { /* ignore */ }
+const cacheDir = ensureCacheDir(cwd);
 
 const fileHash = createHash('md5').update(filePath).digest('hex').slice(0, 10);
 const roundFile = join(cacheDir, `critique-round-${fileHash}`);

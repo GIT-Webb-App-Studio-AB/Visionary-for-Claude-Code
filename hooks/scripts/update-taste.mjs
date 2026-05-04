@@ -30,6 +30,7 @@ import {
   rewriteFacts, nowIso, ulid, factKey,
 } from './lib/taste-io.mjs';
 import { extractFactsFromTurn, applyUpgrade } from './lib/taste-extractor.mjs';
+import { cacheDir, legacyCacheDirs } from './lib/cache-dir.mjs';
 
 // ── Read stdin ──────────────────────────────────────────────────────────────
 function readStdin() { try { return readFileSync(0, 'utf8'); } catch { return ''; } }
@@ -169,17 +170,18 @@ function detectVariantPick(text) {
 }
 
 // Reads the last /variants brief written by the /variants command. The
-// command stores it at .visionary-cache/last-variants-brief.json when it
-// fires (we wire that in Sprint 05 / variants.md). If the file is absent
-// (older /variants run, or no variants session yet) this returns null and
-// the pair capture is skipped.
+// command stores it at <cacheDir>/last-variants-brief.json when it fires
+// (see commands/variants.md). v1.5.3: cacheDir() resolves to
+// ${CLAUDE_PLUGIN_DATA}/visionary-cache or the home-dir fallback —
+// legacyCacheDirs() covers the pre-v1.5.3 in-repo location so existing
+// briefs keep being picked up across the migration.
 function readLastVariantsBrief(root) {
-  const pluginData = process.env.CLAUDE_PLUGIN_DATA;
-  const paths = [
-    pluginData ? join(pluginData, 'visionary-cache', 'last-variants-brief.json') : null,
-    join(root, '.visionary-cache', 'last-variants-brief.json'),
-  ].filter(Boolean);
-  for (const p of paths) {
+  const dirs = [cacheDir(root), ...legacyCacheDirs(root)];
+  const seen = new Set();
+  for (const d of dirs) {
+    const p = join(d, 'last-variants-brief.json');
+    if (seen.has(p)) continue;
+    seen.add(p);
     if (existsSync(p)) {
       try { return JSON.parse(readFileSync(p, 'utf8')); } catch { /* fall through */ }
     }

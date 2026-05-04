@@ -28,7 +28,7 @@ test('hard-fail catalogue is exactly the six checks', () => {
     'heading-hierarchy-skip',
     'off-viewport-right',
   ]);
-  assert.deepEqual([...WARNING_CHECKS], ['mystery-text-node']);
+  assert.deepEqual([...WARNING_CHECKS], ['mystery-text-node', 'text-collision']);
 });
 
 test('Atelier Nord footer fixture: hard-fails footer-grid-collapse + exposed-nav-bullets, warns mystery-text-node ×2', () => {

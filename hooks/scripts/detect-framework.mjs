@@ -7,8 +7,9 @@
 // CLAUDE_PLUGIN_ROOT is not available in SessionStart (bug #27145); we walk up
 // from cwd instead.
 
-import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { ensureCacheDir } from './lib/cache-dir.mjs';
 
 function readStdin() { try { return readFileSync(0, 'utf8'); } catch { return ''; } }
 function parseInput(raw) { if (!raw) return null; try { return JSON.parse(raw); } catch { return null; } }
@@ -29,12 +30,10 @@ function findProjectRoot(start) {
 }
 
 const { dir: projectRoot, hasPkg } = findProjectRoot(startDir);
-// Prefer CLAUDE_PLUGIN_DATA over polluting the project repo with a cache dir.
-const pluginDataDir = process.env.CLAUDE_PLUGIN_DATA;
-const cacheDir = pluginDataDir
-  ? join(pluginDataDir, 'visionary-cache')
-  : join(projectRoot, '.visionary-cache');
-try { mkdirSync(cacheDir, { recursive: true }); } catch { /* ignore */ }
+// v1.5.3: cache-dir resolution moved to lib/cache-dir.mjs — three-tier policy
+// keeps the cache off the user's project root in dev mode (no
+// CLAUDE_PLUGIN_DATA env) by falling back to ~/.claude/plugins/data/.
+const cacheDir = ensureCacheDir(projectRoot);
 const outputPath = join(cacheDir, 'detected-framework.json');
 
 // ── Vanilla fallback ─────────────────────────────────────────────────────────
