@@ -70,231 +70,79 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 ---
 
-## What's new — post-1.3.1 (Sprint 1–15 + v1.5.0)
+## What's new in v1.5.x
 
-Fifteen sprints of quality-lift work plus the v1.5.0 structural-integrity gate, all on top of the 1.3.1 baseline. All
-additions are dependency-free, toggleable via env, and backed by
-`node --test`-level unit tests (**471 pass, 0 fail** at last count, including 86 new tests for the v1.5.0 structural-integrity gate).
+The 1.5.x line builds on Sprint 1–15 with the structural-integrity gate
+(v1.5.0) and two storage-convention fixes (v1.5.1 + v1.5.2). All
+additions are dependency-free, toggleable via env, and backed by 308
+unit tests across hooks, scripts, and the MCP server.
 
-Roadmap overview: [`docs/sprints/README.md`](docs/sprints/README.md).
+- **v1.5.2** (hotfix) — `.visionary/traces/` and `.visionary/pareto/`
+  now honour `CLAUDE_PLUGIN_DATA` instead of polluting the user's
+  project root. Pairs with v1.5.1; together the plugin creates zero
+  folders in the user's repo by default.
+- **v1.5.1** — taste data (`facts.jsonl`, `pairs.jsonl`,
+  `accepted-examples.jsonl`) defaults to
+  `${CLAUDE_PLUGIN_DATA}/taste/<project-slug>/` per the official
+  Claude Code plugin convention. Backward-compatible four-tier
+  resolution policy. Force in-repo storage with
+  `VISIONARY_TASTE_IN_REPO=1` for shared team profiles.
+- **v1.5.0** — Structural-Integrity Gate. Six hard-fail checks
+  (`duplicate-heading`, `exposed-nav-bullets`, `off-viewport-right`,
+  `footer-grid-collapse`, `empty-section`, `heading-hierarchy-skip`)
+  plus one warning (`mystery-text-node`) catch structural defects that
+  slipped past slop / motion / visual gates. Per-style opt-out via
+  `allows_structural` frontmatter. Toggle:
+  `VISIONARY_ENABLE_STRUCTURAL_GATE=0`.
 
-### Fas 1 — Cost + loop efficiency (Sprint 1–2)
+### Sprint 1–15 — quality lift on the 1.3.1 baseline
 
-- **Styles index + embeddings** — `skills/visionary/styles/_index.json`
-  (202 styles × structured metadata) and `_embeddings.json` (8-axis
-  aesthetic vectors) let Stages 1–3 of the selection algorithm run as
-  deterministic filters over pre-built data instead of loading every
-  style file into the LLM call. `docs/style-embeddings.md` documents the
-  axes and override workflow.
-- **Early-exit + diff-rounds** — round 2/3 emit unified diffs instead of
-  full regenerations, fed through `hooks/scripts/lib/apply-diff.mjs`
-  with ±3-line fuzz and graceful full-regen fallback.
+Roadmap + per-sprint details: [`docs/sprints/README.md`](docs/sprints/README.md).
+Full release history: [`CHANGELOG.md`](CHANGELOG.md).
 
-### Fas 2 — Measurable quality (Sprint 3–4)
+**Sprints 1–4 — cost + measurable quality.** Styles index
+(`_index.json`) + 8-axis embeddings short-circuit the LLM call for
+selection stages 1–3. Diff-based round 2/3 instead of full
+regenerations. Numeric aesthetic scorer (Shannon entropy on CIELAB L,
+DBSCAN gestalt, ΔE2000 colour harmony) feeds the critic. Best-of-N
+fan-out + orthogonal `/variants` (cosine ≥ 0.6 in 8-axis space)
+guarantee distinctiveness. Baseline-2026 web primitives (`@layer`,
+`@scope`, popover/anchor, `field-sizing`, `contrast-color()`) baked
+into every generation.
 
-- **Numeric critique + calibration** — `benchmark/scorers/numeric-aesthetic-scorer.mjs`
-  emits six deterministic 0..1 sub-scores (contrast entropy, gestalt
-  grouping, typographic rhythm, negative-space ratio, color harmony,
-  composite). `scripts/calibrate.mjs` fits a per-dimension linear
-  calibration against a gold-set. Evidence-anchored critique (`agents/visual-critic.md`
-  rule of seven) forbids sub-7 scores without a mechanical citation.
-- **Best-of-N refine** — `agents/visual-verifier.md` picks between three
-  parallel fix candidates via pairwise voting.
-  `hooks/scripts/lib/fork-candidate.mjs` handles the scaffolding;
-  toggleable via `VISIONARY_DISABLE_BON=1`. Round 2 auto-exits when the
-  winner clears calibrated craft_measurable ≥ 7.5.
-- **Orthogonal `/variants`** — three variants must clear a
-  cosine-distance floor of 0.6 in the 8-axis embedding space.
-  `hooks/scripts/lib/orthogonal-variants.mjs` implements the relaxation
-  ladder (0.6 → 0.5 → 0.4 → fallback) so narrow briefs still get usable
-  output instead of three near-duplicates.
-- **Baseline-2026 web primitives** — `@layer` cascade discipline,
-  `@scope` component isolation, popover / anchor / invoker primitives,
-  same-document View Transitions, `field-sizing: content`,
-  `contrast-color()`, `shape()` presets, scroll-driven animations with
-  dual `@supports` + `prefers-reduced-motion` guards.
-- **Slop catalogue expansion** — patterns #27–#31 for missing `@layer`,
-  `@floating-ui/*` where anchor-positioning fits, `<textarea rows={N}>`
-  without `field-sizing`, onClick modals without `commandfor`, `useRef`
-  dropdown positioning.
+**Sprints 5–7 — taste flywheel.** Active rejection/approval extraction
+→ `facts.jsonl`. Passive git-harvest classifies `.visionary-generated`
+files as kept / heavy-edit / deleted. Pairwise `/variants` picks →
+`pairs.jsonl` (FSPO few-shot). DesignPref RAG injects top-3 historical
+anchors into the critic prompt. Multi-agent critic (craft + aesthetic,
+opt-in via `VISIONARY_MULTI_CRITIC=1`). Trace observability under
+`.visionary/traces/`. Shareable `.taste` dotfiles. Content kits
+(`visionary-kit.json`) drive the `content_resilience` dimension.
 
-### Fas 3 — Taste flywheel (Sprint 5–7)
+**Sprint 8 — distinctiveness.** Hard slop-reject gate (≥ 2 patterns
+block generation *before* the critic runs), 21 curated avoid/consider
+directives, per-style `allows_slop` whitelist, negative visual anchors
+sampled per generation. The dogfooding fix for "output converging
+with UI/UX Pro Max + Claude Design".
 
-- **Structured taste profile** — `taste/facts.jsonl` captures every
-  explicit rejection/approval as a typed fact with `scope`, `direction`,
-  `confidence`, and rolling evidence. `taste/pairs.jsonl` records
-  `/variants` picks as FSPO few-shot anchors. Lifecycle:
-  `active` → `permanent` (hard-block) after 3 + evidence across 2 +
-  kinds with confidence ≥ 0.9; `active` → `decayed` after 30 days of
-  no new evidence.
-- **Git-based passive harvesting** — `hooks/scripts/harvest-git-signal.mjs`
-  runs at SessionStart, classifies each `.visionary-generated` file as
-  kept / heavy-edit / deleted from git history, and emits graduated
-  confidence facts. Reads only files Visionary itself produced.
-- **DesignPref RAG** — `taste/accepted-examples.jsonl` stores accepted
-  generations with brief embeddings (hashed n-gram, zero-dep). The
-  critic prompt gets top-3 historical anchors via
-  `hooks/scripts/lib/rag-anchors.mjs`; cold-start fallback uses
-  designer packs (Rams / Kowalski / Vignelli / Scher / Greiman).
-- **Multi-agent critic (opt-in)** — `agents/critic-craft.md` scores the
-  five measurable dimensions, `agents/critic-aesthetic.md` owns
-  distinctiveness / brief / motion. `hooks/scripts/lib/critic-merge.mjs`
-  stitches outputs with archetype-based arbitration. Enable with
-  `VISIONARY_MULTI_CRITIC=1`.
-- **Trace observability** — `.visionary/traces/<session>.jsonl` captures
-  every significant event (critic output, acceptance, slop-gate hits,
-  API calls). 7-day gzip / 90-day delete rotation via SessionStart hook.
-  Analyse with `scripts/visionary-stats.mjs --session | --all |
-  --recurring-fixes`.
-- **`.taste` dotfiles** — shareable taste profiles via TOML, with
-  `/visionary-taste export` / `import` / `browse`. Supports
-  `inherits_from` chains.
-- **Content kits** — `visionary-kit.json` declares realistic data
-  shapes (locale-aware samples, p95 lengths, nullability). The
-  `content_resilience` dimension (10th critique dim) scores how well
-  components survive empty / p95 / realistic data. Auto-infer from
-  TypeScript, Prisma, or OpenAPI schemas.
+**Sprints 9, 11, 12 — critique signal upgrades.** Motion Scoring 2.0
+(6-sub-dim Maturity Model: None / Subtle / Expressive / Kinetic /
+Cinematic). DINOv2-small ONNX visual embeddings (opt-in,
+`VISIONARY_VISUAL_EMBED=1`). MLLM Judge tie-breaker (Sonnet 4.6,
+budget-capped, opt-in via `VISIONARY_MLLM_JUDGE=tie-only|on`).
 
-### Fas 4 — Distinctiveness (Sprint 8)
+**Sprint 10 — distribution.** `@visionary/mcp-server` extracts the
+deterministic core for Cursor / Windsurf / Cline / Zed. Three tools
+(`slop_gate`, `motion_score`, `validate_evidence`), three resources,
+two prompts. MCP spec 2025-06-18. Hooks + taste-flywheel writes stay
+in the Claude Code plugin — only read access flows over MCP.
 
-The dogfooding problem: output converged with UI/UX Pro Max + Claude
-Design because slop was caught *after* generation, not prevented at
-the source.
-
-- **Hard slop-reject gate** — `hooks/scripts/lib/slop-gate.mjs` counts
-  blocking slop patterns before the critic is called. At `≥ 2`, the
-  generation is rejected and a regen directive with pattern-specific
-  avoid/consider guidance is injected into the next round.
-  `skills/visionary/partials/slop-directives.md` holds 21 curated
-  directives. Toggle with `VISIONARY_SLOP_REJECT_THRESHOLD=<n>` (default
-  2, ≥ 26 disables).
-- **Per-style whitelist** — `allows_slop` in style frontmatter lets
-  deliberate stylistic choices override the gate. Shipped on
-  `brutalist-honesty`, `architectural-brutalism`, `neon-dystopia`,
-  `y2k-futurism` — styles whose aesthetic vocabulary *is* cyan-on-dark
-  or default-tooling ironi.
-- **Negative visual anchors** — `docs/slop-anchors/` holds curated
-  "DO NOT produce this" references organised by family (saas-default-
-  blue, cyberpunk-cyan-glow, glassmorphism-gradient, neumorphism-pillow,
-  generic-feature-3up). `hooks/scripts/lib/anti-anchors.mjs` samples
-  2 anchors per generation based on inferred style family, injected
-  into the generator prompt via `inject-taste-context.mjs`. Image
-  curation is manual — manifests ship, PNG binaries are maintainer-
-  supplied.
-- **Slop-gate observability** — new trace events `slop_blocked` +
-  `slop_whitelisted`, plus `scripts/visionary-stats.mjs --slop-gate-report`
-  for trend analysis (which patterns trigger most, which styles use
-  their whitelist).
-
-### Fas 5 — Critique signal upgrades (Sprint 9, 11, 12)
-
-Three layers that lift the quality of the signal feeding the critic
-itself, so every other stage benefits.
-
-- **Motion Scoring 2.0 (Sprint 9)** — replaces the legacy single-shot
-  motion heuristic with a 6-sub-dim weighted aggregator + 5-tier
-  Maturity Model (None / Subtle / Expressive / Kinetic / Cinematic).
-  Sub-dims: easing provenance, AARS-pattern (Anticipation → Action →
-  Reaction → Settle), timing consistency, narrative arc, reduced-motion
-  compliance, cinema-grade easing. Wired into `capture-and-critique`
-  via `lib/motion/inject.mjs` so the critic must cite the exact
-  sub-dim that drags `motion_readiness` below 7. Toggle:
-  `VISIONARY_MOTION_SCORER_V2=0`. Calibration: `scripts/calibrate-motion-2.mjs`.
-- **Visual embeddings via DINOv2 ONNX (Sprint 11) — experimental, opt-in** —
-  `hooks/scripts/lib/visual/` computes a DINOv2-small embedding per
-  Playwright screenshot, cosine-similarity vs curated style anchors →
-  `visual_style_match` 0–10, Mahalanobis-distance OOD-detection at 2σ.
-  Lazy-loads `onnxruntime-web` with WebGPU preference; gracefully no-ops
-  when runtime/model is absent. **Default OFF in v1.4.0** because the
-  curated 50-style anchor set is not yet shipped. Enable after setup:
-  `npm install onnxruntime-web sharp`, `node scripts/download-dinov2.mjs`,
-  curate anchors at `models/style-anchors/<id>/*.png`,
-  `node scripts/build-anchors.mjs`, then `VISIONARY_VISUAL_EMBED=1`.
-- **MLLM Judge tie-breaker (Sprint 12)** — `hooks/scripts/lib/judge/`
-  invokes a multimodal Claude pass when heuristic + numeric + DINOv2
-  stack disagrees on a dimension (composite-diff ≤ 0.3, low-confidence
-  < 0.6, or heuristic↔visual conflict ≥ 1.5). Hard rule: **judge
-  cannot reject solo** — strong heuristic margin (≥ 1.5) overrides
-  judge dissent. Budget caps: 1 invocation per round, 5 per session.
-  Lazy-imports `@anthropic-ai/sdk`; falls back to "tie" when SDK or
-  `ANTHROPIC_API_KEY` is missing. Toggle:
-  `VISIONARY_MLLM_JUDGE=tie-only|on|off` (default off).
-
-### Fas 6 — Distribution beyond Claude Code (Sprint 10)
-
-`packages/mcp-server/` extracts the deterministic core to
-`@visionary/mcp-server` so Cursor / Windsurf / Cline / Zed can install
-via Smithery / npm. Three tools (`visionary.slop_gate`,
-`visionary.motion_score`, `visionary.validate_evidence`), three
-resources (`visionary://styles/...`, `visionary://taste/summary`,
-`visionary://traces/{id}`), two prompts (`aesthetic_brief`,
-`slop_explanation`). Hooks + taste-flywheel writes stay in the
-Claude Code plugin — only read access flows over MCP. Install guides
-per host live in `packages/mcp-server/INSTALL.md`. Server card at
-`.well-known/mcp/server.json` follows MCP spec 2025-06-18.
-
-### Fas 7 — Interactive editing (Sprint 13)
-
-`/visionary-motion "<intent>"` re-tunes motion tokens in place via a
-deterministic NL → adjustments map (12 vibes: energetic, softer,
-faster, slower, bouncier, calmer, kinetic, minimal, cinematic, snappy,
-layered, less-dramatic). Three patch targets: DTCG `tokens.json`,
-inline JSX (`bounce`, `visualDuration`), CSS shorthand. Runs
-`scoreMotion2` before AND after, prints a delta report. `--preview`
-flag shows the diff without writing. CLI: `scripts/visionary-motion-cli.mjs`.
-
-### Fas 8 — Multi-page consistency (Sprint 14)
-
-`scripts/governance-check.mjs` + `.husky/pre-commit` +
-`.github/workflows/visionary-governance.yml` enforce locked DTCG
-tokens at commit + CI. Detects hex / rgb / oklch / Tailwind utility
-drift relative to a `tokens/<style-id>.tokens.json` flagged with
-`$visionary.locked: true`. Three thresholds (`block` / `warn` / `off`),
-`near_match_tolerance` for soft warnings, `allowed_drifts` glob list
-for legacy escapes. Bypass: `git commit --no-verify`,
-`// visionary-governance: ignore` magic comment, or
-`drift_threshold: "warn"` in tokens.
-
-### Fas 9 — Designer-as-subagent (Sprint 15)
-
-The 5 designer packs (Rams, Kowalski, Vignelli, Scher, Greiman) gain
-a `critic_persona` block + `arbitration` block. Instead of just
-biasing the generation prompt, the pack now produces a per-dim
-contribution that joins the arbitration table alongside craft +
-aesthetic critics — Rams's "less but better" actively argues against
-your "expressive" via `hooks/scripts/lib/critics/`. Three conflict-
-resolution strategies in order: (A) designer tie-breaks craft-vs-
-aesthetic ties, (B) MLLM judge from Sprint 12, (C) user escalation.
-Default designer weight in arbitration: 0.25 (vs 1.0 each for craft +
-aesthetic). Vetoes are opt-in (`can_veto: false` for all v1 packs).
-
-### Fas 10 — Structural-integrity gate (v1.5.0)
-
-Catches three observed failure modes from real generated output —
-duplicate headings, footer-grid collapse with exposed default
-bullets, and orphan single-word labels — that slipped past slop /
-motion / visual-style checks because they are *structural* defects
-rather than stylistic ones.
-
-- **Six hard-fail checks** — `duplicate-heading`, `exposed-nav-bullets`,
-  `off-viewport-right`, `footer-grid-collapse`, `empty-section`,
-  `heading-hierarchy-skip`. Live in `hooks/scripts/lib/structural-checks/`.
-  Any single hit short-circuits the LLM-critic round and forces regen
-  with a check-specific directive — same pattern as the slop-gate.
-- **One warning check** — `mystery-text-node` flags single-word block
-  elements that look like orphan labels, surfaced to the LLM-critic
-  via a `STRUCTURAL_WARNINGS:` block. `image-brand-mismatch` is
-  reserved as a follow-up sprint (needs brief→image embedding pipeline).
-- **Style opt-out** — `allows_structural` style frontmatter mirrors
-  `allows_slop`, with `hard_fail_skips` and `warning_skips` arrays
-  for stylistic intent (a brutalist style can keep default disc-bullets).
-- **Trace observability** — `structural_blocked`, `structural_warning`,
-  `structural_whitelisted` events feed `visionary-stats.mjs`.
-- **Security** — DOM-text and selectors that flow into the directive
-  context are sanitised against prompt-injection: control bytes
-  stripped to spaces, output capped at 200 chars, UTF-8 (Swedish
-  diacritics, em-dash, curly quotes) preserved.
-- **Toggle:** `VISIONARY_ENABLE_STRUCTURAL_GATE=0` disables.
+**Sprints 13–15 — editing + governance + designer-as-subagent.**
+`/visionary-motion "<intent>"` re-tunes motion tokens via NL →
+adjustments. Husky pre-commit + GitHub Action enforce locked DTCG
+tokens. Designer packs (Rams, Kowalski, Vignelli, Scher, Greiman)
+gain `critic_persona` + `arbitration` blocks that argue per-dimension
+during the critique loop.
 
 ### Env-flag reference
 
@@ -303,6 +151,7 @@ rather than stylistic ones.
 | `VISIONARY_DISABLE_CRITIQUE` | off | Full opt-out of the critique loop |
 | `VISIONARY_DISABLE_BON` | off | Disable Best-of-N fan-out (Sprint 4) |
 | `VISIONARY_DISABLE_TASTE` | off | Opt-out of taste flywheel (Sprint 5+6) |
+| `VISIONARY_TASTE_IN_REPO` | off | Force taste storage to `<project-root>/taste/` (v1.5.1+) |
 | `VISIONARY_NO_TRACES` | off | Opt-out of trace logging (Sprint 6) |
 | `VISIONARY_TRACE_RETENTION_DAYS` | 90 | Trace-file auto-delete age |
 | `VISIONARY_MULTI_CRITIC` | off | Enable critic-craft + critic-aesthetic parallel mode (Sprint 6) |
@@ -310,63 +159,140 @@ rather than stylistic ones.
 | `VISIONARY_DESIGNER_DEFAULT` | `rams` | Cold-start designer pack (`rams` / `kowalski` / `vignelli` / `scher` / `greiman`) |
 | `VISIONARY_SLOP_REJECT_THRESHOLD` | 2 | Slop-gate reject threshold (Sprint 8); ≥ 26 disables |
 | `VISIONARY_MOTION_SCORER_V2` | on | Set `0` to fall back to the v1 single-shot motion scorer (Sprint 9) |
-| `VISIONARY_MOTION_VERBOSE` | off | `1` prints per-dim subscores to stderr during benchmark runs (Sprint 9) |
-| `VISIONARY_VISUAL_EMBED` | **off** | Set `1` or `on` to enable DINOv2 visual_style_match dimension (Sprint 11). Requires manual setup — see scripts/download-dinov2.mjs |
-| `VISIONARY_VISUAL_VERBOSE` | off | `1` prints ONNX runtime / model load diagnostics to stderr (Sprint 11) |
+| `VISIONARY_VISUAL_EMBED` | **off** | Set `1` or `on` to enable DINOv2 `visual_style_match` dimension (Sprint 11). Requires manual setup |
 | `VISIONARY_MLLM_JUDGE` | off | `tie-only` or `on` to enable MLLM judge tie-breaking (Sprint 12) |
-| `VISIONARY_DISABLE_BON` | off | Disable Best-of-N fan-out (Sprint 4) |
-| `VISIONARY_NO_AUTOUPDATE` | off | Disable the once-per-24h SessionStart marketplace update (v1.3) |
 | `VISIONARY_ENABLE_STRUCTURAL_GATE` | on | Set `0` to disable the structural-integrity gate (v1.5.0) |
-| `VISIONARY_JUDGE_MODEL` | `claude-sonnet-4-6` | Model for judge invocations (Sprint 12) |
-| `VISIONARY_JUDGE_MAX_PER_ROUND` | 1 | Hard cap on judge invocations per critique round (Sprint 12) |
-| `VISIONARY_JUDGE_MAX_PER_SESSION` | 5 | Hard cap on judge invocations per session (Sprint 12) |
+| `VISIONARY_NO_AUTOUPDATE` | off | Disable the once-per-24h SessionStart marketplace update |
 | `VISIONARY_PREVIEW_URL` | `http://localhost:3000` | Playwright target URL |
 
 Migration impact: nothing in the 1.3.1 public behaviour changes
 automatically. Multi-critic mode, MLLM judge, and DINOv2 visual
-embeddings are opt-in (some opt-out by default). Anti-anchors require
-manual image curation; DINOv2 model + style anchors require manual
-download/curation; the pipeline degrades gracefully when any of those
-are absent.
+embeddings are opt-in. The pipeline degrades gracefully when any
+optional component is absent.
 
 ---
 
 ## What makes it different
 
-| Feature | frontend-design (Anthropic) | UI/UX Pro Max | 21st.dev Magic | Claude Design (Anthropic) | **visionary-claude** |
-|---------|------|------|------|------|------|
-| Design styles | ~15 implicit | 67 named | Component-level only | Inferred from codebase | **202 with auto-inference** |
-| Style selection | Manual / prompt-based | Manual name entry | Multi-variant picker | Prompt + Figma/code sync | **8-step algorithm + weighted random + transplantation** |
-| Anti-default bias | None | None | Partial | Partial | **Hard-rejects ≥ 2 slop patterns before critique runs (Sprint 8); 32-pattern catalogue; negative visual anchors injected upstream** |
-| Motion system | None | None | None | None (prototype-oriented) | **Motion v12 spring tokens + CSS-first (`@starting-style`, `animation-timeline`)** |
-| Visual feedback | None | None | None | Inline comments in canvas | **Playwright critique + axe-core (deterministic a11y)** |
-| Taste memory | None | None | None | None | **`taste/facts.jsonl` + `taste/pairs.jsonl` + git-harvest + DesignPref RAG (Sprint 5–6); `.taste` dotfiles are shareable** |
-| Accessibility | Not enforced | Not enforced | Not enforced | Not enforced | **WCAG 2.2 AA + APCA Lc floors + CSS logical properties + RTL** |
-| i18n typography | ASCII only | ASCII only | ASCII only | ASCII only | **20+ languages with correct diacritics + proper lang/subset** |
-| Multi-variant | No | No | Yes | Yes (canvas revisions) | **`/variants` — 3 mutually-distinct takes before critique** |
-| Consistency lock | No | No | No | Figma-driven | **`/apply` — lock a style across the app, emit DTCG tokens** |
-| Token export | None | None | None | Figma variables only | **DTCG 1.0 `.tokens.json` per style (Figma / Style Dictionary / Penpot ready)** |
-| Python required | No | **Yes (bugs on Windows)** | No | Cloud (web app) | **No — Node 18+ only** |
-| Works inside existing repo | Yes | Yes | Yes | Export only (Canva/PDF/HTML) | **Yes — edits files in-place** |
+The Claude Code design ecosystem has five distinct offerings — they
+look similar from a prompt but operate at very different layers:
 
-### How is this different from Claude Design?
+- **`frontend-design`** — Anthropic's general-purpose design skill
+  bundled with Claude Code (in-CLI, code-emitting).
+- **`interface-design`** — Anthropic's superpowers plugin focused on
+  dashboards / admin / data-tooling specifically (in-CLI, code-emitting).
+- **`UI/UX Pro Max`** — third-party Claude Code plugin with 67 styles
+  + shadcn-MCP integration (in-CLI, code-emitting).
+- **`Claude Design`** — Anthropic's web-app at claude.ai/design
+  (browser canvas, prompt → prototype → export).
+- **`visionary-claude`** (this plugin) — 202 styles + Playwright
+  critique loop + taste flywheel + DTCG token export (in-CLI,
+  code-emitting).
+
+| Feature | frontend-design | interface-design | UI/UX Pro Max | 21st.dev Magic | Claude Design | **visionary-claude** |
+|---------|------|------|------|------|------|------|
+| Surface | CLI plugin | CLI plugin | CLI plugin | CLI plugin | Web app | CLI plugin |
+| Design styles | ~15 implicit | ~12 dashboard-focused | 67 named | Component-level only | Inferred from canvas | **202 with auto-inference** |
+| Style selection | Manual / prompt-based | Prompt-based | Manual name entry | Multi-variant picker | Prompt + iterate | **8-step algorithm + weighted random + transplantation** |
+| Anti-default bias | None | None | None | Partial | Partial | **Hard-rejects ≥ 2 slop patterns before critique runs (Sprint 8); 32-pattern catalogue; negative visual anchors injected upstream** |
+| Motion system | None | Light | None | None | None (prototype-oriented) | **Motion v12 spring tokens + CSS-first (`@starting-style`, `animation-timeline`)** |
+| Visual feedback | None | None | None | None | Inline canvas comments | **Playwright critique + axe-core (deterministic a11y)** |
+| Taste memory | None | None | None | None | None | **`facts.jsonl` + `pairs.jsonl` + git-harvest + DesignPref RAG (Sprint 5–6); shareable `.taste` dotfiles** |
+| Accessibility | Not enforced | Not enforced | Not enforced | Not enforced | Not enforced | **WCAG 2.2 AA + APCA Lc floors + CSS logical properties + RTL** |
+| i18n typography | ASCII only | ASCII only | ASCII only | ASCII only | ASCII only | **20+ languages with correct diacritics + proper lang/subset** |
+| Multi-variant | No | No | No | Yes | Yes (canvas revisions) | **`/variants` — 3 mutually-distinct takes before critique** |
+| Consistency lock | No | No | No | No | Figma-driven | **`/apply` — lock a style across the app, emit DTCG tokens** |
+| Token export | None | None | None | None | Figma variables only | **DTCG 1.0 `.tokens.json` per style (Figma / Style Dictionary / Penpot ready)** |
+| Python required | No | No | **Yes (bugs on Windows)** | No | Cloud (web app) | **No — Node 18+ only** |
+| Works inside existing repo | Yes | Yes | Yes | Yes | Export only (Canva/PDF/HTML) | **Yes — edits files in-place** |
+
+### How is this different from `frontend-design` (Anthropic plugin)?
+
+`frontend-design` is Anthropic's general-purpose design skill bundled
+with Claude Code — solid for one-shot component generation but
+operates without an explicit style catalogue, anti-default protection,
+or a critique loop. A request like "build a pricing page" lands on a
+generic SaaS-default visual every time because the skill has no
+mechanism to *avoid* defaults or *learn* what you've previously
+rejected.
+
+- **`frontend-design`** is best at: zero-config quick component
+  generation, no opinion about distinctiveness or accessibility, no
+  cross-session memory.
+- **`visionary-claude`** is best at: distinctive output (pre-critique
+  slop-reject gate + 202-style catalogue + transplantation bonus),
+  evidence-anchored critique with axe-core a11y, and learning your
+  taste across sessions.
+
+They are not redundant — `frontend-design` is fine for a one-off button
+or form input where distinctiveness doesn't matter. `visionary-claude`
+earns its keep on hero sections, pricing pages, dashboards, and any
+surface where "looks like every AI-generated SaaS" is a real risk.
+
+### How is this different from `interface-design` (Anthropic superpowers plugin)?
+
+`interface-design` is Anthropic's specialist plugin for
+dashboards / admin panels / data tooling. It explicitly excludes
+marketing surfaces by design and ships ~12 dashboard-focused style
+patterns plus density / depth / pattern-violation auditing
+(`interface-design:audit`).
+
+- **`interface-design`** is best at: information-dense admin / B2B
+  data UIs, design-system enforcement on internal tooling, density and
+  depth audits against an existing system.
+- **`visionary-claude`** is best at: any surface (marketing, editorial,
+  product, admin), 202 styles spanning visual vocabularies
+  `interface-design` doesn't carry, motion-first generation, and the
+  taste flywheel.
+
+If your codebase is purely admin tooling with a locked-in design
+system, `interface-design` may be the cleaner fit. If you need anything
+public-facing, distinctive, or motion-rich, `visionary-claude` is the
+broader instrument.
+
+### How is this different from `UI/UX Pro Max` (third-party plugin)?
+
+`UI/UX Pro Max` is the closest direct competitor — a third-party
+Claude Code plugin with 67 named styles, shadcn-MCP integration for
+component search, and broad coverage of 161 product types. The two
+plugins overlap but differ on three structural axes:
+
+- **Style catalogue + inference** — `UI/UX Pro Max` requires manual
+  style name entry; `visionary-claude` runs an 8-step inference
+  algorithm with weighted random + transplantation bonus over 202
+  styles.
+- **Critique loop** — `UI/UX Pro Max` ships no Playwright critique,
+  axe-core a11y, or numeric aesthetic scorer. `visionary-claude` runs
+  up to 3 evidence-anchored rounds per generation with deterministic
+  10-dimension scoring.
+- **Cross-session learning** — `UI/UX Pro Max` is stateless;
+  `visionary-claude` runs a taste flywheel that learns from your
+  rejections, approvals, git outcomes, and `/variants` picks.
+
+Practical signal: if you want a wider component-search experience for
+shadcn primitives and don't care about cross-session distinctiveness,
+`UI/UX Pro Max` is solid. If you want the same prompt to *stop*
+converging on whatever it converged on last week, the taste flywheel
+in `visionary-claude` is the differentiator.
+
+### How is this different from `Claude Design` (Anthropic web app)?
 
 Anthropic launched **Claude Design** on 17 April 2026 as a web-app
 prompt-to-prototype tool inside Claude.ai. It overlaps with
 `visionary-claude` in goal but not in shape:
 
-- **Claude Design** is best at: prompt → first-draft visual in a web
-  canvas, inline refinement sliders, export to Canva / PDF / PowerPoint /
-  HTML, handoff to Claude Code for implementation.
-- **visionary-claude** is best at: working inside an existing codebase,
-  deterministic accessibility scoring, motion-token discipline, DTCG
-  token export for design-system work, and learning your taste across
-  sessions so the same prompt stops converging on whatever it converged
-  on last week.
+- **`Claude Design`** is best at: prompt → first-draft visual in a web
+  canvas, inline refinement sliders, export to Canva / PDF /
+  PowerPoint / HTML, handoff to Claude Code for implementation.
+- **`visionary-claude`** is best at: working inside an existing
+  codebase, deterministic accessibility scoring, motion-token
+  discipline, DTCG token export for design-system work, and learning
+  your taste across sessions so the same prompt stops converging on
+  whatever it converged on last week.
 
 They are complementary, not substitutes. A realistic workflow is:
-sketch in Claude Design → export HTML → open the project in Claude Code
-→ re-skin with `/apply <visionary-style>` → iterate.
+sketch in Claude Design → export HTML → open the project in Claude
+Code → re-skin with `/apply <visionary-style>` → iterate.
 
 ---
 
@@ -472,24 +398,6 @@ In a Claude Code session, describe any UI task or use one of:
 | Extended | 39 | Grainy Blur, **Cassette Futurism**, **Bauhaus Dessau**, **Bauhaus Weimar**, **Default Computing Native**, **Dopamine Calm** |
 
 All styles support **transplantation** — applying a style outside its native domain (e.g., newspaper grid applied to accounting software) for distinctive, memorable results. Each style has YAML frontmatter with `category`, `motion_tier`, `density`, `locale_fit`, `palette_tags`, `keywords`, and `accessibility` floors.
-
----
-
-## New in v1.3 (this release)
-
-- **13 new styles** tuned for 2026 design movements: `liquid-glass-ios26`, `ambient-copilot`, `calm-focus-mode`, `editorial-serif-revival`, `cassette-futurism`, `dyslexia-friendly`, `chaos-packaging-collage`, `kinetic-typography-v2`, `neobrutalism-softened`, `recombinant-hybrid`, `colr-v1-color-type`, `apca-native-contrast`, `swiss-gerstner`, `swiss-muller-brockmann`, `swiss-crouwel-gridnik`, `bauhaus-dessau`, `bauhaus-weimar`, `default-computing-native`, `dopamine-calm` — and 3 weak legacy files fully re-written (`concrete-brutalist-material`, `leather-craft`, `white-futurism`, `fabric-textile`, `zine-diy`).
-- **Motion v12 default** — two-parameter springs (`bounce` + `visualDuration`), native oklch/color-mix animation, `linear()` easing snippets, CSS-first escapes (`@starting-style`, `animation-timeline: view()`, cross-document View Transitions for MPA stacks).
-- **Framework modernization** — Next.js 16 Cache Components + React Compiler stable + `<Form>`, Tailwind v4 `@theme` dual-emitter (v3 fallback), Base UI vs Radix primitive-layer detection, DTCG 1.0 `.tokens.json` detection.
-- **DTCG token export** — `scripts/export-dtcg-tokens.mjs` emits W3C DTCG 1.0 tokens per style (`tokens/{style-id}.tokens.json`); consumable by Figma Variables, Style Dictionary v4, Penpot, Knapsack.
-- **shadcn registry publication** — `scripts/build-shadcn-registry.mjs` emits 202 `registry:style` items at `registry/r/{id}.json` so users can run `npx shadcn@latest add https://{host}/r/{style-id}.json`. `scripts/reskin-shadcn-block.mjs` re-skins shadcn community blocks with any Visionary style.
-- **axe-core grounded critique** — `skills/visionary/axe-runtime.js` injected via Playwright's `browser_evaluate`; Accessibility dimension weighted 60 % axe / 40 % heuristic. APCA Lc floors alongside WCAG 2.x via `scripts/apca-validator.mjs`.
-- **Open benchmark** — `benchmark/` ships 100 prompts × 10 categories × 4 dimensions, a source-level scorer, and a runner. First published run: **Visionary 18.35 / 20 vs generic-slop baseline 12.60 / 20, delta +5.75**. Results in `results/`.
-- **Named-designer taste packs** — 5 opt-in packs (Rams, Kowalski, Vignelli, Scher, Greiman) with blend support, via `/designer` command.
-- **New commands** — `/variants` (3 mutually-distinct takes), `/apply` (lock style across app + emit tokens), `/designer` (named-designer bias), `/annotate` (Design Mode parity: browser pins → code edits), `/import-artifact` (Claude.ai Artifact → codebase pipeline).
-- **Cross-platform hooks** — migrated from Bash to Node.js 18+ (`.mjs`); works on Windows / macOS / Linux without `xxd`, `md5sum`, or `sed` divergence. All three hooks read stdin JSON per the official Claude Code hooks spec.
-- **Slop pattern #26** — neon-on-dark without thematic justification — catches the AI-default "dark dashboard + cyan accents" leaking past the anti-default filter.
-- **Jurisdictional compliance** — ADA Title II (24 April 2026), EAA active enforcement (France DGCCRF, Germany €500k, Netherlands €900k / 10 %), Section 508, UK PSBAR, AODA, JIS X 8341 — full matrix in `SKILL.md`.
-- **Background auto-update** — a `SessionStart` hook runs `claude plugin marketplace update` + `claude plugin update visionary-claude` at most once per 24h, so future releases reach you automatically. New versions activate on the next Claude Code restart. Opt out with `VISIONARY_NO_AUTOUPDATE=1`. Release flow documented in `docs/RELEASE.md`.
 
 ---
 
