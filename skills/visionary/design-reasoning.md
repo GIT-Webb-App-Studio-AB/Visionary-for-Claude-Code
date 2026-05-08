@@ -50,6 +50,33 @@ Grid:            [base unit]px base — [spacing descriptor]
 - Never use more than 3 brand colors + 2 neutral tones
 - Dark mode: invert lightness, not hue
 
+### Spacing & Padding Rules (enforced on every generation)
+
+Every visible UI surface MUST have explicit padding — no element may rely on
+browser defaults or inherited zero-padding.
+
+| Surface | Minimum padding |
+|---------|----------------|
+| Top navbar / header row | `px-4 py-3` (or `px-6 py-3` for wide viewports) |
+| Filter bar / toolbar row | `px-4 py-2` |
+| Tab bar | `px-4 py-0` tabs, each tab `px-3 py-2` |
+| Breadcrumb row | `px-4 py-2` |
+| Page / section container | `px-4 sm:px-6 lg:px-8` |
+| Card / panel | `p-4` or `p-6` |
+| Button / chip | `px-3 py-1.5` (sm), `px-4 py-2` (md), `px-6 py-3` (lg) |
+| Nav item (horizontal) | `px-3 py-2` |
+| Nav item (vertical sidebar) | `px-4 py-2` |
+| Input / select field | `px-3 py-2` |
+| Dropdown menu item | `px-4 py-2` |
+| Modal / dialog body | `p-6` |
+
+**Non-negotiable checklist before finalising any layout:**
+- [ ] Navbar has both horizontal AND vertical padding
+- [ ] Filter / toolbar row has both horizontal AND vertical padding
+- [ ] Every interactive control (button, chip, badge, tag) has padding on all sides
+- [ ] Page container has responsive horizontal padding
+- [ ] No element uses `p-0` unless it is a purely decorative / overlay surface
+
 ## Ambiguity Handling
 
 Show the brief when:

@@ -1,7 +1,7 @@
 {
   "name": "visionary-claude",
-  "version": "1.5.4",
-  "description": "Visual design plugin for Claude Code. 202 styles, 8-step selection algorithm with weighted random, Motion Scoring 2.0 (6 sub-dim Maturity Model), MLLM Judge tie-breaker, DINOv2 visual embeddings (opt-in), Active Governance pre-commit/CI gate, Taste Inheritance designer-as-subagent, Structural-Integrity Gate (v1.5.0) catching duplicate headings / collapsed footers / orphan labels, MCP-server for Cursor/Windsurf/Cline. axe-core-instrumented Playwright critique loop, DTCG token export, cross-session taste calibration. WCAG 2.2 AA + APCA compliant. 15 frameworks, 20+ languages.",
+  "version": "1.6.0",
+  "description": "Visual design plugin for Claude Code. 207 styles, 8-step selection + Verbalized Sampling (Stage 1.5), Latent Style Mixing slerp (Stage 2.5), Constraint-Injection (Stage 2.6) with 40 atomic rules, Cross-modal inputs (/visionary-from-photo, /visionary-from-track, /visionary-mood), 12 Cinematic director-packs (Wong Kar-wai, Villeneuve, Kubrick, ...), Cross-screen flow (5 koherenta states), Voice-tempo motion-refinement, Runtime context (circadian + network-aware + patina), Coined-styles auto-promotion. 9th anti-typicality critic mitigates RLHF mode-collapse (Zhang 2025). Motion Scoring 2.0, MLLM Judge, DINOv2 embeddings, Active Governance, Taste Inheritance designer-as-subagent, Structural-Integrity Gate, MCP-server for Cursor/Windsurf/Cline. axe-core-instrumented Playwright critique. WCAG 2.2 AA + APCA. 15 frameworks, 20+ languages.",
   "author": { "name": "GIT Webb & App Studio AB" },
   "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
   "repository": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",

@@ -42,6 +42,34 @@ import {
 // Sprint 9 Task 24.10: Motion Scoring 2.0 — inject 6-sub-dim scores so critic
 // can cite the exact sub-dim that drags motion_readiness down.
 import { buildMotionContextBlock } from './lib/motion/inject.mjs';
+// Sprint 16 Task 31.4: Echo-chamber break — inject user's own accepted history
+// as anti-pattern context in round 2+ so the critic stops rewarding convergence
+// toward already-seen designs. Madaan 2023 Self-Refine + Zhang 2025 typicality bias.
+import { buildAntiPatternContext } from './lib/anti-pattern-context.mjs';
+import { loadConfig as loadAntiTypicalityConfig } from './lib/anti-typicality-config.mjs';
+
+// v1.6.0 fix: Playwright MCP namespace disambiguation. When the user has
+// BOTH the Visionary-bundled Playwright (registered via this repo's .mcp.json
+// as `playwright`, exposed as `mcp__plugin_visionary-claude_playwright__*`)
+// AND an external Playwright plugin (e.g. `playwright@claude-plugins-official`,
+// exposed as `mcp__playwright__*`), the unprefixed name `mcp__playwright__*`
+// in our instructions resolves to the EXTERNAL one — browser-context lock
+// follows because two MCP servers fight for the same Chromium instance.
+// Fix: prefer the Visionary-bundled namespace explicitly; document fallback.
+const PW_PRIMARY = 'mcp__plugin_visionary-claude_playwright';
+const PW_FALLBACK = 'mcp__playwright';
+function pwTool(name) {
+  return `${PW_PRIMARY}__${name}`;
+}
+const PW_DISAMBIGUATION_NOTE = `PLAYWRIGHT MCP SELECTION (Sprint 22 / v1.6.0): Visionary bundles its own Playwright via .mcp.json (tools prefixed \`${PW_PRIMARY}__*\`). Prefer that namespace. If unavailable in your session, fall back to a standalone Playwright plugin (\`${PW_FALLBACK}__*\`). DO NOT invoke both — both Playwright MCP servers will fight for the same browser context and lock each other. If you see only the standalone variant, disable any external playwright-plugin first or set VISIONARY_PLAYWRIGHT_NS to override the prefix.`;
+const PW_NS_OVERRIDE = process.env.VISIONARY_PLAYWRIGHT_NS;
+function pwToolResolved(name) {
+  // Env override wins. Otherwise primary (Visionary-bundled).
+  if (PW_NS_OVERRIDE && /^[a-zA-Z0-9_-]+$/.test(PW_NS_OVERRIDE)) {
+    return `${PW_NS_OVERRIDE}__${name}`;
+  }
+  return pwTool(name);
+}
 
 const MAX_ROUNDS = 3;
 const CONTEXT_CAP = 10_000;
@@ -558,7 +586,7 @@ const resilienceStep = hasKit ? `
     a. Load kit: \`const kit = JSON.parse(await fs.readFile('${kitPath}', 'utf8'))\`.
     b. For each state in ['p50','p95','empty']:
        - Pick the first entity from kit.entities that the component appears to render (match by prop name or heuristic). For p50: use entity.sample[0]. For p95: synthesize the worst-case row using entity.constraints[*].p95_length + diacritics. For empty: pass an empty array.
-       - Expose data via \`mcp__playwright__browser_evaluate\` before navigation, e.g.: \`window.__visionary_kit__ = { state: 'p95', data: <row> }\`. Components that support kit injection will read this; components that don't will fall back to their hard-coded defaults (which is what we want to detect).
+       - Expose data via \`${pwToolResolved('browser_evaluate')}\` before navigation, e.g.: \`window.__visionary_kit__ = { state: 'p95', data: <row> }\`. Components that support kit injection will read this; components that don't will fall back to their hard-coded defaults (which is what we want to detect).
        - Capture the DOM snapshot using the same browser_evaluate payload as step 5, writing to ${domP50Path} / ${domP95Path} / ${domEmptyPath} respectively.
     c. Run the resilience scorer:
        \`node ${resilienceScorerCli} --p50 ${domP50Path} --p95 ${domP95Path} --empty ${domEmptyPath} --kit ${kitPath} --out ${resilienceOutPath}\`
@@ -634,6 +662,68 @@ const multiCriticSection = MULTI_CRITIC
     ].join('\n')
   : '';
 
+// ── Sprint 16 Task 31.4: Anti-pattern context (round 2+) ────────────────────
+// Round 1 has no history to compare against; for round 2+ we read the user's
+// recent accepted-history from taste/facts.jsonl and inject it as explicit
+// instruction telling the critic NOT to reward convergence toward seen patterns.
+const antiTypConfig = loadAntiTypicalityConfig();
+const antiTypEnabled = antiTypConfig.enabled !== false;
+const factsJsonlPath = join(cwd, 'taste', 'facts.jsonl');
+
+let antiPatternSection = '';
+let antiPatternMeta = { used_method: 'skipped_round_1', history_count: 0 };
+if (antiTypEnabled && round >= 2) {
+  try {
+    const apc = buildAntiPatternContext({
+      round,
+      factsJsonlPath,
+      windowSize: antiTypConfig.originality_history_window || 10,
+      maxAgeDays: antiTypConfig.originality_history_max_age_days || 90,
+      useCache: true,
+    });
+    antiPatternSection = apc.context ? `\n\n${apc.context}` : '';
+    antiPatternMeta = { used_method: apc.used_method, history_count: apc.history_count };
+  } catch {
+    // Anti-pattern context is best-effort — never blocks the critique.
+    antiPatternMeta = { used_method: 'error_fallback', history_count: 0 };
+  }
+}
+
+// ── Sprint 16 Task 31.3: Originality critic invocation (round 2+) ───────────
+const originalityAgentPath = join(repoRoot, 'agents', 'critic-originality.md');
+const originalityModulePath = join(repoRoot, 'hooks', 'scripts', 'lib', 'critics', 'originality.mjs');
+const originalitySection = (antiTypEnabled && round >= 2)
+  ? [
+      '',
+      'ORIGINALITY CRITIC (Sprint 16 Task 31.3 — round 2+ only):',
+      `In addition to the visual-critic / multi-critic invocation above, also invoke critic-originality (${originalityAgentPath}) in parallel.`,
+      `It scores ONE dimension: \`originality_vs_history\` — how distinct this generation is from the user's previously accepted designs (NOT from generic AI slop; that is critic-aesthetic's \`distinctiveness\`).`,
+      `Score formula: \`10 - max(similarity_to_history) * 10\` where history = top-${antiTypConfig.originality_history_window || 10} accepted from taste/facts.jsonl.`,
+      `Method: DINOv2-cosine if VISIONARY_DINOV2_ENABLED=1 (Sprint 11 active), else 8D-aesthetic-embedding cosine fallback.`,
+      `Empty/missing history → fallback to skills/visionary/priors/global-aesthetic-history.json (10 curated archetype-anchors). If priors missing → score 7 with method='fallback-unavailable'.`,
+      `Implementation reference: \`node ${originalityModulePath}\` exports calculateOriginalityScore({round, currentEmbedding, history, method}).`,
+      `Merge into critic output via \`mergeOriginality(merged, originalityOut)\` from critic-merge.mjs — NOT inside the schema-bound scores block (additionalProperties:false). The merged result carries originality_vs_history as a top-level field with top_3_fixes auto-emitted when score < 7.`,
+      `Default arbitration weight: ${antiTypConfig.originality_weight || 0.8} (lower than craft/aesthetic 1.0, higher than designer 0.25).`,
+    ].join('\n')
+  : '';
+
+// Sprint 16: emit trace for anti-pattern injection
+if (antiTypEnabled && round >= 2) {
+  try {
+    trace.sync('anti_pattern_context_injected', {
+      round,
+      history_count: antiPatternMeta.history_count,
+      history_window_days: antiTypConfig.originality_history_max_age_days || 90,
+      used_method: antiPatternMeta.used_method,
+    }, {
+      projectRoot: cwd,
+      generationId: fileHash,
+      round,
+      emitter: 'capture-and-critique',
+    });
+  } catch { /* trace is best-effort */ }
+}
+
 // Emit a trace event so visionary-stats can see which round was processed
 // and in which mode. The emission is best-effort — trace is disabled when
 // VISIONARY_NO_TRACES=1.
@@ -643,6 +733,8 @@ try {
     rag_mode: ragResult.mode,
     rag_example_count: ragResult.example_count,
     multi_critic: MULTI_CRITIC,
+    anti_typicality_enabled: antiTypEnabled,
+    anti_pattern_method: antiPatternMeta.used_method,
   }, {
     projectRoot: cwd,
     generationId: fileHash,
@@ -682,11 +774,13 @@ const context = [
   resilienceSummaryLine,
   calibrationSummary(),
   '',
+  PW_DISAMBIGUATION_NOTE,
+  '',
   'NEXT-TURN ACTIONS (perform these now):',
-  `1. Navigate via mcp__playwright__browser_navigate to ${previewUrl}. If that errors, try http://localhost:5173 (Vite default). If neither responds within 2 s, spin up a component-isolated Vite harness or instruct the user to set VISIONARY_PREVIEW_URL.`,
-  `2. Wait via mcp__playwright__browser_evaluate for BOTH \`document.fonts.ready\` AND \`document.getAnimations().length === 0\`. Do NOT use networkidle — Playwright itself advises against it.`,
-  `3. Inject axe-core via mcp__playwright__browser_evaluate — use skills/visionary/axe-runtime.js. Persist the full axe result JSON with Bash (Write tool OR \`node -e "require('fs').writeFileSync(process.argv[1], process.argv[2])" ${axeSnapshotPath} '<json>'\`).`,
-  `4. Call mcp__playwright__browser_take_screenshot:\n   a. 1200×800 (desktop — always)${needsMobileShot ? '\n' + mobileLine : ''}`,
+  `1. Navigate via ${pwToolResolved('browser_navigate')} to ${previewUrl}. If that errors, try http://localhost:5173 (Vite default). If neither responds within 2 s, spin up a component-isolated Vite harness or instruct the user to set VISIONARY_PREVIEW_URL.`,
+  `2. Wait via ${pwToolResolved('browser_evaluate')} for BOTH \`document.fonts.ready\` AND \`document.getAnimations().length === 0\`. Do NOT use networkidle — Playwright itself advises against it.`,
+  `3. Inject axe-core via ${pwToolResolved('browser_evaluate')} — use skills/visionary/axe-runtime.js. Persist the full axe result JSON with Bash (Write tool OR \`node -e "require('fs').writeFileSync(process.argv[1], process.argv[2])" ${axeSnapshotPath} '<json>'\`).`,
+  `4. Call ${pwToolResolved('browser_take_screenshot')}:\n   a. 1200×800 (desktop — always)${needsMobileShot ? '\n' + mobileLine : ''}`,
   `5. Capture a DOM snapshot via browser_evaluate: \`Array.from(document.querySelectorAll('body *')).slice(0,400).map(el => { const r=el.getBoundingClientRect(); const s=getComputedStyle(el); const tag=el.tagName.toLowerCase(); const isFooterish=['footer','aside','section','nav'].includes(tag); const isList=tag==='ul'||tag==='ol'; const isHeading=/^h[1-6]$/.test(tag); const sib=isHeading?el.nextElementSibling:null; return { selector: tag+(el.id?'#'+el.id:'')+(typeof el.className==='string'&&el.className?'.'+el.className.trim().split(/\\\\s+/).slice(0,3).join('.'):''), tagName: tag, text: (el.textContent||'').trim().slice(0,200) || null, parentTag: el.parentElement?el.parentElement.tagName.toLowerCase():null, className: typeof el.className==='string'?el.className:null, bbox:{x:r.x,y:r.y,width:r.width,height:r.height}, style:{fontSize:s.fontSize, lineHeight:s.lineHeight, letterSpacing:s.letterSpacing, color:s.color, backgroundColor:s.backgroundColor}, display: isFooterish?s.display:null, gridTemplateColumns: isFooterish?s.gridTemplateColumns:null, listStyleType: isList?s.listStyleType:null, childCount: el.children.length, anchorDescendantCount: el.querySelectorAll('a').length, nextElementSiblingTag: sib?sib.tagName.toLowerCase():null, nextElementSiblingText: sib?(sib.textContent||'').trim().slice(0,200):null }; }).filter(e=>e.bbox.width>0&&e.bbox.height>0)\`. Wrap as \`{elements:[...]}\` and write to ${domSnapshotPath}.`,
   `6. If any PNG's longest side > 1568 px, resize it (Claude vision optimum ≈ 1.15 megapixel).`,
   `7. Run the deterministic numeric scorer via Bash:\n   node ${scorerCli} --screenshot ${screenshotPath} --dom ${domSnapshotPath} --axe ${axeSnapshotPath} --out ${numericOutPath}\n   The scorer never throws: missing sharp → null-sub-scores, not a crash.${resilienceStep}`,
@@ -694,15 +788,17 @@ const context = [
   `9. Output contract: JSON matching skills/visionary/schemas/critique-output.schema.json. REQUIRED: scores.* on 0-10 (include craft_measurable = numeric_scores.composite × 10 or null), confidence 1-5, numeric_scores block, prompt_hash=${promptHash}, and EVERY entry in top_3_fixes must have an evidence object { type: axe|selector|metric|coord, value }. Sub-scores below 0.7 from numeric_scores MUST be addressed in top_3_fixes with evidence.type='metric'.`,
   `10. Apply calibration before gating: \`node ${join(repoRoot, 'hooks', 'scripts', 'lib', 'apply-calibration.mjs')} --critique <critique.json> --calibration ${calibrationPath} --out <calibrated.json>\`. The resulting object has raw_scores preserved and scores replaced by slope×raw+intercept (identity fallback when calibration.status is identity_fallback or the prompt_hash mismatches).`,
   `11. Loop control: hooks/scripts/lib/loop-control.mjs. shouldEarlyExit requires min(scores)≥8.0 AND min(confidence)≥4 AND axe_violations_count===0 AND no blocker-severity slop (null craft_measurable is tolerated). shouldEscalateToReroll fires on round 1 when ≥3 dimensions score <4. If neither fires and round<${MAX_ROUNDS}, apply top_3_fixes to ${filePath} and let this hook re-trigger.`,
-  `12. Evidence validation: after critique, use hooks/scripts/lib/validate-evidence.mjs to extract every top_3_fixes[].evidence with type=selector and run validateSelectorsInBrowser via mcp__playwright__browser_evaluate. Feed the results back through applyValidation. Invalid selectors mark the fix with evidence_invalid:true and emit a warning into the next round's prompt. Two or more invalid citations → critique retry with alternate model.`,
+  `12. Evidence validation: after critique, use hooks/scripts/lib/validate-evidence.mjs to extract every top_3_fixes[].evidence with type=selector and run validateSelectorsInBrowser via ${pwToolResolved('browser_evaluate')}. Feed the results back through applyValidation. Invalid selectors mark the fix with evidence_invalid:true and emit a warning into the next round's prompt. Two or more invalid citations → critique retry with alternate model.`,
   `13. If round N score regresses vs N-1 by > 0.3, set convergence_signal=true. Caller reverts to the previous round's output.`,
   `14. PERSIST critique for the next round: after Step 10 (calibration), write the calibrated critique JSON to \`${lastCritiquePath}\`. The NEXT hook invocation reads this file to decide whether Best-of-N fan-out applies. If you skip this step, round N+1 will always fall back to sequential refine.`,
   '',
   regenMode,
   fanOutSection,
   multiCriticSection,
+  originalitySection,
   structuralWarningsBlock,
   ragSection,
+  antiPatternSection,
   buildMotionContextBlock(clean),
   '',
   `additionalContext cap: ${CONTEXT_CAP} chars — keep critique JSON concise.${slopSection}`,

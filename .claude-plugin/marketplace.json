@@ -5,15 +5,15 @@
     "email": "hello@gitwebb.se"
   },
   "metadata": {
-    "description": "Visionary marketplace — design intelligence plugin for Claude Code. v1.5.0 adds the Structural-Integrity Gate (catches duplicate headings, collapsed footer grids, orphan labels) on top of Sprint 1-15: motion scoring 2.0, DINOv2 visual embeddings, MLLM judge, active governance, taste inheritance, MCP-server distribution.",
-    "version": "1.5.4"
+    "description": "Visionary marketplace — design intelligence plugin for Claude Code. v1.6.0 adds Anti-Typicality Foundation (Verbalized Sampling), Latent Style Mixing (8D slerp), Constraint-Injection (40 rules), Cross-modal inputs (photo/track/mood/cinematic), Cross-screen flow, Voice-tempo, Runtime Context (circadian/network/patina), and Coined-styles auto-promotion on top of v1.5.x core (Structural-Integrity Gate, motion scoring 2.0, DINOv2, MLLM judge, active governance, taste inheritance, MCP-server).",
+    "version": "1.6.0"
   },
   "plugins": [
     {
       "name": "visionary-claude",
       "source": "./",
-      "description": "202 design styles, 8-step selection, Motion Scoring 2.0 (6 sub-dim + Maturity Model), MLLM Judge tie-breaker, DINOv2 visual embeddings (opt-in), Active Governance, Taste Inheritance, Structural-Integrity Gate (v1.5.0), @visionary/mcp-server for cross-host distribution. axe-core critique, DTCG tokens, taste flywheel. WCAG 2.2 AA + APCA. 15 frameworks, 20+ languages.",
-      "version": "1.5.4",
+      "description": "207 design styles, 8-step selection + Stage 1.5 Verbalized Sampling + Stage 2.5 Latent Style Mixing + Stage 2.6 Constraint-Injection. Cross-modal commands (/visionary-from-photo, /visionary-from-track, /visionary-mood, /visionary-cinematic), 12 director-packs, /visionary-flow (5 koherenta states), /visionary-voice (mic→motion), /visionary-patina (design-åldring). Motion Scoring 2.0, MLLM Judge, DINOv2, Active Governance, Taste Inheritance, Structural-Integrity Gate. axe-core critique, DTCG tokens. WCAG 2.2 AA + APCA. 15 frameworks, 20+ languages.",
+      "version": "1.6.0",
       "author": { "name": "GIT Webb & App Studio AB" },
       "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
       "repository": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",

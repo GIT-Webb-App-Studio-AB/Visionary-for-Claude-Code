@@ -7,6 +7,113 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.6.0] — 2026-05-05 (lokal-test-build, ej publicerad)
+
+### Fixed — 2026-05-08 lokal-test-iteration
+
+- **Playwright MCP namespace collision** — `capture-and-critique.mjs` instruerade Claude att anropa `mcp__playwright__*` (utan plugin-prefix), vilket kolliderade med externa Playwright-pluggar (e.g. `playwright@claude-plugins-official`) när BÅDA var registrerade. Symptom: browser-context-lock, Stage 4 critique-loop blocked, "Playwright är upptagen"-fel. **Fix:** explicit Visionary-bundled namespace `mcp__plugin_visionary-claude_playwright__*` med fallback-disambiguation-not + `VISIONARY_PLAYWRIGHT_NS` env-override för manuell prefix. 7 nya tester verifierar att inga unprefixed `mcp__playwright__` kvarstår i instruction-templates.
+
+
+
+Stort additiv-release. **Sprint 16-24 levererat samtidigt.** 9 nya sprintar attackerar generativ konvergens från flera vinklar och utvidgar Visionary från diskret-stil-väljare till kontinuerlig, multi-modal, kontext-medveten design-motor. Allt nytt är opt-in via flaggor eller commands — befintliga prompts fungerar oförändrat.
+
+### Added — Sprint 16: Anti-Typicality Foundation
+
+Attackerar root cause för designkonvergens. RLHF-tränade modeller (Claude inkl.) lider av typicality bias (α ≈ 0.57-0.65 per Zhang 2025) som drar generation mot fördelningens topp.
+
+- **Verbalized Sampling (Stage 1.5)** — Claude returnerar 5 distinkta koncept med sannolikhetsvikter innan generation. Anti-typicality boost (`weight = probability^(1-α)`, default α=0.65) ger låg-prob-kandidater 1.3-1.6× selection-rate. Konvergens-check via token-jaccard >0.7 → re-prompt med explicit divergens.
+- **9:e critic-dimension `originality_vs_history`** — round 2+ jämför mot top-10 senaste accepted entries i `taste/facts.jsonl` (DINOv2 om Sprint 11 aktiv, annars 8D-embedding-cosine). Score = `10 - max_similarity*10`.
+- **Echo-chamber break** — round 2+ får anti-pattern context som explicit instruerar critic att INTE belöna konvergens mot accepted history.
+- **Files**: `partials/verbalized-sampling.md`, `agents/critic-originality.md`, 14 nya filer + 87 tester.
+
+### Added — Sprint 17: Latent Style Mixing
+
+Släpper diskretiseringen av 202-katalogen. Använder 8D-embedding-rymden för kontinuerlig stil-blandning.
+
+- **`--blend "id1:w1 + id2:w2"`** flagga + naturligt-språk-parser ("70% Swiss, 30% Liminal", "X men med Y:s typografi"). 20-fras recall 100%.
+- **Slerp i 8D** med hard accessibility clamps (chroma ≥0.15, contrast_energy ≥0.30, motion_intensity kvantiserad).
+- **Token-resolver** producerar palette/typografi/motion/density från godtycklig 8D-vektor. APCA Lc 60 hard-floor enforced.
+- **`/visionary-mood <coords|text>`** — Russell circumplex mappar valence×arousal till stil-kluster. 16 text-mood-fraser.
+- **Files**: `style-blend.mjs`, `style-blend-resolver.mjs`, `blend-parser.mjs`, `mood-mapper.mjs`, `palette-tokens.json`, `typography-matrix.json`, 14 filer + 90 tester.
+
+### Added — Sprint 18: From-Photo
+
+`/visionary-from-photo <url|path>` — fotot blir primär designinput. Sharp + node-vibrant extraherar 5 oklch-färger; CLIP ViT-B/32 (transformers.js) klassificerar mood mot 16 prompts; Sobel edge-density mappar till motion-tier 0-3. Optional deps med graceful heuristic-fallback. SHA256-cache i `${cacheDir}/photo-cache/`. 13 filer + 53 tester.
+
+### Added — Sprint 19: From-Track
+
+`/visionary-from-track <spotify-url|mp3>` — musik som designinput. Spotify Audio Features (valence/energy/tempo/acousticness/danceability/instrumentalness) → Russell-koord + animation-baseline-ms (60 BPM=1000ms, 120=500, 180=333). Lokal mp3-fallback via CLAP-embedding eller Web Audio heuristik. Återanvänder Sprint 17 mood-mapper. 10 filer + 48 tester.
+
+### Added — Sprint 20: Cinematic Director-Packs
+
+`/visionary-cinematic <director>` med 12 filmregissör-profiler: Wong Kar-wai, Villeneuve, Wes Anderson, Nolan, Kubrick, Lynch, Tarkovsky, Denis (Claire), Bong (Joon-ho), Parker (Alan), Garland, Coppola (Sofia). LUT-mapper (`--cinematic-grade`) för CSS color-grading per regissör. Director-packs har ny `category: filmmaker` med `cinema_palette`, `motion_signature`, `composition`. 18 filer + 16 tester.
+
+### Added — Sprint 21A: Constraint-Injection (Stage 2.6)
+
+40 atomära regler i 5 kategorier (form/color/typography/layout/motion, 8 styck per kategori). Sample 1-3 icke-konfliktande constraints, injicera som hårda invarianter i generation-prompt. Post-generation validator + retry-budget 3 + drop-on-fail. 8 validators implementerade i v1, 32 graceful-degradation-stubs. 45 filer + 34 tester.
+
+### Added — Sprint 21B: Coined-Styles Auto-Promotion
+
+Blends accepterade ≥3 gånger (≥85% vector-similarity) och ≥7 dagar mognad → auto-promotion till `styles/extended/coined-<name>.md`. Deterministic auto-naming v1 (Haiku-batch v2). `/visionary-coined list|view|rename|eject` management. Visionary blir självväxande. 6 filer + 27 tester.
+
+### Added — Sprint 22A: Cross-Screen Flow
+
+`/visionary-flow <feature>` genererar 5 koherenta UI-states (list+detail+empty+error+loading) med shared design-context. Cross-screen critique-loop med state-pair tolerances (loading-vs-list mer permissivt än list-vs-detail). 5 filer + 21 tester.
+
+### Added — Sprint 22B: Voice-Tempo
+
+`/visionary-voice [audio]` — talad motion-refinement. Pitch-contour → spring stiffness, envelope-attack → mass, sustain → visualDuration. Web Audio API + autocorrelation pitch-detection (zero deps). Mic-recording via Playwright next-turn instructions. 8 filer + 26 tester.
+
+### Added — Sprint 23: Runtime Context (Stage 6)
+
+Generated UI får runtime-context-awareness via 4 opt-in mekanismer:
+- **Circadian palette-shift** — 4 fas-paletter per stil, system `prefers-color-scheme` overrides ALWAYS.
+- **Network-aware budget** — 3 tiers (full/degraded/minimal), `prefers-reduced-data` + saveData-detection.
+- **Patina-mode** — design åldras: chroma -2%/månad, radius +0.5px/månad, motion +5ms/månad. APCA Lc 60 hard-floor + freeze-mekanism. `git blame` som ålder-källa.
+- **Coordinator** — precedence `system_pref > network > circadian > patina`, combined-drift-cap <15%.
+
+`/visionary-patina status|freeze|unfreeze`. 14 filer + 44 tester.
+
+### Added — Sprint 24: Style Pack 2026
+
+5 nya stilar (197 → 202): **Tactile Rebellion** (graphic — riso-print, hand-skuren typografi, anti-AI-slop), **Digital Degrowth** (internet — system-fonter, max 3 färger, kg CO₂-badge, anti-AI-slop), **Insight-First Coach** (internet — biometrisk siffra som typografi, narrativ AI-summary, no-dashboard), **Liquid Glass Lensing** (hybrid — SVG feDisplacementMap för faktisk optisk böjning), **Corporate Dropout** (internet — Helvetica med 1° tilt, broken grid, ironisk tone, anti-AI-slop). 7 filer.
+
+### Added — Documentation
+
+14 nya docs på svenska: `anti-typicality.md`, `latent-style-mixing.md`, `mood-slider.md`, `from-photo.md`, `from-track.md`, `spotify-setup.md`, `constraints.md`, `coined-styles.md`, `visionary-flow.md`, `visionary-voice.md`, `runtime-context.md`, `circadian-design.md`, `network-aware.md`, `patina-mode.md`.
+
+### Added — Commands
+
+8 nya commands: `/visionary-mood`, `/visionary-from-photo`, `/visionary-from-track`, `/visionary-cinematic`, `/visionary-flow`, `/visionary-voice`, `/visionary-patina`, `/visionary-coined`.
+
+### Changed
+
+- **`hooks/scripts/lib/critic-merge.mjs`** — additivt utökad med `ORIGINALITY_DIMENSIONS` + `mergeOriginality` (icke-breaking, schema bevarad).
+- **`hooks/scripts/capture-and-critique.mjs`** — anti-pattern-context + originality-critic-instruktion injiceras i round 2+.
+- **`skills/visionary/SKILL.md`** — Stage 1.5 (VS) + Stage 2.5 (Latent Mixing) + Stage 2.6 (Constraints) + Stage 6 (Runtime) + Sub-Document Loading-tabell utvidgad + Commands-sektion.
+- **`skills/visionary/context-inference.md`** — "Photo-Driven Inference (Sprint 18)" sektion.
+- **`hooks/scripts/lib/critics/designer-critic.mjs`** — laddar `.md` packs (Sprint 20 cinematic) via hand-skriven YAML-frontmatter-parser. `DIM_TRANSLATIONS` map översätter cinematic-dim-namn (`motion_coherence`, `emotional_resonance` etc.) till runtime-canonical dims.
+- **`README.md`** — Sprint 16-24 sektion + 4 nya env-flaggor i tabellen.
+- **`skills/visionary/styles/_index.md`** — 5 nya stilar (Sprint 24).
+
+### Test summary
+
+**733 tester pass / 0 fail / 8 skip (sharp inte installerat i CI-env).** Inga regressions i existing test-suites.
+
+### Known limitations
+
+- Sprint 21 v1 har 8 implementerade validators av 40 — 32 är graceful-degradation-stubs som returnerar `passed: true` med `'not implemented in v1'` evidence. Sprint 21 v2 implementerar resterande.
+- Sprint 24 task 41.7 (embeddings refresh) + 41.8 (reference screenshots) pending — kräver `node scripts/build-style-embeddings.mjs` + Playwright environment.
+- Live benchmarks pending för alla 9 sprintar — kräver miljö med Playwright + dev-server + sharp/Spotify-creds installerade.
+
+### Migration notes
+
+- Sprint 18 (from-photo) kräver `npm install sharp` i users projekt. Optional: `node-vibrant culori @xenova/transformers` för bättre output. Utan deps: graceful heuristic-fallback med tydliga error-messages.
+- Sprint 19 (from-track) kräver Spotify dev-app + creds-fil i `~/.visionary/spotify-creds.json` (se `docs/spotify-setup.md`). Lokal mp3-fallback fungerar utan Spotify.
+- Inga andra sprints kräver nya deps.
+
+---
+
 ## [1.5.4] — 2026-05-04
 
 ### Added — Structural check: `text-collision` (warning tier)

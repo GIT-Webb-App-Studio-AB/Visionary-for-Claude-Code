@@ -4,9 +4,18 @@
 # tree — these patterns still apply for legacy in-repo setups, opt-in via
 # VISIONARY_TASTE_IN_REPO=1, and dev/test fallbacks. Opt out fully with
 # VISIONARY_DISABLE_TASTE=1 / VISIONARY_NO_TRACES=1 — see docs/taste-privacy.md.
+#
+# Sprint 16-24 (v1.6.0) caches all flow under .visionary-cache/ already:
+#   .visionary-cache/photo-cache/<sha256>.bin    (Sprint 18 from-photo)
+#   .visionary-cache/audio-cache/                (Sprint 19 from-track, if used)
+#   .visionary-cache/voice-rec/<id>.{webm,wav}   (Sprint 22 voice mic recordings)
+# Sprint 21B coined-styles persist in taste/coined-styles.jsonl (covered).
+# Sprint 23 patina reads git blame at runtime — no local state to ignore.
 .visionary-cache/
 .visionary/
+.visionary-runtime/
 taste/
+coined-styles/
 system.md
 
 # Claude Code agent worktrees — created by isolated subagent dispatch,
@@ -63,6 +72,46 @@ models/style-anchors/*/*.png
 models/style-anchors/*/*.jpg
 models/style-anchors/*/*.jpeg
 
+# ─── Sprint 18-19 — transformers.js / Hugging Face caches ────────────────
+# CLIP ViT-B/32 (Sprint 18 from-photo) and CLAP-htsat-unfused (Sprint 19
+# from-track) are ~150 MB each. They cache under node_modules/.cache/
+# (covered by node_modules/) but we ignore user-level HF cache too in
+# case anyone runs scripts/setup-clip-model.mjs from inside the repo.
+**/.cache/huggingface/
+**/.transformers-cache/
+**/onnxruntime-node/
+**/Xenova/
+
+# ─── Sprint 19 — Spotify credentials (NEVER commit) ──────────────────────
+# Real path is ~/.visionary/spotify-creds.json (out-of-repo). Defensive
+# pattern in case anyone copies the file into the repo by mistake.
+# See docs/spotify-setup.md.
+**/spotify-creds.json
+**/spotify-creds*.json
+.visionary-secrets/
+
+# ─── Sprint 22 — voice / audio recordings ────────────────────────────────
+# Microphone recordings shouldn't land in repo. Audio test fixtures
+# under hooks/scripts/lib/voice/__tests__/__fixtures__/ are explicitly
+# tracked; this only ignores ad-hoc voice files in well-known scratch dirs.
+voice-recordings/
+*.voice.wav
+*.voice.webm
+# Repo-root only (not recursive) — keeps test fixtures and style-pack
+# audio assets under nested dirs tracked.
+/*.wav
+/*.webm
+/*.mp3
+/*.flac
+/*.ogg
+
+# ─── Sprint 16-24 local pre-merge test scratch ───────────────────────────
+# docs/local-test-1.6.0.md suggests scratch projects under ~/test-* or
+# similar — those live outside this repo, but if anyone drops one inside:
+local-test-*/
+test-visionary-*/
+.local-test/
+
 # ─── MCP-server runtime (Sprint 10) — host installs deps locally ─────────
 packages/mcp-server/node_modules/
 packages/*/node_modules/
@@ -76,6 +125,18 @@ packages/*/dist/
 .env
 .env.local
 .env.*.local
+.env.development
+.env.production
+.env.test
+
+# ─── Secrets (defensive — Visionary itself doesn't write these) ──────────
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.json
+credentials.json
+service-account*.json
 
 # ─── IDE ─────────────────────────────────────────────────────────────────
 .vscode/

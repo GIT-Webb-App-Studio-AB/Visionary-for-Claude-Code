@@ -25,6 +25,26 @@ Do not activate for: pure logic/algorithm work, API-only endpoints, data process
 
 ---
 
+## What's New (1.6.0) — Sprint 16-24 Highlights
+
+The 1.6.0 cycle (Sprint 16-24) extended Visionary from a discrete-style picker into a continuous, multi-modal, context-aware design system. New capabilities:
+
+- **Sprint 16 — Verbalized Sampling (Stage 1.5)** + 9th anti-typicality critic in the critique loop. Mitigates RLHF convergence (α ≈ 0.57–0.65 per Zhang et al. 2025).
+- **Sprint 17 — Latent Style Mixing (Stage 2.5)** + mood-slider (`/visionary-mood`). Continuous 8D slerp across catalog anchors with hard accessibility clamps.
+- **Sprint 18 — From-Photo (`/visionary-from-photo`)** — palette + edge + mood inference from a reference image; feeds Stage 1's StyleBrief.
+- **Sprint 19 — From-Track (`/visionary-from-track`)** — tempo/valence/arousal inference from an audio file or Spotify track; maps to motion tier + Russell quadrant.
+- **Sprint 20 — Cinematic director-packs** (`/visionary-cinematic`, `--cinematic-grade`) — 12 director-style packs (Kubrick, Wong Kar-wai, Anderson, Fincher, Lynch, …) with LUT-mapper for color grading.
+- **Sprint 21A — Constraint-Injection (Stage 2.6)** — 40-constraint catalogue (form/color/typography/layout/motion, 8 each) injected as hard invariants between Stage 2.5 and Stage 3.
+- **Sprint 21B — Coined-styles auto-promotion (`/visionary-coined`)** — blends accepted ≥3 times in `taste/coined-styles.jsonl` are promoted to `styles/extended/` as named anchors.
+- **Sprint 22A — Cross-screen flow (`/visionary-flow`)** — multi-screen orchestrator + cross-screen critique (consistency across landing → app → settings).
+- **Sprint 22B — Voice-tempo (`/visionary-voice`)** — microphone-driven motion calibration ("mer energiskt" / "softer" voiced).
+- **Sprint 23 — Runtime context (`/visionary-patina`)** — opt-in runtime modules (circadian, network-aware, patina) executing in the user's browser after generation. See Stage 6 below.
+- **Sprint 24 — 5 new styles** added to `styles/_index.json` extending the catalogue from 197 → 202.
+
+All Sprint 16-24 features are additive and gated — existing prompts continue to work unchanged when no new flags or commands are used.
+
+---
+
 ## Execution Flow
 
 Every design generation follows this five-stage pipeline:
@@ -41,7 +61,57 @@ Load `skills/visionary/context-inference.md` and score the request against five 
 
 Output: a `StyleBrief` object with `category`, `style_id`, `motion_level`, `density`, `palette_direction`, and `locale`.
 
+### Stage 1.5 — Verbalized Sampling (Sprint 16)
+**Purpose:** Mitigate typicality bias in RLHF-aligned models (Claude inkluderat) — α ≈ 0.57–0.65 per Zhang et al. 2025. Without this stage the same prompt repeatedly converges toward the catalog's high-probability favorites.
+
+Activates by default; skipped when `VISIONARY_DISABLE_VS=1` or `--no-vs` flag.
+
+1. Load `skills/visionary/partials/verbalized-sampling.md`. Pass the `StyleBrief` from Stage 1.
+2. Claude returns strict JSON: 5 distinct concepts with `{concept, probability, rationale, suggested_style_id}`. Probabilities sum ≈1.0 but anti-flat (low-prob alternatives are encouraged).
+3. Validate against `schemas/verbalized-sampling.schema.json`. On schema-fail: 1 retry with re-prompt. On second fail: skip Stage 1.5, log `vs_skipped: true, reason: "schema_validation_failed"`.
+4. Convergence-check via `hooks/scripts/lib/verbalized-sampling.mjs::detectConvergence`. If 3+ concepts share token-jaccard > 0.7 (configurable threshold): re-prompt with explicit divergence instruction.
+5. Anti-typicality boost via `pickWithAntiTypicality(concepts, alpha=0.65, boostCap=1.6)`. Formula: `weight_i = probability_i^(1-α)` — gives low-prob candidates 1.3–1.6× selection-rate boost, deboosts high-prob to ~0.8×.
+6. The selected concept enriches the Design Reasoning Brief (Stage 2) — its `concept` text + `rationale` become input bias.
+7. **Receipt-output** carries `vs_concepts: [{concept, probability, picked: bool}, ...], vs_alpha: 0.65, vs_skipped: false` for traceability.
+
+**Differs from `/variants`** — VS = 5 concept-weights internally (~400 tokens, before render). `/variants` = 3 full renders for user-pick (after render). Combine with `/variants --vs` for 3 renders × independent VS-pick each.
+
+Configuration: `skills/visionary/anti-typicality.json` + env-overrides (`VISIONARY_VS_ALPHA`, `VISIONARY_VS_DISABLED`).
+
 ### Stage 2 — Design Reasoning Brief
+
+#### Stage 2.5 — Latent Style Mixing & Mood (Sprint 17)
+**Activates when:** `--blend "id1:w1 + id2:w2"` flag is set, OR the prompt contains a blend pattern ("70% Swiss, 30% Liminal", "X men med Y:s typografi"), OR `/visionary-mood <coords|text>` was invoked.
+
+When active, Stage 2.5 produces a continuous off-catalog 8D vector that replaces the discrete `style_id` selection from Stage 1:
+
+1. **Parse blend recipe** via `hooks/scripts/lib/blend-parser.mjs`:
+   - Strict syntax: `parseStrictBlend("swiss-rationalism:0.7 + liminal-space:0.3")`
+   - NL fallback: `parseNaturalLanguage("70% Swiss, 30% Liminal")` (svenska + engelska)
+   - Override-mode: `"X men med Y:s Z"` where Z ∈ {typografi, motion, palette}
+2. **Mood mapping** (alternative entry) via `hooks/scripts/lib/mood-mapper.mjs`:
+   - Numeric: `mapMood("0.8,0.2")` → Russell quadrant + secondary
+   - Text: `mapMood("calm-melancholic")` → looked up in 16-phrase TEXT_MOOD_MAP
+   - Output: primary_styles + secondary_styles + motion_tier + saturation_hint
+3. **Slerp in 8D space** via `hooks/scripts/lib/style-blend.mjs::blend(anchorIds, weights)`:
+   - Spherical Linear Interpolation on the unit-projected hypersphere
+   - N-anchor via successive pairwise composition; weights auto-normalize
+   - Hard accessibility clamps post-slerp: chroma ≥ 0.15, contrast_energy ≥ 0.30, motion_intensity quantized to {0, 0.33, 0.66, 1.0}
+   - `omegas_warning: true` when anchors are near-antipodal (omega > 2.5 rad) — flags risk of muddy mid-blend
+4. **Resolve to brief** via `hooks/scripts/lib/style-blend-resolver.mjs::resolveBrief(vector)`:
+   - Palette: oklch-lerp from top-3 nearest catalog anchors (pre-baked in `palette-tokens.json`); APCA Lc body-floor (75) hard-clamped, recorded in `clamps_applied`
+   - Typography: pickPair from `typography-matrix.json` projected to (type_drama, formality) coordinates
+   - Motion-tier: integer 0-3 (Static/Subtle/Expressive/Kinetic)
+   - Density-tokens: lerp on the 8-step spacing scale [4,8,12,16,24,32,48,64] px
+5. **Coined-styles persistence** (Sprint 17 stub, full impl Sprint 21): if blend accepted, append to `taste/coined-styles.jsonl`. Sprint 21 promotes 3+ acceptances to `styles/extended/`.
+
+**Output:** Replaces Stage 1's discrete `style_id` with a `BlendedStyleBrief = { vector, anchors_used, clamps_applied, omegas_warning, blend_recipe }` that flows into Stage 2 as enriched input.
+
+**Receipt-output** carries `blend_recipe: {anchors: [{id, weight}], vector, clamps_applied}` for traceability.
+
+**Differs from Stage 1.5 (Verbalized Sampling):** Stage 1.5 picks ONE style-concept from 5 verbalized options (proactive diversity). Stage 2.5 produces a CONTINUOUS off-catalog blend (kontinuerlig variation). They compose: VS picks the conceptual seed, blend interpolates the visual realization.
+
+### Stage 2 — Design Reasoning Brief (continued)
 Load `skills/visionary/design-reasoning.md`. Using the `StyleBrief`, construct a written Design Reasoning Brief that articulates:
 - The chosen style and why it fits the context
 - Typography pairing from `typography-matrix.md`
@@ -50,6 +120,26 @@ Load `skills/visionary/design-reasoning.md`. Using the `StyleBrief`, construct a
 - Spacing and density system (8px base grid)
 
 This brief is shown to the user before code generation if the request is ambiguous. For clear requests, proceed directly.
+
+### Stage 2.6 — Constraint-Injection (Sprint 21A)
+**Activates when:** the prompt contains explicit constraint-language ("no gradients", "monochrome only", "asymmetric grid", "single typeface", "scroll-driven only"), OR `--constraint <id>` / `--constraints <id1,id2,...>` flags are passed, OR a coined-style or director-pack already declares constraints, OR the active taste profile has `permanent` constraint preferences.
+
+Constraints are *atomic, post-generation-validatable hard invariants* — not preferences. A single constraint-fail flips the whole generation. The catalogue currently holds 40 constraints across 5 categories (form, color, typography, layout, motion — 8 each).
+
+1. **Resolve constraint-set** via `hooks/scripts/lib/constraints/inject.mjs::resolveConstraints`:
+   - Parse explicit IDs from CLI flags
+   - NL-detect from the prompt (svenska + engelska keyword map)
+   - Merge with director-pack / coined-style declared constraints
+   - Apply `conflict_set` resolution — mutually exclusive constraints raise an early error to the user, no silent override
+2. **Load constraint manifests** from `skills/visionary/constraints/<id>.md` (YAML frontmatter + free-text). Each declares: `id`, `category`, `css_rules`, `invariants`, `conflict_set`, `rationale`, `examples`. See `skills/visionary/constraints.md` for catalogue overview.
+3. **Inject into Stage 3 prompt** — the constraint's `css_rules` and `invariants` are appended to the Design Reasoning Brief as hard "MUST satisfy" clauses. Example: `no-gradients` → "MUST: zero `linear-gradient()`, `radial-gradient()`, or `conic-gradient()` in any generated CSS or inline style."
+4. **Post-render validation** via `hooks/scripts/lib/constraints/validate.mjs`:
+   - DOM/CSS-walk against each declared `invariant`
+   - On fail: emit `constraint_violation: {id, invariant, evidence}` and trigger an automatic fix-round in Stage 4
+   - Validation runs BEFORE the visual-critic agent so constraint failures take precedence over aesthetic scores
+5. **Receipt-output** carries `constraints_applied: [id, ...], constraint_violations: [], constraint_fix_rounds: N` for traceability.
+
+**Differs from Stage 2.5 (Latent Style Mixing):** Stage 2.5 produces a continuous *visual* blend. Stage 2.6 imposes *categorical* hard rules on top. They compose: a blend can carry constraints (e.g. "70% Swiss / 30% Liminal, no-gradients, single-typeface").
 
 ### Stage 3 — Motion-First Code Generation
 **Stack-aware generation:** Load the matched stack section from `stack-guidelines.md`. Use the stack's component base, motion system, spring token mapping, and accessibility API. The guidelines below (motion/react, shadcn/ui, etc.) are React/Next.js defaults — other stacks have their own equivalents documented in stack-guidelines.md.
@@ -78,9 +168,11 @@ After writing the component file, `hooks/scripts/capture-and-critique.mjs` fires
    - Resize any PNG longest-side > 1568px (Claude vision optimum ≈1.15 megapixel; avoids issue #27611 infinite-retry)
 2. The visual-critic subagent (`agents/visual-critic.md`) receives the screenshot(s) + brief and scores on 8 dimensions: Hierarchy / Contrast / Motion-Coherence / Density / Brand-Fit / Originality / Accessibility (axe-core-weighted) / Polish
 3. Each round starts with a fresh context containing only brief + previous critique (SELF-REFINE pattern — avoids context-bleeding)
-4. If any dimension scores below 7/10, the agent returns `top_3_fixes`; Claude applies them and the loop runs again (max 3 rounds)
-5. Convergence abort: if round N score < round N-1 by >0.3, set `convergence_signal:true` and stop
-6. Final scores are shown to the user as a design quality receipt
+4. **Round 2+ adds anti-pattern context (Sprint 16):** `hooks/scripts/lib/anti-pattern-context.mjs::buildAntiPatternContext` reads top-10 most recent accepted entries from `taste/facts.jsonl` and injects an explicit instruction telling the critic NOT to reward convergence toward already-accepted patterns. Empty/missing facts → fallback to global priors. Caps at 1500 tokens, cached per round+mtime.
+5. **Round 2+ adds 9th critic (Sprint 16):** `agents/critic-originality.md` scores `originality_vs_history` — similarity to user's accepted history (DINOv2 if Sprint 11 active, else 8D-aesthetic-embedding cosine fallback). Score = `10 - max_similarity*10`. Round 1 returns null. Default arbitration weight 0.8. Reports top-3 collisions for user transparency.
+6. If any dimension scores below 7/10, the agent returns `top_3_fixes`; Claude applies them and the loop runs again (max 3 rounds)
+7. Convergence abort: if round N score < round N-1 by >0.3, set `convergence_signal:true` and stop
+8. Final scores are shown to the user as a design quality receipt
 
 ### Stage 5 — Taste Update (Sprint 05 rewrite)
 Two parallel signal paths feed the taste profile after generation:
@@ -105,6 +197,22 @@ Two parallel signal paths feed the taste profile after generation:
 **Permanent + avoid facts act as hard-blocks** — they remove candidates from Step 4 entirely. Active facts apply graduated score adjustments proportional to confidence (see `context-inference.md` Step 4.5).
 
 **All taste data is project-local** under `./taste/` — nothing leaves the machine. Opt-out: `export VISIONARY_DISABLE_TASTE=1` (see `docs/taste-privacy.md`).
+
+### Stage 6 — Runtime Context (Sprint 23)
+**Activates when:** `/visionary-patina` is invoked OR the generation includes `--runtime-context <module,...>` OR the active product-archetype matches an opt-in profile (e.g. editorial sites get `circadian` by default; data-heavy dashboards get `network-aware`).
+
+Stage 6 is opt-in client-side runtime — modules executing in the user's browser AFTER the component is delivered. Unlike Stages 1-5 which run at generation-time, Stage 6 emits small JS modules attached to the component that subscribe to ambient signals and adapt visual properties live.
+
+The runtime catalogue (`hooks/scripts/lib/runtime/`) currently ships:
+
+1. **Circadian** (`circadian.mjs`) — reads local clock + (optional) geolocation sunrise/sunset. Adjusts color temperature, base luminance, and motion-tier across the day. Default emits a CSS custom-property tween (`--vn-circadian-warmth`) hooked to oklch hue offsets in the generated palette. Respects `prefers-reduced-motion` for tween duration.
+2. **Network-aware** (`network-aware.mjs`) — uses `navigator.connection` (effectiveType / saveData) to gate expensive motion (`Kinetic` → `Subtle`) and disable autoplay video / heavy backdrop-filter on 2G/3G or `Save-Data` headers.
+3. **Patina** (`patina.mjs`) — accumulates per-element wear-state in `localStorage` (visit-count, hover-time, last-interaction). Subtly tints / softens / desaturates frequently-used UI to give long-running products a "lived-in" feel. Bounded — patina caps at a configurable ceiling so contrast never breaches APCA Lc floors.
+4. **Coordinator** (`coordinator.mjs`) — orchestrates the above, prevents conflicts (e.g. circadian dimming + patina desaturation simultaneously breaching Lc 75), and emits a single batched `requestAnimationFrame` write per tick.
+
+**Receipt-output** carries `runtime_modules: [id, ...], runtime_bundle_size_kb: N` for traceability. The generated module is suffixed with `.visionary-runtime.{module}.js` so users can strip the runtime layer without touching the component.
+
+**Privacy:** all runtime state is local to the user's browser. No telemetry. Opt-out: omit `--runtime-context` and the modules are not emitted.
 
 ### `.visionary-generated` marker — required in every generated file (Sprint 05 Task 16.2)
 
@@ -166,6 +274,12 @@ Load these files on demand — do not load all at once:
 | File | Load When |
 |------|-----------|
 | `context-inference.md` | Stage 1: always |
+| `partials/verbalized-sampling.md` | Stage 1.5: when VS enabled (default) |
+| `schemas/verbalized-sampling.schema.json` | Stage 1.5: VS output validation |
+| `anti-typicality.json` | Stage 1.5 + Stage 4: config (env-overridable) |
+| `palette-tokens.json` | Stage 2.5: palette resolution from blended vector |
+| `typography-matrix.json` | Stage 2.5: typography resolution from (type_drama, formality) |
+| `styles/_embeddings.json` | Stage 2.5: 8D anchor lookup for slerp |
 | `design-reasoning.md` | Stage 2: always |
 | `motion-tokens.ts` | Stage 3: motion system needed |
 | `typography-matrix.md` | Stage 2: typography pairing needed |
@@ -178,8 +292,54 @@ Load these files on demand — do not load all at once:
 | `product-types.md` | Stage 1: after product type detected (read only matched section) |
 | `stack-guidelines.md` | Stage 3: after framework detected (read only matched stack section) |
 | `design-system-export.md` | Stage 1: when user requests export, or when `design-system/MASTER.md` exists |
+| `constraints.md` | Stage 2.6: catalogue overview when constraint-injection activates |
+| `constraints/<id>.md` | Stage 2.6: per-constraint manifest (load only resolved IDs, not the whole directory) |
+| `priors/global-aesthetic-history.json` | Stage 1.5 + Stage 2.5: prior distribution for verbalized sampling and blend resolution when local taste is sparse |
+| `hooks/scripts/lib/photo/from-photo-pipeline.mjs` | Sprint 18: when `/visionary-from-photo` invoked — palette + edge + mood inference from reference image |
+| `hooks/scripts/lib/audio/from-track-pipeline.mjs` | Sprint 19: when `/visionary-from-track` invoked — tempo/valence/arousal → motion tier + Russell quadrant |
+| `hooks/scripts/lib/audio/tempo-to-motion.mjs` | Sprint 19: BPM → motion-tier mapping after track analysis |
+| `hooks/scripts/lib/cinematic/lut-presets.json` | Sprint 20: 12 director-pack LUT definitions for `/visionary-cinematic` and `--cinematic-grade` |
+| `hooks/scripts/lib/cinematic/lut-to-filter.mjs` | Sprint 20: LUT → CSS filter / SVG color-matrix translator |
+| `hooks/scripts/lib/constraints/inject.mjs` | Stage 2.6: resolve + inject constraint-set into Stage 3 prompt |
+| `hooks/scripts/lib/constraints/validate.mjs` | Stage 2.6: post-render DOM/CSS validation against constraint invariants |
+| `hooks/scripts/lib/coined-styles.mjs` | Sprint 21B: append-and-promote logic for `taste/coined-styles.jsonl` (3+ acceptances → `styles/extended/`) |
+| `hooks/scripts/lib/flow/multi-screen-orchestrator.mjs` | Sprint 22A: when `/visionary-flow` invoked — coordinate cross-screen consistency |
+| `hooks/scripts/lib/flow/cross-screen-critique.mjs` | Sprint 22A: cross-screen critic for landing → app → settings drift |
+| `hooks/scripts/lib/voice/voice-to-motion.mjs` | Sprint 22B: when `/visionary-voice` invoked — mic input → motion-tier delta |
+| `hooks/scripts/lib/runtime/coordinator.mjs` | Stage 6: when runtime context activates — orchestrates circadian / network / patina |
+| `hooks/scripts/lib/runtime/circadian.mjs` | Stage 6: time-of-day color/luminance/motion adaptation |
+| `hooks/scripts/lib/runtime/network-aware.mjs` | Stage 6: connection-quality motion gating (`navigator.connection`) |
+| `hooks/scripts/lib/runtime/patina.mjs` | Stage 6: per-element wear-state in `localStorage` for "lived-in" UI |
 
 Never load all style category directories simultaneously. Load only the identified category.
+
+---
+
+## Commands
+
+The plugin ships a set of slash-commands that complement the base `/visionary` invocation. Each delegates into a specific stage of the pipeline.
+
+| Command | Sprint | Purpose | Pipeline-stage |
+|---|---|---|---|
+| `/visionary` | core | Generate a UI component from a brief. Default entry. | Stages 1-5 |
+| `/variants` | core | 3 distinct aesthetic takes before critique. | Stage 1-3 ×3 |
+| `/visionary-mood <coords|text>` | 17 | Drive style selection via Russell mood mapping (numeric `0.8,0.2` or text `calm-melancholic`). | Stage 2.5 |
+| `/visionary-from-photo <path|url>` | 18 | Infer palette, edge density, and mood from a reference image; feed StyleBrief. | Stage 1 (inference yta) |
+| `/visionary-from-track <path|url|spotify>` | 19 | Infer tempo, valence, arousal from audio; map to motion tier + Russell quadrant. | Stage 1 (inference yta) |
+| `/visionary-cinematic <director>` | 20 | Apply one of 12 cinematic director-packs (Kubrick, Wong Kar-wai, Anderson, Fincher, Lynch, …). Also exposed as `--cinematic-grade <id>`. | Stage 2 + Stage 3 (LUT) |
+| `/visionary-coined <name>` | 21B | Promote a coined-style blend (3+ acceptances in `taste/coined-styles.jsonl`) to `styles/extended/` as a named anchor. | Cross-cutting (taste) |
+| `/visionary-flow <screens>` | 22A | Multi-screen orchestrator + cross-screen critic for consistency across landing → app → settings. | Stage 1-5 ×N + cross-critic |
+| `/visionary-voice` | 22B | Microphone-driven motion calibration — adjusts motion-tier on the latest component from voiced energy. | Stage 3 (re-tune) |
+| `/visionary-patina <modules>` | 23 | Emit Stage 6 runtime modules (`circadian`, `network-aware`, `patina`) attached to the component. | Stage 6 |
+| `/visionary-motion` | core | Re-tune motion tokens on the most recent component using natural language. | Stage 3 (re-tune) |
+| `/visionary-kit` | core | Manage `visionary-kit.json` content kits — realistic data shapes, constraints, and states. | Cross-cutting |
+| `/visionary-taste` | core | Inspect, debug, and manage the taste profile (facts + pairs + aging). | Cross-cutting |
+| `/annotate` | core | Accept browser-annotated feedback on a rendered page; translate to Claude-actionable edits. | Stage 4 (re-entry) |
+| `/apply` | core | Lock the chosen style across the entire product; export tokens; rewrite all routes/components consistently. | Cross-cutting |
+| `/designer <name>` | core | Bias style selection toward a named designer's vocabulary. | Stage 1 |
+| `/import-artifact` | core | Import a Claude.ai Artifact, re-skin with the project's locked style, drop into the right source location. | Stage 1-5 (rewrite) |
+
+All commands accept `--no-vs` to skip Stage 1.5 verbalized sampling, `--blend "id1:w1 + id2:w2"` to force a Stage 2.5 blend, and `--constraint <id>` / `--constraints <ids>` to inject Stage 2.6 hard invariants.
 
 ---
 

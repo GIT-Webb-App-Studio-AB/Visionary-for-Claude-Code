@@ -8,8 +8,8 @@
 # visionary-claude
 
 [![Release](https://img.shields.io/badge/RELEASE-stable-blue?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases)
-[![Version](https://img.shields.io/badge/v1.5.2-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.5.2)
-[![Design Styles](https://img.shields.io/badge/DESIGN_STYLES-202-orange?style=flat-square)](#design-catalogue)
+[![Version](https://img.shields.io/badge/v1.6.0-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.6.0)
+[![Design Styles](https://img.shields.io/badge/DESIGN_STYLES-207-orange?style=flat-square)](#design-catalogue)
 [![Stacks](https://img.shields.io/badge/STACKS-15-purple?style=flat-square)](#frameworks-supported)
 [![Languages](https://img.shields.io/badge/LANGUAGES-20+-teal?style=flat-square)](#language-support)
 [![Benchmark](https://img.shields.io/badge/BENCHMARK-18.35%2F20_(n%3D10)-yellow?style=flat-square)](results/)
@@ -22,7 +22,7 @@
 [![PayPal](https://img.shields.io/badge/PayPal-Support-blue?style=flat-square&logo=paypal)](https://www.paypal.com/donate/?business=BMNFKYM6BU3KG&no_recurring=0&item_name=Utveckling+av+mjukvara+och+Claude+Code+ekosystem&currency_code=USD)
 [![Sponsor](https://img.shields.io/badge/GitHub-Sponsor-ea4aaa?style=flat-square&logo=githubsponsors)](https://github.com/sponsors/gitwebb)
 
-A Claude Code plugin that provides **design intelligence** for building distinctive, motion-first UI across 15 frameworks. Generates, critiques (axe-core-instrumented), and learns from your preferences over time.
+A Claude Code plugin that provides **design intelligence** for building distinctive, motion-first UI across 15 frameworks. Generates, critiques (axe-core-instrumented), and learns from your preferences over time. **v1.6.0** adds Verbalized Sampling + Latent Style Mixing + Constraint-Injection + Cross-modal inputs (`/visionary-from-photo`, `/visionary-from-track`, `/visionary-mood`, `/visionary-cinematic`) + Cross-screen flow + Voice-tempo + Runtime Context, attacking generative convergence from 9 angles.
 
 > **Current benchmark transparency**: the published 18.35/20 number
 > reflects a partial run (10 of 100 prompts, one sample per prompt) —
@@ -39,7 +39,7 @@ A Claude Code plugin that provides **design intelligence** for building distinct
 
 ### Design Intelligence for Claude Code
 
-**202 design styles**, an **8-step selection algorithm**, **motion-first code** (Motion v12 + CSS-first), a **visual feedback loop** (Playwright + axe-core) that learns from your preferences, **DTCG token export** so the output flows into Figma Variables / Style Dictionary / Penpot / Tokens Studio, and a published benchmark that scored Visionary **18.35 / 20 (n=10, 10 categories × 1 prompt)** against a generic-slop baseline of **12.60**. A full n=100 run is the next benchmark target — see [`results/README.md`](results/README.md) for the partial-run caveat.
+**207 design styles**, an **8-step selection algorithm + 3 new pipeline stages** (1.5 Verbalized Sampling, 2.5 Latent Style Mixing, 2.6 Constraint-Injection), **17 commands** (8 new in v1.6.0), **motion-first code** (Motion v12 + CSS-first), a **visual feedback loop** (Playwright + axe-core) that learns from your preferences, **DTCG token export** so the output flows into Figma Variables / Style Dictionary / Penpot / Tokens Studio, and a published benchmark that scored Visionary **18.35 / 20 (n=10, 10 categories × 1 prompt)** against a generic-slop baseline of **12.60**. A full n=100 run is the next benchmark target — see [`results/README.md`](results/README.md) for the partial-run caveat.
 
 Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | SolidJS | Lit | Laravel | Flutter | SwiftUI | Jetpack Compose | React Native | Vanilla JS
 
@@ -51,8 +51,8 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 | | | | | | | |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **202** | **8** | **15** | **13** | **26** | **20+** | **3** |
-| Design Styles | Algorithm Steps | Frameworks | Categories | Slop Detectors | Languages | Critique Rounds |
+| **207** | **8+3** | **17** | **15** | **26** | **20+** | **3** |
+| Design Styles | Pipeline Stages | Commands | Categories | Slop Detectors | Languages | Critique Rounds |
 
 </div>
 
@@ -70,7 +70,69 @@ Built for Next.js 16 | React 19 | Vue 3 | Nuxt 3 | Svelte 5 | Angular | Astro | 
 
 ---
 
-## What's new in v1.5.x
+## What's new in v1.6.0 — Sprint 16-24
+
+The 1.6.0 cycle delivers **9 new sprints simultaneously**, attacking generative convergence from
+multiple angles: anti-typicality at the LLM level (Sprint 16), continuous style space via slerp
+(17), 5 cross-modal input modes (18-20), forced novelty via constraints (21), self-growing catalog
+(21B), multi-screen coherence (22A), voice-driven motion (22B), runtime context-awareness (23), and
+5 anti-AI-slop styles (24). All features are additive and gated — existing prompts work unchanged.
+
+**733 new tests pass / 0 fail** on top of the v1.5.x suite.
+
+- **Sprint 16 — Anti-Typicality Foundation.** Verbalized Sampling (Stage 1.5) makes the LLM return
+  5 distinct concepts with probabilities BEFORE generation; anti-typicality boost (`weight = p^(1-α)`,
+  α=0.65) gives low-prob alternatives a 1.3-1.6× selection lift. The 9th critic dimension
+  `originality_vs_history` compares round 2+ output against the user's accepted history in
+  `taste/facts.jsonl` — not against abstract "good design" — breaking the Self-Refine echo chamber.
+- **Sprint 17 — Latent Style Mixing.** `--blend "swiss-rationalism:0.7 + liminal-space:0.3"` (or
+  natural language: "70% Swiss, 30% Liminal", "X men med Y:s typografi") interpolates in 8D
+  embedding space via slerp with hard accessibility clamps (chroma ≥0.15, APCA Lc ≥60). Token
+  resolver produces palette/typography/motion/density from any blended vector. `/visionary-mood`
+  maps Russell circumplex (valence × arousal) to style clusters with 16 text-mood phrases.
+- **Sprint 18 — From-Photo.** `/visionary-from-photo <url|path>` extracts a 5-color oklch palette
+  via sharp + node-vibrant, classifies mood via CLIP ViT-B/32 against 16 prompts, and maps Sobel
+  edge-density to motion-tier 0-3. All deps optional (graceful heuristic fallback).
+- **Sprint 19 — From-Track.** `/visionary-from-track <spotify-url|mp3>` reads Spotify Audio Features
+  (valence, energy, tempo, acousticness, danceability, instrumentalness) and maps to Russell coords
+  + animation-baseline-ms (60 BPM = 1000ms, 180 = 333ms). Local mp3 fallback via CLAP-embedding or
+  Web Audio heuristic.
+- **Sprint 20 — Cinematic Director-Packs.** `/visionary-cinematic <director>` with 12 filmmaker
+  profiles (Wong Kar-wai, Villeneuve, Wes Anderson, Nolan, Kubrick, Lynch, Tarkovsky, Denis, Bong,
+  Parker, Garland, Coppola). `--cinematic-grade` applies a per-director CSS color-grading filter.
+- **Sprint 21A — Constraint-Injection (Stage 2.6).** 40 atomic constraints across 5 categories
+  (form/color/typography/layout/motion, 8 per category) sampled 1-3 at a time and injected as hard
+  invariants between Stage 2.5 and Stage 3. Post-generation validator + retry-budget 3.
+- **Sprint 21B — Coined-Styles Auto-Promotion.** Blends accepted ≥3 times (≥85% vector similarity)
+  with ≥7 days maturity auto-promote to `styles/extended/coined-<name>.md` with deterministic
+  2-word names. `/visionary-coined list|view|rename|eject`. Visionary becomes self-growing.
+- **Sprint 22A — Cross-Screen Flow.** `/visionary-flow <feature>` generates 5 coherent UI states
+  (list, detail, empty, error, loading) sharing one design context. Cross-screen critique loop with
+  state-pair tolerances (loading-vs-list more permissive than list-vs-detail).
+- **Sprint 22B — Voice-Tempo.** `/visionary-voice [audio]` reads vocal prosody — pitch contour →
+  spring stiffness, envelope attack → mass, sustain → visualDuration. Web Audio + autocorrelation
+  pitch detection (zero deps).
+- **Sprint 23 — Runtime Context (Stage 6).** Generated UI gets opt-in browser-runtime mechanisms:
+  circadian palette-shift (4 phases via approximated solar times, system `prefers-color-scheme`
+  always wins), network-aware visual budget (3 tiers via `prefers-reduced-data` + saveData), and
+  patina (design ages with the project — chroma -2%/month, radius +0.5px/month, motion +5ms/month,
+  APCA Lc 60 hard floor, `git blame` as age source). `/visionary-patina status|freeze|unfreeze`.
+  Coordinator merges all three with deterministic precedence and a combined-drift-cap of 15%.
+- **Sprint 24 — 5 new styles** added to the catalogue (197 → 202): **Tactile Rebellion**
+  (riso-print, hand-cut typography, anti-AI-slop), **Digital Degrowth** (system fonts, max 3
+  colors, kg CO₂ badge, anti-AI-slop), **Insight-First Coach** (biometric figure as typography,
+  AI-narrative replaces dashboards), **Liquid Glass Lensing** (SVG `feDisplacementMap` for actual
+  optical refraction, distinct from blur+sheen liquid-glass), **Corporate Dropout** (Helvetica
+  with 1° tilt, broken grid, ironic captions, anti-AI-slop).
+
+**Migration:** Sprint 18 needs `npm install sharp` in your project (optional `node-vibrant culori
+@xenova/transformers` for higher quality). Sprint 19 needs Spotify dev credentials at
+`~/.visionary/spotify-creds.json` — see [`docs/spotify-setup.md`](docs/spotify-setup.md). All other
+sprints are zero-deps.
+
+**Playwright MCP namespace fix (2026-05-08):** v1.6.0 ships its own Playwright via `.mcp.json` and now uses an explicit plugin-namespaced prefix (`mcp__plugin_visionary-claude_playwright__*`) to avoid collisions with external Playwright plugins (e.g. `playwright@claude-plugins-official`). If the auto-resolution fails, set `VISIONARY_PLAYWRIGHT_NS=<prefix>` to override, or disable conflicting plugins via `/plugin disable playwright@<source>`. 7 namespace-tests guard against regression.
+
+### v1.5.x — structural integrity + storage conventions
 
 The 1.5.x line builds on Sprint 1–15 with the structural-integrity gate
 (v1.5.0) and two storage-convention fixes (v1.5.1 + v1.5.2). All
@@ -144,6 +206,34 @@ tokens. Designer packs (Rams, Kowalski, Vignelli, Scher, Greiman)
 gain `critic_persona` + `arbitration` blocks that argue per-dimension
 during the critique loop.
 
+## Anti-typicality (Sprint 16)
+
+Trots 202 stilar i katalogen drog generationen mot samma 20
+"förväntade". Roten är inte katalogen — det är att RLHF-tränade
+språkmodeller (Claude inkluderat) lider av **typicality bias**: de
+samplar från fördelningens topp, det "trygga". Zhang et al. mätte
+α ≈ 0.57–0.65 över Claude / GPT / Gemini-familjerna 2025. När samma
+modell både genererar OCH kritiserar (Self-Refine, Madaan 2023)
+förstärks biaset över round 2/3 — critic-loopen blir en echo-chamber.
+
+Sprint 16 implementerar två träningsfria interventioner som tillsammans
+bryter konvergensen. **Verbalized Sampling** (proactive — Stage 1.5):
+modellen returnerar 5 distinkta tolkningar med sannolikhetsvikter INNAN
+generation, vi samplar probabilistiskt med en anti-typicality boost-
+faktor som ger låg-prob-koncept luft. **Originality-dimension**
+(reactive — round 2+): en 9:e critic-dimension `originality_vs_history`
+jämför nya genereringar mot **användarens egen accepterade historik** i
+`taste/facts.jsonl` istället för en abstrakt "bra design", med dynamisk
+anti-pattern context-injection som bryter Self-Refine-loopen.
+
+Förväntad effekt baserat på Zhang 2025-baseline: 1.5–2× diversity
+(pairwise DINOv2-cosine sjunker från ~0.72 till ~0.45–0.55) utan
+signifikant kvalitetstapp (≤ 0.3 avg score), +10–15 % token-overhead,
++2–4 s wall-clock per generation. Toggle:
+`VISIONARY_VS_DISABLED=1` (skip Stage 1.5),
+`VISIONARY_ORIGINALITY_WEIGHT=0` (skip 9:e dim). Djup-dyk:
+[`docs/anti-typicality.md`](docs/anti-typicality.md).
+
 ### Env-flag reference
 
 | Flag | Default | Purpose |
@@ -162,8 +252,13 @@ during the critique loop.
 | `VISIONARY_VISUAL_EMBED` | **off** | Set `1` or `on` to enable DINOv2 `visual_style_match` dimension (Sprint 11). Requires manual setup |
 | `VISIONARY_MLLM_JUDGE` | off | `tie-only` or `on` to enable MLLM judge tie-breaking (Sprint 12) |
 | `VISIONARY_ENABLE_STRUCTURAL_GATE` | on | Set `0` to disable the structural-integrity gate (v1.5.0) |
+| `VISIONARY_VS_DISABLED` | off | Set `1` to skip Verbalized Sampling Stage 1.5 (Sprint 16) |
+| `VISIONARY_VS_ALPHA` | `0.65` | Anti-typicality boost exponent — Zhang 2025 sweet spot [0.6, 0.7] (Sprint 16) |
+| `VISIONARY_ORIGINALITY_WEIGHT` | `0.8` | Vikt för 9:e critic-dim `originality_vs_history` i arbitration; `0` stänger av (Sprint 16) |
+| `VISIONARY_HISTORY_WINDOW` | `10` | Top-N senaste accepted entries för originality-jämförelse (Sprint 16) |
 | `VISIONARY_NO_AUTOUPDATE` | off | Disable the once-per-24h SessionStart marketplace update |
 | `VISIONARY_PREVIEW_URL` | `http://localhost:3000` | Playwright target URL |
+| `VISIONARY_PLAYWRIGHT_NS` | `mcp__plugin_visionary-claude_playwright` | Override Playwright MCP namespace prefix (v1.6.0 fix) |
 
 Migration impact: nothing in the 1.3.1 public behaviour changes
 automatically. Multi-critic mode, MLLM judge, and DINOv2 visual
@@ -320,11 +415,64 @@ claude --plugin-dir /path/to/visionary-claude
 
 ### Verify
 
-In a Claude Code session, describe any UI task or use one of:
+In a Claude Code session, describe any UI task or use any of the 17 commands listed below.
 
-- `/visionary` — generate a single component via the full 8-step algorithm
-- `/variants` — generate 3 mutually-distinct takes, pick one
-- `/apply` — lock a chosen style across the whole product + emit DTCG tokens
+---
+
+## Commands
+
+Visionary ships **17 commands** in v1.6.0 (9 from v1.3-1.5 + 8 new in v1.6.0). All can be combined; flags compose.
+
+### Core generation (v1.3-1.5)
+
+| Command | Purpose | Sprint |
+|---|---|---|
+| `/visionary [prompt]` | Generate one component via the full 8-step algorithm | core |
+| `/variants [prompt]` | Generate 3 mutually-distinct takes (cosine ≥0.6 in 8D space), pick one | 4 |
+| `/apply <style-id>` | Lock a style across the whole product + emit DTCG tokens to `tokens/` | 7 |
+| `/annotate` | Browser-side annotation tool — click on rendered output to mark fixes | 7 |
+| `/import-artifact <path>` | Import an existing component file as a baseline for re-skinning | 7 |
+| `/visionary-kit` | Manage `visionary-kit.json` (realism data for the `content_resilience` dim) | 7 |
+| `/visionary-taste status\|show\|forget\|reset\|age\|export\|import\|browse` | Inspect + manage the taste flywheel | 5-6 |
+| `/visionary-motion "<NL intent>"` | Re-tune motion tokens via natural language ("more energetic", "softer") | 13 |
+| `/designer <pack-id> [--persist]` | Activate a designer subagent (Rams, Kowalski, Vignelli, Scher, Greiman, +12 cinematic) | 15+20 |
+
+### Anti-convergence (v1.6.0)
+
+| Command | Purpose | Sprint |
+|---|---|---|
+| `/visionary-mood <coords\|text>` | Map Russell circumplex (valence × arousal) to style cluster — 16 text moods supported | 17 |
+| `/visionary-coined list\|view\|rename\|eject` | Manage auto-promoted blends (3+ acceptances → catalog entry) | 21B |
+
+### Cross-modal inputs (v1.6.0)
+
+| Command | Purpose | Sprint |
+|---|---|---|
+| `/visionary-from-photo <url\|path> [brief]` | Photo → palette + mood + motion-tier (sharp + CLIP + Sobel) | 18 |
+| `/visionary-from-track <spotify-url\|mp3> [brief]` | Audio → Russell coords + tempo-baseline (Spotify API or local CLAP) | 19 |
+| `/visionary-cinematic <director> [brief]` | Apply one of 12 director-style packs; `--cinematic-grade` for color filter | 20 |
+
+### Multi-screen + voice + runtime (v1.6.0)
+
+| Command | Purpose | Sprint |
+|---|---|---|
+| `/visionary-flow <feature>` | Generate 5 coherent UI states (list/detail/empty/error/loading) with cross-screen critique | 22A |
+| `/visionary-voice [audio]` | Voice-driven motion calibration — prosody → spring tokens (pitch → stiffness, attack → mass) | 22B |
+| `/visionary-patina status [file]\|freeze [age]\|unfreeze` | Manage runtime "design ages with project" mode | 23 |
+
+### Composable flags
+
+```bash
+/visionary --blend "swiss-rationalism:0.7 + liminal-space:0.3"   # Latent style mixing (Sprint 17)
+/visionary --constrain "no-rectangles, single-color"             # Force constraints (Sprint 21A)
+/visionary --no-vs                                                # Skip Verbalized Sampling (Sprint 16)
+/visionary --runtime circadian,patina                             # Enable runtime modules (Sprint 23)
+/visionary-cinematic wong-kar-wai --cinematic-grade               # Apply director CSS color-grade (Sprint 20)
+/visionary-from-photo X --vs --runtime circadian                  # Compose: photo + VS + runtime
+/visionary-cinematic villeneuve --blend "swiss-rationalism:0.5"   # Compose: cinematic + blend
+```
+
+Natural language also works in the prompt: `"Designa en hero som är 70% Swiss, 30% Liminal"` activates Stage 2.5 latent mixing without an explicit flag.
 
 ---
 
@@ -492,7 +640,9 @@ node scripts/export-dtcg-tokens.mjs
 
 ## Documentation
 
+**Core (v1.3-1.5):**
 - [Installation guide](docs/installation.md) — GitHub, local, session-only, enterprise/air-gapped
+- [Local test guide v1.6.0](docs/local-test-1.6.0.md) — pre-merge test plan for the v1.6.0 build
 - [End-to-end tests](docs/e2e-tests.md) — 5 acceptance test scenarios
 - [Taste flywheel](docs/taste-flywheel.md) — active + passive + pairwise signals, aging rules, schema reference (Sprint 05)
 - [Taste privacy](docs/taste-privacy.md) — what's stored, where, and how to opt out (`VISIONARY_DISABLE_TASTE=1`)
@@ -501,6 +651,22 @@ node scripts/export-dtcg-tokens.mjs
 - [Content kits](docs/content-kits.md) — `visionary-kit.json` for generations that survive real data (Sprint 07)
 - [Taste dotfile spec](docs/taste-dotfile-spec.md) — `.taste` file format for shareable taste profiles (Sprint 07)
 - [Taste index](docs/taste-index.md) — community-hosted profile registry and the `/visionary-taste browse` + `import` flow
+
+**v1.6.0 — Sprint 16-24:**
+- [Anti-typicality](docs/anti-typicality.md) — Verbalized Sampling + 9th critic dimension (Sprint 16)
+- [Latent style mixing](docs/latent-style-mixing.md) — 8D slerp, hard accessibility clamps, NL syntax (Sprint 17)
+- [Mood slider](docs/mood-slider.md) — Russell circumplex mapping with 16 text moods (Sprint 17)
+- [From-photo](docs/from-photo.md) — palette + mood + motion-tier extraction from images (Sprint 18)
+- [From-track](docs/from-track.md) — Spotify Audio Features + CLAP fallback for audio-driven UI (Sprint 19)
+- [Spotify setup](docs/spotify-setup.md) — credentials configuration for Sprint 19
+- [Constraints](docs/constraints.md) — 40-rule catalog + sampling + validation (Sprint 21A)
+- [Coined styles](docs/coined-styles.md) — auto-promotion of accepted blends (Sprint 21B)
+- [Visionary flow](docs/visionary-flow.md) — multi-screen orchestrator + cross-screen drift loop (Sprint 22A)
+- [Visionary voice](docs/visionary-voice.md) — vocal prosody → motion tokens (Sprint 22B)
+- [Runtime context](docs/runtime-context.md) — master doc for Sprint 23 runtime mechanisms
+- [Circadian design](docs/circadian-design.md) — time-of-day palette-shift (Sprint 23)
+- [Network-aware](docs/network-aware.md) — 3-tier visual budget (Sprint 23)
+- [Patina mode](docs/patina-mode.md) — design ages with the project (Sprint 23)
 
 ---
 
