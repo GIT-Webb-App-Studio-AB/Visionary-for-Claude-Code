@@ -1,0 +1,102 @@
+{
+  "version": "1.0.0",
+  "description": "Sprint 20 Task 37.4 — director-LUT-anchors mapped to CSS filter values. Each preset reflects the director's cinema_palette + motion_signature from designers/<id>.md. Values are tuned to be visually distinguishable from each other 11 (DINOv2-cosine spread ≥ 0.4 target).",
+  "presets": {
+    "wong-kar-wai": {
+      "hue_rotate": 8,
+      "saturate": 1.15,
+      "contrast": 1.05,
+      "sepia": 0.05,
+      "brightness": 0.95,
+      "rationale": "Warm amber bias (positive hue-rotate toward orange) + slight saturation lift for the neon-symbolic against cool shadow. Subtle sepia for memory-smear feel. Mild brightness pull-down for nighttime intimacy."
+    },
+    "villeneuve": {
+      "hue_rotate": -10,
+      "saturate": 0.85,
+      "contrast": 1.25,
+      "sepia": 0,
+      "brightness": 0.90,
+      "rationale": "Cool desaturation (negative hue-rotate toward cyan, sat < 1) + high contrast for monolithic dread. No sepia — Villeneuve avoids warmth. Brightness pulled down 10% for the sand-storm haze and concrete-bunker mood."
+    },
+    "wes-anderson": {
+      "hue_rotate": 0,
+      "saturate": 1.30,
+      "contrast": 0.95,
+      "sepia": 0.08,
+      "brightness": 1.05,
+      "rationale": "Lifted pastels via saturation boost + gentle sepia warmth for the hand-painted storybook palette. Reduced contrast keeps the symmetric flatness; brightness lift opens up the highlights without blowing them out."
+    },
+    "nolan": {
+      "hue_rotate": -6,
+      "saturate": 0.75,
+      "contrast": 1.15,
+      "sepia": 0,
+      "brightness": 0.97,
+      "rationale": "Steel-blue desaturation (slight negative hue + low sat) for the IMAX-grade procedural mood. Higher contrast than Villeneuve but less crushed. No sepia — Nolan reads as cold-clinical, not nostalgic."
+    },
+    "kubrick": {
+      "hue_rotate": 0,
+      "saturate": 1.10,
+      "contrast": 1.20,
+      "sepia": 0,
+      "brightness": 1.0,
+      "rationale": "Neutral hue (Kubrick uses primary color-blocking, not a global tint) with elevated contrast for the formal-rigour symmetry. Slight saturation lift makes red-room reds pop. Zero sepia, zero brightness shift — Kubrick is geometrically neutral."
+    },
+    "lynch": {
+      "hue_rotate": 18,
+      "saturate": 0.95,
+      "contrast": 1.30,
+      "sepia": 0.15,
+      "brightness": 0.85,
+      "rationale": "Strong sodium-vapour orange shift (largest positive hue-rotate in the catalogue) + heavy contrast and sepia for the dread-inducing dream-logic. Brightness drops 15% to bury detail in shadow. The most aggressive grade."
+    },
+    "tarkovsky": {
+      "hue_rotate": 12,
+      "saturate": 0.65,
+      "contrast": 1.10,
+      "sepia": 0.25,
+      "brightness": 0.92,
+      "rationale": "Heaviest sepia in the catalogue + low saturation for the iconic sepia-into-color long-take palette. Warm hue-shift for autumn-light + water-and-rust tones. Brightness slightly down for the contemplative damp-earth mood."
+    },
+    "denis": {
+      "hue_rotate": 5,
+      "saturate": 1.20,
+      "contrast": 1.10,
+      "sepia": 0.10,
+      "brightness": 1.02,
+      "rationale": "Tropical-noir warmth with gentle hue-shift toward red + saturation lift for sweat-and-skin tactile palettes. Mild sepia adds the humid-celluloid feel. Brightness slightly up to keep the high-key tropical light in highlights."
+    },
+    "bong": {
+      "hue_rotate": -4,
+      "saturate": 1.05,
+      "contrast": 1.18,
+      "sepia": 0.03,
+      "brightness": 0.94,
+      "rationale": "Slight cool-shift + mild contrast lift for the rain-soaked vertical-stratification palette. Near-neutral saturation (Bong tonal-whiplash works because the base palette stays naturalistic). Brightness pulled down 6% for the basement-dread layers."
+    },
+    "parker": {
+      "hue_rotate": 4,
+      "saturate": 1.40,
+      "contrast": 1.10,
+      "sepia": 0.06,
+      "brightness": 1.10,
+      "rationale": "Highest saturation in the catalogue + brightness lift for the high-key musical-theatre palette. Slight warm hue-shift + light sepia for the period-musical staging. The 'spotlight on stage' grade."
+    },
+    "garland": {
+      "hue_rotate": -8,
+      "saturate": 0.80,
+      "contrast": 1.35,
+      "sepia": 0,
+      "brightness": 1.08,
+      "rationale": "Highest contrast in the catalogue + cool desaturation + raised brightness for the clinical white + saturated alarm machine-precision palette (Ex Machina, Annihilation, Devs). No sepia — Garland is the antithesis of nostalgic warmth."
+    },
+    "coppola": {
+      "hue_rotate": 6,
+      "saturate": 0.90,
+      "contrast": 0.90,
+      "sepia": 0.12,
+      "brightness": 1.06,
+      "rationale": "Soft-focus melancholia via lowest contrast in the catalogue + warm sepia + mild desaturation. Slight warm hue-shift + brightness lift produces the hazy pastel intimacy of Lost in Translation / Marie Antoinette / The Virgin Suicides."
+    }
+  }
+}

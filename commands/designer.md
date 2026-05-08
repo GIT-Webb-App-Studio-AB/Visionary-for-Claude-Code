@@ -23,6 +23,8 @@ the candidate pool skews toward styles the designer would recognize.
 
 ## Available packs
 
+### Print / UI designers (Sprint 15) — `category: print`
+
 | Pack | Short description |
 |---|---|
 | `dieter-rams` | 1960s-80s Braun. Functional restraint. Invisible UI. |
@@ -31,7 +33,31 @@ the candidate pool skews toward styles the designer would recognize.
 | `paula-scher` | 70s+ typographic maximalism. Big type, broken grids. |
 | `april-greiman` | 80s+ computer-native. Layered imagery, New Wave Swiss. |
 
+### Cinematic / film-director packs (Sprint 20) — `category: filmmaker`
+
+These packs add three extra fields (`cinema_palette`, `motion_signature`,
+`composition`). See [`commands/visionary-cinematic.md`](./visionary-cinematic.md)
+for the dedicated wrapper-command and opt-in `--cinematic-grade` LUT pass.
+`/designer <director-id>` works identically to `/visionary-cinematic <director-id>`
+minus the LUT-grade flag.
+
+| Pack | Era | Short signature |
+|---|---|---|
+| `wong-kar-wai` | 1990s–2020s | smudge-motion, warm-saturated, off-center intimacy |
+| `villeneuve` | 2010s–2020s | cool desaturation, high contrast, monolithic geometry |
+| `wes-anderson` | 1990s–2020s | pastel symmetry, central composition, storybook warmth |
+| `nolan` | 2000s–2020s | desaturated steel-blue, time-folded composition, IMAX scale |
+| `kubrick` | 1960s–1990s | one-point perspective, color-block primaries, formal rigour |
+| `lynch` | 1980s–2010s | sodium-vapour orange, dread-inducing slowness, dream-logic layout |
+| `tarkovsky` | 1960s–1980s | sepia-into-color long takes, water-and-light, contemplative pacing |
+| `denis` | 1980s–2020s | tropical-noir saturation, sweat-and-skin tactile, fragmented framing |
+| `bong` | 2000s–2020s | tonal whiplash, vertical class-stratified composition, rain-soaked palette |
+| `parker` | 1970s–2000s | high-key musical theatre, theatrical staging, performative motion |
+| `garland` | 2010s–2020s | clinical white + saturated alarm, machine-precision symmetry |
+| `coppola` | 2000s–2020s | hazy pastel intimacy, soft-focus melancholia, languid pacing |
+
 See `designers/README.md` for schema and the full catalogue.
+`/designer --list` should print BOTH categories grouped by `category`.
 
 ## Usage
 
@@ -129,7 +155,10 @@ Applied designer pack: Dieter Rams
 
 Blending is experimental. Warn the user if the two packs contradict each
 other (e.g. Rams + Scher would produce nonsense — one blocks what the other
-promotes).
+promotes). Cross-category blending (print designer + filmmaker, e.g.
+`rams + wong-kar-wai`) is technically allowed but the cinema_palette /
+motion_signature / composition fields from the filmmaker side will dominate
+the visual register; the print pack contributes mainly via blocklist + rules.
 
 ## Rules
 

@@ -35,3 +35,13 @@
 - `arbitration.can_veto` — opt-in. Default `false`. v1: no designer has veto.
 
 Backward compat: packs without `critic_persona` continue to work as prompt-bias-only via the existing `/designer` flow.
+
+## Schema extensions
+
+- **Sprint 20 — cinematic / filmmaker packs.** See [`_director-schema.md`](./_director-schema.md)
+  for the additive `category: filmmaker`, `era`, `films`, `cinema_palette`,
+  `motion_signature`, `composition` fields. Existing print packs (Rams, Kowalski,
+  Vignelli, Scher, Greiman) need no changes — absence of `category` defaults
+  to `category: print` and the runtime treats the two formats interchangeably.
+  YAML-frontmatter (`.md`) packs and JSON (`.json`) packs are both valid;
+  the loader resolves whichever exists for `<id>`.

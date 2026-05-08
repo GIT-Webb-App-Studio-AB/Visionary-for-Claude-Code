@@ -53,6 +53,11 @@ header identifying each source.
 
 ## Available packs
 
+### Print / UI (Sprint 15) — `category: print`
+
+JSON-format packs scored against the 10 critique dims defined in
+`skills/visionary/schemas/critique-output.schema.json`. See `_schema.md`.
+
 | Pack | File | Defining work |
 |---|---|---|
 | Dieter Rams | `dieter-rams.json` | Braun industrial design 1960s–80s; *Less but Better* |
@@ -60,6 +65,29 @@ header identifying each source.
 | Massimo Vignelli | `massimo-vignelli.json` | Unimark International, NY Subway, American Airlines |
 | Paula Scher | `paula-scher.json` | Pentagram, CBS Records, Public Theater posters |
 | April Greiman | `april-greiman.json` | Hybrid Imagery, *Design Quarterly 133*, New Wave Swiss |
+
+### Cinematic / film-directors (Sprint 20) — `category: filmmaker`
+
+YAML-frontmatter packs with three extra fields (`cinema_palette`,
+`motion_signature`, `composition`) on top of the Sprint-15 schema. See
+`_director-schema.md` for the schema extension. Activated via
+`/designer <id>` or the dedicated `/visionary-cinematic <id>` wrapper
+(adds the opt-in `--cinematic-grade` LUT pass).
+
+| Pack | File | Defining work |
+|---|---|---|
+| Wong Kar-wai | `wong-kar-wai.md` | *In the Mood for Love*, *Chungking Express*, *2046* |
+| Denis Villeneuve | `villeneuve.md` | *Arrival*, *Blade Runner 2049*, *Dune* |
+| Wes Anderson | `wes-anderson.md` | *Grand Budapest Hotel*, *Moonrise Kingdom*, *Asteroid City* |
+| Christopher Nolan | `nolan.md` | *Inception*, *Interstellar*, *Tenet*, *Oppenheimer* |
+| Stanley Kubrick | `kubrick.md` | *2001*, *The Shining*, *Barry Lyndon*, *A Clockwork Orange* |
+| David Lynch | `lynch.md` | *Mulholland Drive*, *Twin Peaks*, *Blue Velvet* |
+| Andrei Tarkovsky | `tarkovsky.md` | *Stalker*, *Solaris*, *Mirror*, *Andrei Rublev* |
+| Claire Denis | `denis.md` | *Beau Travail*, *Trouble Every Day*, *High Life* |
+| Bong Joon-ho | `bong.md` | *Parasite*, *Memories of Murder*, *The Host* |
+| Alan Parker | `parker.md` | *Fame*, *Pink Floyd – The Wall*, *Bugsy Malone* |
+| Alex Garland | `garland.md` | *Ex Machina*, *Annihilation*, *Devs*, *Civil War* |
+| Sofia Coppola | `coppola.md` | *Lost in Translation*, *The Virgin Suicides*, *Marie Antoinette* |
 
 ## Pack schema
 
