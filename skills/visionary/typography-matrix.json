@@ -1,0 +1,141 @@
+{
+  "version": "1.0.0",
+  "purpose": "Pre-baked typography pairs distributed over the (type_drama, formality) ∈ [0,1]² plane. Sprint 17 Task 33.2. The blend resolver projects an 8D vector's two type-relevant axes onto this plane and picks the nearest pair (Euclidean distance). When confidence is low (best-distance > 0.35 in the plane), the resolver snaps to the universally-safe fallback (humanistic-warm / Manrope) per sprint-doc Task 33.2 step 2. Display + body + mono fonts are coordinated within each pair so `pickPair` can return a complete, immediately-usable typography spec to stage 3.",
+  "axes": ["type_drama", "formality"],
+  "fallback_id": "humanistic-warm",
+  "low_confidence_threshold": 0.35,
+  "pairs": [
+    {
+      "id": "humanistic-warm",
+      "type_drama": 0.35,
+      "formality": 0.45,
+      "display": "Manrope",
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "weight_range": [300, 700],
+      "google_subset": "latin,latin-ext",
+      "notes": "Universally-safe fallback. Innocent archetype — Manrope is rounded enough to feel friendly but neutral enough not to overpower."
+    },
+    {
+      "id": "system-clean",
+      "type_drama": 0.15,
+      "formality": 0.85,
+      "display": "system-ui",
+      "body": "system-ui",
+      "mono": "ui-monospace",
+      "weight_range": [400, 600],
+      "google_subset": null,
+      "notes": "Native OS stack. Lowest-drama, highest-formality corner — fintech / saas dashboards / govtech."
+    },
+    {
+      "id": "geometric-modernist",
+      "type_drama": 0.40,
+      "formality": 0.85,
+      "display": "Inter",
+      "body": "Inter",
+      "mono": "JetBrains Mono",
+      "weight_range": [400, 800],
+      "google_subset": "latin,latin-ext,cyrillic",
+      "notes": "Inter is the canonical geometric-modernist sans. Pairs with itself for clarity in dashboards / b2b."
+    },
+    {
+      "id": "swiss-rational",
+      "type_drama": 0.25,
+      "formality": 0.75,
+      "display": "Helvetica Neue",
+      "body": "Helvetica Neue",
+      "mono": "JetBrains Mono",
+      "weight_range": [300, 700],
+      "google_subset": null,
+      "notes": "Helvetica Neue at 300/400/700 — the swiss-rationalism canonical pair. System-only, no web font load."
+    },
+    {
+      "id": "editorial-serif",
+      "type_drama": 0.75,
+      "formality": 0.85,
+      "display": "Playfair Display",
+      "body": "Source Serif 4",
+      "mono": "Space Mono",
+      "weight_range": [400, 900],
+      "google_subset": "latin,latin-ext,cyrillic",
+      "notes": "High-drama editorial serif over a calmer body serif. Sage / Ruler archetypes — newspaper / fashion / luxury."
+    },
+    {
+      "id": "luxury-classic",
+      "type_drama": 0.85,
+      "formality": 0.95,
+      "display": "DM Serif Display",
+      "body": "DM Sans",
+      "mono": "JetBrains Mono",
+      "weight_range": [400, 700],
+      "google_subset": "latin,latin-ext",
+      "notes": "Ruler archetype. DM Serif Display is the most dramatic flare for luxury / fintech-trust / corpcore."
+    },
+    {
+      "id": "expressive-display",
+      "type_drama": 0.90,
+      "formality": 0.20,
+      "display": "Bricolage Grotesque",
+      "body": "Nunito",
+      "mono": "Space Mono",
+      "weight_range": [400, 800],
+      "google_subset": "latin,latin-ext",
+      "notes": "Creator archetype. Variable-axis Bricolage gives high type drama without sliding into clown territory."
+    },
+    {
+      "id": "italic-gestural",
+      "type_drama": 0.80,
+      "formality": 0.30,
+      "display": "Cabinet Grotesk",
+      "body": "Cabinet Grotesk",
+      "mono": "JetBrains Mono",
+      "weight_range": [400, 800],
+      "google_subset": "latin,latin-ext",
+      "notes": "Jester archetype. Pairs with itself for unified expressive voice — used in zine-diy / chaos-packaging / playful brands."
+    },
+    {
+      "id": "syne-bold",
+      "type_drama": 0.95,
+      "formality": 0.55,
+      "display": "Syne",
+      "body": "Syne",
+      "mono": "Space Mono",
+      "weight_range": [400, 800],
+      "google_subset": "latin,latin-ext",
+      "notes": "Hero / Outlaw archetype. Syne ExtraBold reads as anti-authority but disciplined — neon-signage / brutalist / sports."
+    },
+    {
+      "id": "serif-revival-soft",
+      "type_drama": 0.70,
+      "formality": 0.55,
+      "display": "Fraunces",
+      "body": "Manrope",
+      "mono": "Monaspace Neon",
+      "weight_range": [400, 900],
+      "google_subset": "latin,latin-ext",
+      "notes": "Explorer archetype. Variable-opsz Fraunces above a humanistic body — editorial-serif-revival / cottagecore-tech / wellness."
+    },
+    {
+      "id": "lover-romantic",
+      "type_drama": 0.80,
+      "formality": 0.65,
+      "display": "Cormorant Garamond",
+      "body": "Lato",
+      "mono": "JetBrains Mono",
+      "weight_range": [300, 700],
+      "google_subset": "latin,latin-ext",
+      "notes": "Lover archetype. High-contrast romantic serif, light tracking. Lato keeps body legible on long content."
+    },
+    {
+      "id": "magician-techno",
+      "type_drama": 0.55,
+      "formality": 0.55,
+      "display": "Space Grotesk",
+      "body": "Inter",
+      "mono": "JetBrains Mono",
+      "weight_range": [400, 700],
+      "google_subset": "latin,latin-ext,cyrillic",
+      "notes": "Magician archetype. Space Grotesk's narrow waist + Inter body — developer-tools / web3 / sci-fi-hud."
+    }
+  ]
+}

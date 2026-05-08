@@ -1,0 +1,188 @@
+{
+  "version": "1.0.0",
+  "purpose": "Pre-baked 5-color palette per style for blend-resolver. Sprint 17 Task 33.2. The blend resolver looks up palettes by anchor-id, blends them in oklch space (perceptually uniform) using cosine-similarity-derived weights, and emits a single 5-slot palette as part of the DesignReasoningBrief. Values are taken from each style's source markdown (Colors section) and translated to oklch via the same heuristic that palette-tokens.md uses (CSS Color 4, Baseline 2024). Slots:\n  - bg:      surface / page background\n  - fg:      primary text on bg (must satisfy APCA Lc body floor ≥ 75 post-blend)\n  - accent:  primary action / hero color\n  - accent2: secondary action / decorative chroma\n  - muted:   tertiary fill / borders / disabled — ~mid-luminance grayish derivative of bg",
+  "palettes": {
+    "swiss-rationalism": {
+      "bg": "oklch(1.000 0.000 0)",
+      "fg": "oklch(0.000 0.000 0)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent2": "oklch(0.452 0.313 264.1)",
+      "muted": "oklch(0.808 0.000 0)"
+    },
+    "swiss-muller-brockmann": {
+      "bg": "oklch(0.985 0.000 0)",
+      "fg": "oklch(0.145 0.000 0)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent2": "oklch(0.452 0.313 264.1)",
+      "muted": "oklch(0.808 0.000 0)"
+    },
+    "liminal-space": {
+      "bg": "oklch(0.953 0.013 95.0)",
+      "fg": "oklch(0.300 0.020 95.0)",
+      "accent": "oklch(0.620 0.060 240.0)",
+      "accent2": "oklch(0.730 0.110 85.0)",
+      "muted": "oklch(0.870 0.010 95.0)"
+    },
+    "brutalist-web": {
+      "bg": "oklch(1.000 0.000 0)",
+      "fg": "oklch(0.000 0.000 0)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent2": "oklch(0.968 0.211 109.8)",
+      "muted": "oklch(0.808 0.000 0)"
+    },
+    "glassmorphism": {
+      "bg": "oklch(0.960 0.020 240.0)",
+      "fg": "oklch(0.220 0.030 270.0)",
+      "accent": "oklch(0.700 0.180 240.0)",
+      "accent2": "oklch(0.800 0.150 320.0)",
+      "muted": "oklch(0.870 0.020 240.0)"
+    },
+    "dreamcore": {
+      "bg": "oklch(0.965 0.060 105.0)",
+      "fg": "oklch(0.380 0.030 80.0)",
+      "accent": "oklch(0.660 0.040 200.0)",
+      "accent2": "oklch(0.760 0.060 310.0)",
+      "muted": "oklch(0.870 0.040 105.0)"
+    },
+    "glitchcore": {
+      "bg": "oklch(0.000 0.000 0)",
+      "fg": "oklch(0.985 0.000 0)",
+      "accent": "oklch(0.866 0.295 142.5)",
+      "accent2": "oklch(0.702 0.322 328.4)",
+      "muted": "oklch(0.300 0.020 270.0)"
+    },
+    "vaporwave": {
+      "bg": "oklch(0.220 0.080 290.0)",
+      "fg": "oklch(0.985 0.020 320.0)",
+      "accent": "oklch(0.702 0.322 328.4)",
+      "accent2": "oklch(0.800 0.180 200.0)",
+      "muted": "oklch(0.500 0.080 290.0)"
+    },
+    "cottagecore-tech": {
+      "bg": "oklch(0.957 0.012 79.8)",
+      "fg": "oklch(0.260 0.030 60.0)",
+      "accent": "oklch(0.476 0.078 162.2)",
+      "accent2": "oklch(0.700 0.110 50.0)",
+      "muted": "oklch(0.870 0.020 80.0)"
+    },
+    "post-internet-maximalism": {
+      "bg": "oklch(0.985 0.000 0)",
+      "fg": "oklch(0.145 0.000 0)",
+      "accent": "oklch(0.866 0.295 142.5)",
+      "accent2": "oklch(0.702 0.322 328.4)",
+      "muted": "oklch(0.808 0.020 0)"
+    },
+    "neumorphism": {
+      "bg": "oklch(0.930 0.005 250.0)",
+      "fg": "oklch(0.300 0.020 250.0)",
+      "accent": "oklch(0.623 0.188 259.8)",
+      "accent2": "oklch(0.700 0.130 320.0)",
+      "muted": "oklch(0.870 0.005 250.0)"
+    },
+    "memphis": {
+      "bg": "oklch(0.985 0.000 0)",
+      "fg": "oklch(0.145 0.000 0)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent2": "oklch(0.968 0.211 109.8)",
+      "muted": "oklch(0.808 0.020 250.0)"
+    },
+    "bauhaus-dessau": {
+      "bg": "oklch(0.985 0.000 0)",
+      "fg": "oklch(0.145 0.000 0)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent2": "oklch(0.452 0.313 264.1)",
+      "muted": "oklch(0.968 0.211 109.8)"
+    },
+    "y2k-futurism": {
+      "bg": "oklch(0.985 0.020 250.0)",
+      "fg": "oklch(0.220 0.060 270.0)",
+      "accent": "oklch(0.808 0.000 0)",
+      "accent2": "oklch(0.702 0.322 328.4)",
+      "muted": "oklch(0.870 0.020 250.0)"
+    },
+    "terminal-cli": {
+      "bg": "oklch(0.000 0.000 0)",
+      "fg": "oklch(0.869 0.278 144.5)",
+      "accent": "oklch(0.866 0.295 142.5)",
+      "accent2": "oklch(0.968 0.211 109.8)",
+      "muted": "oklch(0.300 0.020 144.0)"
+    },
+    "fintech-trust": {
+      "bg": "oklch(0.982 0.002 247.8)",
+      "fg": "oklch(0.210 0.040 250.0)",
+      "accent": "oklch(0.476 0.140 162.2)",
+      "accent2": "oklch(0.623 0.188 259.8)",
+      "muted": "oklch(0.870 0.010 250.0)"
+    },
+    "saas-b2b-dashboard": {
+      "bg": "oklch(0.982 0.002 247.8)",
+      "fg": "oklch(0.210 0.040 250.0)",
+      "accent": "oklch(0.541 0.247 293.0)",
+      "accent2": "oklch(0.623 0.188 259.8)",
+      "muted": "oklch(0.870 0.010 250.0)"
+    },
+    "anxiety-urgency": {
+      "bg": "oklch(1.000 0.000 0)",
+      "fg": "oklch(0.000 0.000 0)",
+      "accent": "oklch(0.628 0.258 29.2)",
+      "accent2": "oklch(0.702 0.200 45.1)",
+      "muted": "oklch(0.870 0.020 30.0)"
+    },
+    "witchcore-ui": {
+      "bg": "oklch(0.180 0.030 290.0)",
+      "fg": "oklch(0.920 0.020 290.0)",
+      "accent": "oklch(0.541 0.247 293.0)",
+      "accent2": "oklch(0.700 0.180 320.0)",
+      "muted": "oklch(0.350 0.030 290.0)"
+    },
+    "frutiger-aero": {
+      "bg": "oklch(0.945 0.040 220.0)",
+      "fg": "oklch(0.220 0.040 240.0)",
+      "accent": "oklch(0.700 0.150 220.0)",
+      "accent2": "oklch(0.800 0.130 150.0)",
+      "muted": "oklch(0.870 0.030 220.0)"
+    },
+    "indigenous-first-nations": {
+      "bg": "oklch(0.947 0.029 89.6)",
+      "fg": "oklch(0.250 0.060 60.0)",
+      "accent": "oklch(0.500 0.180 30.0)",
+      "accent2": "oklch(0.600 0.140 100.0)",
+      "muted": "oklch(0.800 0.040 80.0)"
+    },
+    "latin-fiesta": {
+      "bg": "oklch(0.985 0.000 0)",
+      "fg": "oklch(0.180 0.040 30.0)",
+      "accent": "oklch(0.657 0.241 6.9)",
+      "accent2": "oklch(0.702 0.200 45.1)",
+      "muted": "oklch(0.870 0.040 30.0)"
+    },
+    "arabic-calligraphic": {
+      "bg": "oklch(0.957 0.012 79.8)",
+      "fg": "oklch(0.180 0.030 60.0)",
+      "accent": "oklch(0.743 0.117 89.5)",
+      "accent2": "oklch(0.476 0.078 162.2)",
+      "muted": "oklch(0.870 0.020 80.0)"
+    },
+    "south-asian-bollywood": {
+      "bg": "oklch(0.985 0.020 30.0)",
+      "fg": "oklch(0.189 0.023 72.3)",
+      "accent": "oklch(0.657 0.241 6.9)",
+      "accent2": "oklch(0.887 0.182 95.3)",
+      "muted": "oklch(0.870 0.030 30.0)"
+    },
+    "corpcore-quiet-luxury": {
+      "bg": "oklch(0.957 0.012 79.8)",
+      "fg": "oklch(0.189 0.023 72.3)",
+      "accent": "oklch(0.476 0.030 60.0)",
+      "accent2": "oklch(0.743 0.040 89.5)",
+      "muted": "oklch(0.870 0.010 80.0)"
+    }
+  },
+  "fallback": {
+    "bg": "oklch(0.985 0.000 0)",
+    "fg": "oklch(0.180 0.020 250.0)",
+    "accent": "oklch(0.550 0.150 250.0)",
+    "accent2": "oklch(0.500 0.100 250.0)",
+    "muted": "oklch(0.850 0.010 250.0)"
+  }
+}
