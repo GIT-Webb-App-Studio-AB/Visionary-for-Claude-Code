@@ -1,0 +1,157 @@
+{
+  "version": "1.0.0",
+  "purpose": "Fallback for originality-critic when user's taste/facts.jsonl has <5 entries. These represent shipped-quality designs spanning the catalog's archetype range so originality-score has meaningful baseline.",
+  "schema_note": "embedding_8d uses 0-10 scale matching critique-output.schema.json scores. Cosine on these vectors approximates aesthetic-space similarity well enough as a fallback while a new project accumulates user-specific accepted history.",
+  "entries": [
+    {
+      "generation_id": "global-prior-swiss-international",
+      "style_id": "swiss-international",
+      "embedding_8d": {
+        "hierarchy": 9.2,
+        "layout": 9.4,
+        "typography": 9.5,
+        "contrast": 8.4,
+        "accessibility": 9.0,
+        "distinctiveness": 6.5,
+        "brief_conformance": 8.2,
+        "motion_readiness": 5.5
+      },
+      "last_seen": "2026-04-01T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-brutalist-web",
+      "style_id": "brutalist-web",
+      "embedding_8d": {
+        "hierarchy": 7.8,
+        "layout": 6.8,
+        "typography": 8.2,
+        "contrast": 9.5,
+        "accessibility": 5.4,
+        "distinctiveness": 9.6,
+        "brief_conformance": 7.0,
+        "motion_readiness": 6.5
+      },
+      "last_seen": "2026-04-02T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-glassmorphism",
+      "style_id": "glassmorphism",
+      "embedding_8d": {
+        "hierarchy": 7.0,
+        "layout": 7.5,
+        "typography": 7.2,
+        "contrast": 5.8,
+        "accessibility": 6.2,
+        "distinctiveness": 7.4,
+        "brief_conformance": 7.5,
+        "motion_readiness": 8.0
+      },
+      "last_seen": "2026-04-03T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-glitchcore",
+      "style_id": "glitchcore",
+      "embedding_8d": {
+        "hierarchy": 5.8,
+        "layout": 5.4,
+        "typography": 7.6,
+        "contrast": 8.2,
+        "accessibility": 4.8,
+        "distinctiveness": 9.4,
+        "brief_conformance": 6.5,
+        "motion_readiness": 9.0
+      },
+      "last_seen": "2026-04-04T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-dreamcore",
+      "style_id": "dreamcore",
+      "embedding_8d": {
+        "hierarchy": 6.2,
+        "layout": 6.5,
+        "typography": 7.0,
+        "contrast": 6.0,
+        "accessibility": 6.8,
+        "distinctiveness": 9.0,
+        "brief_conformance": 6.8,
+        "motion_readiness": 8.5
+      },
+      "last_seen": "2026-04-05T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-editorial-modernist",
+      "style_id": "editorial-modernist",
+      "embedding_8d": {
+        "hierarchy": 9.0,
+        "layout": 8.8,
+        "typography": 9.4,
+        "contrast": 8.5,
+        "accessibility": 8.6,
+        "distinctiveness": 7.8,
+        "brief_conformance": 8.5,
+        "motion_readiness": 6.0
+      },
+      "last_seen": "2026-04-06T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-vaporwave",
+      "style_id": "vaporwave",
+      "embedding_8d": {
+        "hierarchy": 6.0,
+        "layout": 6.8,
+        "typography": 7.5,
+        "contrast": 7.0,
+        "accessibility": 6.0,
+        "distinctiveness": 8.8,
+        "brief_conformance": 7.0,
+        "motion_readiness": 7.8
+      },
+      "last_seen": "2026-04-07T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-cottagecore-tech",
+      "style_id": "cottagecore-tech",
+      "embedding_8d": {
+        "hierarchy": 7.4,
+        "layout": 7.8,
+        "typography": 8.2,
+        "contrast": 7.4,
+        "accessibility": 8.0,
+        "distinctiveness": 8.0,
+        "brief_conformance": 7.5,
+        "motion_readiness": 6.8
+      },
+      "last_seen": "2026-04-08T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-post-internet-maximalism",
+      "style_id": "post-internet-maximalism",
+      "embedding_8d": {
+        "hierarchy": 5.5,
+        "layout": 5.8,
+        "typography": 7.2,
+        "contrast": 8.0,
+        "accessibility": 5.5,
+        "distinctiveness": 9.5,
+        "brief_conformance": 6.8,
+        "motion_readiness": 8.6
+      },
+      "last_seen": "2026-04-09T00:00:00Z"
+    },
+    {
+      "generation_id": "global-prior-neumorphism",
+      "style_id": "neumorphism",
+      "embedding_8d": {
+        "hierarchy": 6.8,
+        "layout": 7.2,
+        "typography": 6.8,
+        "contrast": 4.8,
+        "accessibility": 5.5,
+        "distinctiveness": 7.0,
+        "brief_conformance": 7.2,
+        "motion_readiness": 7.5
+      },
+      "last_seen": "2026-04-10T00:00:00Z"
+    }
+  ]
+}

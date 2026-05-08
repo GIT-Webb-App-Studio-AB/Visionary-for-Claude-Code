@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionary-claude.dev/schemas/verbalized-sampling.schema.json",
+  "title": "Verbalized Sampling concept lattice",
+  "description": "Sprint 16 Task 31.1 output contract. Stage 1.5 of the visionary pipeline asks the model to enumerate five distinct interpretations of the brief with subjective probability weights, before any code is generated. The runtime applies a convergence-check (token-set Jaccard) and an anti-typicality boost (alpha 0.65) to the picked concept; the picked concept then enriches the Stage 2 Design Reasoning Brief. See skills/visionary/partials/verbalized-sampling.md for the prompt-side contract.",
+  "type": "object",
+  "required": ["concepts"],
+  "additionalProperties": false,
+  "properties": {
+    "concepts": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "description": "Exactly five concept entries. Probabilities should sum to ~1.0 (validated by the runtime, not the schema). Distribution should be anti-flat: one strong interpretation plus four genuine alternatives spanning different design traditions.",
+      "items": {
+        "type": "object",
+        "required": ["concept", "probability", "rationale", "suggested_style_id"],
+        "additionalProperties": false,
+        "properties": {
+          "concept": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 120,
+            "description": "Concise creative direction. A descriptive phrase, not a full sentence."
+          },
+          "probability": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Subjective best-of-1 pick weight. Not a confidence score. The runtime applies an anti-typicality boost so probabilities < 0.15 get a 1.3-1.6x lift in the actual pick."
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 200,
+            "description": "One sentence linking the brief signal to the concept choice. Capped at ~50 tokens."
+          },
+          "suggested_style_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Kebab-case style id; should correspond to an entry in skills/visionary/styles/_index.json. The pattern check is structural; existence is a soft check at runtime with nearest-neighbour fallback."
+          }
+        }
+      }
+    }
+  }
+}

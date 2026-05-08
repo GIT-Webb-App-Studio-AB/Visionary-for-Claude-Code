@@ -51,7 +51,33 @@ export const AESTHETIC_DIMENSIONS = [
   'motion_readiness',
 ];
 
-const ALL_DIMENSIONS = [...CRAFT_DIMENSIONS, ...AESTHETIC_DIMENSIONS];
+// Sprint 16 Task 31.3: 9th critic dimension. Owned by critic-originality.
+// Round-gated — null on round 1 (no user history to compare). NOT folded into
+// the mergeCritics() loop because the critique-output schema does not yet
+// declare `originality_vs_history` as a required scores key (schema is
+// closed to additionalProperties at the scores level). Instead, the
+// originality contribution is merged after mergeCritics() via the dedicated
+// mergeOriginality() function below; that function only writes the score
+// when explicitly invoked, preserving schema-validity for callers that do
+// not run originality (round 1, or originality-disabled flows).
+export const ORIGINALITY_DIMENSIONS = ['originality_vs_history'];
+
+// All dimensions known to the multi-critic system. Includes originality so
+// downstream consumers (calibration, trace events, receipt-renderer) can
+// enumerate every scored dim. The mergeCritics() loop intentionally
+// iterates only the schema-declared subset (CRAFT + AESTHETIC) — see
+// SCHEMA_SCORED_DIMENSIONS below.
+export const ALL_DIMENSIONS = [
+  ...CRAFT_DIMENSIONS,
+  ...AESTHETIC_DIMENSIONS,
+  ...ORIGINALITY_DIMENSIONS,
+];
+
+// The 10 dimensions that appear as required keys in
+// critique-output.schema.json#scores. mergeCritics writes exactly these
+// keys on the scores object so its output stays schema-valid without a
+// post-merge prune. Originality is added separately by mergeOriginality.
+const SCHEMA_SCORED_DIMENSIONS = [...CRAFT_DIMENSIONS, ...AESTHETIC_DIMENSIONS];
 
 // ── Arbitration table loader ────────────────────────────────────────────────
 const __filename = fileURLToPath(import.meta.url);
@@ -147,7 +173,7 @@ export function mergeCritics(craftOut, aestheticOut, options = {}) {
 
   // ── Scores ────────────────────────────────────────────────────────────
   const scores = {};
-  for (const dim of ALL_DIMENSIONS) {
+  for (const dim of SCHEMA_SCORED_DIMENSIONS) {
     const owner = CRAFT_DIMENSIONS.includes(dim) ? 'craft' : 'aesthetic';
     const ownerVal     = getScore(owner === 'craft' ? craft : aesthetic, dim);
     const otherVal     = getScore(owner === 'craft' ? aesthetic : craft, dim);
@@ -193,7 +219,7 @@ export function mergeCritics(craftOut, aestheticOut, options = {}) {
 
   // ── Confidence ────────────────────────────────────────────────────────
   const confidence = {};
-  for (const dim of ALL_DIMENSIONS) {
+  for (const dim of SCHEMA_SCORED_DIMENSIONS) {
     const owner = CRAFT_DIMENSIONS.includes(dim) ? craft : aesthetic;
     const c = owner?.confidence?.[dim];
     if (Number.isInteger(c) && c >= 1 && c <= 5) confidence[dim] = c;
@@ -301,5 +327,94 @@ function dedupeFixes(fixes) {
   return out;
 }
 function severityRankFor(s) { return ({ blocker: 0, major: 1, minor: 2 })[s] ?? 9; }
+
+// ── Originality merge (Sprint 16) ───────────────────────────────────────────
+//
+// Takes the existing merged-critique output (from mergeCritics()) plus the
+// originality critic's contribution, and folds the 9th dimension into the
+// scores/confidence/top_3_fixes structures. Originality is round-gated:
+//   - Round 1 → originalityOut is null (or { score: null }) → leave the
+//     merged scores object's `originality_vs_history` as null (or omit it,
+//     callers tolerate both).
+//   - Round 2+ → originalityOut.score is a number → write it into scores.
+//
+// Originality is NEVER in conflict with craft or aesthetic — it owns its
+// dimension exclusively. No arbitration table needed.
+//
+// Inputs:
+//   merged          — output of mergeCritics() (mutable; we return a new obj)
+//   originalityOut  — { score: number|null, top_collisions?, method?, ... }
+//                     OR a full critique-output-shaped object with
+//                     scores.originality_vs_history populated.
+//
+// Returns a new merged object. Pure function — does not mutate inputs.
+export function mergeOriginality(merged, originalityOut) {
+  if (!merged || typeof merged !== 'object') return merged;
+
+  const scores = { ...(merged.scores || {}) };
+  const confidence = { ...(merged.confidence || {}) };
+  const top_3_fixes = Array.isArray(merged.top_3_fixes) ? [...merged.top_3_fixes] : [];
+
+  // Default — keep dim slot present but null when nothing supplied.
+  if (!('originality_vs_history' in scores)) scores.originality_vs_history = null;
+
+  if (originalityOut && typeof originalityOut === 'object') {
+    // Two acceptable input shapes:
+    //   1) Direct from calculateOriginalityScore: { score, top_collisions, method, reason }
+    //   2) Full critique-output: { scores: { ... }, originality_vs_history, top_collisions }
+    const directScore = isNumber(originalityOut.score) ? originalityOut.score : null;
+    const nestedScore = isNumber(originalityOut?.scores?.originality_vs_history)
+      ? originalityOut.scores.originality_vs_history
+      : null;
+    const siblingScore = isNumber(originalityOut?.originality_vs_history)
+      ? originalityOut.originality_vs_history
+      : null;
+    const score = directScore ?? nestedScore ?? siblingScore;
+
+    if (isNumber(score)) {
+      scores.originality_vs_history = score;
+    }
+
+    const c = originalityOut?.confidence?.originality_vs_history;
+    if (Number.isInteger(c) && c >= 1 && c <= 5) {
+      confidence.originality_vs_history = c;
+    }
+
+    // Surface low scores as a fix entry so the user-visible critique
+    // explains why originality dragged the composite down. We only add a
+    // fix when the score is < 7 (matches the rule-of-seven floor) and only
+    // when the originality output actually came with collision evidence.
+    const collisions = Array.isArray(originalityOut.top_collisions)
+      ? originalityOut.top_collisions
+      : [];
+    if (isNumber(score) && score < 7 && collisions.length > 0) {
+      const top = collisions[0];
+      const sev = score < 3 ? 'blocker' : (score < 5 ? 'major' : 'minor');
+      const method = originalityOut.method || originalityOut.similarity_method || 'embedding-8d';
+      top_3_fixes.push({
+        dimension: 'distinctiveness', // schema does not yet have an originality_vs_history enum value
+        severity: sev,
+        proposed_fix: `Generation echoes prior accepted ${top.generation_id} at cosine ${Number(top.similarity ?? 0).toFixed(2)} (${method}). Push palette / layout / archetype away from this anchor to explore unseen territory.`,
+        evidence: {
+          type: 'metric',
+          value: `originality_vs_history=${score};max_collision=${Number(top.similarity ?? 0).toFixed(2)}`,
+        },
+      });
+      // Re-sort and trim — the merged top_3_fixes contract is up to 3 items
+      // ordered by severity. Originality entries compete with craft+aesthetic
+      // entries on the same severity ladder.
+      const severityRank = { blocker: 0, major: 1, minor: 2 };
+      top_3_fixes.sort((a, b) => (severityRank[a.severity] ?? 9) - (severityRank[b.severity] ?? 9));
+      while (top_3_fixes.length > 3) top_3_fixes.pop();
+    }
+  }
+
+  return {
+    ...merged,
+    scores,
+    confidence,
+    top_3_fixes,
+  };
+}
 
 export default mergeCritics;

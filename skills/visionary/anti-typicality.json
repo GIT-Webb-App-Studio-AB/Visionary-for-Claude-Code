@@ -1,0 +1,27 @@
+{
+  "$schema": "./schemas/anti-typicality.schema.json",
+  "version": "1.0.0",
+  "anti_typicality": {
+    "enabled": true,
+    "vs_alpha": 0.65,
+    "vs_concept_count": 5,
+    "vs_convergence_threshold": 0.85,
+    "vs_max_retries_on_schema_fail": 1,
+    "originality_weight": 0.8,
+    "originality_history_window": 10,
+    "originality_history_max_age_days": 90,
+    "boost_factor_cap": 1.6,
+    "boost_factor_floor": 0.6,
+    "min_concept_quality_threshold": 0.3
+  },
+  "_doc": {
+    "vs_alpha": "Anti-typicality boost exponent. Zhang 2025: 0.6-0.7 sweet spot.",
+    "vs_concept_count": "Number of concepts VS generates. 5 balances diversity vs token cost.",
+    "vs_convergence_threshold": "Pairwise jaccard/cosine above which we re-prompt for divergence.",
+    "originality_weight": "Weight in arbitration. 0.8 = lower than craft/aesthetic (1.0) but higher than designer (0.25).",
+    "originality_history_window": "Top-N most recent accepted entries from facts.jsonl.",
+    "originality_history_max_age_days": "Match decay-threshold for active->decayed.",
+    "boost_factor_cap": "Anti-typicality boost capped at 1.6x to prevent runaway selection of low-prob outliers.",
+    "min_concept_quality_threshold": "Concepts with rationale shorter than this fraction of max get filtered."
+  }
+}
