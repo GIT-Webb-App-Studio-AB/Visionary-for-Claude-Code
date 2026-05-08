@@ -1,6 +1,6 @@
 # Visual Style Index
 
-This index lists all 202 styles. Claude reads this file first to pick 2-3 candidates, then loads only those style files. Keep this file under 3KB.
+This index lists all 207 styles. Claude reads this file first to pick 2-3 candidates, then loads only those style files. Keep this file under 3KB.
 
 ## Morphisms (14)
 - **glassmorphism** — Frosted glass panels, backdrop blur, translucent surfaces on dark backgrounds
@@ -18,7 +18,7 @@ This index lists all 202 styles. Claude reads this file first to pick 2-3 candid
 - **holographic** — Iridescent hue-rotating CSS, spectral glow, Cabinet Grotesk, full Kinetic tier
 - **liquid-glass-ios26** — Apple iOS 26+ adaptive glass, color-mix oklch, scroll-reactive tab bar
 
-## Internet Aesthetics (18)
+## Internet Aesthetics (21)
 - **vaporwave** — Magenta + cyan on purple, VCR OSD Mono, perspective grid floor, scanline reveals
 - **y2k-futurism** — Chrome silver gradients, Syncopate, near-black + electric cyan, scan-in animation
 - **cyberpunk-neon** — Near-black + neon glow only, Orbitron, RGB channel depth, glitch-in entrance
@@ -37,6 +37,9 @@ This index lists all 202 styles. Claude reads this file first to pick 2-3 candid
 - **moodboard-collage** — Physical placement simulation, rotated elements, drop shadows, mixed media
 - **e-girl** — Hot pink #FF1493 + black duality, hard offset shadows, bounce animation, zero radius
 - **cottagecore-tech** — Nature + function hybrid, Lora + Source Sans, sage green on warm white
+- **digital-degrowth** — System fonts only, max 3 colors, dithered visuals, CO₂ badge, Static tier; ethical performance-budget aesthetic
+- **insight-first-coach** — One sentence per view, biometric number as typography 60px+ weight 200, AI narrative over dashboard; Expressive tier
+- **corporate-dropout** — Helvetica 1° tilted headings, broken grid, ironic neon accent, Excel-cell decoration, stamp micro-interaction; Subtle tier
 
 ## Historical Movements (19)
 - **bauhaus** — Form follows function, primary colors, geometric sans, grid discipline
@@ -171,7 +174,10 @@ This index lists all 202 styles. Claude reads this file first to pick 2-3 candid
 - **eastern-european-brutalist** — Soviet-era building reference, concrete, utilitarian, bloc aesthetic
 - **indigenous-first-nations** — Land-inspired color, traditional geometry interpreted, respectful reference
 
-## Hybrid/Cross-Domain (14)
+## Graphic (1)
+- **tactile-rebellion** — Riso-print two-color offset layers, Bricolage Grotesque, paper-fiber texture, hard 0-blur shadows, paper-rustle micro-animation; Subtle tier; anti-AI-slop editorial
+
+## Hybrid/Cross-Domain (15)
 - **print-to-web-editorial** — Magazine layout transplanted to screen, editorial grid, print typographic rules
 - **architecture-inspired** — Blueprint grid, section drawing reference, structural honest beauty
 - **fashion-editorial** — White space luxury, model photography, editorial italic, runway influence
@@ -186,6 +192,7 @@ This index lists all 202 styles. Claude reads this file first to pick 2-3 candid
 - **catalog-archive** — Grid product layout, reference number system, utilitarian classification
 - **chaos-packaging-collage** — Anti-AI-slop, GT Alpina + Bureau Grotesque + hand-drawn, torn-paper
 - **recombinant-hybrid** — Explicit multi-aesthetic juxtaposition — skeuo+surveillance, pixel+vapor
+- **liquid-glass-lensing** — SVG feDisplacementMap optical displacement (not blur), refraction-shimmer 3-5s loop, ice-blue frosted palette; Expressive tier; web-native only
 
 ## Extended (39)
 - **bauhaus-weimar** — 1919-1925 expressionist Bauhaus, Itten era, EB Garamond, walnut ink, parchment
