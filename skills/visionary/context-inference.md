@@ -150,6 +150,38 @@ Before running the 8-step algorithm, check if a persistent design system exists:
 
 3. User explicit instruction always overrides both MASTER and page files.
 
+## Photo-Driven Inference (Sprint 18)
+
+When the user invokes `/visionary-from-photo <url-or-path>`, the inference pipeline receives a `PhotoInferenceResult` with extracted palette, mood-classification, and motion-tier. These act as **soft anchors** that override or bias normal context-inference signals.
+
+### Signal precedence
+
+| Signal | Type | Override behavior |
+|---|---|---|
+| `palette` | HARD | Replaces randomized palette generation; resolver uses photo-extracted oklch values directly |
+| `temperature` (warm/cool/neutral) | HARD | Filters style candidates whose default palette mismatches |
+| `motion_tier` (0-3) | HARD | Overrides style-default motion-tier for this generation |
+| `mood.top[0..2]` | SOFT | Biases candidate-pool toward `style_tags` from top-3 moods (each style gets +0.3 confidence boost in candidate ranking) |
+| `mood.confidence < 0.4` | DEGRADE | If CLIP confidence low, fallback to heuristic-only — log `photo_low_confidence` trace |
+
+### Combination rules
+
+- `--from-photo X --blend "Y:0.5 + Z:0.5"`: photo provides palette, --blend overrides anchor selection. Photo-palette is HARD, blend-driven structure is HARD. Both compose without conflict.
+- `--from-photo X --mood happy`: photo + explicit mood. Explicit mood WINS for style-pool, photo provides palette only.
+- `--from-photo X --no-vs`: skip Verbalized Sampling. Direct generation from photo-derived brief.
+
+### Trace events
+
+- `photo_inference_started` — `{source, sha256}`
+- `photo_palette_extracted` — `{method: vibrant|histogram, color_count, temperature}`
+- `photo_mood_classified` — `{method: clip|heuristic, top_mood, confidence}`
+- `photo_motion_tier_set` — `{tier, edge_density}`
+
+### Source modules
+
+- `hooks/scripts/lib/photo/from-photo-pipeline.mjs` — orchestrator
+- `commands/visionary-from-photo.md` — command-doc
+
 ---
 
 ## Styles Index (`_index.json`)
