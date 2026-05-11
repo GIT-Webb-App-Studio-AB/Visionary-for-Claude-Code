@@ -5,15 +5,15 @@
     "email": "hello@gitwebb.se"
   },
   "metadata": {
-    "description": "Visionary marketplace — design intelligence plugin for Claude Code. v1.6.0 adds Anti-Typicality Foundation (Verbalized Sampling), Latent Style Mixing (8D slerp), Constraint-Injection (40 rules), Cross-modal inputs (photo/track/mood/cinematic), Cross-screen flow, Voice-tempo, Runtime Context (circadian/network/patina), and Coined-styles auto-promotion on top of v1.5.x core (Structural-Integrity Gate, motion scoring 2.0, DINOv2, MLLM judge, active governance, taste inheritance, MCP-server).",
-    "version": "1.6.0"
+    "description": "Visionary marketplace — design intelligence plugin for Claude Code. v1.6.1 adds tight-line-height structural gate (display headings > 64px hard-fail when line-height ratio < 0.9, catching the recurring baseline-collision bug deterministically) on top of v1.6.0's Anti-Typicality Foundation (Verbalized Sampling), Latent Style Mixing (8D slerp), Constraint-Injection (40 rules), Cross-modal inputs (photo/track/mood/cinematic), Cross-screen flow, Voice-tempo, Runtime Context (circadian/network/patina), and Coined-styles auto-promotion, plus v1.5.x core (Structural-Integrity Gate, motion scoring 2.0, DINOv2, MLLM judge, active governance, taste inheritance, MCP-server).",
+    "version": "1.6.1"
   },
   "plugins": [
     {
       "name": "visionary-claude",
       "source": "./",
       "description": "207 design styles, 8-step selection + Stage 1.5 Verbalized Sampling + Stage 2.5 Latent Style Mixing + Stage 2.6 Constraint-Injection. Cross-modal commands (/visionary-from-photo, /visionary-from-track, /visionary-mood, /visionary-cinematic), 12 director-packs, /visionary-flow (5 koherenta states), /visionary-voice (mic→motion), /visionary-patina (design-åldring). Motion Scoring 2.0, MLLM Judge, DINOv2, Active Governance, Taste Inheritance, Structural-Integrity Gate. axe-core critique, DTCG tokens. WCAG 2.2 AA + APCA. 15 frameworks, 20+ languages.",
-      "version": "1.6.0",
+      "version": "1.6.1",
       "author": { "name": "GIT Webb & App Studio AB" },
       "homepage": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",
       "repository": "https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code",

@@ -7,7 +7,7 @@
 
 # visionary-claude
 
-[![Version](https://img.shields.io/badge/v1.6.0-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.6.0)
+[![Version](https://img.shields.io/badge/v1.6.1-green?style=flat-square)](https://github.com/GIT-Webb-App-Studio-AB/Visionary-for-Claude-Code/releases/tag/v1.6.1)
 [![Design Styles](https://img.shields.io/badge/STYLES-207-orange?style=flat-square)](#what-you-get)
 [![Commands](https://img.shields.io/badge/COMMANDS-17-blue?style=flat-square)](#commands)
 [![Frameworks](https://img.shields.io/badge/STACKS-15-purple?style=flat-square)](#what-you-get)

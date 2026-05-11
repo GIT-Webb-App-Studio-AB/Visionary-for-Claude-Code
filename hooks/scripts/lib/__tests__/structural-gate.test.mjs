@@ -19,7 +19,7 @@ const EMPTY_WL = { hard_fail_skips: new Set(), warning_skips: new Set() };
 
 const loadFixture = (n) => JSON.parse(readFileSync(join(FIXTURES, n + '.json'), 'utf8'));
 
-test('hard-fail catalogue is exactly the six checks', () => {
+test('hard-fail catalogue is exactly the seven checks', () => {
   assert.deepEqual([...HARD_FAIL_CHECKS].sort(), [
     'duplicate-heading',
     'empty-section',
@@ -27,6 +27,7 @@ test('hard-fail catalogue is exactly the six checks', () => {
     'footer-grid-collapse',
     'heading-hierarchy-skip',
     'off-viewport-right',
+    'tight-line-height',
   ]);
   assert.deepEqual([...WARNING_CHECKS], ['mystery-text-node', 'text-collision']);
 });
@@ -53,6 +54,41 @@ test('Studio/Hår clean fixture: empty hard_fails and warnings', () => {
   const r = evaluate(dom, DESKTOP, { styleWhitelist: EMPTY_WL });
   assert.deepEqual(r.hard_fails, []);
   assert.deepEqual(r.warnings, []);
+});
+
+// Regression for the recurring FRANCESCA hero bug: display-size <h1> with
+// line-height ratio < 0.9 must hard-fail the gate so the LLM gets concrete
+// regen feedback rather than only a textual hint in the skill markdown.
+test('FRANCESCA repro: tight line-height on display <h1> hard-fails the gate', () => {
+  const dom = {
+    elements: [{
+      selector: 'h1.name', tagName: 'h1', text: 'FRANCESCA',
+      bbox: { x: 0, y: 60, width: 920, height: 600 },
+      style: { fontSize: '240px', lineHeight: '192px', letterSpacing: '-0.04em', color: 'rgb(255,255,255)', backgroundColor: 'rgba(0,0,0,0)' },
+    }],
+  };
+  const r = evaluate(dom, DESKTOP, { styleWhitelist: EMPTY_WL });
+  assert.ok(r.hard_fails.some((h) => h.check_id === 'tight-line-height'),
+    `expected tight-line-height hard-fail, got ${JSON.stringify(r.hard_fails.map((h) => h.check_id))}`);
+  const block = buildStructuralDirectiveBlock(r.hard_fails);
+  assert.match(block, /tight-line-height/);
+  assert.match(block, /line-height/);
+});
+
+// Whitelist contract: a stylistic override silences tight-line-height
+// without affecting other checks, and surfaces the skip reason.
+test('tight-line-height respects style whitelist (Swiss-punk / poster opt-out)', () => {
+  const dom = {
+    elements: [{
+      selector: 'h1.name', tagName: 'h1', text: 'FRANCESCA',
+      bbox: { x: 0, y: 60, width: 920, height: 600 },
+      style: { fontSize: '240px', lineHeight: '192px' },
+    }],
+  };
+  const wl = { hard_fail_skips: new Set(['tight-line-height']), warning_skips: new Set() };
+  const r = evaluate(dom, DESKTOP, { styleWhitelist: wl });
+  assert.ok(!r.hard_fails.some((h) => h.check_id === 'tight-line-height'));
+  assert.ok(r.skipped.some((s) => s.check_id === 'tight-line-height' && s.reason === 'whitelisted'));
 });
 
 test('whitelist moves a check result from hard_fails to skipped', () => {

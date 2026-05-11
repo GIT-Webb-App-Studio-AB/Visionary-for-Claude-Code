@@ -7,6 +7,59 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.6.1] — 2026-05-11
+
+### Added — Structural check: `tight-line-height` (hard-fail tier)
+
+A new deterministic gate flags display-size headings (`font-size > 64px`)
+whose computed `line-height / font-size` ratio falls below `0.9`. Catches
+the recurring baseline-collision bug where a wrapping `<h1>` stacks its
+second line so close that ascenders/descenders overlap, or the heading's
+descender clips into a horizontal divider directly below — observed across
+multiple generations of the same name-hero pattern despite three prior
+textual fixes in the skill markdown.
+
+- **Root cause it addresses** — `line-height < 1.0` on display-sized text
+  compresses the line-box below the ascender/descender envelope of the
+  glyphs. Earlier textual hints relied on the LLM checking its own output
+  and didn't stick; the deterministic gate inspects the DOM snapshot
+  Playwright already produces, so the bug is caught before the critic loop
+  ever sees the screenshot.
+- **Threshold rationale** — 64px is the floor for "display" treatment
+  across major design systems (Material 3 display-medium ≈ 45px, Tailwind
+  text-6xl = 60px, IBM Carbon expressive-04 ≈ 54px); 64px sits a step
+  above and reliably filters body/UI copy. Below ratio 0.9 the ascender
+  on line N+1 starts overlapping the descender on line N for most display
+  fonts (cap-height ≈ 70-75 % of em-square, ascender ≈ 80-85 %). 0.9 is
+  conservative — typical safe display line-height is 1.0-1.1.
+- **Data source** — `style.fontSize` and `style.lineHeight` from the
+  existing `capture-and-critique` DOM snapshot. Both arrive as px strings
+  ("96px", "100px") from `getComputedStyle`. `lineHeight: "normal"` is
+  treated as the browser default (≈ 1.2) and skipped. Unitless numeric
+  fallback (e.g. "0.8") resolves against the element's font-size for
+  defence-in-depth against alternative snapshot sources.
+- **Hard-fail tier** — moves the existing pattern of textual "should-have"
+  hints into a regen-blocking gate. The directive block carries a
+  concrete prescription including a target px value
+  (`Raise line-height to ≥ 0.9 of font-size (e.g. line-height:216px)`).
+- **Whitelist** — stylistically intentional tight leading (Swiss-punk
+  poster, brutalist editorial) can opt out via the active style's
+  frontmatter `allows_structural.hard_fail_skips: ['tight-line-height']`,
+  using the same mechanism as the other hard-fail checks. Surfaces in the
+  gate's `skipped` array with `reason: 'whitelisted'`.
+- **Tests** — 16 unit tests for the check module (FRANCESCA repro,
+  boundary cases at the 64px font-size threshold and 0.9 ratio threshold,
+  "normal" line-height handling, malformed input, multi-element flagging)
+  plus 2 integration tests on `structural-gate.evaluate()` (end-to-end
+  hard-fail through the directive block, whitelist contract).
+- **Files** — `hooks/scripts/lib/structural-checks/tight-line-height.mjs`,
+  `hooks/scripts/lib/__tests__/structural-checks/tight-line-height.test.mjs`,
+  registered in `hooks/scripts/lib/structural-gate.mjs` (HARD_FAIL_CHECKS
+  bumped from 6 to 7 entries), regression in
+  `hooks/scripts/lib/__tests__/structural-gate.test.mjs`.
+
+---
+
 ## [1.6.0] — 2026-05-05 (lokal-test-build, ej publicerad)
 
 ### Fixed — 2026-05-08 lokal-test-iteration
